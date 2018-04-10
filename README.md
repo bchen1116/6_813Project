@@ -3,6 +3,7 @@
 *6.813 Final project
 
 *Contributors:
+
 -Bryan C
 
 -Megan T
