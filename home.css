@@ -1,0 +1,78 @@
+/* navbar refers to the title bar on the page */
+.navbar-global {
+    background-color: #23282e;
+}
+  
+.navbar-global .navbar-brand {
+    color: white;
+    font-family: verdana;
+    font-size: 26px;
+    font-weight: bold;
+}
+  
+.navbar-global .navbar-user   {
+    color: white;
+}
+
+/* list-groups refer to the sidebar */
+.list-group.panel {
+    overflow: auto;
+    font-family: verdana;
+    font-size: 14px;
+    font-weight: 200;
+    background-color:  #39414b;
+    position: fixed;
+    top: 65px;
+    width: 250px;
+    height: calc(100vh - 65px);
+    color: #e1ffff;
+}
+
+.list-group-submenu {
+    background-color: #39414b;
+    width: 250px;
+}
+
+.list-group-item {
+    background-color:  #39414b;
+    color: #e1ffff;
+    font-size:12px;
+    width: 250px;
+}
+
+.list-group-item:hover {
+    background-color: #23282e;
+    border-left: 3px solid #d19b3d;
+    color: #e1ffff;
+}
+
+.strong { 
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* cb class controls the clicking region of checkbox */
+.cb{
+    position: relative;
+    margin:0;
+}
+
+.cb:before {
+    content:'';
+    position: absolute;
+    top:-20px;
+    bottom:-20px;
+    left:-25px;
+    right:-215px;
+}
+
+/* main refers to the main portion of the screen where menus will be */
+.main {
+    position: relative;
+    margin-left: 260px;
+}
+  
+body {
+    margin: 0px;
+    padding: 0px;
+}
