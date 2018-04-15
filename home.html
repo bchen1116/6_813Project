@@ -2,6 +2,7 @@
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
     crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
@@ -9,36 +10,39 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
     crossorigin="anonymous"></script>
 <link href="home.css" rel="stylesheet" type="text/css">
+<script src="home.js"></script>
 
 <head>
-    <title>Feedr</title>
+    <title>Feedr</title>            
 </head>
 
 <body>
     <!-- NAVBAR CREATION -->
-    <nav class="navbar navbar-inverse navbar-global navbar-fixed-top">
+    <nav class="navbar navbar-global navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">Feedr</a>
     </nav>
-     <!-- SIDEBAR CREATION -->
+    <!-- SIDEBAR CREATION -->
     <div id="MainMenu">
         <div class="list-group panel">
             <a href="#dorm" class="list-group-item list-group-item strong" data-parent="#MainMenu">Dormitory</a>
             <div class=" list-group-submenu" id="dorm">
                 <a href="#" class="list-group-item">
-                    <input type="checkbox" class="cb">&nbsp; Baker</a>
+                    <input type="checkbox" class="cb" name="dormcb" onclick="onCheckClicked(this, 'baker')" checked>&nbsp; Baker</a>
                 <a href="#" class="list-group-item">
-                    <input type="checkbox" class="cb">&nbsp; Maseeh</a>
+                    <input type="checkbox" class="cb" name="dormcb" onclick="onCheckClicked(this, 'maseeh')" checked>&nbsp; Maseeh</a>
                 <a href="#" class="list-group-item">
-                    <input type="checkbox" class="cb">&nbsp; McCormick</a>
+                    <input type="checkbox" class="cb" name="dormcb" onclick="onCheckClicked(this, 'mccormick')" checked>&nbsp; McCormick</a>
                 <a href="#" class="list-group-item">
-                    <input type="checkbox" class="cb">&nbsp; Next</a>
+                    <input type="checkbox" class="cb" name="dormcb" onclick="onCheckClicked(this, 'next')" checked>&nbsp; Next</a>
                 <a href="#" class="list-group-item">
-                    <input type="checkbox" class="cb">&nbsp; Simmons</a>
+                    <input type="checkbox" class="cb" name="dormcb" onclick="onCheckClicked(this, 'simmons')" checked>&nbsp; Simmons</a>
+                <a href="#" class="list-group-item">
+                    <input type="checkbox" class="cb" name="dormcb" onclick="onCheckClicked(this, 'specials')" checked>&nbsp; Specials</a>
             </div>
             <a href="#diet" class="list-group-item list-group-item strong" data-toggle="collapse" data-parent="#MainMenu"> Dietary Restrictions </a>
-            <div class="collapse list-group-submenu" id="diet">
+            <div class="collapse list-group-submenu panel" id="diet">
                 <a href="#" class="list-group-item">
                     <input type="checkbox" class="cb">&nbsp; Gluten Free</a>
                 <a href="#" class="list-group-item">
@@ -51,7 +55,7 @@
                     <input type="checkbox" class="cb">&nbsp; Vegetarian</a>
             </div>
             <a href="#meal" class="list-group-item list-group-item strong" data-toggle="collapse" data-parent="#MainMenu"> Meal Type </a>
-            <div class="collapse list-group-submenu" id="meal">
+            <div class="collapse list-group-submenu panel" id="meal">
                 <a href="#" class="list-group-item">
                     <input type="checkbox" class="cb">&nbsp; Breakfast/Brunch</a>
                 <a href="#" class="list-group-item">
@@ -66,10 +70,87 @@
     </div>
 
     <!-- MAIN BODY -->
-    <div class = "main">
-        <p>Here's some stuff</p>
+    <!-- unsure if i can create this in javascript since there's so many nested layers -->
+    <div class="main" id="main">
+        <div class="card text-white bg-info mb-3"id="baker">
+            <div class="card-header">Baker</div>
+            <div class="card-body">
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 1</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 2</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 3</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 4</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 5</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 6</p>
+            </div>
+        </div>
+        <div class="card text-white bg-info mb-3" id="maseeh">
+            <div class="card-header">Maseeh</div>
+            <div class="card-body">
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 1</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 2</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 3</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 4</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 5</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 6</p>
+            </div>
+        </div>
+        <div class="card text-white bg-info mb-3" id="mccormick">
+            <div class="card-header">McCormick</div>
+            <div class="card-body">
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 1</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 2</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 3</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 4</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 5</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 6</p>
+            </div>
+        </div>
+        <div class="card text-white bg-info mb-3" id="next">
+            <div class="card-header">Next</div>
+            <div class="card-body">
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 1</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 2</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 3</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 4</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 5</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 6</p>
+            </div>
+        </div>
+        <div class="card text-white bg-info mb-3" id="simmons">
+            <div class="card-header">Simmons</div>
+            <div class="card-body">
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 1</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 2</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 3</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 4</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 5</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 6</p>
+            </div>
+        </div>
+        <div class="card text-white bg-info mb-3" id="specials">
+            <div class="card-header">Special Events</div>
+            <div class="card-body">
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 1</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 2</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 3</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 4</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 5</p>
+                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 6</p>
+            </div>
+        </div>
     </div>
 
+    <!-- modal is the menu (empty rn) that pops up -->
+    <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <!-- POTENTIAL MODAL ANIMATIONS: https://codepen.io/designcouch/pen/obvKxm -->
+              <span class="close">&times;</span>
+              <p>Some text in the Modal..</p>
+            </div>
+          
+          </div>
 
 </body>
 

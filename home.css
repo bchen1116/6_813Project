@@ -1,9 +1,16 @@
+:root{
+    --rows: 2;
+    --cols: 3;
+}
+
 /* navbar refers to the title bar on the page */
 .navbar-global {
     background-color: #23282e;
+    z-index: 1;
 }
   
 .navbar-global .navbar-brand {
+    position: sticky;
     color: white;
     font-family: verdana;
     font-size: 26px;
@@ -18,13 +25,11 @@
 .list-group.panel {
     overflow: auto;
     font-family: verdana;
-    font-size: 14px;
-    font-weight: 200;
     background-color:  #39414b;
     position: fixed;
-    top: 65px;
+    top: 0px;
     width: 250px;
-    height: calc(100vh - 65px);
+    height: calc(100vh);
     color: #e1ffff;
 }
 
@@ -35,9 +40,13 @@
 
 .list-group-item {
     background-color:  #39414b;
+    position: relative;
+    top: 65px;
     color: #e1ffff;
     font-size:12px;
+    height: 40px;
     width: 250px;
+    vertical-align: middle;
 }
 
 .list-group-item:hover {
@@ -49,7 +58,9 @@
 .strong { 
     font-weight: bold;
     font-size: 16px;
+    height: 50px;
 }
+
 
 /* cb class controls the clicking region of checkbox */
 .cb{
@@ -69,9 +80,84 @@
 /* main refers to the main portion of the screen where menus will be */
 .main {
     position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
     margin-left: 260px;
 }
-  
+
+/* card refers to the individual cells for menus on main page */
+.card {
+    width: calc(calc(1000px - 20px * var(--cols)) / var(--cols));
+    height: calc(calc(625px - 15px * var(--rows)) / var(--rows));
+    margin: 5px;
+    background-color: #39414b;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border: 3px transparent;
+}
+
+.card:hover {
+    border: 3px solid #d19b3d;
+}
+
+.card-header {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    background-color:  #23282e;
+}
+
+.card-body {
+    background-color: #ebecec;
+    color: black;
+    font-size: 14px;
+}
+
+.card-title {
+    z-index: 1;
+    font-size: 18px;
+    margin: 5px;
+}
+
+.card-title:hover {
+    background-color: #d19b3d64;
+}
+
+/* modal is the menu that pops up when user clicks on card */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    margin-left: 5vw;
+    margin-top: 5vh;
+    width: 90vw;
+    height: 90vh;
+    align-self: center;
+}
+.close {
+    color: #aaa;
+    float: right;
+    margin-right: 10px;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
 body {
     margin: 0px;
     padding: 0px;
