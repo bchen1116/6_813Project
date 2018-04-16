@@ -10,6 +10,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
     crossorigin="anonymous"></script>
 <link href="home.css" rel="stylesheet" type="text/css">
+<link href="navbar.css" rel="stylesheet" type="text/css">
 <script src="home.js"></script>
 
 <head>
@@ -18,10 +19,27 @@
 
 <body>
     <!-- NAVBAR CREATION -->
-    <nav class="navbar navbar-global navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">Feedr</a>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+
+        <a class="navbar-brand" href="#">Feedr</a>
+        <ul class="nav navbar-right original">
+            <li class="nav-item">
+                <a class="nav-link" href="favorites.html">Favorites</a>
+            </li>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Profile
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+            </li> 
+        </ul>
+
+
     </nav>
     <!-- SIDEBAR CREATION -->
     <div id="MainMenu">

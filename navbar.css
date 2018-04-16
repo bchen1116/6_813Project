@@ -1,0 +1,31 @@
+/* navbar refers to the title bar on the page */
+.navbar-inverse {
+    background-color: #23282e;
+    z-index: 1;
+    justify-content: start;
+}
+  
+.navbar-inverse .navbar-brand {
+/*    position: sticky;
+*/   color: white;
+    font-family: verdana;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.navbar-right{
+    margin-left: auto;
+}
+
+.nav-item a{
+    float: right;
+    color: white;
+    font-family: verdana;
+    font-size: 26px;
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-global .navbar-user   {
+    color: white;
+}

@@ -3,24 +3,6 @@
     --cols: 3;
 }
 
-/* navbar refers to the title bar on the page */
-.navbar-global {
-    background-color: #23282e;
-    z-index: 1;
-}
-  
-.navbar-global .navbar-brand {
-    position: sticky;
-    color: white;
-    font-family: verdana;
-    font-size: 26px;
-    font-weight: bold;
-}
-  
-.navbar-global .navbar-user   {
-    color: white;
-}
-
 /* list-groups refer to the sidebar */
 .list-group.panel {
     overflow: auto;
