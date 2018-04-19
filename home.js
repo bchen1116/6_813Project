@@ -6,7 +6,6 @@ var dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"];
 // allDorms is the dictionary that maps dorm name to Node element of dorm card
 var allDorms = {};                                  
 
-
 // called when the checkbox on dorms are clicked/unclicked
 function onCheckClicked(cb, dorm) {
     if (cb.checked == false) {                                  // if it isn't checked, remove the dorm
@@ -124,4 +123,27 @@ $(document).ready(function() {
             modal.style.display = "none";
         }
     }
+});
+
+//navbar code for food selection form pop-up
+document.addEventListener('DOMContentLoaded', function() {
+    var modal = document.querySelector(".form-request");
+    var trigger = document.querySelector(".form");
+    var submit = document.querySelector(".submit-form");
+    var closeButton = document.querySelector(".close-button");
+
+    function toggleModal() {
+        modal.classList.toggle("show-modal");
+    }
+
+    function windowOnClick(event) {
+        if (event.target === modal) {
+            toggleModal();
+        }
+    }
+
+    trigger.addEventListener("click", toggleModal);
+    closeButton.addEventListener("click", toggleModal);
+    submit.addEventListener("click", toggleModal);
+    window.addEventListener("click", windowOnClick);
 });
