@@ -60,7 +60,8 @@
 }
 
 /* main refers to the main portion of the screen where menus will be */
-.main {
+.mainClass {
+    top: 75px;
     position: relative;
     display: flex;
     flex-flow: row wrap;
@@ -73,6 +74,7 @@
     width: calc(calc(1000px - 20px * var(--cols)) / var(--cols));
     height: calc(calc(625px - 15px * var(--rows)) / var(--rows));
     margin: 5px;
+    /* margin-top: 75px; */
     background-color: #39414b;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border: 3px transparent;
