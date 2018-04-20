@@ -99,3 +99,7 @@ input {
 .submit-form{
     float: center;
 }
+
+.food-item: hover {
+    background-color: black; 
+}

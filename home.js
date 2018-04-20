@@ -48,7 +48,7 @@ function dietaryUpdate(cb, diet) {
     //console.log(dieraryRestrictions)
 
     var currentDishes = Object.assign(ALLDISHES)      // reset currentDishes to be everything
-    console.log(ALLDISHES)
+    //console.log(ALLDISHES)
     // go through our list of foods and remove the ones that do not fit the restriction & remove 
     for (var dorm in currentDishes) {              // go through the dorms 
         var dormCurrentDishes = currentDishes[dorm]
@@ -117,15 +117,26 @@ function updateDishesForDorms() {
 // updates the star after a click
 function updateStarOnClick(e) { 
     try {
-        var currentStar = e.target.firstChild.getAttribute("class");
-        var newStar = document.createElement("span");
-        if (currentStar == "fa fa-star-o") {
-            newStar.setAttribute("class", "fa fa-star");
-            newStar.style.color = "#d19b3d";
-        } else {
-            newStar.setAttribute("class", "fa fa-star-o");
+        //console.log("this is the one", e.target.firstChild.getAttribute("class"))
+        var currentStar = e.target.firstChild
+        var currentStarClass  = e.target.firstChild.getAttribute("class")
+        if (currentStarClass == "fa fa-star-o") {
+            //console.log("made it ")
+            currentStar.classList = "fa fa-star"
+            currentStar.style.color = "#d19b3d"
+        } else { 
+            currentStar.classList = "fa fa-star-o"
+            currentStar.style.color = "black"
         }
-        e.target.replaceChild(newStar, e.target.firstChild);
+        // var currentStar = e.target.firstChild.getAttribute("class");
+        // var newStar = document.createElement("span");
+        // if (currentStar == "fa fa-star-o") {
+        //     newStar.setAttribute("class", "fa fa-star");
+        //     newStar.style.color = "#d19b3d";
+        // } else {
+        //     newStar.setAttribute("class", "fa fa-star-o");
+        // }
+        // e.target.replaceChild(newStar, e.target.firstChild);
     }   
     catch (E) {
         if (e.target.getAttribute("class") == "fa fa-star-o") {
@@ -161,7 +172,9 @@ function updateMenu() {
         var dishesForDorm = ALLDISHES[dormName]
         for (var j =0; j < Object.keys(dishesForDorm).length; j++) {
             var dishName = Object.keys(dishesForDorm)[j]
+            //console.log(dormName, dishName)
             var relevantStar = document.getElementById("star"+dormName+","+dishName)
+            //console.log(relevantStar)
             if (favoriteDishes.includes(dishName)) { 
                 relevantStar.setAttribute("class", "fa fa-star")
                 relevantStar.style.color = "#d19b3d"
@@ -251,28 +264,106 @@ $(document).ready(function() {
         specialMenu.appendChild(special)
     }
 
-
-
-
     // calls the menu card pop-up
     var modal = document.getElementById('myModal');
     var modalButton = document.getElementById('menuPopup')
     var modalClose = document.getElementsByClassName("close")[0]
-    //console.log(modal, modalButton, modalClose)
+    var modalBody = document.getElementById("modal-body")
+    
     
     // Get the button that opens the modal
     // COMMENTED OUT FOR CONVENIENT TESTING
     // TODO: make modal only display when clicking in area that doesn't highlight star!!!
-    // for (var i = 0; i < dormList.length; i++) {
-    //     document.getElementById(dormList[i]).addEventListener("click", function() {
-    //         modal.style.display = "block";
-    //     });
-    // }
+    var nameToHeading = {"baker": "Baker", "maseeh": "Maseeh", "mccormick": "McCormick", "next": "Next", "simmons":"Simmons"}
+    for (var i = 0; i < dormList.length; i++) {
+        document.getElementById(dormList[i]).addEventListener("click", function(e) {
+            //remove everything from the body that was previously there
+            while (modalBody.firstChild) {
+                modalBody.removeChild(modalBody.firstChild) 
+            }
+
+            if (e.target.getAttribute("class") != 'card-title') {
+                // add thigs to the body of the modal
+                //console.log(e.path[1].id)
+                var dormName = e.path[1].id
+                var popupTitleBackGround = Util.create("div", {"class": "card-header"})
+                var popupTitle = Util.create("h3", {"class":"popup-title"})
+                popupTitle.appendChild(document.createTextNode(" " + nameToHeading[dormName]))
+                popupTitleBackGround.appendChild(popupTitle)
+                modalBody.appendChild(popupTitleBackGround)
+
+                var dishes = currentDishes[dormName]
+
+                var dish = Util.create("p", {"class":"card-title", "id": dishName})
+
+                for (var dish in dishes) {
+                    //var food = Util.create("div", {"class": "food-item", "id":dish})
+                    var foodItem = Util.create("p", {"class": "food-item"})
+                    var foodDescription = Util.create("p", {"class": "food-description"})
+                    var foodRestrictions = Util.create("p", {"class": "food-restriction"})
+                    var fav = Util.create("span", {"class":"fa fa-star-o", "id": "star" + dormName + "," + dish})
+
+                    restriction = "    ("
+                    for (var rest=0; rest< Object.keys(dishes[dish]["diet"]).length-1; rest ++) {
+                        restriction += "--" +dishes[dish]["diet"][rest] + ", "
+                    }
+
+                    restriction += "--" + dishes[dish]["diet"][rest] + ")"
+                    description = document.createTextNode(dishes[dish]["description"])
+                    diet = document.createTextNode(restriction)
+
+                    foodItem.appendChild(fav)
+                    foodItem.appendChild(document.createTextNode(" " + dish))
+                    foodItem.appendChild(diet)
+                    //foodItem.appendChild(document.createElement("br"));
+                    //foodItem.appendChild(description)
+                    //foodItem.appendChild(document.createElement("br"));
+                    
+
+
+                    // foodDescription.appendChild(description)
+                    // foodRestrictions.appendChild(diet)
+                    // food.appendChild(foodItem)
+                    // food.appendChild(foodDescription)
+                    // food.appendChild(foodRestrictions)
+                    // modalBody.appendChild(food)
+
+
+                    modalBody.appendChild(foodItem)
+                    // modalBody.appendChild(foodDescription)
+                    // modalBody.appendChild(foodRestrictions)
+
+
+                    // This is what happens when we click on a star
+                    foodItem.addEventListener('click', function(evt) {
+                        var foodName = evt.target.closest("p.food-item").id
+                        updateStarOnClick(evt)
+                        updateFavorites(foodName)
+                        updateMenu()
+                    })
+
+
+                    //make sure that the favorites are updated
+                    if (favoriteDishes.includes(dish)) { 
+                        fav.setAttribute("class", "fa fa-star")
+                        fav.style.color = "#d19b3d"
+                    } else { 
+                        fav.setAttribute("class", "fa fa-star-o")
+                        fav.style.color = "black"
+                    }
+
+                }
+
+
+                modal.style.display = "block";
+            }
+        });
+    }
 
     // When the user clicks on the see full button 
-    modalButton.onclick = function() {
-        modal.style.display = "block"
-    }
+    // modalButton.onclick = function() {
+    //     modal.style.display = "block"
+    // }
 
 
     // When the user clicks the close button
