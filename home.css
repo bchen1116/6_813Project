@@ -109,9 +109,6 @@ input[type='checkbox']:checked:after {
     color: #fff;
 }
 
-.cb:checked {
-    background-color: red;
-}
 
 /* main refers to the main portion of the screen where menus will be */
 .mainClass {

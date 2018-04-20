@@ -16,13 +16,13 @@
 <script src="home.js"></script>
 
 <head>
-    <title>Feedr</title>            
+    <title>Feedr</title>
 </head>
 
 <body class="whole-background">
     <!-- NAVBAR CREATION -->
-        <!-- NAVBAR CREATION -->
-   <nav class="navbar navbar-inverse navbar-fixed-top">
+    <!-- NAVBAR CREATION -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
 
         <a class="navbar-brand" href="home.html">
             <img id="logo" src="feedr7.png" alt="HTML tutorial" style="position:relative; width:150px;height:175px;border:0;">
@@ -39,53 +39,54 @@
                         <h2>Special Request Form</h2>
                     </div>
                     <div class="card-body">
-                        <div class =  "form-body">
-                        <!-- <div class="data"> -->
-                            <label for="name">Name:     </label>
-                            <input class = "formInput" type="text" id="name" name="user_name">
-                        <!-- </div> -->
-                        <!-- <div class="data"> -->
-                            <label for="name">Kerberos:     </label>
-                            <input class = "formInput" type="text" id="email" name="email">
-                        <!-- </div> -->
-                        <!-- <div class="data"> -->
-                            <label for="name">Dorm:     </label>
-                            <select class = "formInput">
+                        <div class="form-body">
+                            <!-- <div class="data"> -->
+                            <label for="name">Name: </label>
+                            <input class="formInput" type="text" id="name" name="user_name">
+                            <!-- </div> -->
+                            <!-- <div class="data"> -->
+                            <label for="name">Kerberos: </label>
+                            <input class="formInput" type="text" id="email" name="email">
+                            <!-- </div> -->
+                            <!-- <div class="data"> -->
+                            <label for="name">Dorm: </label>
+                            <select class="formInput">
                                 <option value="" disabled="disabled" selected="selected">Please select a dorm for pick-up</option>
                                 <option value="1">Baker</option>
                                 <option value="2">Maseeh</option>
-                                <option value="2">Simmons</option>                 
+                                <option value="2">Simmons</option>
                                 <option value="2">Mccormick</option>
                                 <option value="2">Next</option>
                             </select>
-                        <!-- </div> -->
-                        <!-- <div class="data"> -->
+                            <!-- </div> -->
+                            <!-- <div class="data"> -->
                             <label for="name">Date:</label>
-                            <input class = "formInput" id="date" type="date">
-                        <!-- </div> -->
-                        <!-- <div class="data"> -->
+                            <input class="formInput" id="date" type="date">
+                            <!-- </div> -->
+                            <!-- <div class="data"> -->
                             <label for="name">Time:</label>
-                            <input class = "formInput" id="time" type="time">
-                        <!-- </div> -->
-                        <!-- <div class="data"> -->
-                            
-                        <!-- </div> -->
-                    </div>
+                            <input class="formInput" id="time" type="time">
+                            <!-- </div> -->
+                            <!-- <div class="data"> -->
+
+                            <!-- </div> -->
+                        </div>
                         <button class="submit-form">Submit</button>
 
-                        </div>
                     </div>
                 </div>
             </div>
-            <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Profile
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a1 class="dropdown-item" href="#">Profile Page</a1>
-              <a1 class="dropdown-item" href="#">Logout</a1>
             </div>
-            </li> 
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    Profile
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a1 class="dropdown-item" href="#">Profile Page</a1>
+                    <a1 class="dropdown-item" href="#">Logout</a1>
+                </div>
+            </li>
         </ul>
 
 
@@ -94,47 +95,71 @@
         <div class="card text-white bg-info mb-3" id="specials">
             <div class="card-header">Entrees</div>
             <div class="card-body">
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 1</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 2</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 3</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 4</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 5</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 6</p>
+                <p class="card-title" onclick="updateStarOnClick(event)">
+                    <span class="fa fa-star-o"></span> Entree 1</p>
+                <p class="card-title" onclick="updateStarOnClick(event)">
+                    <span class="fa fa-star-o"></span> Entree 2</p>
+                <p class="card-title" onclick="updateStarOnClick(event)">
+                    <span class="fa fa-star-o"></span> Entree 3</p>
+                <p class="card-title" onclick="updateStarOnClick(event)">
+                    <span class="fa fa-star-o"></span> Entree 4</p>
+                <p class="card-title" onclick="updateStarOnClick(event)">
+                    <span class="fa fa-star-o"></span> Entree 5</p>
+                <p class="card-title" onclick="updateStarOnClick(event)">
+                    <span class="fa fa-star-o"></span> Entree 6</p>
             </div>
         </div>
         <div class="card text-white bg-info mb-3" id="specials">
-        <div class="card-header">Vegetables</div>
+            <div class="card-header">Vegetables</div>
             <div class="card-body">
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 1</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 2</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 3</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 4</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 5</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 6</p>
+                <p class="card-title" onclick="updateStarOnClick(event)">
+                    <span class="fa fa-star-o"></span> Entree 1</p>
+                <p class="card-title" onclick="updateStarOnClick(event)">
+                    <span class="fa fa-star-o"></span> Entree 2</p>
+                <p class="card-title" onclick="updateStarOnClick(event)">
+                    <span class="fa fa-star-o"></span> Entree 3</p>
+                <p class="card-title" onclick="updateStarOnClick(event)">
+                    <span class="fa fa-star-o"></span> Entree 4</p>
+                <p class="card-title" onclick="updateStarOnClick(event)">
+                    <span class="fa fa-star-o"></span> Entree 5</p>
+                <p class="card-title" onclick="updateStarOnClick(event)">
+                    <span class="fa fa-star-o"></span> Entree 6</p>
             </div>
         </div>
         <div class="card text-white bg-info mb-3" id="specials">
-        <div class="card-header">Sides</div>
+            <div class="card-header">Sides</div>
             <div class="card-body">
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 1</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 2</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 3</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 4</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 5</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 6</p>
+                <p class="card-title" onclick="updateStarOnClick(event)">
+                    <span class="fa fa-star-o"></span> Entree 1</p>
+                <p class="card-title" onclick="updateStarOnClick(event)">
+                    <span class="fa fa-star-o"></span> Entree 2</p>
+                <p class="card-title" onclick="updateStarOnClick(event)">
+                    <span class="fa fa-star-o"></span> Entree 3</p>
+                <p class="card-title" onclick="updateStarOnClick(event)">
+                    <span class="fa fa-star-o"></span> Entree 4</p>
+                <p class="card-title" onclick="updateStarOnClick(event)">
+                    <span class="fa fa-star-o"></span> Entree 5</p>
+                <p class="card-title" onclick="updateStarOnClick(event)">
+                    <span class="fa fa-star-o"></span> Entree 6</p>
             </div>
         </div>
         <div class="card text-white bg-info mb-3" id="specials">
-        <div class="card-header">Desserts</div>
+            <div class="card-header">Desserts</div>
             <div class="card-body">
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 1</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 2</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 3</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 4</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 5</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 6</p>
+                <p class="card-title" onclick="updateStarOnClick(event)">
+                    <span class="fa fa-star-o"></span> Entree 1</p>
+                <p class="card-title" onclick="updateStarOnClick(event)">
+                    <span class="fa fa-star-o"></span> Entree 2</p>
+                <p class="card-title" onclick="updateStarOnClick(event)">
+                    <span class="fa fa-star-o"></span> Entree 3</p>
+                <p class="card-title" onclick="updateStarOnClick(event)">
+                    <span class="fa fa-star-o"></span> Entree 4</p>
+                <p class="card-title" onclick="updateStarOnClick(event)">
+                    <span class="fa fa-star-o"></span> Entree 5</p>
+                <p class="card-title" onclick="updateStarOnClick(event)">
+                    <span class="fa fa-star-o"></span> Entree 6</p>
             </div>
         </div>
     </div>
 
-    </body>
+</body>
