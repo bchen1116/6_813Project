@@ -11,7 +11,7 @@
     position: fixed;
    color: white;
     font-family: verdana;
-    font-size: 26px;
+    font-size: 32px;
     font-weight: bold;
 }
 
@@ -23,20 +23,34 @@
     float: right;
     color: white;
     font-family: verdana;
-    font-size: 26px;
+    font-size: 16px;
+    height: 40px;
     color: white;
-    text-decoration: none;
+    margin-right: 20px
 }
+
+.nav-item a:hover {
+    color: grey;
+    border-bottom: 2px solid #d19b3d;
+}
+
 
 .form{
     float: right;
     color: white;
     font-family: verdana;
-    font-size: 26px;
+    font-size: 16px;
     color: white;
     text-decoration: none;
     background-color: #b3c2bf;
     border-color: #b3c2bf;
+    margin-right: 20px;
+}
+
+.form:hover {
+    color: grey;
+    border-bottom: 2px solid #d19b3d;
+
 }
 
 .navbar-global .navbar-user   {

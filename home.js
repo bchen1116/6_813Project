@@ -268,6 +268,13 @@ $(document).ready(function() {
     //         modal.style.display = "block";
     //     });
     // }
+    for (var i = 0; i < dormList.length; i++) {
+        document.getElementById(dormList[i]).addEventListener("click", function(e) {
+            if (e.target.getAttribute("class") != 'card-title') {
+                modal.style.display = "block";
+            }
+        });
+    }
 
     // When the user clicks on the see full button 
     modalButton.onclick = function() {
