@@ -121,7 +121,7 @@ function updateStarOnClick(e) {
         var newStar = document.createElement("span");
         if (currentStar == "fa fa-star-o") {
             newStar.setAttribute("class", "fa fa-star");
-            newStar.style.color = "#d19b3d";
+            newStar.style.color = "#aa863a";
         } else {
             newStar.setAttribute("class", "fa fa-star-o");
         }

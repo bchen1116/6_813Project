@@ -4,31 +4,31 @@
 }
 
 .whole-background{
-    background-color: #e9ece5;
+    background-color: #f0eceb;
 }
 
 /* list-groups refer to the sidebar */
 .list-group.panel {
     overflow: auto;
     font-family: verdana;
-    background-color: #3b3a36;
+    background-color: #729f98;
     position: fixed;
     top: 0px;
     width: 250px;
     height: calc(100vh);
-    color: #e1ffff;
+    color: #f0eceb;
 }
 
 .list-group-submenu {
-    background-color: #3b3a36;
+    background-color: #729f98;
     width: 100%;
 }
 
 .list-group-item {
-    background-color:  #3b3a36;
+    background-color:  #729f98;
     position: relative;
     top: 65px;
-    color: #e1ffff;
+    color: #e9ece5;
     font-size:12px;
     height: 40px;
     width: 250px;
@@ -36,10 +36,10 @@
 }
 
 .list-group-item:hover {
-    background-color: #23282e;
+    background-color: #87bdb6;
     /* width: 100%; */
-    border-left: 3px solid #d19b3d;
-    color: #e1ffff;
+    border-left: 3px solid #aa863a;
+    color: #e9ece5;
 }
 
 .strong { 
@@ -53,6 +53,9 @@
 .cb{
     position: relative;
     margin:0;
+      background-color: #283018 !important;
+    color: #283018 !important;
+    color: #283018;
 }
 
 .cb:before {
@@ -72,7 +75,7 @@
     flex-flow: row wrap;
     justify-content: space-evenly;
     margin-left: 260px;
-    background-color: #e9ece5;
+    background-color: #f0eceb;
 }
 
 /* card refers to the individual cells for menus on main page */
@@ -87,20 +90,20 @@
 }
 
 .card:hover {
-    border: 3px solid #d19b3d;
+    border: 3px solid #aa863a;
 }
 
 .card-header {
     font-size: 16px;
     font-weight: bold;
     text-align: center;
-    background-color:  #23282e;
+    background-color:  #283018;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
 
 .card-body {
-    background-color: #ebecec;
+    background-color: #dde3df;
     color: black;
     font-size: 14px;
     border-bottom-left-radius: 5px;
@@ -114,7 +117,7 @@
 }
 
 .card-title:hover {
-    background-color: #d19b3d64;
+    background-color: #87bdb6;
 }
 
 .card-hover { 
