@@ -1,6 +1,6 @@
 /* navbar refers to the title bar on the page */
 .navbar-inverse {
-    background-color: #23282e;
+    background-color: #b3c2bf;
     z-index: 1;
     justify-content: start;
     position: fixed;
@@ -35,8 +35,8 @@
     font-size: 26px;
     color: white;
     text-decoration: none;
-    background-color: #23282e;
-    border-color: #23282e;
+    background-color: #b3c2bf;
+    border-color: #b3c2bf;
 }
 
 .navbar-global .navbar-user   {
@@ -82,6 +82,8 @@
     transform: scale(1.0);
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
+
+
 
 h1{
     color:white;
