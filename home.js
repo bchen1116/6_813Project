@@ -103,11 +103,11 @@ $(document).ready(function() {
     // Get the button that opens the modal
     // COMMENTED OUT FOR CONVENIENT TESTING
     // TODO: make modal only display when clicking in area that doesn't highlight star!!!
-    // for (var i = 0; i < dormList.length; i++) {
-    //     document.getElementById(dormList[i]).addEventListener("click", function() {
-    //         modal.style.display = "block";
-    //     });
-    // }
+    for (var i = 0; i < dormList.length; i++) {
+        document.getElementById(dormList[i]).addEventListener("click", function() {
+            modal.style.display = "block";
+        });
+    }
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
