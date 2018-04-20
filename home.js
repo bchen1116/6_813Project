@@ -1,10 +1,11 @@
 // JS code for home page. Handles the clicking responses on the page
 
+
 // dormList is the list of active dorms on the page
 var dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"];
 
 // allDorms is the dictionary that maps dorm name to Node element of dorm card
-var allDorms = {};                                  
+var allDorms = {};                                 
 
 // called when the checkbox on dorms are clicked/unclicked
 function onCheckClicked(cb, dorm) {
@@ -28,22 +29,21 @@ function onCheckClicked(cb, dorm) {
             }
         }
     }
-    updateCardLayout();
-    
+    updateCardLayout();   
 }
 
 // updates the star after a click
 function updateStarOnClick(e) { 
     try {
-    var currentStar = e.target.firstChild.getAttribute("class");
-    var newStar = document.createElement("span");
-    if (currentStar == "fa fa-star-o") {
-        newStar.setAttribute("class", "fa fa-star");
-        newStar.style.color = "#d19b3d";
-    } else {
-        newStar.setAttribute("class", "fa fa-star-o");
-    }
-    e.target.replaceChild(newStar, e.target.firstChild);
+        var currentStar = e.target.firstChild.getAttribute("class");
+        var newStar = document.createElement("span");
+        if (currentStar == "fa fa-star-o") {
+            newStar.setAttribute("class", "fa fa-star");
+            newStar.style.color = "#d19b3d";
+        } else {
+            newStar.setAttribute("class", "fa fa-star-o");
+        }
+        e.target.replaceChild(newStar, e.target.firstChild);
     }   
     catch (E) {
         if (e.target.getAttribute("class") == "fa fa-star-o") {
@@ -54,8 +54,43 @@ function updateStarOnClick(e) {
             e.target.style.color = "black";
         }
     }
-    e.stopPropogation();
+    //e.stopPropogation();
 }
+
+
+// update our list of favorite food items
+function updateFavorites(dish) { 
+    if (favoriteDishes.includes(dish)) { // if the dish is already in favorites then we want to remove it 
+        var indexOfRemove = favoriteDishes.indexOf(dish);
+        if (indexOfRemove !== -1) {
+            favoriteDishes.splice(indexOfRemove, 1);
+        }
+    } else { // if the dish is not in favorites then add it 
+        favoriteDishes.push(dish)
+    }
+    console.log(favoriteDishes)
+}
+
+// after a dish has been added to favorites 
+// go through the other menus and add that dish to their favorites too 
+function updateMenu() { 
+    for (var i = 0; i < dormList.length-1; i++) {
+        var dormName = dormList[i]
+        var dishesForDorm = ALLDISHES[dormName]
+        for (var j =0; j < Object.keys(dishesForDorm).length; j++) {
+            var dishName = Object.keys(dishesForDorm)[j]
+            var relevantStar = document.getElementById("star"+dormName+","+dishName)
+            if (favoriteDishes.includes(dishName)) { 
+                relevantStar.setAttribute("class", "fa fa-star")
+                relevantStar.style.color = "#d19b3d"
+            } else { 
+                relevantStar.setAttribute("class", "fa fa-star-o")
+                relevantStar.style.color = "black"
+            }
+        }
+    }
+}
+
 
 // updates the card layout on rows or columns
 function updateCardLayout() {
@@ -74,6 +109,7 @@ function updateCardLayout() {
         }
     }
 }
+
 // simple function to sort the list of dorms
 // returns the sorted list of dorms
 function sortDorms(dorms) {
@@ -89,16 +125,58 @@ function sortDorms(dorms) {
     return listitems;                                           
 }
 
-// called when the document is ready 
-$(document).ready(function() {
-
+$(document).ready(function() { 
+    // called when the document is ready 
     dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"];         //recall the dormList to initiate allDorms
     for (var i = 0; i < dormList.length; i++) {
         allDorms[dormList[i]] = document.getElementById(dormList[i]);
     }
 
+    //for each of the dorms, go through and populate their menu according to the data we have on file
+    for (var i=0; i<dormList.length-1; i++) {
+        var dormName = dormList[i]
+        var menu = document.getElementById(dormName +"Menu") 
+        var dishesForDorm = ALLDISHES[dormName]
+
+        // for each of the dishes that are being served for that dorm 
+        for (var j=0; j<Object.keys(dishesForDorm).length; j++) {
+            var dishName = Object.keys(dishesForDorm)[j]
+            var dish = Util.create("p", {"class":"card-title", "id": dishName})
+
+            dish.addEventListener('click', function (evt) {
+                var foodName = evt.target.closest("p.card-title").id 
+                updateStarOnClick(evt)
+                updateFavorites(foodName)
+                updateMenu()
+            })
+
+            var fav = Util.create("span", {"class":"fa fa-star-o", "id": "star" + dormName + "," + dishName})
+            var text = document.createTextNode(" "+Object.keys(dishesForDorm)[j])
+            
+            dish.appendChild(fav)
+            dish.appendChild(text)
+            menu.appendChild(dish)
+        }
+    }
+
+    var specialMenu = document.getElementById("specialsMenu")
+    // populate the specials menu card 
+    for (var i=0; i < SPECIALS.length; i++) { 
+        var special = Util.create("p", {"class":"card-title"})
+        var text = document.createTextNode(SPECIALS[i])
+        
+        special.appendChild(text)
+        specialMenu.appendChild(special)
+    }
+
+
+
+
     // calls the menu card pop-up
     var modal = document.getElementById('myModal');
+    var modalButton = document.getElementById('menuPopup')
+    var modalClose = document.getElementsByClassName("close")[0]
+    console.log(modal, modalButton, modalClose)
     
     // Get the button that opens the modal
     // COMMENTED OUT FOR CONVENIENT TESTING
@@ -109,11 +187,15 @@ $(document).ready(function() {
         });
     }
 
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
+    // When the user clicks on the see full button 
+    modalButton.onclick = function() {
+        modal.style.display = "block"
+    }
 
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
+
+    // When the user clicks the close button
+    modalClose.onclick = function() {
+        console.log("Im here")
         modal.style.display = "none";
     }
 
@@ -123,7 +205,7 @@ $(document).ready(function() {
             modal.style.display = "none";
         }
     }
-});
+})
 
 //navbar code for food selection form pop-up
 document.addEventListener('DOMContentLoaded', function() {
