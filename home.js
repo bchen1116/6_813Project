@@ -116,6 +116,7 @@ function updateDishesForDorms() {
 
 // updates the star after a click
 function updateStarOnClick(e) { 
+    console.log(e)
     try {
         var currentStar = e.target.firstChild.getAttribute("class");
         var newStar = document.createElement("span");
@@ -128,6 +129,7 @@ function updateStarOnClick(e) {
         e.target.replaceChild(newStar, e.target.firstChild);
     }   
     catch (E) {
+        console.log("errorr", E)
         if (e.target.getAttribute("class") == "fa fa-star-o") {
             e.target.setAttribute("class", "fa fa-star");
             e.target.style.color = "#ffd259";

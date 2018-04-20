@@ -20,3 +20,4 @@ document.addEventListener('DOMContentLoaded', function() {
     submit.addEventListener("click", toggleModal);
     window.addEventListener("click", windowOnClick);
 });
+
