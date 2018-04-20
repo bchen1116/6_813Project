@@ -264,8 +264,10 @@ $(document).ready(function() {
     // COMMENTED OUT FOR CONVENIENT TESTING
     // TODO: make modal only display when clicking in area that doesn't highlight star!!!
     for (var i = 0; i < dormList.length; i++) {
-        document.getElementById(dormList[i]).addEventListener("click", function() {
-            modal.style.display = "block";
+        document.getElementById(dormList[i]).addEventListener("click", function(e) {
+            if (e.target.getAttribute("class") != 'card-title') {
+                modal.style.display = "block";
+            }
         });
     }
 
