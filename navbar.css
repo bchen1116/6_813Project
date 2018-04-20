@@ -1,9 +1,11 @@
 :root {
     --buttonColor: #729f98;
+    --header-color: #333333;
+    --accent-color: #ffd259;
 }
 /* navbar refers to the title bar on the page */
 .navbar-inverse {
-    background-color: #283018;
+    background-color: var(--header-color);
     z-index: 1;
     justify-content: start;
     position: fixed;
@@ -34,7 +36,7 @@
 
 .nav-item a:hover {
     color: #87bdb6;
-    border-bottom: 2px solid #aa863a;
+    border-bottom: 2px solid var(--accent-color);
 }
 
 a1{
@@ -50,7 +52,7 @@ a1{
 a1:hover {
     background-color: #f0eceb;
         color: #87bdb6;
-    border-bottom: 2px solid #aa863a;
+    border-bottom: 2px solid var(--accent-color);
 }
 
 
@@ -62,8 +64,8 @@ a1:hover {
     font-size: 16px;
     color: #f0eceb;
     text-decoration: none;
-    background-color: #283018;
-    border-color: #283018;
+    background-color: var(--header-color);
+    border-color: var(--header-color);
     margin-right: 20px;
 }
 .form:active {
@@ -75,7 +77,7 @@ a1:hover {
 }
 .form:hover {
     color: #87bdb6;
-    border-bottom: 2px solid #aa863a;
+    border-bottom: 2px solid var(--accent-color);
 
 }
 
@@ -156,9 +158,9 @@ input {
 
 .submit-form{
     width: 100%;
-    background-color: var(--buttonColor);
+    background-color: #9cbbb6;
     border-radius: 5px;
     font-weight: bold;
     margin-top: 10px;
-    color:#f0eceb;
+    color:white;
 }

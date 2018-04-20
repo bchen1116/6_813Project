@@ -121,7 +121,7 @@ function updateStarOnClick(e) {
         var newStar = document.createElement("span");
         if (currentStar == "fa fa-star-o") {
             newStar.setAttribute("class", "fa fa-star");
-            newStar.style.color = "#aa863a";
+            newStar.style.color = "#ffd259";
         } else {
             newStar.setAttribute("class", "fa fa-star-o");
         }
@@ -130,7 +130,7 @@ function updateStarOnClick(e) {
     catch (E) {
         if (e.target.getAttribute("class") == "fa fa-star-o") {
             e.target.setAttribute("class", "fa fa-star");
-            e.target.style.color = "#aa863a";
+            e.target.style.color = "#ffd259";
         } else {
             e.target.setAttribute("class", "fa fa-star-o");
             e.target.style.color = "black";
@@ -164,7 +164,7 @@ function updateMenu() {
             var relevantStar = document.getElementById("star"+dormName+","+dishName)
             if (favoriteDishes.includes(dishName)) { 
                 relevantStar.setAttribute("class", "fa fa-star")
-                relevantStar.style.color = "#aa863a"
+                relevantStar.style.color = "#ffd259"
             } else { 
                 relevantStar.setAttribute("class", "fa fa-star-o")
                 relevantStar.style.color = "black"

@@ -1,34 +1,39 @@
 :root{
     --rows: 2;
     --cols: 3;
+    --card-color: #729f98;
+    --side-color: #6e7376;
+    --back-color: #efefef;
+    --accent-color: #ffd259;
 }
 
 .whole-background{
-    background-color: #f0eceb;
+    /*background-color: #f0eceb;*/
+    background-color: var(--back-color);
 }
 
 /* list-groups refer to the sidebar */
 .list-group.panel {
     overflow: auto;
     font-family: verdana;
-    background-color: #729f98;
+    background-color: var(--side-color);
     position: fixed;
     top: 0px;
     width: 250px;
     height: calc(100vh);
-    color: #f0eceb;
+    color: var(--back-color);
 }
 
 .list-group-submenu {
-    background-color: #729f98;
+    background-color: var(--side-color);
     width: 100%;
 }
 
 .list-group-item {
-    background-color:  #729f98;
+    background-color:  var(--side-color);
     position: relative;
     top: 65px;
-    color: #e9ece5;
+    color: white;
     font-size:12px;
     height: 40px;
     width: 250px;
@@ -36,9 +41,9 @@
 }
 
 .list-group-item:hover {
-    background-color: #87bdb6;
+    background-color: #a8abac;
     /* width: 100%; */
-    border-left: 3px solid #aa863a;
+    border-left: 3px solid var(--accent-color);
     color: #e9ece5;
 }
 
@@ -118,7 +123,7 @@ input[type='checkbox']:checked:after {
     flex-flow: row wrap;
     justify-content: space-evenly;
     margin-left: 260px;
-    background-color: #f0eceb;
+    background-color: var(--back-color);
 }
 
 /* card refers to the individual cells for menus on main page */
@@ -133,21 +138,21 @@ input[type='checkbox']:checked:after {
 }
 
 .card:hover {
-    border: 3px solid #aa863a;
+    border: 3px solid var(--accent-color);
 }
 
 .card-header {
     font-size: 16px;
     font-weight: bold;
     text-align: center;
-    background-color:  #283018;
+    background-color:  var(--card-color);
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
 
 
 .card-body {
-    background-color: #dde3df;
+    background-color: #f6f3f3;
     color: black;
     font-size: 14px;
     border-bottom-left-radius: 5px;
@@ -161,7 +166,7 @@ input[type='checkbox']:checked:after {
 }
 
 .card-title:hover {
-    background-color: #87bdb6;
+    background-color: #d4e2e0;
 }
 
 .card-hover { 

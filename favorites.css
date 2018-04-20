@@ -1,10 +1,12 @@
 :root{
     --rows: 2;
     --cols: 3;
+    --header-color: #333333;
+    --back-color: #f0eceb;
 }
 
 .whole-background{
-    background-color: #f0eceb;
+    background-color: var(--back-color);
 }
 
 .favoritesClass {
@@ -22,7 +24,7 @@
     flex-flow: row wrap;
     justify-content: space-evenly;
     margin-left: 260px;
-    background-color: #f0eceb;
+    background-color: var(--back-color);
 }
 
 /* card refers to the individual cells for menus on main page */
@@ -31,7 +33,7 @@
     height: calc(calc(625px - 15px * var(--rows)) / var(--rows));
     margin: 5px;
     /* margin-top: 75px; */
-    background-color: #f0eceb;
+    background-color: var(--back-color);
 /*    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);*/
     border: 3px transparent;
 }
@@ -43,12 +45,12 @@
 .card-header {
     font-size: 24px;
     font-weight: bold;
-    background-color:  #f0eceb;
+    background-color:  var(--back-color);
     color:#729f98;
 }
 
 .card-body {
-    background-color: #f0eceb;
+    background-color: var(--back-color);
     color: black;
     font-size: 14px;
 }
@@ -60,7 +62,7 @@
 }
 
 .card-title:hover {
-    background-color: #87bdb6;
+    background-color: #d4e2e0;
 }
 
 .card-hover { 
