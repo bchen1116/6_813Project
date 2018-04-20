@@ -9,9 +9,15 @@
     crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
     crossorigin="anonymous"></script>
+
 <link href="home.css" rel="stylesheet" type="text/css">
 <link href="navbar.css" rel="stylesheet" type="text/css">
+<script src="dataStore.js"></script>
 <script src="home.js"></script>
+<script src="util.js"></script>
+
+
+
 
 <head>
     <title>Feedr</title>            
@@ -57,7 +63,7 @@
                 <a href="#" class="list-group-item">
                     <input type="checkbox" class="cb" name="dormcb" onclick="onCheckClicked(this, 'simmons')" checked>&nbsp; Simmons</a>
                 <a href="#" class="list-group-item">
-                    <input type="checkbox" class="cb" name="dormcb" onclick="onCheckClicked(this, 'specials')" checked>&nbsp; Specials</a>
+                    <input type="checkbox" class="cb" name="dormcb" onclick="onCheckClicked(this, 'specials')" checked>&nbsp; Special Events</a>
             </div>
             <a href="#diet" class="list-group-item list-group-item strong" data-toggle="collapse" data-parent="#MainMenu"> Dietary Restrictions </a>
             <div class="collapse list-group-submenu panel" id="diet">
@@ -90,71 +96,60 @@
     <!-- MAIN BODY -->
     <!-- unsure if i can create this in javascript since there's so many nested layers -->
     <div class="main" id="main">
-        <div class="card text-white bg-info mb-3"id="baker">
+        <div class="card text-white bg-info mb-3" id="baker">
+
+            <!-- This is what would show when one hovers over a menu item  -->
+            <div class="card-hover"> </div>
+            <button class="card-fullMenu" id="menuPopup"> See Full Menu </button> 
+
             <div class="card-header">Baker</div>
-            <div class="card-body">
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 1</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 2</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 3</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 4</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 5</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 6</p>
-            </div>
+            <div class="card-body" id='bakerMenu'></div>
         </div>
+
         <div class="card text-white bg-info mb-3" id="maseeh">
+
+            <!-- This is what would show when one hovers over a menu item  -->
+            <div class="card-hover"> </div>
+            <button class="card-fullMenu" id="menuPopup"> See Full Menu</button> 
+
             <div class="card-header">Maseeh</div>
-            <div class="card-body">
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 1</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 2</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 3</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 4</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 5</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 6</p>
-            </div>
+            <div class="card-body" id= "maseehMenu"></div>
         </div>
         <div class="card text-white bg-info mb-3" id="mccormick">
+
+            <!-- This is what would show when one hovers over a menu item  -->
+            <div class="card-hover"> </div>
+            <button class="card-fullMenu" id="menuPopup"> See Full Menu</button> 
+
             <div class="card-header">McCormick</div>
-            <div class="card-body">
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 1</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 2</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 3</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 4</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 5</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 6</p>
-            </div>
+            <div class="card-body" id="mccormickMenu"></div>
         </div>
         <div class="card text-white bg-info mb-3" id="next">
+
+            <!-- This is what would show when one hovers over a menu item  -->
+            <div class="card-hover"> </div>
+            <button class="card-fullMenu" id="menuPopup"> See Full Menu</button> 
+
             <div class="card-header">Next</div>
-            <div class="card-body">
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 1</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 2</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 3</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 4</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 5</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 6</p>
-            </div>
+            <div class="card-body" id="nextMenu"></div>
         </div>
         <div class="card text-white bg-info mb-3" id="simmons">
+
+            <!-- This is what would show when one hovers over a menu item  -->
+            <div class="card-hover"> </div>
+            <button class="card-fullMenu" id="menuPopup"> See Full Menu</button> 
+
             <div class="card-header">Simmons</div>
-            <div class="card-body">
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 1</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 2</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 3</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 4</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 5</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 6</p>
-            </div>
+            <div class="card-body" id="simmonsMenu"></div>
         </div>
         <div class="card text-white bg-info mb-3" id="specials">
+
+            <!-- This is what would show when one hovers over a menu item  -->
+            <div class="card-hover"> </div>
+            <button class="card-fullMenu" id="menuPopup"> See Full Menu</button> 
+
             <div class="card-header">Special Events</div>
-            <div class="card-body">
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 1</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 2</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 3</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 4</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 5</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 6</p>
-            </div>
+            <div class="card-body" id="specialsMenu"></div>
         </div>
     </div>
 
@@ -164,8 +159,8 @@
             <!-- Modal content -->
             <div class="modal-content">
                 <!-- POTENTIAL MODAL ANIMATIONS: https://codepen.io/designcouch/pen/obvKxm -->
-              <span class="close">&times;</span>
-              <p>Some text in the Modal..</p>
+                <span class="close">&times;</span>
+                <p>Some text in the Modal..</p>
             </div>
           
           </div>
