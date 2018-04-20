@@ -14,7 +14,7 @@
 .navbar-inverse .navbar-brand {
     position: fixed;
     color: #f0eceb;
-    font-family: verdana;
+    font-family: arial;
     font-size: 32px;
     font-weight: bold;
 }
@@ -25,7 +25,7 @@
 
 .nav-item a{
     /* float: right; */
-    font-family: verdana;
+    font-family: arial;
     font-size: 16px;
     height: 40px;
     color: #f0eceb;
@@ -39,7 +39,7 @@
 
 a1{
     /* float: right; */
-    font-family: verdana;
+    font-family: arial;
     font-size: 16px;
     height: 40px;
     color: #f0eceb;
@@ -58,7 +58,7 @@ a1:hover {
 .form{
     float: right;
     color: #f0eceb;
-    font-family: verdana;
+    font-family: arial;
     font-size: 16px;
     color: #f0eceb;
     text-decoration: none;
