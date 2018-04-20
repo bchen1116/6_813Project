@@ -205,6 +205,7 @@ $(document).ready(function() {
             modal.style.display = "none";
         }
     }
+})
 
 //navbar code for food selection form pop-up
 document.addEventListener('DOMContentLoaded', function() {
