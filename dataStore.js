@@ -12,7 +12,7 @@ mon = "04/23/2018"; tue = "04/24/2018"; wed = "04/25/2018"; tr = "04/26/2018"; f
 
 
 //Dishes format | dish = {diet:["vegan", "halal"], meal:"dinner", date:"date", calories: 500}
-roastedChicken = {diet: [hal, gnFree], meal: dr, date:mon}
+roastedChicken = {diet: [hal, gnFree], meal: dr, date:mon, description: "Herb Roasted Chicken with potatoes and zuccini filled in."}
 vegetableMedley = {diet: [veg, vg, kos, hal, gnFree], meal: dr, date:mon}
 chickenFingers = {diet: [kos,hal], meal: dr, date: mon}
 chickenBowl = {diet: [kos, hal], meal: dr, date: mon}

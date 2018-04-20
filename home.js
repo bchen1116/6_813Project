@@ -3,7 +3,7 @@
 
 // dormList is the list of active dorms on the page
 var dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"];
-var currentDishes = Object.assign(ALLDISHES)
+var currentDishes =  Object.assign(ALLDISHES) 
 
 // allDorms is the dictionary that maps dorm name to Node element of dorm card
 var allDorms = {}; 
@@ -47,7 +47,7 @@ function dietaryUpdate(cb, diet) {
     }
     //console.log(dieraryRestrictions)
 
-    var currentDishes = Object.assign(ALLDISHES)                                   // reset currentDishes to be everything
+    var currentDishes = Object.assign(ALLDISHES)      // reset currentDishes to be everything
     console.log(ALLDISHES)
     // go through our list of foods and remove the ones that do not fit the restriction & remove 
     for (var dorm in currentDishes) {              // go through the dorms 
@@ -263,11 +263,11 @@ $(document).ready(function() {
     // Get the button that opens the modal
     // COMMENTED OUT FOR CONVENIENT TESTING
     // TODO: make modal only display when clicking in area that doesn't highlight star!!!
-    for (var i = 0; i < dormList.length; i++) {
-        document.getElementById(dormList[i]).addEventListener("click", function() {
-            modal.style.display = "block";
-        });
-    }
+    // for (var i = 0; i < dormList.length; i++) {
+    //     document.getElementById(dormList[i]).addEventListener("click", function() {
+    //         modal.style.display = "block";
+    //     });
+    // }
 
     // When the user clicks on the see full button 
     modalButton.onclick = function() {
