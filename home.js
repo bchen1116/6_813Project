@@ -40,12 +40,12 @@ function dietaryUpdate(cb, diet) {
         if (dieraryRestrictions.includes(diet)) {
             var indexOfRemove = dieraryRestrictions.indexOf(diet);
             dieraryRestrictions.splice(indexOfRemove, 1);
-            //console.log(dieraryRestrictions)
+            console.log(dieraryRestrictions)
         }
     } else {                                                    // add it to the list of our dietary restrictions 
         dieraryRestrictions.push(diet)
     }
-    //console.log(dieraryRestrictions)
+    console.log(dieraryRestrictions)
 
     var currentDishes = Object.assign(ALLDISHES)                                   // reset currentDishes to be everything
     console.log(ALLDISHES)
@@ -270,7 +270,7 @@ $(document).ready(function() {
     // }
     for (var i = 0; i < dormList.length; i++) {
         document.getElementById(dormList[i]).addEventListener("click", function(e) {
-            if (e.target.getAttribute("class") != 'card-title') {
+            if (e.target.getAttribute("class") != 'card-title' && e.target.getAttribute("class") != "fa fa-star" &&  e.target.getAttribute("class") != "fa fa-star-o") {
                 modal.style.display = "block";
             }
         });
