@@ -23,11 +23,13 @@
     <title>Feedr</title>            
 </head>
 
-<body>
+<body class="whole-background">
     <!-- NAVBAR CREATION -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
 
-        <a class="navbar-brand" href="home.html">Feedr</a>
+        <a class="navbar-brand" href="home.html">
+            <img id="logo" src="feedr7.png" alt="HTML tutorial" style="position:relative; width:150px;height:175px;border:0;">
+        </a>
         <ul class="nav navbar-right original">
             <li class="nav-item">
                 <a class="nav-link" href="favorites.html">Favorites</a>
@@ -37,20 +39,21 @@
                 <div class="form-open">
                     <span class="close-button">&times;</span>
                     <div class="card-header">
-                        <h1>Special Request Form</h1>
+                        <h2>Special Request Form</h2>
                     </div>
                     <div class="card-body">
-                        <div class="data">
+                        <div class =  "form-body">
+                        <!-- <div class="data"> -->
                             <label for="name">Name:     </label>
-                            <input type="text" id="name" name="user_name">
-                        </div>
-                        <div class="data">
+                            <input class = "formInput" type="text" id="name" name="user_name">
+                        <!-- </div> -->
+                        <!-- <div class="data"> -->
                             <label for="name">Kerberos:     </label>
-                            <input type="text" id="email" name="email">
-                        </div>
-                        <div class="data">
+                            <input class = "formInput" type="text" id="email" name="email">
+                        <!-- </div> -->
+                        <!-- <div class="data"> -->
                             <label for="name">Dorm:     </label>
-                            <select>
+                            <select class = "formInput">
                                 <option value="" disabled="disabled" selected="selected">Please select a dorm for pick-up</option>
                                 <option value="1">Baker</option>
                                 <option value="2">Maseeh</option>
@@ -58,18 +61,30 @@
                                 <option value="2">Mccormick</option>
                                 <option value="2">Next</option>
                             </select>
-                        </div>
-                        <div class="data">
+                        <!-- </div> -->
+                        <!-- <div class="data"> -->
+                            <label for="name">Food Items:     </label>
+                            <select class = "formInput">
+                                <option value="" disabled="disabled" selected="selected">Please select a food item</option>
+                                <option value="1">Burger</option>
+                                <option value="2">Turkey Sandwich</option>
+                                <option value="2">Falafel Wrap</option>                 
+                                <option value="2">Spaghetti Bolognese</option>
+                                <option value="2">Veggie Stir-fry</option>
+                            </select>
                             <label for="name">Date:</label>
-                            <input id="date" type="date">
-                        </div>
-                        <div class="data">
+                            <input class = "formInput" id="date" type="date">
+                        <!-- </div> -->
+                        <!-- <div class="data"> -->
                             <label for="name">Time:</label>
-                            <input id="time" type="time">
-                        </div>
-                        <div class="data">
-                            <button class="submit-form">Submit</button>
-                        </div>
+                            <input class = "formInput" id="time" type="time">
+                        <!-- </div> -->
+                        <!-- <div class="data"> -->
+                            
+                        <!-- </div> -->
+                    </div>
+                        <button class="submit-form">Submit</button>
+
                         </div>
                     </div>
                 </div>
@@ -79,10 +94,8 @@
               Profile
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <a1 class="dropdown-item" href="#">Profile Page</a1>
+              <a1 class="dropdown-item" href="#">Logout</a1>
             </div>
             </li> 
         </ul>
@@ -110,15 +123,15 @@
             <a href="#diet" class="list-group-item list-group-item strong" data-toggle="collapse" data-parent="#MainMenu"> Dietary Restrictions </a>
             <div class="collapse list-group-submenu panel" id="diet">
                 <a href="#" class="list-group-item">
-                    <input type="checkbox" class="cb" onclick="dietaryUpdate(this, 'gluten free')">&nbsp; Gluten Free</a>
+                    <input type="checkbox" class="cb">&nbsp; Gluten Free</a>
                 <a href="#" class="list-group-item">
-                    <input type="checkbox" class="cb" onclick="dietaryUpdate(this, 'halal')">&nbsp; Halal</a>
+                    <input type="checkbox" class="cb">&nbsp; Halal</a>
                 <a href="#" class="list-group-item">
-                    <input type="checkbox" class="cb" onclick="dietaryUpdate(this, 'kosher')">&nbsp; Kosher</a>
+                    <input type="checkbox" class="cb">&nbsp; Kosher</a>
                 <a href="#" class="list-group-item">
-                    <input type="checkbox" class="cb" onclick="dietaryUpdate(this, 'vegan')">&nbsp; Vegan</a>
+                    <input type="checkbox" class="cb">&nbsp; Vegan</a>
                 <a href="#" class="list-group-item">
-                    <input type="checkbox" class="cb" onclick="dietaryUpdate(this, 'vegetarian')">&nbsp; Vegetarian</a>
+                    <input type="checkbox" class="cb">&nbsp; Vegetarian</a>
             </div>
             <a href="#meal" class="list-group-item list-group-item strong" data-toggle="collapse" data-parent="#MainMenu"> Meal Type </a>
             <div class="collapse list-group-submenu panel" id="meal">

@@ -1,7 +1,104 @@
+:root{
+    --rows: 2;
+    --cols: 3;
+    --header-color: #333333;
+    --back-color: #f0eceb;
+}
+
+.whole-background{
+    background-color: var(--back-color);
+}
+
 .favoritesClass {
     top: 75px;
     position: relative;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
+}
+
+.mainClass {
+    top: 75px;
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    margin-left: 260px;
+    background-color: var(--back-color);
+}
+
+.special{
+	font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #729f98;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+/* card refers to the individual cells for menus on main page */
+.card {
+    width: calc(calc(1500px - 20px * var(--cols)) / var(--cols));
+    height: calc(calc(625px - 15px * var(--rows)) / var(--rows));
+    margin: 5px;
+    /* margin-top: 75px; */
+    background-color: var(--back-color);
+/*    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);*/
+    border: 3px transparent;
+}
+
+/*.card:hover {
+    border: 3px solid #d19b3d;
+}
+*/
+.card-header {
+    font-size: 24px;
+    font-weight: bold;
+    background-color:  var(--back-color);
+    color:#729f98;
+}
+
+.card-body {
+    background-color: var(--back-color);
+    color: black;
+    font-size: 14px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.card-title {
+    z-index: 1;
+    font-size: 16px;
+    margin: 5px;
+}
+
+.card-title:hover {
+    background-color: #d4e2e0;
+}
+
+.card-hover { 
+    position: relative;
+    width: 100%;
+    /*height: 10px;*/
+    background: rgba(0,0,0,0);
+}
+
+.card:hover .card-hover{
+    display: block;
+    background: rgba(0,0,0,.5);
+}
+
+.card-fullMenu { 
+    display: none;
+    position: absolute;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    font-size: 17px;
+}
+
+.card:hover .card-fullMenu {
+    display: block; 
 }
