@@ -3,6 +3,10 @@
     --cols: 3;
 }
 
+.whole-background{
+    background-color: #f0eceb;
+}
+
 .favoritesClass {
     top: 75px;
     position: relative;
@@ -18,7 +22,7 @@
     flex-flow: row wrap;
     justify-content: space-evenly;
     margin-left: 260px;
-    background-color: #e9ece5;
+    background-color: #f0eceb;
 }
 
 /* card refers to the individual cells for menus on main page */
@@ -27,24 +31,24 @@
     height: calc(calc(625px - 15px * var(--rows)) / var(--rows));
     margin: 5px;
     /* margin-top: 75px; */
-    background-color: #39414b;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: #f0eceb;
+/*    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);*/
     border: 3px transparent;
 }
 
-.card:hover {
+/*.card:hover {
     border: 3px solid #d19b3d;
 }
-
+*/
 .card-header {
-    font-size: 16px;
+    font-size: 24px;
     font-weight: bold;
-    text-align: center;
-    background-color:  #23282e;
+    background-color:  #f0eceb;
+    color:#729f98;
 }
 
 .card-body {
-    background-color: #ebecec;
+    background-color: #f0eceb;
     color: black;
     font-size: 14px;
 }
@@ -56,7 +60,7 @@
 }
 
 .card-title:hover {
-    background-color: #d19b3d64;
+    background-color: #87bdb6;
 }
 
 .card-hover { 

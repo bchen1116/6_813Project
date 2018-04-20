@@ -1,5 +1,5 @@
 :root {
-    --buttonColor: grey;
+    --buttonColor: #729f98;
 }
 /* navbar refers to the title bar on the page */
 .navbar-inverse {
@@ -13,7 +13,7 @@
   
 .navbar-inverse .navbar-brand {
     position: fixed;
-    color: white;
+    color: #f0eceb;
     font-family: verdana;
     font-size: 32px;
     font-weight: bold;
@@ -28,7 +28,7 @@
     font-family: verdana;
     font-size: 16px;
     height: 40px;
-    color: white;
+    color: #f0eceb;
     margin-right: 20px
 }
 
@@ -37,14 +37,30 @@
     border-bottom: 2px solid #aa863a;
 }
 
+a1{
+    /* float: right; */
+    font-family: verdana;
+    font-size: 16px;
+    height: 40px;
+    color: #f0eceb;
+    margin-right: 20px
+    background-color:#f0eceb;
+}
+
+a1:hover {
+    background-color: #f0eceb;
+        color: #87bdb6;
+    border-bottom: 2px solid #aa863a;
+}
+
 
 
 .form{
     float: right;
-    color: white;
+    color: #f0eceb;
     font-family: verdana;
     font-size: 16px;
-    color: white;
+    color: #f0eceb;
     text-decoration: none;
     background-color: #283018;
     border-color: #283018;
@@ -71,11 +87,12 @@
 }
 
 .navbar-global .navbar-user   {
-    color: white;
+    color: #f0eceb;
 }
 
 .dropdown-menu {
     left: -100px;
+    background-color: #f0eceb;
 }
 .form-request{
     position: fixed;
@@ -95,7 +112,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
+    background-color: #f0eceb;
     width: 24rem;
     border-radius: 0.5rem;
     justify-content: center;
@@ -110,12 +127,12 @@
     line-height: 1.5rem;
     text-align: center;
     cursor: pointer;
-    color: white;
+    color: #f0eceb;
     font-size: 25px;
     background-color: transparent;
 }
 .close-button:hover {
-    color: grey;
+    color: #87bdb6;
 }
 .show-modal {
     opacity: 1;
@@ -125,7 +142,7 @@
 }
 
 h2{
-    color:white;
+    color:#f0eceb;
 }
 
 .data {
@@ -143,4 +160,5 @@ input {
     border-radius: 5px;
     font-weight: bold;
     margin-top: 10px;
+    color:#f0eceb;
 }
