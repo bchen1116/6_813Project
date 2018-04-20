@@ -1,3 +1,6 @@
+:root {
+    --buttonColor: grey;
+}
 /* navbar refers to the title bar on the page */
 .navbar-inverse {
     background-color: #23282e;
@@ -5,11 +8,12 @@
     justify-content: start;
     position: fixed;
     width: 100%;
+    height: 70px;
 }
   
 .navbar-inverse .navbar-brand {
     position: fixed;
-   color: white;
+    color: white;
     font-family: verdana;
     font-size: 32px;
     font-weight: bold;
@@ -20,8 +24,7 @@
 }
 
 .nav-item a{
-    float: right;
-    color: white;
+    /* float: right; */
     font-family: verdana;
     font-size: 16px;
     height: 40px;
@@ -35,6 +38,7 @@
 }
 
 
+
 .form{
     float: right;
     color: white;
@@ -45,28 +49,44 @@
     background-color: #23282e;
     border-color: #23282e;
 }
-
+.form:active {
+    border-style: outset;
+  }
+.form:focus{
+    border-style: outset;
+    outline: none;
+}
 .form:hover {
     color: grey;
     border-bottom: 2px solid #d19b3d;
 
 }
 
+.form-body {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+}
+
 .navbar-global .navbar-user   {
     color: white;
 }
 
+.dropdown-menu {
+    left: -100px;
+}
 .form-request{
-        position: fixed;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        opacity: 0;
-        visibility: hidden;
-        transform: scale(1.1);
-        transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
 }
 
 .form-open {
@@ -77,6 +97,11 @@
     background-color: white;
     width: 24rem;
     border-radius: 0.5rem;
+    justify-content: center;
+}
+
+.formInput {
+    width: 100%;
 }
 .close-button {
     float: right;
@@ -84,10 +109,12 @@
     line-height: 1.5rem;
     text-align: center;
     cursor: pointer;
-    background-color: lightgray;
+    color: white;
+    font-size: 25px;
+    background-color: transparent;
 }
 .close-button:hover {
-    background-color: darkgray;
+    color: grey;
 }
 .show-modal {
     opacity: 1;
@@ -96,7 +123,7 @@
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
 
-h1{
+h2{
     color:white;
 }
 
@@ -110,5 +137,9 @@ input {
 }
 
 .submit-form{
-    float: center;
+    width: 100%;
+    background-color: var(--buttonColor);
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 10px;
 }
