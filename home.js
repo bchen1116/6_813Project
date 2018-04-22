@@ -124,7 +124,7 @@ function updateStarOnClick(e) {
         if (currentStarClass == "fa fa-star-o") {
             //console.log("made it ")
             currentStar.classList = "fa fa-star"
-            currentStar.style.color = "#d19b3d"
+            currentStar.style.color = "#ffd259"
         } else { 
             currentStar.classList = "fa fa-star-o"
             currentStar.style.color = "black"
@@ -350,7 +350,7 @@ $(document).ready(function() {
                         //make sure that the favorites are updated
                         if (favoriteDishes.includes(dish)) { 
                             fav.setAttribute("class", "fa fa-star")
-                            fav.style.color = "#d19b3d"
+                            fav.style.color = "#ffd259"
                         } else { 
                             fav.setAttribute("class", "fa fa-star-o")
                             fav.style.color = "black"
