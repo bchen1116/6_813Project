@@ -3,11 +3,11 @@
 
 // dormList is the list of active dorms on the page
 var dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"];
-var currentDishes =  Object.assign(ALLDISHES) 
+var currentDishes =  Object.assign({}, ALLDISHES) 
 
 // allDorms is the dictionary that maps dorm name to Node element of dorm card
 var allDorms = {}; 
-var dieraryRestrictions = []                                
+var dieraryRestrictions = []                              
 
 // called when the checkbox on dorms are clicked/unclicked
 function onCheckClicked(cb, dorm) {
@@ -40,15 +40,16 @@ function dietaryUpdate(cb, diet) {
         if (dieraryRestrictions.includes(diet)) {
             var indexOfRemove = dieraryRestrictions.indexOf(diet);
             dieraryRestrictions.splice(indexOfRemove, 1);
-            console.log(dieraryRestrictions)
+            //console.log(dieraryRestrictions)
         }
     } else {                                                    // add it to the list of our dietary restrictions 
         dieraryRestrictions.push(diet)
     }
-    console.log(dieraryRestrictions)
+    //console.log(dieraryRestrictions)
+    //console.log("ee", ALLDISHES)
+    var currentDishes = Object.assign({}, ALLDISHES)      // reset currentDishes to be everything
 
-    var currentDishes = Object.assign(ALLDISHES)      // reset currentDishes to be everything
-    //console.log(ALLDISHES)
+    //console.log("p", ALLDISHES)
     // go through our list of foods and remove the ones that do not fit the restriction & remove 
     for (var dorm in currentDishes) {              // go through the dorms 
         var dormCurrentDishes = currentDishes[dorm]
@@ -268,7 +269,6 @@ $(document).ready(function() {
 
     // calls the menu card pop-up
     var modal = document.getElementById('myModal');
-    var modalButton = document.getElementById('menuPopup')
     var modalClose = document.getElementsByClassName("close")[0]
     var modalBody = document.getElementById("modal-body")
     
@@ -276,15 +276,15 @@ $(document).ready(function() {
     // Get the button that opens the modal
     // COMMENTED OUT FOR CONVENIENT TESTING
     // TODO: make modal only display when clicking in area that doesn't highlight star!!!
-    var nameToHeading = {"baker": "Baker", "maseeh": "Maseeh", "mccormick": "McCormick", "next": "Next", "simmons":"Simmons"}
-    for (var i = 0; i < dormList.length; i++) {
-        document.getElementById(dormList[i]).addEventListener("click", function(e) {
+    for (var i = 0; i < dormList.length-1; i++) {
+        var modalButton = document.getElementById('menuPopup'+ dormList[i])
 
-            if (e.target.getAttribute("class") != 'card-title' && e.target.getAttribute("class") != "fa fa-star" &&  e.target.getAttribute("class") != "fa fa-star-o") {
-                //remove everything from the body that was previously there
-                while (modalBody.firstChild) {
-                    modalBody.removeChild(modalBody.firstChild) 
-                }
+        // add a listener for each button
+        // When the user clicks on the see full button 
+        modalButton.onclick = function(e) {
+            loadModal(e)
+            modal.style.display = "block"
+        }
 
                 if (e.target.getAttribute("class") != 'card-title') {
                     // add thigs to the body of the modal
@@ -361,11 +361,6 @@ $(document).ready(function() {
         });
     }
 
-    // When the user clicks on the see full button 
-    modalButton.onclick = function() {
-        modal.style.display = "block"
-    }
-
 
     // When the user clicks the close button
     modalClose.onclick = function() {
@@ -380,6 +375,87 @@ $(document).ready(function() {
         }
     }
 })
+
+function loadModal(e) {
+    var nameToHeading = {"baker": "Baker", "maseeh": "Maseeh", "mccormick": "McCormick", "next": "Next", "simmons":"Simmons"}
+    var modalBody = document.getElementById("modal-body")
+    //remove everything from the body that was previously there
+    while (modalBody.firstChild) {
+    modalBody.removeChild(modalBody.firstChild) 
+    }
+
+    if (e.target.getAttribute("class") != 'card-title') {
+        // add thigs to the body of the modal
+        var dormName = e.path[1].id
+        var popupTitleBackGround = Util.create("div", {"class": "card-header"})
+        var popupTitle = Util.create("h3", {"class":"popup-title"})
+        popupTitle.appendChild(document.createTextNode(" " + nameToHeading[dormName]))
+        popupTitleBackGround.appendChild(popupTitle)
+        modalBody.appendChild(popupTitleBackGround)
+
+        var dishes = currentDishes[dormName]
+
+        //var dish = Util.create("p", {"class":"card-title", "id": dishName})
+
+        for (var dish in dishes) {
+            //var food = Util.create("div", {"class": "food-item", "id":dish})
+            var foodItem = Util.create("p", {"class": "food-item"})
+            var foodDescription = Util.create("p", {"class": "food-description"})
+            var foodRestrictions = Util.create("p", {"class": "food-restriction"})
+            var fav = Util.create("span", {"class":"fa fa-star-o", "id": "star" + dormName + "," + dish})
+
+            restriction = "    ("
+            for (var rest=0; rest< Object.keys(dishes[dish]["diet"]).length-1; rest ++) {
+                restriction += "--" +dishes[dish]["diet"][rest] + ", "
+            }
+
+            restriction += "--" + dishes[dish]["diet"][rest] + ")"
+            description = document.createTextNode(dishes[dish]["description"])
+            diet = document.createTextNode(restriction)
+
+            foodItem.appendChild(fav)
+            foodItem.appendChild(document.createTextNode(" " + dish))
+            foodItem.appendChild(diet)
+            //foodItem.appendChild(document.createElement("br"));
+            //foodItem.appendChild(description)
+            //foodItem.appendChild(document.createElement("br"));
+            
+
+
+            // foodDescription.appendChild(description)
+            // foodRestrictions.appendChild(diet)
+            // food.appendChild(foodItem)
+            // food.appendChild(foodDescription)
+            // food.appendChild(foodRestrictions)
+            // modalBody.appendChild(food)
+
+
+            modalBody.appendChild(foodItem)
+            // modalBody.appendChild(foodDescription)
+            // modalBody.appendChild(foodRestrictions)
+
+
+            // This is what happens when we click on a star
+            foodItem.addEventListener('click', function(evt) {
+                var foodName = evt.target.closest("p.food-item").id
+                updateStarOnClick(evt)
+                updateFavorites(foodName)
+                updateMenu()
+            })
+
+
+            //make sure that the favorites are updated
+            if (favoriteDishes.includes(dish)) { 
+                fav.setAttribute("class", "fa fa-star")
+                fav.style.color = "#d19b3d"
+            } else { 
+                fav.setAttribute("class", "fa fa-star-o")
+                fav.style.color = "black"
+            }
+        }
+    }
+}
+
 
 //navbar code for food selection form pop-up
 document.addEventListener('DOMContentLoaded', function() {
