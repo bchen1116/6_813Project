@@ -286,77 +286,10 @@ $(document).ready(function() {
             modal.style.display = "block"
         }
 
-                if (e.target.getAttribute("class") != 'card-title') {
-                    // add thigs to the body of the modal
-                    //console.log(e.path[1].id)
-                    var dormName = e.path[1].id
-                    var popupTitleBackGround = Util.create("div", {"class": "card-header"})
-                    var popupTitle = Util.create("h3", {"class":"popup-title"})
-                    popupTitle.appendChild(document.createTextNode(" " + nameToHeading[dormName]))
-                    popupTitleBackGround.appendChild(popupTitle)
-                    modalBody.appendChild(popupTitleBackGround)
-
-                    var dishes = currentDishes[dormName]
-
-                    var dish = Util.create("p", {"class":"card-title", "id": dishName})
-
-                    for (var dish in dishes) {
-                        //var food = Util.create("div", {"class": "food-item", "id":dish})
-                        var foodItem = Util.create("p", {"class": "food-item"})
-                        var foodDescription = Util.create("p", {"class": "food-description"})
-                        var foodRestrictions = Util.create("p", {"class": "food-restriction"})
-                        var fav = Util.create("span", {"class":"fa fa-star-o", "id": "star" + dormName + "," + dish})
-
-                        restriction = "    ("
-                        for (var rest=0; rest< Object.keys(dishes[dish]["diet"]).length-1; rest ++) {
-                            restriction += "--" +dishes[dish]["diet"][rest] + ", "
-                        }
-
-                        restriction += "--" + dishes[dish]["diet"][rest] + ")"
-                        description = document.createTextNode(dishes[dish]["description"])
-                        diet = document.createTextNode(restriction)
-
-                        foodItem.appendChild(fav)
-                        foodItem.appendChild(document.createTextNode(" " + dish))
-                        foodItem.appendChild(diet)
-                        //foodItem.appendChild(document.createElement("br"));
-                        //foodItem.appendChild(description)
-                        //foodItem.appendChild(document.createElement("br"));
-                        
-
-
-                        // foodDescription.appendChild(description)
-                        // foodRestrictions.appendChild(diet)
-                        // food.appendChild(foodItem)
-                        // food.appendChild(foodDescription)
-                        // food.appendChild(foodRestrictions)
-                        // modalBody.appendChild(food)
-
-
-                        modalBody.appendChild(foodItem)
-                        // modalBody.appendChild(foodDescription)
-                        // modalBody.appendChild(foodRestrictions)
-
-
-                        // This is what happens when we click on a star
-                        foodItem.addEventListener('click', function(evt) {
-                            var foodName = evt.target.closest("p.food-item").id
-                            updateStarOnClick(evt)
-                            updateFavorites(foodName)
-                            updateMenu()
-                        })
-
-
-                        //make sure that the favorites are updated
-                        if (favoriteDishes.includes(dish)) { 
-                            fav.setAttribute("class", "fa fa-star")
-                            fav.style.color = "#ffd259"
-                        } else { 
-                            fav.setAttribute("class", "fa fa-star-o")
-                            fav.style.color = "black"
-                        }
-                    }
-                }
+        document.getElementById(dormList[i]).addEventListener("click", function(e) {
+            if (e.target.getAttribute("class") != 'card-title' && e.target.getAttribute("class") != "fa fa-star" &&  e.target.getAttribute("class") != "fa fa-star-o") {
+                loadModal(e)
+                modal.style.display = "block"
             }
         });
     }
