@@ -3,12 +3,25 @@
 
 // dormList is the list of active dorms on the page
 var dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"];
-var currentDishes =  Object.assign({}, ALLDISHES) 
+var currentDishes = ALLDISHES 
 
 // allDorms is the dictionary that maps dorm name to Node element of dorm card
 var allDorms = {}; 
-var dieraryRestrictions = []                              
+var dieraryRestrictions = []        
 
+function copyDishes(allDishes) { 
+    newDishes = {} 
+    for (var dorm in allDishes) { 
+        dormDishes = {}
+        for (var dish in allDishes[dorm]) {
+            dormDishes[dish] = allDishes[dorm][dish] // copy the dish data over 
+        }
+        newDishes[dorm] = dormDishes // copy over the data for the dorm 
+    }
+    return newDishes // return the new dishes
+}                      
+//console.log(ALLDISHES, copyDishes(ALLDISHES))
+//console.log(ALLDISHES === copyDishes(ALLDISHES))
 // called when the checkbox on dorms are clicked/unclicked
 function onCheckClicked(cb, dorm) {
     if (cb.checked == false) {                                  // if it isn't checked, remove the dorm
@@ -45,34 +58,38 @@ function dietaryUpdate(cb, diet) {
     } else {                                                    // add it to the list of our dietary restrictions 
         dieraryRestrictions.push(diet)
     }
-    //console.log(dieraryRestrictions)
-    //console.log("ee", ALLDISHES)
-    var currentDishes = Object.assign({}, ALLDISHES)      // reset currentDishes to be everything
+    performdietaryFiltering()
+}
 
-    //console.log("p", ALLDISHES)
+function performdietaryFiltering() {
+    currentDishes = copyDishes(ALLDISHES)                  // reset currentDishes to be everything
+
+    //console.log("p", currentDishes)
     // go through our list of foods and remove the ones that do not fit the restriction & remove 
     for (var dorm in currentDishes) {              // go through the dorms 
         var dormCurrentDishes = currentDishes[dorm]
-        //console.log(dormCurrentDishes, currentDishes, dorm)
+        //console.log("p", dormCurrentDishes)
         for (var dishName in dormCurrentDishes) {  // go through the dishes for that dorm 
             var dish = dormCurrentDishes[dishName]
             for (var i = 0; i < dieraryRestrictions.length; i++) {      // go through restrictions
                 //console.log(dish["diet"])
                 if (! dish["diet"].includes(dieraryRestrictions[i])) {       // if the food does not satify the restriction 
-                    //console.log(dish, dieraryRestrictions[i])
+                    //console.log(dish["diet"])
                     delete currentDishes[dorm][dishName]        // remove it from the currentDishes
+                    //console.log(currentDishes[dorm][dishName])
                 }
             }
         }
     }
 
     // update the cards to reflect this change
-    updateDishesForDorms()
+    //console.log(currentDishes)
+    updateDishesForDorms(currentDishes)
 }
 
 
 // repopulates the dishes that are in the dorm based on the current dishes
-function updateDishesForDorms() { 
+function updateDishesForDorms(currentDishes) { 
     dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"];         //recall the dormList to initiate allDorms
     for (var i = 0; i < dormList.length; i++) {
         allDorms[dormList[i]] = document.getElementById(dormList[i]);
@@ -85,8 +102,9 @@ function updateDishesForDorms() {
         var dishesForDorm = currentDishes[dormName]
 
         // clear out all of the dishes that are attached to that menu
-        while (menu.firstChild) {                           
-                menu.removeChild(menu.firstChild);
+        while (menu.firstChild) {    
+            //console.log("in here")
+            menu.removeChild(menu.firstChild);
         }
 
         //console.log(currentDishes)
@@ -110,14 +128,14 @@ function updateDishesForDorms() {
             menu.appendChild(dish)
         }
     }
-
+    //console.log("adding to fav")
     updateMenu() // add back the favorites if there were any 
 }
 
 
 // updates the star after a click
 function updateStarOnClick(e) { 
-    console.log(e)
+    //console.log(e)
     try {
         //console.log("this is the one", e.target.firstChild.getAttribute("class"))
         var currentStar = e.target.firstChild
@@ -172,11 +190,12 @@ function updateFavorites(dish) {
 function updateMenu() { 
     for (var i = 0; i < dormList.length-1; i++) {
         var dormName = dormList[i]
-        var dishesForDorm = ALLDISHES[dormName]
+        var dishesForDorm = currentDishes[dormName]
         for (var j =0; j < Object.keys(dishesForDorm).length; j++) {
             var dishName = Object.keys(dishesForDorm)[j]
+            //console.log(currentDishes[dormName])
             //console.log(dormName, dishName)
-            var relevantStar = document.getElementById("star"+dormName+","+dishName)
+            var relevantStar = document.getElementById("star" + dormName + "," + dishName)
             //console.log(relevantStar)
             if (favoriteDishes.includes(dishName)) { 
                 relevantStar.setAttribute("class", "fa fa-star")
@@ -272,7 +291,7 @@ $(document).ready(function() {
     var modalClose = document.getElementsByClassName("close")[0]
     var modalBody = document.getElementById("modal-body")
     
-    
+
     // Get the button that opens the modal
     // COMMENTED OUT FOR CONVENIENT TESTING
     // TODO: make modal only display when clicking in area that doesn't highlight star!!!
@@ -332,10 +351,10 @@ function loadModal(e) {
 
         for (var dish in dishes) {
             //var food = Util.create("div", {"class": "food-item", "id":dish})
-            var foodItem = Util.create("p", {"class": "food-item"})
+            var foodItem = Util.create("p", {"class": "food-item", "id": dish})
             var foodDescription = Util.create("p", {"class": "food-description"})
             var foodRestrictions = Util.create("p", {"class": "food-restriction"})
-            var fav = Util.create("span", {"class":"fa fa-star-o", "id": "star" + dormName + "," + dish})
+            var fav = Util.create("span", {"class":"fa fa-star-o", "id": dish})
 
             restriction = "    ("
             for (var rest=0; rest< Object.keys(dishes[dish]["diet"]).length-1; rest ++) {
@@ -370,7 +389,8 @@ function loadModal(e) {
 
             // This is what happens when we click on a star
             foodItem.addEventListener('click', function(evt) {
-                var foodName = evt.target.closest("p.food-item").id
+                var foodName = evt.path[0].id
+                console.log("food",evt.path[0], foodName)
                 updateStarOnClick(evt)
                 updateFavorites(foodName)
                 updateMenu()
