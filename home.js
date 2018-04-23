@@ -380,7 +380,7 @@ function loadModal(e) {
             //make sure that the favorites are updated
             if (favoriteDishes.includes(dish)) { 
                 fav.setAttribute("class", "fa fa-star")
-                fav.style.color = "#d19b3d"
+                fav.style.color = "#ffd259"
             } else { 
                 fav.setAttribute("class", "fa fa-star-o")
                 fav.style.color = "black"
