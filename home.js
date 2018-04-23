@@ -143,7 +143,7 @@ function updateStarOnClick(e) {
         if (currentStarClass == "fa fa-star-o") {
             //console.log("made it ")
             currentStar.classList = "fa fa-star"
-            currentStar.style.color = "#d19b3d"
+            currentStar.style.color = "#ffd259"
         } else { 
             currentStar.classList = "fa fa-star-o"
             currentStar.style.color = "black"
@@ -309,7 +309,7 @@ $(document).ready(function() {
             if (e.target.getAttribute("class") != 'card-title' && e.target.getAttribute("class") != "fa fa-star" &&  e.target.getAttribute("class") != "fa fa-star-o") {
                 loadModal(e)
                 modal.style.display = "block"
-            }  
+            }
         });
     }
 
