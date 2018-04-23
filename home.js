@@ -390,7 +390,7 @@ function loadModal(e) {
             // This is what happens when we click on a star
             foodItem.addEventListener('click', function(evt) {
                 var foodName = evt.path[0].id
-                console.log("food",evt.path[0], foodName)
+                //console.log("food",evt.path[0], foodName)
                 updateStarOnClick(evt)
                 updateFavorites(foodName)
                 updateMenu()
