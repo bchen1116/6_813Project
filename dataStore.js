@@ -12,21 +12,21 @@ mon = "04/23/2018"; tue = "04/24/2018"; wed = "04/25/2018"; tr = "04/26/2018"; f
 
 
 //Dishes format | dish = {diet:["vegan", "halal"], meal:"dinner", date:"date", calories: 500}
-roastedChicken = {diet: [hal, gnFree], meal: dr, date:mon}
-vegetableMedley = {diet: [veg, vg, kos, hal, gnFree], meal: dr, date:mon}
-chickenFingers = {diet: [kos,hal], meal: dr, date: mon}
-chickenBowl = {diet: [kos, hal], meal: dr, date: mon}
-shrimpBowl = {diet: [], meal: dr, date: mon}
-tofuBowl = {diet: [vg, veg, hal, kos], meal: dr, date: mon}
-steamedMussels = {diet: [], meal: dr, date: mon}
-grilledPorkOverRice = {diet: [], meal: dr, date: mon}
+roastedChicken = {diet: [hal, gnFree], meal: dr, date:mon, description: "Herb Roasted Chicken with potatoes and zuccini on the side"}
+vegetableMedley = {diet: [veg, vg, kos, hal, gnFree], meal: dr, date:mon, description: "Roasted Vegtable Medley with Rosmary"}
+chickenFingers = {diet: [kos,hal], meal: dr, date: mon, description: "Breaded Chicken Fingers"}
+chickenBowl = {diet: [kos, hal], meal: dr, date: mon, description: "Warm Hearty Chichen Noodle Bowl with an assortment of vegetables"}
+shrimpBowl = {diet: [], meal: dr, date: mon, description: "Shrimp Bowl with quinua base and vegtable salad"}
+tofuBowl = {diet: [vg, veg, hal, kos], meal: dr, date: mon, description: "Tofu Bowl with quinua base and vegtable salad"}
+steamedMussels = {diet: [], meal: dr, date: mon, description: "Steamed Mussels with Garlic and Parsley"}
+grilledPorkOverRice = {diet: [], meal: dr, date: mon, description: "Grilled Pork served over Basmati Rice"}
 
-jerkedChicken ={diet: [hal, gnFree], meal:dr, date: mon}
-chickenSoup = {diet: [gnFree], meal:dr, date: mon}
-vegetableSoup = {diet: [veg, vg, gnFree], meal:dr, date: mon}
-tofuWVeggies = {diet: [veg, vg, gnFree], meal: dr, date: mon}
-chickenCurry = {diet: [gnFree, hal], meal: dr, date: mon}
-pineapplePorkCutlet = {diet: [], meal: dr, date: mon}
+jerkedChicken ={diet: [hal, gnFree], meal:dr, date: mon, description: "Oven Baked Jerk Chicken served over white rice"}
+chickenSoup = {diet: [gnFree], meal:dr, date: mon, description: "Warm Hearty Chichen Soup with an assortment of vegetables"}
+vegetableSoup = {diet: [veg, vg, gnFree], meal:dr, date: mon, description: "Warm Soup with an assortment of vegetables"}
+tofuWVeggies = {diet: [veg, vg, gnFree], meal: dr, date: mon, description: "Tofu Bowl with quinua base and vegtable salad"}
+chickenCurry = {diet: [gnFree, hal], meal: dr, date: mon, description: "Chicken Curry with basmati rice"}
+pineapplePorkCutlet = {diet: [gnFree], meal: dr, date: mon, description: "Pinapple Pork Cutlet served with rice"}
 
 
 // Dorm dishes format | DormDishes = {entree: {diet:["vegan", "halal"], meal:"dinner", date:"date", calories: 500}}
