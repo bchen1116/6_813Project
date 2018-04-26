@@ -1,5 +1,5 @@
 //navbar code for food selection form pop-up
-document.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('load', function() {
     var modal = document.querySelector(".form-request");
     var trigger = document.querySelector(".form");
     var submit = document.querySelector(".submit-form");

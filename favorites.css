@@ -49,10 +49,6 @@
     border: 3px transparent;
 }
 
-/*.card:hover {
-    border: 3px solid #d19b3d;
-}
-*/
 .card-header {
     font-size: 24px;
     font-weight: bold;
@@ -101,4 +97,10 @@
 
 .card:hover .card-fullMenu {
     display: block; 
+}
+
+.special-form {
+    background-color: #729f98;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }

@@ -9,7 +9,7 @@
     crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
     crossorigin="anonymous"></script>
-
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <link href="home.css" rel="stylesheet" type="text/css">
 <link href="navbar.css" rel="stylesheet" type="text/css">
 <script src="dataStore.js"></script>
@@ -25,7 +25,19 @@
 
 <body class="whole-background">
     <!-- NAVBAR CREATION -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div id="nav-placeholder" onclick="myFunction(this)">
+
+    </div>
+    
+    <script>
+        $.get("navbar.html", function(data){
+        $("#nav-placeholder").replaceWith(data);
+        });
+    // $(function(){
+    //   $("#nav-placeholder").load("navbar.html");
+    // });
+    </script>
+    <!-- <nav class="navbar navbar-inverse navbar-fixed-top">
 
         <a class="navbar-brand" href="home.html">
             <img id="logo" src="feedr7.png" alt="HTML tutorial" style="position:relative; width:150px;height:175px;border:0;">
@@ -43,15 +55,10 @@
                     </div>
                     <div class="card-body">
                         <div class =  "form-body">
-                        <!-- <div class="data"> -->
                             <label for="name">Name:     </label>
                             <input class = "formInput" type="text" id="name" name="user_name">
-                        <!-- </div> -->
-                        <!-- <div class="data"> -->
                             <label for="name">Kerberos:     </label>
                             <input class = "formInput" type="text" id="email" name="email">
-                        <!-- </div> -->
-                        <!-- <div class="data"> -->
                             <label for="name">Dorm:     </label>
                             <select class = "formInput">
                                 <option value="" disabled="disabled" selected="selected">Please select a dorm for pick-up</option>
@@ -61,8 +68,6 @@
                                 <option value="2">Mccormick</option>
                                 <option value="2">Next</option>
                             </select>
-                        <!-- </div> -->
-                        <!-- <div class="data"> -->
                             <label for="name">Food Items:     </label>
                             <select class = "formInput">
                                 <option value="" disabled="disabled" selected="selected">Please select a food item</option>
@@ -74,14 +79,8 @@
                             </select>
                             <label for="name">Date:</label>
                             <input class = "formInput" id="date" type="date">
-                        <!-- </div> -->
-                        <!-- <div class="data"> -->
                             <label for="name">Time:</label>
                             <input class = "formInput" id="time" type="time">
-                        <!-- </div> -->
-                        <!-- <div class="data"> -->
-                            
-                        <!-- </div> -->
                     </div>
                         <button class="submit-form">Submit</button>
 
@@ -101,7 +100,7 @@
         </ul>
 
 
-    </nav>
+    </nav> -->
     <!-- SIDEBAR CREATION -->
     <div id="MainMenu">
         <div class="list-group panel">

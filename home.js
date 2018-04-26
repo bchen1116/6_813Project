@@ -411,12 +411,13 @@ function loadModal(e) {
 
 
 //navbar code for food selection form pop-up
-document.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('load', function() {
+    console.log("loaded!")
     var modal = document.querySelector(".form-request");
     var trigger = document.querySelector(".form");
     var submit = document.querySelector(".submit-form");
     var closeButton = document.querySelector(".close-button");
-
+    console.log(modal);
     function toggleModal() {
         modal.classList.toggle("show-modal");
     }
