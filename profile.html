@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Profile</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+    crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+    crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  
+  
+      <link rel="stylesheet" href="profile.css">
+      <link href="navbar.css" rel="stylesheet" type="text/css">
+
+  
+</head>
+
+<body>
+
+	<div id="nav-placeholder" onclick="myFunction(this)">
+
+    </div>
+    
+    <script>
+        $.get("navbar.html", function(data){
+        $("#nav-placeholder").replaceWith(data);
+        });
+    </script>
+
+	<div class="profile-grid">
+		<div>
+		<img class="icon-profile" src="images/profile.svg">
+		</div>
+
+		<div id="dining-grid">
+			<div id = "name">
+				First Last 
+			</div>
+
+			<div class = "dining">
+				<div class = "number"> $0 </div>
+				<div class = "number-label"> Dining Dollars </div>
+			</div>
+
+			<div class = "dining">
+				<div class = "number"> 0 </div>
+				<div class = "number-label"> Meal Swipes </div>
+			</div>
+
+			<div class = "dining">
+				<div class = "number"> 0 </div>
+				<div class = "number-label"> Guest Swipes </div>
+			</div>
+		</div>
+
+		<div id="edit">
+			<button id="edit-button">
+				<div id="edit-button-grid">
+					<div>Edit Profile</div>
+					<div><img class="icon-edit" src="images/edit.svg"></div>
+				</div>
+			</button>
+		</div>
+	</div> 
+
+	<div class = "info-grid">
+		<div class = "info-column">
+			<div class = "info-section">
+				<div class = "info-title">
+					MIT Kerberos
+				</div>
+				<div class = "info">
+					Kerberos
+				</div> 
+			</div>
+
+			<div class = "info-section">
+				<div class = "info-title">
+					MIT ID Number
+				</div>
+				<div class = "info">
+					123456789
+				</div> 
+			</div>
+
+			<div class = "info-section">
+				<div class = "info-title">
+					Dining Halls
+				</div>
+				<div class = "info">
+					<label class="container">
+				        <input type="checkbox" checked="checked">
+				        <span class="checkmark"></span>Baker
+				      </label>
+
+				      <label class="container">
+				        <input type="checkbox">
+				        <span class="checkmark"></span>Maseeh
+				      </label>
+
+				      <label class="container">
+				        <input type="checkbox">
+				        <span class="checkmark"></span>McCormick
+				      </label>
+
+				      <label class="container">
+				        <input type="checkbox">
+				        <span class="checkmark"></span>Next
+				        <!-- <div>Next</div> -->
+				      </label>
+
+				      <label class="container">
+				        <input type="checkbox">
+				        <span class="checkmark"></span>Simmons
+				      </label>
+
+				    <label class="container">
+					  <input type="checkbox">
+					  <span class="checkmark"></span>Set default dining halls
+					</label>
+
+				</div>
+			</div> 
+		</div>
+
+		<div class = "info-column">
+			<div class = "info-section">
+				<div class = "info-title">
+					Dietary Restrictions
+				</div>
+				<div class = "info">
+					<label class="container">
+				        <input type="checkbox" checked="checked">
+				        <span class="checkmark"></span>Gluten-Free
+				      </label>
+
+				      <label class="container">
+				        <input type="checkbox">
+				        <span class="checkmark"></span>Halal
+				      </label>
+
+				      <label class="container">
+				        <input type="checkbox">
+				        <span class="checkmark"></span>Kosher
+				      </label>
+
+				      <label class="container">
+				        <input type="checkbox">
+				        <span class="checkmark"></span>Vegan
+				        <!-- <div>Next</div> -->
+				      </label>
+
+				      <label class="container">
+				        <input type="checkbox">
+				        <span class="checkmark"></span>Vegetarian
+				      </label>
+
+				    <label class="container">
+					  <input type="checkbox">
+					  <span class="checkmark"></span>Set default dietary restrictions
+					</label>
+
+				</div>
+			</div>
+
+			<div class = "info-section">
+				<div class = "info-title">
+					Special Food Orders
+				</div>
+				<div class = "info">
+					Sick Food Order, Baker 8pm
+				</div> 
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>
