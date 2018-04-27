@@ -11,17 +11,20 @@ var dieraryRestrictions = []
 
 function copyDishes(allDishes) { 
     newDishes = {} 
-    for (var dorm in allDishes) { 
+    for (var dorm in allDishes) {                               // for each dorm 
         dormDishes = {}
-        for (var dish in allDishes[dorm]) {
-            dormDishes[dish] = allDishes[dorm][dish] // copy the dish data over 
+        for (var meal in allDishes[dorm]) {                     // for each meal type 
+            mealType = {}
+            for (var dish in allDishes[dorm][meal]) {           // for each dish  
+                mealType[dish] = allDishes[dorm][meal][dish]    // copy the dish data over 
+            }
+            dormDishes[meal] = mealType                         // copy the meal data over 
         }
-        newDishes[dorm] = dormDishes // copy over the data for the dorm 
+        newDishes[dorm] = dormDishes                            // copy over the data for the dorm 
     }
     return newDishes // return the new dishes
 }                      
-//console.log(ALLDISHES, copyDishes(ALLDISHES))
-//console.log(ALLDISHES === copyDishes(ALLDISHES))
+
 // called when the checkbox on dorms are clicked/unclicked
 function onCheckClicked(cb, dorm) {
     if (cb.checked == false) {                                  // if it isn't checked, remove the dorm
@@ -62,28 +65,23 @@ function dietaryUpdate(cb, diet) {
 }
 
 function performdietaryFiltering() {
-    currentDishes = copyDishes(ALLDISHES)                  // reset currentDishes to be everything
-
-    //console.log("p", currentDishes)
+    currentDishes = copyDishes(ALLDISHES)                                   // reset currentDishes to be everything
     // go through our list of foods and remove the ones that do not fit the restriction & remove 
-    for (var dorm in currentDishes) {              // go through the dorms 
+    for (var dorm in currentDishes) {                                       // go through the dorms 
         var dormCurrentDishes = currentDishes[dorm]
-        //console.log("p", dormCurrentDishes)
-        for (var dishName in dormCurrentDishes) {  // go through the dishes for that dorm 
-            var dish = dormCurrentDishes[dishName]
-            for (var i = 0; i < dieraryRestrictions.length; i++) {      // go through restrictions
-                //console.log(dish["diet"])
-                if (! dish["diet"].includes(dieraryRestrictions[i])) {       // if the food does not satify the restriction 
-                    //console.log(dish["diet"])
-                    delete currentDishes[dorm][dishName]        // remove it from the currentDishes
-                    //console.log(currentDishes[dorm][dishName])
+        for (var meal in currentDishes[dorm]) {                             // go through all of the meals 
+            var currentMealDishes = currentDishes[dorm][meal]
+            for (var dishName in currentMealDishes) {                       // go through the dishes for that meal 
+                var dish = currentMealDishes[dishName]
+                for (var i = 0; i < dieraryRestrictions.length; i++) {      // go through restrictions
+                    if (! dish["diet"].includes(dieraryRestrictions[i])) {  // if the food does not satify the restriction 
+                        delete currentDishes[dorm][meal][dishName]          // remove it from the currentDishes
+                    }
                 }
             }
-        }
+        }  
     }
-
     // update the cards to reflect this change
-    //console.log(currentDishes)
     updateDishesForDorms(currentDishes)
 }
 
@@ -99,7 +97,7 @@ function updateDishesForDorms(currentDishes) {
     for (var i=0; i<dormList.length-1; i++) {
         var dormName = dormList[i]
         var menu = document.getElementById(dormName +"Menu") 
-        var dishesForDorm = currentDishes[dormName]
+        var dishesForDorm = currentDishes[dormName]["Entrees"]
 
         // clear out all of the dishes that are attached to that menu
         while (menu.firstChild) {    
@@ -107,7 +105,6 @@ function updateDishesForDorms(currentDishes) {
             menu.removeChild(menu.firstChild);
         }
 
-        //console.log(currentDishes)
         // for each of the dishes that are being served for that dorm 
         for (var j=0; j<Object.keys(dishesForDorm).length; j++) {
             var dishName = Object.keys(dishesForDorm)[j]
@@ -128,20 +125,16 @@ function updateDishesForDorms(currentDishes) {
             menu.appendChild(dish)
         }
     }
-    //console.log("adding to fav")
     updateMenu() // add back the favorites if there were any 
 }
 
 
 // updates the star after a click
 function updateStarOnClick(e) { 
-    //console.log(e)
     try {
-        //console.log("this is the one", e.target.firstChild.getAttribute("class"))
         var currentStar = e.target.firstChild
         var currentStarClass  = e.target.firstChild.getAttribute("class")
         if (currentStarClass == "fa fa-star-o") {
-            //console.log("made it ")
             currentStar.classList = "fa fa-star"
             currentStar.style.color = "#ffd259"
         } else { 
@@ -159,7 +152,6 @@ function updateStarOnClick(e) {
         // e.target.replaceChild(newStar, e.target.firstChild);
     }   
     catch (E) {
-        //console.log("errorr", E)
         if (e.target.getAttribute("class") == "fa fa-star-o") {
             e.target.setAttribute("class", "fa fa-star");
             e.target.style.color = "#ffd259";
@@ -190,13 +182,10 @@ function updateFavorites(dish) {
 function updateMenu() { 
     for (var i = 0; i < dormList.length-1; i++) {
         var dormName = dormList[i]
-        var dishesForDorm = currentDishes[dormName]
+        var dishesForDorm = currentDishes[dormName]["Entrees"]
         for (var j =0; j < Object.keys(dishesForDorm).length; j++) {
             var dishName = Object.keys(dishesForDorm)[j]
-            //console.log(currentDishes[dormName])
-            //console.log(dormName, dishName)
             var relevantStar = document.getElementById("star" + dormName + "," + dishName)
-            //console.log(relevantStar)
             if (favoriteDishes.includes(dishName)) { 
                 relevantStar.setAttribute("class", "fa fa-star")
                 relevantStar.style.color = "#ffd259"
@@ -253,7 +242,7 @@ $(document).ready(function() {
     for (var i=0; i<dormList.length-1; i++) {
         var dormName = dormList[i]
         var menu = document.getElementById(dormName +"Menu") 
-        var dishesForDorm = ALLDISHES[dormName]
+        var dishesForDorm = currentDishes[dormName]["Entrees"]
 
         // for each of the dishes that are being served for that dorm 
         for (var j=0; j<Object.keys(dishesForDorm).length; j++) {
@@ -328,6 +317,9 @@ $(document).ready(function() {
     }
 })
 
+
+
+
 function loadModal(e) {
     var nameToHeading = {"baker": "Baker", "maseeh": "Maseeh", "mccormick": "McCormick", "next": "Next", "simmons":"Simmons"}
     var modalBody = document.getElementById("modal-body")
@@ -345,65 +337,79 @@ function loadModal(e) {
         popupTitleBackGround.appendChild(popupTitle)
         modalBody.appendChild(popupTitleBackGround)
 
-        var dishes = currentDishes[dormName]
 
-        //var dish = Util.create("p", {"class":"card-title", "id": dishName})
+        for (var meal in currentDishes[dormName]) {
+            var mealType = Util.create("h4", {"class":"modal-food-type"})
+            mealType.appendChild(document.createTextNode(""+ meal))
+            modalBody.appendChild(mealType)
 
-        for (var dish in dishes) {
-            //var food = Util.create("div", {"class": "food-item", "id":dish})
-            var foodItem = Util.create("p", {"class": "food-item", "id": dish})
-            var foodDescription = Util.create("p", {"class": "food-description"})
-            var foodRestrictions = Util.create("p", {"class": "food-restriction"})
-            var fav = Util.create("span", {"class":"fa fa-star-o", "id": dish})
+            var dishes = currentDishes[dormName][meal]
+            for (var dish in dishes) {
+                //var food = Util.create("div", {"class": "food-item", "id":dish})
+                var foodItem = Util.create("p", {"class": "food-item", "id": dish})
+                var foodDescription = Util.create("div", {"class": "food-description"})
+                var foodRestrictions = Util.create("p", {"class": "food-restriction"})
+                var fav = Util.create("span", {"class":"fa fa-star-o", "id": dish})
 
-            restriction = "    ("
-            for (var rest=0; rest< Object.keys(dishes[dish]["diet"]).length-1; rest ++) {
-                restriction += "--" +dishes[dish]["diet"][rest] + ", "
-            }
+                foodItem.appendChild(fav)
+                var foodTitle = Util.create("h6", {"class":"modal-food-name"})
+                foodTitle.appendChild(document.createTextNode(" " + dish + "         "))
 
-            restriction += "--" + dishes[dish]["diet"][rest] + ")"
-            description = document.createTextNode(dishes[dish]["description"])
-            diet = document.createTextNode(restriction)
+                foodItem.appendChild(foodTitle)
+                //restriction = "    ("
+                for (var rest=0; rest< Object.keys(dishes[dish]["diet"]).length-1; rest ++) {
+                    //restriction += "--" +dishes[dish]["diet"][rest] + ", "
+                    restriction = dishes[dish]["diet"][rest]
+                    var img = Util.create("img", {"class":"image icon-diet", "src":"images/"+restriction+".png"});
 
-            foodItem.appendChild(fav)
-            foodItem.appendChild(document.createTextNode(" " + dish))
-            foodItem.appendChild(diet)
-            //foodItem.appendChild(document.createElement("br"));
-            //foodItem.appendChild(description)
-            //foodItem.appendChild(document.createElement("br"));
-            
+                    foodRestrictions.appendChild(img)
+                }
+                foodItem.appendChild(foodRestrictions)
+                foodItem.appendChild(Util.create("br"))
+                //restriction += "--" + dishes[dish]["diet"][rest] + ")"
+                description = document.createTextNode(dishes[dish]["description"])
+                //diet = document.createTextNode(restriction)
 
-
-            // foodDescription.appendChild(description)
-            // foodRestrictions.appendChild(diet)
-            // food.appendChild(foodItem)
-            // food.appendChild(foodDescription)
-            // food.appendChild(foodRestrictions)
-            // modalBody.appendChild(food)
-
-
-            modalBody.appendChild(foodItem)
-            // modalBody.appendChild(foodDescription)
-            // modalBody.appendChild(foodRestrictions)
-
-
-            // This is what happens when we click on a star
-            foodItem.addEventListener('click', function(evt) {
-                var foodName = evt.path[0].id
-                //console.log("food",evt.path[0], foodName)
-                updateStarOnClick(evt)
-                updateFavorites(foodName)
-                updateMenu()
-            })
+                
+                //foodItem.appendChild(foodRestrictions)
+                //foodItem.appendChild(document.createElement("br"));
+                foodDescription.appendChild(description)
+                foodItem.appendChild(foodDescription)
+                //foodItem.appendChild(document.createElement("br"));
+                
 
 
-            //make sure that the favorites are updated
-            if (favoriteDishes.includes(dish)) { 
-                fav.setAttribute("class", "fa fa-star")
-                fav.style.color = "#ffd259"
-            } else { 
-                fav.setAttribute("class", "fa fa-star-o")
-                fav.style.color = "black"
+                 
+                // foodRestrictions.appendChild(diet)
+                // food.appendChild(foodItem)
+                // food.appendChild(foodDescription)
+                // food.appendChild(foodRestrictions)
+                // modalBody.appendChild(food)
+
+
+                modalBody.appendChild(foodItem)
+                // modalBody.appendChild(foodDescription)
+                // modalBody.appendChild(foodRestrictions)
+
+
+                // This is what happens when we click on a star
+                foodItem.addEventListener('click', function(evt) {
+                    var foodName = evt.path[0].id
+                    //console.log("food",evt.path[0], foodName)
+                    updateStarOnClick(evt)
+                    updateFavorites(foodName)
+                    updateMenu()
+                })
+
+
+                //make sure that the favorites are updated
+                if (favoriteDishes.includes(dish)) { 
+                    fav.setAttribute("class", "fa fa-star")
+                    fav.style.color = "#ffd259"
+                } else { 
+                    fav.setAttribute("class", "fa fa-star-o")
+                    fav.style.color = "black"
+                }
             }
         }
     }
