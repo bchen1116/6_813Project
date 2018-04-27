@@ -412,12 +412,12 @@ function loadModal(e) {
 
 //navbar code for food selection form pop-up
 window.addEventListener('load', function() {
-    console.log("loaded!")
     var modal = document.querySelector(".form-request");
     var trigger = document.querySelector(".form");
     var submit = document.querySelector(".submit-form");
     var closeButton = document.querySelector(".close-button");
-    console.log(modal);
+    var a1 = document.querySelector(".dropdown-item")
+    
     function toggleModal() {
         modal.classList.toggle("show-modal");
     }
@@ -425,6 +425,10 @@ window.addEventListener('load', function() {
     function windowOnClick(event) {
         if (event.target === modal) {
             toggleModal();
+        } else if (event.target === a1) {
+            if (event.target.id === "profilePage") {
+                window.location.replace("/profile.html");
+            }
         }
     }
 

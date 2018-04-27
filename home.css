@@ -184,6 +184,7 @@ input[type='checkbox']:checked:after {
     display: none;
     position: absolute;
     text-align: center;
+    background-color: #f6f3f3;
     bottom: 0;
     width: 100%;
     font-size: 17px;
@@ -227,18 +228,23 @@ input[type='checkbox']:checked:after {
     padding: 0px;
  }
 
+ .card-header:first-child {
+     margin-top: -20px;
+ }
+
 .close {
     z-index: 1;
     position: sticky;
-    color: var(--back-color);
-    margin-left: 97.5%;
-    font-size: 25px;
+    color: #333333;
+    margin-left: 97%;
+    margin-top: 5px;
+    font-size: 35px;
     background-color: transparent;
 }
 
 .close:hover,
 .close:focus {
-    color: #87bdb6;
+    color: #f6f3f3;
     text-decoration: none;
     cursor: pointer;
 }

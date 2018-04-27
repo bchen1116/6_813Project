@@ -57,9 +57,9 @@
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Profile
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a1 class="dropdown-item" href="profile.html">Profile Page</a1>
-          <a1 class="dropdown-item" href="#">Logout</a1>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" onchange="location = this.a1[this.selectedIndex].value;">
+          <a1 class="dropdown-item" id = "profilePage" href="profile.html" value = "profile.html">Profile Page</a1>
+          <a1 class="dropdown-item" href="#" value = "index.html">Logout</a1>
         </div>
         </li> 
     </ul>
