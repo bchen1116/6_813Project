@@ -4,8 +4,8 @@ window.addEventListener('load', function() {
     var trigger = document.querySelector(".form");
     var submit = document.querySelector(".submit-form");
     var closeButton = document.querySelector(".close-button");
-    var a1 = document.querySelector(".dropdown-item")
-    
+    var a1 = document.querySelectorAll(".dropdown-item")
+
     function toggleModal() {
         modal.classList.toggle("show-modal");
     }
@@ -13,11 +13,12 @@ window.addEventListener('load', function() {
     function windowOnClick(event) {
         if (event.target === modal) {
             toggleModal();
-        } else if (event.target === a1) {
-            if (event.target.id === "profilePage") {
-                window.location.replace("/profile.html");
-            }
+        } else if (event.target === a1[0]) {
+            window.location.replace("/profile.html");
+        } else if (event.target === a1[1]) {
+           window.location.replace("/login.html");
         }
+        
     }
 
     trigger.addEventListener("click", toggleModal);
