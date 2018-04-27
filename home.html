@@ -1,0 +1,226 @@
+<html>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+    crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+    crossorigin="anonymous"></script>
+
+<link href="home.css" rel="stylesheet" type="text/css">
+<link href="navbar.css" rel="stylesheet" type="text/css">
+<script src="dataStore.js"></script>
+<script src="home.js"></script>
+<script src="util.js"></script>
+
+
+
+
+<head>
+    <title>Feedr</title>            
+</head>
+
+<body class="whole-background">
+    <!-- NAVBAR CREATION -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+
+        <a class="navbar-brand" href="home.html">
+            <img id="logo" src="feedr7.png" alt="HTML tutorial" style="position:relative; width:150px;height:175px;border:0;">
+        </a>
+        <ul class="nav navbar-right original">
+            <li class="nav-item">
+                <a class="nav-link" href="favorites.html">Favorites</a>
+            </li>
+            <button class="form nav-item">Food Request Form</button>
+            <div class="form-request">
+                <div class="form-open">
+                    <span class="close-button">&times;</span>
+                    <div class="card-header">
+                        <h2>Special Request Form</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class =  "form-body">
+                        <!-- <div class="data"> -->
+                            <label for="name">Name:     </label>
+                            <input class = "formInput" type="text" id="name" name="user_name">
+                        <!-- </div> -->
+                        <!-- <div class="data"> -->
+                            <label for="name">Kerberos:     </label>
+                            <input class = "formInput" type="text" id="email" name="email">
+                        <!-- </div> -->
+                        <!-- <div class="data"> -->
+                            <label for="name">Dorm:     </label>
+                            <select class = "formInput">
+                                <option value="" disabled="disabled" selected="selected">Please select a dorm for pick-up</option>
+                                <option value="1">Baker</option>
+                                <option value="2">Maseeh</option>
+                                <option value="2">Simmons</option>                 
+                                <option value="2">Mccormick</option>
+                                <option value="2">Next</option>
+                            </select>
+                        <!-- </div> -->
+                        <!-- <div class="data"> -->
+                            <label for="name">Food Items:     </label>
+                            <select class = "formInput">
+                                <option value="" disabled="disabled" selected="selected">Please select a food item</option>
+                                <option value="1">Burger</option>
+                                <option value="2">Turkey Sandwich</option>
+                                <option value="2">Falafel Wrap</option>                 
+                                <option value="2">Spaghetti Bolognese</option>
+                                <option value="2">Veggie Stir-fry</option>
+                            </select>
+                            <label for="name">Date:</label>
+                            <input class = "formInput" id="date" type="date">
+                        <!-- </div> -->
+                        <!-- <div class="data"> -->
+                            <label for="name">Time:</label>
+                            <input class = "formInput" id="time" type="time">
+                        <!-- </div> -->
+                        <!-- <div class="data"> -->
+                            
+                        <!-- </div> -->
+                    </div>
+                        <button class="submit-form">Submit</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Profile
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a1 class="dropdown-item" href="#">Profile Page</a1>
+              <a1 class="dropdown-item" href="#">Logout</a1>
+            </div>
+            </li> 
+        </ul>
+
+
+    </nav>
+    <!-- SIDEBAR CREATION -->
+    <div id="MainMenu">
+        <div class="list-group panel">
+            <a href="#dorm" class="list-group-item list-group-item strong" data-parent="#MainMenu">Dormitory</a>
+            <div class=" list-group-submenu" id="dorm">
+                <a href="#" class="list-group-item">
+                    <input type="checkbox" class="cb" name="dormcb" onclick="onCheckClicked(this, 'baker')" checked>&nbsp; Baker</a>
+                <a href="#" class="list-group-item">
+                    <input type="checkbox" class="cb" name="dormcb" onclick="onCheckClicked(this, 'maseeh')" checked>&nbsp; Maseeh</a>
+                <a href="#" class="list-group-item">
+                    <input type="checkbox" class="cb" name="dormcb" onclick="onCheckClicked(this, 'mccormick')" checked>&nbsp; McCormick</a>
+                <a href="#" class="list-group-item">
+                    <input type="checkbox" class="cb" name="dormcb" onclick="onCheckClicked(this, 'next')" checked>&nbsp; Next</a>
+                <a href="#" class="list-group-item">
+                    <input type="checkbox" class="cb" name="dormcb" onclick="onCheckClicked(this, 'simmons')" checked>&nbsp; Simmons</a>
+                <a href="#" class="list-group-item">
+                    <input type="checkbox" class="cb" name="dormcb" onclick="onCheckClicked(this, 'specials')" checked>&nbsp; Special Events</a>
+            </div>
+            <a href="#diet" class="list-group-item list-group-item strong" data-toggle="collapse" data-parent="#MainMenu"> Dietary Restrictions </a>
+            <div class="collapse list-group-submenu panel" id="diet">
+                <a href="#" class="list-group-item">
+                    <input type="checkbox" class="cb">&nbsp; Gluten Free</a>
+                <a href="#" class="list-group-item">
+                    <input type="checkbox" class="cb">&nbsp; Halal</a>
+                <a href="#" class="list-group-item">
+                    <input type="checkbox" class="cb">&nbsp; Kosher</a>
+                <a href="#" class="list-group-item">
+                    <input type="checkbox" class="cb">&nbsp; Vegan</a>
+                <a href="#" class="list-group-item">
+                    <input type="checkbox" class="cb">&nbsp; Vegetarian</a>
+            </div>
+            <a href="#meal" class="list-group-item list-group-item strong" data-toggle="collapse" data-parent="#MainMenu"> Meal Type </a>
+            <div class="collapse list-group-submenu panel" id="meal">
+                <a href="#" class="list-group-item">
+                    <input type="checkbox" class="cb">&nbsp; Breakfast/Brunch</a>
+                <a href="#" class="list-group-item">
+                    <input type="checkbox" class="cb">&nbsp; Lunch</a>
+                <a href="#" class="list-group-item">
+                    <input type="checkbox" class="cb">&nbsp; Dinner</a>
+                <a href="#" class="list-group-item">
+                    <input type="checkbox" class="cb">&nbsp; Late Night</a>
+            </div>
+            <a href="#date" class="list-group-item list-group-item strong" data-toggle="collapse" data-parent="#MainMenu"> Date</a>
+        </div>
+    </div>
+
+    <!-- MAIN BODY -->
+    <!-- unsure if i can create this in javascript since there's so many nested layers -->
+
+    <div class="mainClass" id="mainClass">
+        <div class="card text-white bg-info mb-3" id="baker">
+
+            <!-- This is what would show when one hovers over a menu item  -->
+            <div class="card-hover"> </div>
+            <button class="card-fullMenu" id="menuPopup"> See Full Menu </button> 
+
+            <div class="card-header">Baker</div>
+            <div class="card-body" id='bakerMenu'></div>
+        </div>
+
+        <div class="card text-white bg-info mb-3" id="maseeh">
+
+            <!-- This is what would show when one hovers over a menu item  -->
+            <div class="card-hover"> </div>
+            <button class="card-fullMenu" id="menuPopup"> See Full Menu</button> 
+
+            <div class="card-header">Maseeh</div>
+            <div class="card-body" id= "maseehMenu"></div>
+        </div>
+        <div class="card text-white bg-info mb-3" id="mccormick">
+
+            <!-- This is what would show when one hovers over a menu item  -->
+            <div class="card-hover"> </div>
+            <button class="card-fullMenu" id="menuPopup"> See Full Menu</button> 
+
+            <div class="card-header">McCormick</div>
+            <div class="card-body" id="mccormickMenu"></div>
+        </div>
+        <div class="card text-white bg-info mb-3" id="next">
+
+            <!-- This is what would show when one hovers over a menu item  -->
+            <div class="card-hover"> </div>
+            <button class="card-fullMenu" id="menuPopup"> See Full Menu</button> 
+
+            <div class="card-header">Next</div>
+            <div class="card-body" id="nextMenu"></div>
+        </div>
+        <div class="card text-white bg-info mb-3" id="simmons">
+
+            <!-- This is what would show when one hovers over a menu item  -->
+            <div class="card-hover"> </div>
+            <button class="card-fullMenu" id="menuPopup"> See Full Menu</button> 
+
+            <div class="card-header">Simmons</div>
+            <div class="card-body" id="simmonsMenu"></div>
+        </div>
+        <div class="card text-white bg-info mb-3" id="specials">
+
+            <!-- This is what would show when one hovers over a menu item  -->
+            <div class="card-hover"> </div>
+            <button class="card-fullMenu" id="menuPopup"> See Full Menu</button> 
+
+            <div class="card-header">Special Events</div>
+            <div class="card-body" id="specialsMenu"></div>
+        </div>
+    </div>
+
+    <!-- modal is the menu (empty rn) that pops up -->
+    <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <!-- POTENTIAL MODAL ANIMATIONS: https://codepen.io/designcouch/pen/obvKxm -->
+                <span class="close">&times;</span>
+                <p>Some text in the Modal..</p>
+            </div>
+          
+          </div>
+
+</body>
+
+</html>
