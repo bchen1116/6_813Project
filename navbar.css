@@ -1,7 +1,7 @@
 :root {
     --buttonColor: #729f98;
     --header-color: #333333;
-    --accent-color: #ffd259;
+    --accent-color: #FF9B01;
 }
 /* navbar refers to the title bar on the page */
 .navbar-inverse {
