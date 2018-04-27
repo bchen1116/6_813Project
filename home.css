@@ -363,15 +363,35 @@ body {
 }
 
 .food-restriction {
-    margin-top: 0px;
-    margin-left: 10px; 
+    display: inline;
+    float: right;   
 }
 
 .food-description { 
     margin-top: -10px;
     margin-bottom: 0px;
     margin-left: 10px; 
+    font-style: italic;
+    padding: 5px;
  }
+
+ .icon-diet {
+    height: 30px;
+    width: 30px;
+ }
+
+<<<<<<< HEAD
+ .modal-food-name {
+    display: inline;
+    font-size: 17px;
+ }
+
+ .modal-food-type {
+    padding-left: 10px;
+    padding-top: 5px;
+    color: var(--side-color);
+ }
+
 
  @media (max-width: 800px) {
     .list-group.panel {
@@ -383,3 +403,4 @@ body {
         margin-left: 0px;
     }
  }
+
