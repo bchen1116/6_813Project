@@ -1,6 +1,10 @@
 /* config.css */
 
 /* helpers/align.css */
+.navHolder {
+  position: absolute;
+  margin-top: -50px;
+}
 
 .align {
   -webkit-box-align: center;
@@ -163,6 +167,8 @@
 }
 
 .profile-grid {
+  position: relative;
+  margin-top: 50px;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
