@@ -1,7 +1,7 @@
 :root {
     --buttonColor: #729f98;
     --header-color: #333333;
-    --accent-color: #ffd259;
+    --accent-color: #FF9B01;
 }
 /* navbar refers to the title bar on the page */
 .navbar-inverse {
@@ -11,6 +11,7 @@
     position: fixed;
     width: 100%;
     height: 70px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
 }
   
 .navbar-inverse .navbar-brand {
@@ -66,8 +67,11 @@ a1:hover {
     text-decoration: none;
     background-color: var(--header-color);
     border-color: var(--header-color);
-    margin-right: 20px;
+    margin-right: 15px;
     margin-top: 8px;
+    height: 32px;
+    width: 170px;
+    text-align: center;
 }
 
 .form:hover {
