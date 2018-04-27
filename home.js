@@ -4,7 +4,8 @@
 // dormList is the list of active dorms on the page
 var dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"];
 var currentDishes = ALLDISHES 
-
+var starColor = "#FF9B01";
+// var favDishes = favoriteDishes
 // allDorms is the dictionary that maps dorm name to Node element of dorm card
 var allDorms = {}; 
 var dieraryRestrictions = []        
@@ -135,7 +136,7 @@ function updateDishesForDorms(currentDishes) {
 
 // updates the star after a click
 function updateStarOnClick(e) { 
-    //console.log(e)
+    console.log(e)
     try {
         //console.log("this is the one", e.target.firstChild.getAttribute("class"))
         var currentStar = e.target.firstChild
@@ -143,7 +144,7 @@ function updateStarOnClick(e) {
         if (currentStarClass == "fa fa-star-o") {
             //console.log("made it ")
             currentStar.classList = "fa fa-star"
-            currentStar.style.color = "#ffd259"
+            currentStar.style.color = starColor
         } else { 
             currentStar.classList = "fa fa-star-o"
             currentStar.style.color = "black"
@@ -162,7 +163,7 @@ function updateStarOnClick(e) {
         //console.log("errorr", E)
         if (e.target.getAttribute("class") == "fa fa-star-o") {
             e.target.setAttribute("class", "fa fa-star");
-            e.target.style.color = "#ffd259";
+            e.target.style.color = starColor;
         } else {
             e.target.setAttribute("class", "fa fa-star-o");
             e.target.style.color = "black";
@@ -199,7 +200,7 @@ function updateMenu() {
             //console.log(relevantStar)
             if (favoriteDishes.includes(dishName)) { 
                 relevantStar.setAttribute("class", "fa fa-star")
-                relevantStar.style.color = "#ffd259"
+                relevantStar.style.color = starColor
             } else { 
                 relevantStar.setAttribute("class", "fa fa-star-o")
                 relevantStar.style.color = "black"
@@ -400,7 +401,7 @@ function loadModal(e) {
             //make sure that the favorites are updated
             if (favoriteDishes.includes(dish)) { 
                 fav.setAttribute("class", "fa fa-star")
-                fav.style.color = "#ffd259"
+                fav.style.color = starColor
             } else { 
                 fav.setAttribute("class", "fa fa-star-o")
                 fav.style.color = "black"
@@ -417,7 +418,7 @@ window.addEventListener('load', function() {
     var submit = document.querySelector(".submit-form");
     var closeButton = document.querySelector(".close-button");
     var a1 = document.querySelector(".dropdown-item")
-    
+
     function toggleModal() {
         modal.classList.toggle("show-modal");
     }
