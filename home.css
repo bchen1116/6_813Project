@@ -4,7 +4,7 @@
     --card-color: #729f98;
     --side-color: #6e7376;
     --back-color: #efefef;
-    --accent-color: #ffd259;
+    --accent-color: #FF9B01;
 }
 
 .whole-background{
@@ -21,6 +21,7 @@
     top: 0px;
     width: 250px;
     height: calc(100vh);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
     color: var(--back-color);
 }
 
@@ -195,7 +196,7 @@ input[type='radio']:checked ~ .checkmarks{
 }
 
 .card-header {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     text-align: center;
     background-color:  var(--card-color);
@@ -311,7 +312,7 @@ body {
     margin: 10px;
 }
 .food-item:hover {
-    background-color: #87bdb6; 
+    background-color: #d4e2e0; 
 }
 .popup-title {
     margin: 0px 10px;
@@ -328,4 +329,13 @@ body {
     margin-top: -10px;
     margin-bottom: 0px;
     margin-left: 10px; 
+ }
+
+ @media (max-width: 800px) {
+    .list-group.panel {
+        margin-left: -250px;
+    }
+    .mainClass {
+        margin-left: 0px;
+    }
  }
