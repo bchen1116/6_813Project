@@ -112,6 +112,7 @@ input[type='checkbox']:checked:after {
     background: rgb(70,70,70);
     content: '\2714';
     color: #fff;
+    margin-top: -1px;
 }
 
 /* Create a custom radio button */
@@ -163,7 +164,7 @@ input[type='radio']:after {
 
 input[type='radio']:checked ~ .checkmarks{
     background: rgb(70,70,70);
-    content: "&#x0325";
+    content: "\0145";
     color: #fff;
 }
 
