@@ -51,6 +51,7 @@ a1{
 }
 
 a1:hover {
+    cursor: pointer;
     background-color: #f0eceb;
         color: #87bdb6;
     border-bottom: 2px solid var(--accent-color);
@@ -179,7 +180,10 @@ form {
 form > .textbox {
   outline: 0;
   height: 42px;
-  width: 400px;
+  width: 30vw;
+  height: 35px;
+  margin-top: 5px;
+  margin-left: -5px;
   line-height: 42px;
   padding: 0 16px;
   background-color: #efefef;
@@ -187,8 +191,8 @@ form > .textbox {
   font-family: arial;
   border: 0;
   float: left;
-  -webkit-border-radius: 4px 0 0 4px;
-  border-radius: 4px 0 0 4px;
+  -webkit-border-radius: 6px 0 0 6px;
+  border-radius: 6px 0 0 6px;
 }
 
 form > .textbox:focus {
@@ -197,12 +201,13 @@ form > .textbox:focus {
 }
 
 form > .button {
+  margin-top: 5px;
   outline: 0;
   background: none;
-  background-color: rgba(38, 50, 56, 0.8);
+  background-color:#6e7376cb;
   float: left;
-  height: 42px;
-  width: 42px;
+  height: 35px;
+  width: 40px;
   text-align: center;
   line-height: 42px;
   border: 0;
@@ -213,12 +218,12 @@ form > .button {
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
   -webkit-transition: background-color .4s ease;
   transition: background-color .4s ease;
-  -webkit-border-radius: 0 4px 4px 0;
-  border-radius: 0 4px 4px 0;
+  -webkit-border-radius: 0 6px 6px 0;
+  border-radius: 0 6px 6px 0;
 }
 
 form > .button:hover {
-  background-color: rgba(0, 150, 136, 0.8);
+  background-color: #729f98;
 }
 
 .search-bar{

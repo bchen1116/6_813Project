@@ -132,10 +132,6 @@ function updateDishesForDorms(currentDishes) {
 
 // updates the star after a click
 function updateStarOnClick(e) { 
-<<<<<<< HEAD
-=======
-    console.log(e)
->>>>>>> 195c8ded0b16a998c383c5520f9fcb87e99d52ca
     try {
         var currentStar = e.target.firstChild
         var currentStarClass  = e.target.firstChild.getAttribute("class")
@@ -273,7 +269,7 @@ $(document).ready(function() {
     var specialMenu = document.getElementById("specialsMenu")
     // populate the specials menu card 
     for (var i=0; i < SPECIALS.length; i++) { 
-        var special = Util.create("p", {"class":"card-title"})
+        var special = Util.create("p", {"class":"specials-card-title"})
         var text = document.createTextNode(SPECIALS[i])
         
         special.appendChild(text)
