@@ -19,7 +19,7 @@
     background-color: var(--side-color);
     position: fixed;
     top: 0px;
-    width: 250px;
+    width: 260px;
     height: calc(100vh);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
     color: var(--back-color);
@@ -37,17 +37,23 @@
     color: white;
     font-size:12px;
     height: 40px;
-    width: 250px;
+    width: 260px;
     vertical-align: middle;
 }
 
 .list-group-item:hover {
     background-color: #a8abac;
+    cursor: pointer;
     /* width: 100%; */
     border-left: 3px solid var(--accent-color);
     color: #e9ece5;
 }
 
+.list-group-item:last-child {
+    margin-bottom: -1;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
 .strong { 
     font-weight: bold;
     font-size: 16px;
@@ -72,7 +78,9 @@
     left:-25px;
     right:-215px;
 }*/
-
+input[type='checkbox']:hover {
+    cursor: pointer;
+}
 input[type='checkbox']:before {
     content:'';
     position: absolute;
@@ -117,6 +125,8 @@ input[type='checkbox']:checked:after {
     color: white;
     font-size: 12px;
     margin-top: -1px;
+    width: 14px;
+    height: 14px;
 }
 
 /* Create a custom radio button */
@@ -211,13 +221,14 @@ input[type='checkbox']:checked:after {
     height: calc(calc(625px - 15px * var(--rows)) / var(--rows));
     margin: 5px;
     border-radius: 8px;
-    background-color: #39414b;
+    background-color: transparent;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    border: 3px transparent;
+    border: 3px solid transparent;
 }
 
 .card:hover {
     border: 3px solid var(--accent-color);
+    cursor: pointer;
 }
 
 .card-header {
@@ -244,6 +255,12 @@ input[type='checkbox']:checked:after {
     margin: 5px;
 }
 
+.specials-card-title {
+    z-index: 1;
+    font-size: 16px;
+    margin: 5px;
+}
+
 .card-title:hover {
     background-color: #d4e2e0;
 }
@@ -257,6 +274,7 @@ input[type='checkbox']:checked:after {
 .card:hover .card-hover{
     display: block;
     background: rgba(0,0,0,.5);
+    cursor: pointer;
 }
 
 .card-fullMenu { 
@@ -268,26 +286,37 @@ input[type='checkbox']:checked:after {
     bottom: 0;
     width: 100%;
     font-size: 17px;
+    /* margin-top: 20px; */
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
 
+}
+
+.card-fullMenu:hover {
+    cursor: pointer;
 }
 
 .card:hover .card-fullMenu {
     display: block; 
 }
 
-/* .card-fullMenu{
-    outline: none;
-    border: none;
-    border-top: 1px double var(--side-color)
-} */
+.bg-info {
+    background-color: var(--back-color) !important;
+}
 .card-fullMenu:focus {
     outline: none;
     /* border: ; */
 }
 
-
+.specials-card {
+    width: calc(calc(1000px - 20px * var(--cols)) / var(--cols));
+    height: calc(calc(625px - 15px * var(--rows)) / var(--rows));
+    margin: 5px;
+    border-radius: 8px;
+    background-color: transparent;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border: 3px solid transparent;
+}
 
 
 /* modal is the menu that pops up when user clicks on card */
@@ -295,7 +324,7 @@ input[type='checkbox']:checked:after {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 2; /* Sit on top */
-    margin: 70px auto;
+    margin: 0px auto;
     padding: 10px;
     top: 0;
     left: 0;
@@ -308,6 +337,7 @@ input[type='checkbox']:checked:after {
 
 .modal-content {
     margin: auto;
+    margin-top: 5%;
     width: 80%;
     height: 80%;
     overflow: auto; /* Enable scroll if needed */
@@ -319,7 +349,7 @@ input[type='checkbox']:checked:after {
  }
 
  .card-header:first-child {
-     margin-top: -20px;
+     margin-top: -16px;
  }
 
 .close {

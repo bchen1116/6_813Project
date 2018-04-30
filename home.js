@@ -269,7 +269,7 @@ $(document).ready(function() {
     var specialMenu = document.getElementById("specialsMenu")
     // populate the specials menu card 
     for (var i=0; i < SPECIALS.length; i++) { 
-        var special = Util.create("p", {"class":"card-title"})
+        var special = Util.create("p", {"class":"specials-card-title"})
         var text = document.createTextNode(SPECIALS[i])
         
         special.appendChild(text)
