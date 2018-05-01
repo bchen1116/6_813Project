@@ -422,7 +422,11 @@ window.addEventListener('load', function() {
     var trigger = document.querySelector(".form");
     var submit = document.querySelector(".submit-form");
     var closeButton = document.querySelector(".close-button");
-    var a1 = document.querySelector(".dropdown-item")
+    var a1 = document.querySelector(".dropdown-item");
+    var navigationalItems = document.querySelectorAll(".nav-link");
+    navigationalItems[0].style.color = "#f0eceb"
+    var navButton = document.querySelector(".navbar-toggler");
+    var dropDown = document.querySelector(".original");
 
     function toggleModal() {
         modal.classList.toggle("show-modal");
@@ -434,6 +438,16 @@ window.addEventListener('load', function() {
         } else if (event.target === a1) {
             if (event.target.id === "profilePage") {
                 window.location.replace("/profile.html");
+            }
+        } else if (event.target === navButton) {
+            console.log("triggered")
+            console.log(dropDown.style.display)
+            if (dropDown.style.display == 'none' || dropDown.style.display == "") {
+                console.log("in none")
+                dropDown.style.display = 'block';
+            } else {
+                dropDown.style.display = 'none';
+                console.log("set to none")
             }
         }
     }
