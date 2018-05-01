@@ -15,12 +15,11 @@ window.addEventListener('load', function() {
     function windowOnClick(event) {
         if (event.target === modal) {
             toggleModal();
-        } else if (event.target === a1[0]) {
-            window.location.replace("/profile.html");
-        } else if (event.target === a1[1]) {
-           window.location.replace("/login.html");
+        } else if (event.target === a1) {
+            if (event.target.id === "profilePage") {
+                window.location.replace("/profile.html");
+            }
         }
-        
     }
 
     trigger.addEventListener("click", toggleModal);
