@@ -123,16 +123,21 @@ function clickedDining(check, dorm) {
     if (check.checked == false) {                                  // if it isn't checked, remove the dorm
         var index = profileDorms.indexOf(dorm);
         if (index > -1) {                                   
-            profileDorms.splice(index, 1);                          // remove dorm from dormList             // remove it from the document
+            profileDorms.splice(index, 1);
+            document.getElementById(dorm).checked = false;                          // remove dorm from dormList             // remove it from the document
         }
     } else if (check.checked == true) {                            // otherwise if it is checked
         var index = profileDorms.indexOf(dorm);
         if (index = -1) {                                       // if the dorm isn't in the dormList, add it                             
             profileDorms.push(dorm); 
+            document.getElementById(dorm).checked = true;
         }
         console.log(event.target);
 
 
+    }
+    if (profileDorms != ["specials"]) {
+        dormList = profileDorms;
     }
     console.log(profileDorms);
 }

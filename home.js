@@ -2,7 +2,7 @@
 
 
 
-var dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"]; // dormList is the list of active dorms on the page
+
 var currentDishes = ALLDISHES 
 var starColor = "#FF9B01";
 var allDorms = {};                                              // allDorms is the dictionary that maps dorm name to Node element of dorm card
