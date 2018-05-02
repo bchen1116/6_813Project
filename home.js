@@ -10,6 +10,7 @@ var dieraryRestrictions = []                                    // list of the d
 var globalMealTime = "dinner"
 var globalDate = "05/02/2018"
 
+
 // given a dictionary make a deep copy of the dictionary 
 // used to create a copy of all of the dishes in our database 
 function copyDishes(mainDict, globalMealTime) { 
@@ -112,7 +113,7 @@ a.addEventListener('submit',function(e) {
     e.preventDefault();
     var b = document.getElementById('text-input').value;
     console.log(b);
-    
+    if (ALLDISHES) {
     currentDishes = copyDishes(ALLDISHES)                                   // reset currentDishes to be everything
     // go through our list of foods and remove the ones that do not fit the restriction & remove 
     for (var dorm in currentDishes) {                                       // go through the dorms 
@@ -127,9 +128,10 @@ a.addEventListener('submit',function(e) {
             }
         }  
     }
+
     // update the cards to reflect this change
     updateDishesForDorms(currentDishes)
-
+    }
 });
 
 // repopulates the dishes that are in the dorm based on the current dishes 

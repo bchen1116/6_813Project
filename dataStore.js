@@ -44,7 +44,7 @@ class favorites {
 // variables 
 hal = "halal"; gnFree = "gluten free"; vg = "vegan"; veg = "vegeterian"; kos = "kosher"
 brk = "breakfast"; brh = "brunch"; lh = "lunch"; dr = "dinner"; ln = "late night"
-mon = "05/02/2018"; tue = "04/24/2018"; wed = "04/25/2018"; tr = "04/26/2018"; fr = "04/27/2018"; sat = "04/28/2018"; sun = "04/29/2018"
+mon = "05/02/2018"; tue = "04/24/2018"; wed = "04/25/2018"; tr = "04/26/2018"; fr = "04/27/2018"; sat = "04/28/2018"; sun = "04/29/2018";
 
 
 //Dishes dinner mon
@@ -67,7 +67,7 @@ pineapplePorkCutlet = {diet: [gnFree], time: dr, date: mon, description: "Pinapp
 
 
 //Dishes lunch mon
-vegetableStirfry = {diet: [veg], time: lh, date: mon, description: }
+vegetableStirfry = {diet: [veg], time: lh, date: mon, description: "stir fried veggies in a light brown sauce" }
 
 
 //Sides 
