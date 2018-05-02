@@ -99,10 +99,10 @@ window.addEventListener('load', function() {
         } else if (event.target === logHead) {
             switchSignLogModal(true)
         }
-        console.log(event.target);
-
-
     }
+
+
+
 
     trigger.addEventListener("click", toggleModal);
     closeButton[0].addEventListener("click", toggleModal);
@@ -113,3 +113,42 @@ window.addEventListener('load', function() {
     submit[1].addEventListener("click", toggleSignInModal);
     window.addEventListener("click", windowOnClick);
 });
+$(document).ready(function() {
+    
+});
+var profileDorms = ["specials"];
+function clickedDining(check, dorm) {
+    console.log(check, dorm)
+    console.log(check.checked)
+    if (check.checked == false) {                                  // if it isn't checked, remove the dorm
+        var index = profileDorms.indexOf(dorm);
+        if (index > -1) {                                   
+            profileDorms.splice(index, 1);                          // remove dorm from dormList             // remove it from the document
+        }
+    } else if (check.checked == true) {                            // otherwise if it is checked
+        var index = profileDorms.indexOf(dorm);
+        if (index = -1) {                                       // if the dorm isn't in the dormList, add it                             
+            profileDorms.push(dorm); 
+        }
+        console.log(event.target);
+
+
+    }
+    console.log(profileDorms);
+}
+
+// function profileChecks() { 
+//     console.log(checkedValue, "in");
+//     var inputElements = document.getElementsByClassName('checkmark');
+//     for(var i=0; inputElements[i]; ++i){
+//           if(inputElements[i].checked){
+//                checkedValue.push(inputElements[i].value);
+//           }
+//           else {
+//             if (checkedValue.includes(inputElements[i])) {
+//                 var index = checkedValue.indexOf(inputElements[i]);
+//                 checkedValue.splice(index, 1);
+//             }
+//           }
+//     }
+// }

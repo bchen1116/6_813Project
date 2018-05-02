@@ -357,14 +357,21 @@ form > .button:hover {
     margin-top: -30px;
 }
 
-#profilePage {
+/* #profilePage { */
+    /* display: none; */
+/* } */
+
+/* #logout { */
+    /* display: none; */
+/* } */
+
+#login {
     display: none;
 }
 
-#logout {
+#signUp {
     display: none;
 }
-
 .signUpForm {
     width: 500px;
     padding: 30px;
