@@ -218,7 +218,9 @@ input[type='checkbox']:checked:after {
 /* card refers to the individual cells for menus on main page */
 .card {
     width: calc(calc(1000px - 20px * var(--cols)) / var(--cols));
+    min-width: 300px;
     height: calc(calc(625px - 15px * var(--rows)) / var(--rows));
+    min-height: 300px;
     margin: 5px;
     border-radius: 8px;
     background-color: transparent;
@@ -423,7 +425,7 @@ body {
          transform: translateX(0);
      }
  }
-
+*/
  @media (max-width: 930px) {
     .list-group.panel {
         height: 110vh;
@@ -431,6 +433,6 @@ body {
     }
     .mainClass {
         margin-left: 0px;
+ } 
     }
- } */
 

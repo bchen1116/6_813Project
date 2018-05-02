@@ -624,4 +624,9 @@ a:hover {
     #logText {
         width: 130px;
     }
+
+    #logo {
+        height: 50px;
+        width: 120px;
+    }
 }
