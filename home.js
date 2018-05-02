@@ -1,32 +1,37 @@
-// JS code for home page. Handles the clicking responses on the page
+// JS code for home page. Handles the clicking responses on the home page
 
 
-// dormList is the list of active dorms on the page
-var dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"];
+
+var dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"]; // dormList is the list of active dorms on the page
 var currentDishes = ALLDISHES 
 var starColor = "#FF9B01";
-// var favDishes = favoriteDishes
-// allDorms is the dictionary that maps dorm name to Node element of dorm card
-var allDorms = {}; 
-var dieraryRestrictions = []        
+var allDorms = {};                                              // allDorms is the dictionary that maps dorm name to Node element of dorm card
+var dieraryRestrictions = []                                    // list of the dietary restirctions that are active on the page
+var globalMealTime = "dinner"
+var globalDate = "05/02/2018"
 
-function copyDishes(allDishes) { 
+// given a dictionary make a deep copy of the dictionary 
+// used to create a copy of all of the dishes in our database 
+function copyDishes(mainDict, globalMealTime) { 
     newDishes = {} 
-    for (var dorm in allDishes) {                               // for each dorm 
+    for (var dorm in mainDict) {                                            // for each dorm 
         dormDishes = {}
-        for (var meal in allDishes[dorm]) {                     // for each meal type 
+        for (var meal in mainDict[dorm]) {                                  // for each meal type, i.e. Entree, Side, Dessert  
             mealType = {}
-            for (var dish in allDishes[dorm][meal]) {           // for each dish  
-                mealType[dish] = allDishes[dorm][meal][dish]    // copy the dish data over 
+            for (var dish in mainDict[dorm][meal]) {                        // for each dish                  
+                if (mainDict[dorm][meal][dish]["time"] == globalMealTime && mainDict[dorm][meal][dish]["date"] == globalDate) {   // if the meal time is the same 
+                    mealType[dish] = mainDict[dorm][meal][dish]             // copy the dish data over, this is the deepest level of the dictionary 
+                }
             }
-            dormDishes[meal] = mealType                         // copy the meal data over 
+            dormDishes[meal] = mealType                         
         }
-        newDishes[dorm] = dormDishes                            // copy over the data for the dorm 
+        newDishes[dorm] = dormDishes                            
     }
-    return newDishes // return the new dishes
+    return newDishes                                                        // return the new dictionary 
 }                      
 
 // called when the checkbox on dorms are clicked/unclicked
+// used for filtering the dorms, in order to change what cards appear on the page 
 function onCheckClicked(cb, dorm) {
     if (cb.checked == false) {                                  // if it isn't checked, remove the dorm
         var index = dormList.indexOf(dorm);
@@ -51,22 +56,37 @@ function onCheckClicked(cb, dorm) {
     updateCardLayout();   
 }
 
-// called when the checkbox on dietary restrictions is clicked/unclicked
-function dietaryUpdate(cb, diet) { 
-    if (cb.checked == false) {                                  // remove it from the list of our dietary restrictions  
-        if (dieraryRestrictions.includes(diet)) {
-            var indexOfRemove = dieraryRestrictions.indexOf(diet);
-            dieraryRestrictions.splice(indexOfRemove, 1);
-            //console.log(dieraryRestrictions)
-        }
-    } else {                                                    // add it to the list of our dietary restrictions 
-        dieraryRestrictions.push(diet)
-    }
-    performdietaryFiltering()
+//called when the radio button to specify which meal type is to be displayed 
+function mealTimeUpdate(cb, mealTime){
+    // we can assume that tgus us called we are changing the display to be of that meal type
+    globalMealTime = mealTime
+    performdietaryFiltering() // filter out the dishes based on what we want
 }
 
+function mealDateUpdate(cb, mealDate) {
+    globalDate = mealDate
+    performdietaryFiltering()
+}
+// called when the checkbox on dietary restrictions is clicked/unclicked
+// used to trigger filtering of dishes based on the restrictions 
+function dietaryUpdate(cb, diet) { 
+    if (cb.checked == false) {                                      // if the checkbox is not checked 
+        if (dieraryRestrictions.includes(diet)) {                   // if it is already in the list of restrictions
+            var indexOfRemove = dieraryRestrictions.indexOf(diet);  // remove it from the list of our dietary restrictions
+            dieraryRestrictions.splice(indexOfRemove, 1);
+        }
+    } else {                                                        // if the checkbox is checked 
+        dieraryRestrictions.push(diet)                              // add it to the list of our dietary restrictions 
+    }
+    performdietaryFiltering()                                       // filter the dorms 
+}
+
+
+// filter out the dishes that are available based on the dietary restictions
+// TODO: This is where I'd assume we'd add the Mealtype, and Date filtering functionality
 function performdietaryFiltering() {
-    currentDishes = copyDishes(ALLDISHES)                                   // reset currentDishes to be everything
+    console.log(globalMealTime)
+    currentDishes = copyDishes(ALLDISHES, globalMealTime)                                   // reset currentDishes to be everything
     // go through our list of foods and remove the ones that do not fit the restriction & remove 
     for (var dorm in currentDishes) {                                       // go through the dorms 
         var dormCurrentDishes = currentDishes[dorm]
@@ -82,16 +102,16 @@ function performdietaryFiltering() {
             }
         }  
     }
-    // update the cards to reflect this change
-    updateDishesForDorms(currentDishes)
+    updateDishesForDorms(currentDishes)                                     // update the cards to reflect this change
 }
 
 
-// repopulates the dishes that are in the dorm based on the current dishes
+// repopulates the dishes that are in the dorm based on the current dishes 
+// updates the dishes presented on the cards  
 function updateDishesForDorms(currentDishes) { 
     dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"];         //recall the dormList to initiate allDorms
-    for (var i = 0; i < dormList.length; i++) {
-        allDorms[dormList[i]] = document.getElementById(dormList[i]);
+    for (var i = 0; i < dormList.length; i++) {                                         // for each dorm 
+        allDorms[dormList[i]] = document.getElementById(dormList[i]);                   // populate the card that is attached to the dorm 
     }
 
     //for each of the dorms, go through and populate their menu according to the data we have on file
@@ -102,7 +122,6 @@ function updateDishesForDorms(currentDishes) {
 
         // clear out all of the dishes that are attached to that menu
         while (menu.firstChild) {    
-            //console.log("in here")
             menu.removeChild(menu.firstChild);
         }
 
@@ -114,7 +133,7 @@ function updateDishesForDorms(currentDishes) {
             dish.addEventListener('click', function (evt) {
                 var foodName = evt.target.closest("p.card-title").id 
                 updateStarOnClick(evt)
-                updateFavorites(foodName)
+                updateFavorites("Entrees",foodName)
                 updateMenu()
             })
 
@@ -130,27 +149,18 @@ function updateDishesForDorms(currentDishes) {
 }
 
 
-// updates the star after a click
+// updates the star for favoriting after it has been pressed 
 function updateStarOnClick(e) { 
     try {
-        var currentStar = e.target.firstChild
-        var currentStarClass  = e.target.firstChild.getAttribute("class")
-        if (currentStarClass == "fa fa-star-o") {
+        var currentStar = e.target.firstChild                                   // find the star that we want to address 
+        var currentStarClass  = e.target.firstChild.getAttribute("class")       
+        if (currentStarClass == "fa fa-star-o") {                            
             currentStar.classList = "fa fa-star"
             currentStar.style.color = starColor
         } else { 
             currentStar.classList = "fa fa-star-o"
             currentStar.style.color = "black"
         }
-        // var currentStar = e.target.firstChild.getAttribute("class");
-        // var newStar = document.createElement("span");
-        // if (currentStar == "fa fa-star-o") {
-        //     newStar.setAttribute("class", "fa fa-star");
-        //     newStar.style.color = "#d19b3d";
-        // } else {
-        //     newStar.setAttribute("class", "fa fa-star-o");
-        // }
-        // e.target.replaceChild(newStar, e.target.firstChild);
     }   
     catch (E) {
         if (e.target.getAttribute("class") == "fa fa-star-o") {
@@ -161,21 +171,16 @@ function updateStarOnClick(e) {
             e.target.style.color = "black";
         }
     }
-    //e.stopPropogation();
 }
 
 
-// update our list of favorite food items
-function updateFavorites(dish) { 
-    if (favoriteDishes.includes(dish)) { // if the dish is already in favorites then we want to remove it 
-        var indexOfRemove = favoriteDishes.indexOf(dish);
-        if (indexOfRemove !== -1) {
-            favoriteDishes.splice(indexOfRemove, 1);
-        }
-    } else { // if the dish is not in favorites then add it 
-        favoriteDishes.push(dish)
+// update the list of favorite food items
+function updateFavorites(dishtype, dish) { 
+    if (favoriteDishes.isIn(dishtype,dish)) {                            // if the dish is already in favorites then we want to remove it 
+        favoriteDishes.removeDish(dishtype,dish)
+    } else {                                                             // if the dish is not in favorites then add it 
+        favoriteDishes.addDish(dishtype,dish)
     }
-    //console.log(favoriteDishes)
 }
 
 // after a dish has been added to favorites 
@@ -187,7 +192,7 @@ function updateMenu() {
         for (var j =0; j < Object.keys(dishesForDorm).length; j++) {
             var dishName = Object.keys(dishesForDorm)[j]
             var relevantStar = document.getElementById("star" + dormName + "," + dishName)
-            if (favoriteDishes.includes(dishName)) { 
+            if (favoriteDishes.isIn("Entrees",dishName)) { 
                 relevantStar.setAttribute("class", "fa fa-star")
                 relevantStar.style.color = starColor
             } else { 
@@ -253,7 +258,7 @@ $(document).ready(function() {
             dish.addEventListener('click', function (evt) {
                 var foodName = evt.target.closest("p.card-title").id 
                 updateStarOnClick(evt)
-                updateFavorites(foodName)
+                updateFavorites("Entrees", foodName)
                 updateMenu()
             })
 
@@ -340,7 +345,7 @@ function loadModal(e) {
 
 
         for (var meal in currentDishes[dormName]) {
-            var mealType = Util.create("h4", {"class":"modal-food-type"})
+            var mealType = Util.create("h4", {"class":"modal-food-type", "id": meal})
             mealType.appendChild(document.createTextNode(""+ meal))
             modalBody.appendChild(mealType)
 
@@ -395,15 +400,16 @@ function loadModal(e) {
                 // This is what happens when we click on a star
                 foodItem.addEventListener('click', function(evt) {
                     var foodName = evt.path[0].id
+                    var foodType = evt.target.closest("h4.modal-food-type").id
                     //console.log("food",evt.path[0], foodName)
                     updateStarOnClick(evt)
-                    updateFavorites(foodName)
+                    updateFavorites(foodType, foodName)
                     updateMenu()
                 })
 
 
                 //make sure that the favorites are updated
-                if (favoriteDishes.includes(dish)) { 
+                if (favoriteDishes.isIn("Entrees",dish)) { 
                     fav.setAttribute("class", "fa fa-star")
                     fav.style.color = starColor
                 } else { 

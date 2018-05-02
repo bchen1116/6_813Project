@@ -29,6 +29,7 @@ window.addEventListener('load', function() {
     window.addEventListener("click", windowOnClick);
 });
 
+// uodating the color on a star
 function updateStarOnClick(e) { 
     try {
         var currentStar = e.target.firstChild
@@ -40,15 +41,6 @@ function updateStarOnClick(e) {
             currentStar.classList = "fa fa-star-o"
             currentStar.style.color = "black"
         }
-        // var currentStar = e.target.firstChild.getAttribute("class");
-        // var newStar = document.createElement("span");
-        // if (currentStar == "fa fa-star-o") {
-        //     newStar.setAttribute("class", "fa fa-star");
-        //     newStar.style.color = "#d19b3d";
-        // } else {
-        //     newStar.setAttribute("class", "fa fa-star-o");
-        // }
-        // e.target.replaceChild(newStar, e.target.firstChild);
     }   
     catch (E) {
         if (e.target.getAttribute("class") == "fa fa-star-o") {
@@ -59,5 +51,34 @@ function updateStarOnClick(e) {
             e.target.style.color = "black";
         }
     }
-    //e.stopPropogation();
 }
+
+//when the document is ready
+Util.events(document, {
+    "DOMContentLoaded": function() {
+        for (var dishType in favoriteDishes.dishTypes) {
+
+            var element = document.getElementById(dishType)
+            for (var dishName in favoriteDishes.favorites(dishType)){
+                console.log(dishName)
+                var dish = Util.create("p", {"class":"card-title", "id": dishName+"FavPage"})
+
+                // make it so that you can click anywhere on the dish to add/remove from favorites
+                dish.addEventListener('click', function (evt) {
+                    var foodName = evt.target.closest("p.card-title").id 
+                    updateStarOnClick(evt)
+                    updateFavorites("Entrees", foodName)
+                    updateMenu()
+                })
+
+                var fav = Util.create("span", {"class":"fa fa-star", "id": "star" + dishName})
+                var text = document.createTextNode(" "+dishName)
+                
+                dish.appendChild(fav)
+                dish.appendChild(text)
+                element.appendChild(dish)
+            }
+        }
+    }
+})
+    

@@ -67,15 +67,31 @@
             <a href="#meal" class="list-group-item list-group-item strong" data-toggle="collapse" data-parent="#MainMenu"> Meal Type </a>
             <div class="collapse list-group-submenu panel" id="meal">
                 <a href="#" class="list-group-item">
-                    <input type="radio" name="radio-group" id="c1">&nbsp; <label for="c1"><span></span>Breakfast/Brunch</label></a>
+                    <input type="radio" name="radio-group" id="c1" onclick="mealTimeUpdate(this, 'breakfast')">&nbsp; <label for="c1"><span></span>Breakfast/Brunch</label></a>
                 <a href="#" class="list-group-item">
-                    <input type="radio" name="radio-group" id="c2">&nbsp; <label for="c2"><span></span>Lunch</label></a>
+                    <input type="radio" name="radio-group" id="c2" onclick="mealTimeUpdate(this, 'lunch')">&nbsp; <label for="c2"><span></span>Lunch</label></a>
                 <a href="#" class="list-group-item">
-                    <input type="radio" name="radio-group" id="c3" checked>&nbsp; <label for="c3"><span></span>Dinner</label></a>
+                    <input type="radio" name="radio-group" id="c3" checked onclick="mealTimeUpdate(this, 'dinner')">&nbsp; <label for="c3"><span></span>Dinner</label></a>
                 <a href="#" class="list-group-item">
-                    <input type="radio" name="radio-group" id="c4">&nbsp; <label for="c4"><span></span>Late Night</label></a>
+                    <input type="radio" name="radio-group" id="c4" onclick="mealTimeUpdate(this, 'late night')">&nbsp; <label for="c4"><span></span>Late Night</label></a>
             </div>
-            <a href="#date" class="list-group-item list-group-item strong" data-toggle="collapse" data-parent="#MainMenu"> Date</a>
+            <a href="#date" class="list-group-item list-group-item strong" data-toggle="collapse" data-parent="#MainMenu"> Date </a>
+            <div class="collapse list-group-submenu panel" id="time">
+                <a href="#" class="list-group-item">
+                    <input type="radio" name="radio-group" id="c1" onclick="mealDateUpdate(this, '05/02/2018')">&nbsp; <label for="c1"><span></span>Wednesday, May 2</label></a>
+                <a href="#" class="list-group-item">
+                    <input type="radio" name="radio-group" id="c2" onclick="mealDateUpdate(this, '05/03/2018')">&nbsp; <label for="c2"><span></span>Thursday, May 3</label></a>
+                <a href="#" class="list-group-item">
+                    <input type="radio" name="radio-group" id="c3" checked onclick="mealDateUpdate(this, '05/04/2018)">&nbsp; <label for="c3"><span></span>Friday, May 4</label></a>
+                <a href="#" class="list-group-item">
+                    <input type="radio" name="radio-group" id="c4" onclick="mealDateUpdate(this, '05/05/2018')">&nbsp; <label for="c4"><span></span>Saturday, May 5</label></a>
+                <a href="#" class="list-group-item">
+                    <input type="radio" name="radio-group" id="c4" onclick="mealDateUpdate(this, '05/06/2018')">&nbsp; <label for="c4"><span></span>Sunday, May 6</label></a>
+                <a href="#" class="list-group-item">
+                    <input type="radio" name="radio-group" id="c4" onclick="mealDateUpdate(this, '05/07/2018')">&nbsp; <label for="c4"><span></span>Monday, May 7</label></a>
+                <a href="#" class="list-group-item">
+                    <input type="radio" name="radio-group" id="c4" onclick="mealDateUpdate(this, '05/08/2018')">&nbsp; <label for="c4"><span></span>Tuesday, May 8</label></a>
+            </div>
         </div>
     </div>
 

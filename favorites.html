@@ -13,8 +13,11 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <link href="navbar.css" rel="stylesheet" type="text/css">
 <link href="favorites.css" rel="stylesheet" type="text/css">
+<script src="dataStore.js"></script>
+<script src="util.js"></script>
 <script src="favorites.js"></script>
 <script src="home.js"></script>
+
 
 <head>
     <title>Feedr</title>
@@ -33,7 +36,11 @@
 
     <div class="favoritesClass" id="mainClass">
         <div class="card text-white bg-info mb-3" id="specials">
-            <div class="card-header">Entrees</div>
+            <div class="card-header" id="EntreesFavPage">Entrees</div>
+            <div class="card-body"> </div>
+        </div>
+        <div class="card text-white bg-info mb-3" id="specials">
+            <div class="card-header" id="VegetablesFavPage">Vegetables</div>
             <div class="card-body">
                 <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 1</p>
                 <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 2</p>
@@ -44,7 +51,7 @@
             </div>
         </div>
         <div class="card text-white bg-info mb-3" id="specials">
-            <div class="card-header">Vegetables</div>
+            <div class="card-header" id="SidesFavPage">Sides</div>
             <div class="card-body">
                 <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 1</p>
                 <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 2</p>
@@ -55,18 +62,7 @@
             </div>
         </div>
         <div class="card text-white bg-info mb-3" id="specials">
-            <div class="card-header">Sides</div>
-            <div class="card-body">
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 1</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 2</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 3</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 4</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 5</p>
-                <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 6</p>
-            </div>
-        </div>
-        <div class="card text-white bg-info mb-3" id="specials">
-            <div class="card-header">Desserts</div>
+            <div class="card-header" id="DessertFavPage">Dessert</div>
             <div class="card-body">
                 <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 1</p>
                 <p class="card-title" onclick="updateStarOnClick(event)"><span class="fa fa-star-o"></span> Entree 2</p>
