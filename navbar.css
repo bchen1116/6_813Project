@@ -120,14 +120,18 @@ a1:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #f0eceb;
-    width: 24rem;
+    /* width: 24rem; */
     border-radius: 0.5rem;
     justify-content: center;
 }
 
 .formInput {
     width: 100%;
+    height: 30px;
+    padding-left: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #33333328;
 }
 .close-button {
     float: right;
@@ -136,7 +140,7 @@ a1:hover {
     text-align: center;
     cursor: pointer;
     color: #f0eceb;
-    font-size: 25px;
+    font-size: 28px;
     background-color: transparent;
 }
 .close-button:hover {
@@ -170,6 +174,14 @@ input {
     font-weight: bold;
     margin-top: 10px;
     color:white;
+    position: relative;
+    cursor: pointer;
+    /* margin-left: 25%; */
+    height: 30px;
+}
+
+.submit-form:hover {
+    background-color: var(--buttonColor);
 }
 
 .card-header {
@@ -319,7 +331,71 @@ form > .button:hover {
 
 } */
 
+.incard {
+    width: 220px !important;
+    margin-right: 20px !important;
+}
+.incard:hover {
+    cursor: pointer;
+}
+.form2 {
+    margin-top: -4px !important;
+}
+.signed {
+    left: 50% !important;
+}
+#signText {
+    text-align: center;
+}
 
+#logText {
+    text-align: center;
+}
+
+.signClose {
+    margin-left: -30px;
+    margin-top: -30px;
+}
+
+/* #profilePage { */
+    /* display: none; */
+/* } */
+
+/* #logout { */
+    /* display: none; */
+/* } */
+
+#login {
+    display: none;
+}
+
+#signUp {
+    display: none;
+}
+.signUpForm {
+    width: 500px;
+    padding: 30px;
+    /* padding-left: 20px; */
+    /* padding-right: 30px; */
+    /* padding-bottom: 30px; */
+}
+.signUpHeader{
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    background: linear-gradient(90deg, #f6f3f3 50%, #333333 0%);
+    border: transparent;
+}
+a {
+    width:auto;
+}
+a:hover {
+    text-decoration: none;
+}
+.signBody {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+}
 .navbar {
     background-color: var(--header-color);
     z-index: 1;
@@ -338,6 +414,20 @@ form > .button:hover {
 .search-text{
     font-size: 16px;
     font-family: arial;
+}
+.dropdown-item:focus {
+    /* background-color: #f0eceb; */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.loginBody {
+    /* display: flex; */
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
 }
 
 @media (min-width: 992px) { 
@@ -515,5 +605,23 @@ form > .button:hover {
     .dropdown-item:hover {
         background-color: transparent;
         color: var(--buttonColor);
+    }
+
+    .incard {
+        width: 120px !important;
+    }
+
+    .signUpForm {
+        width: 300px;
+    }
+    .signUpHeader {
+        width: 300px;
+    }
+
+    #signText {
+        width: 130px;
+    }
+    #logText {
+        width: 130px;
     }
 }
