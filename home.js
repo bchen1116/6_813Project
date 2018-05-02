@@ -113,8 +113,7 @@ a.addEventListener('submit',function(e) {
     e.preventDefault();
     var b = document.getElementById('text-input').value;
     console.log(b);
-    if (ALLDISHES) {
-    currentDishes = copyDishes(ALLDISHES)                                   // reset currentDishes to be everything
+    currentDishes = copyDishes(ALLDISHES, globalMealTime) ;
     // go through our list of foods and remove the ones that do not fit the restriction & remove 
     for (var dorm in currentDishes) {                                       // go through the dorms 
         var dormCurrentDishes = currentDishes[dorm]
@@ -130,8 +129,9 @@ a.addEventListener('submit',function(e) {
     }
 
     // update the cards to reflect this change
+    console.log(currentDishes);
     updateDishesForDorms(currentDishes)
-    }
+    
 });
 
 // repopulates the dishes that are in the dorm based on the current dishes 
