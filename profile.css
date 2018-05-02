@@ -3,7 +3,7 @@
 /* helpers/align.css */
 .navHolder {
   position: absolute;
-  margin-top: -50px;
+  margin-top: -20px;
 }
 
 .align {
@@ -219,7 +219,7 @@
 
 .profile-grid {
   position: relative;
-  margin-top: 50px;
+  margin-top: 20px;
   display: flex;
   flex-flow: row wrap;
   align-items: center;

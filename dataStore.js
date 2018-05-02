@@ -40,6 +40,8 @@ simmonsDishes = {"Entrees":{"Roasted Chicken": roastedChicken, "Vegetable Medley
 const ALLDISHES = {"baker": bakerDishes, "next": nextDishes, "mccormick": mccormickDishes, "simmons":simmonsDishes, "maseeh": maseehDishes}
 const SPECIALS = ["Sushi Night at Baker Dorm", "Soul Food in McCormick", "Pizza Night in Next House", "Vegan Friendly Food in Simmons", "There is Nothing Special in Maseeh"] 
 var favoriteDishes = []
+var selectedDorms = []
+var selectedDietaryRestrictions = []
 
 
 
