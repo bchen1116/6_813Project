@@ -7,7 +7,9 @@ window.addEventListener('load', function() {
     var submit = document.querySelector(".submit-form");
     var closeButton = document.querySelector(".close-button");
     var a1 = document.querySelectorAll(".dropdown-item")
-
+    var navigationalItems = document.querySelectorAll(".nav-link");
+    // console.log(navigationalItems[0])
+    navigationalItems[1].style.color = "#f0eceb"
     function toggleModal() {
         modal.classList.toggle("show-modal");
     }

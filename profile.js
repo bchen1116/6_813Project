@@ -1,10 +1,13 @@
+// code for navbar
 window.addEventListener('load', function() {
     var modal = document.querySelector(".form-request");
     var trigger = document.querySelector(".form");
     var submit = document.querySelector(".submit-form");
     var closeButton = document.querySelector(".close-button");
-    var a1 = document.querySelector(".dropdown-item")
-
+    var a1 = document.querySelectorAll(".dropdown-item")
+    var navigationalItems = document.querySelectorAll(".nav-link");
+    // console.log(navigationalItems[0])
+    navigationalItems[2].style.color = "#f0eceb"
     function toggleModal() {
         modal.classList.toggle("show-modal");
     }

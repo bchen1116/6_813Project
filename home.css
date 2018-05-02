@@ -415,15 +415,22 @@ body {
     color: var(--side-color);
  }
 
+ /* @keyframes moving {
+     0% {
+        transform: translateX(100px);
+     }
+     100% {
+         transform: translateX(0);
+     }
+ }
 
- @media (max-width: 800px) {
+ @media (max-width: 930px) {
     .list-group.panel {
-        
-        transition: all 0.8s cubic-bezier(0.810, -0.330, 0.345, 1.375);
-        margin-left: -200px;
+        height: 110vh;
+        margin-left: -100px;
     }
     .mainClass {
         margin-left: 0px;
     }
- }
+ } */
 
