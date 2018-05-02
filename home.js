@@ -86,6 +86,32 @@ function performdietaryFiltering() {
     updateDishesForDorms(currentDishes)
 }
 
+//search
+var a = document.getElementById('food-search');
+console.log(a);
+a.addEventListener('submit',function(e) {
+    e.preventDefault();
+    var b = document.getElementById('text-input').value;
+    console.log(b);
+    
+    currentDishes = copyDishes(ALLDISHES)                                   // reset currentDishes to be everything
+    // go through our list of foods and remove the ones that do not fit the restriction & remove 
+    for (var dorm in currentDishes) {                                       // go through the dorms 
+        var dormCurrentDishes = currentDishes[dorm]
+        for (var meal in currentDishes[dorm]) {                             // go through all of the meals 
+            var currentMealDishes = currentDishes[dorm][meal]
+            for (var dishName in currentMealDishes) {                       // go through the dishes for that meal 
+                var dish = currentMealDishes[dishName]
+                if (! dish["description"].toUpperCase().includes(b.toUpperCase())) {  // if the food does not satify the restriction 
+                    delete currentDishes[dorm][meal][dishName]          // remove it from the currentDishes
+                }
+            }
+        }  
+    }
+    // update the cards to reflect this change
+    updateDishesForDorms(currentDishes)
+
+});
 
 // repopulates the dishes that are in the dorm based on the current dishes
 function updateDishesForDorms(currentDishes) { 

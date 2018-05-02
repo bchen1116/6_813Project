@@ -2,6 +2,8 @@
 <!-- insert this to your header: <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
 <!-- see how it is implemented in index.html -->
 
+<script src="home.js"></script>
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
 
     <a class="navbar-brand" href="index.html">
@@ -9,9 +11,9 @@
 
     </a>
     <a class="navbar-brand search-bar">
-        <form method="post">
-            <input type="text" class="textbox search-text" placeholder="Search for Food">
-            <input title="Search" value="" class="button">
+        <form method="get" id="food-search">
+            <input type="text" class="textbox search-text" id="text-input" placeholder="Search for Food">
+            <button title="Search" class="button"></button>
         </form>
     </a>
     <ul class="nav navbar-right original">
