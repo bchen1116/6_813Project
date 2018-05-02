@@ -17,6 +17,7 @@
     crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="profile.js"></script>
+<script src="dataStore.js"></script>
   
       <link rel="stylesheet" href="profile.css">
       <link href="navbar.css" rel="stylesheet" type="text/css">
@@ -99,28 +100,28 @@
 				</div>
 				<div class = "info">
 					<label class="container">
-				        <input type="checkbox" onclick = "clickedDining(this, 'baker')">
+				        <input type="checkbox" id="baker" onclick = "clickedDining(this, 'baker')" >
 				        <span class="checkmark"></span>Baker
 				      </label>
 
 				      <label class="container">
-				        <input type="checkbox" onclick = "clickedDining(this, 'maseeh')">
+				        <input type="checkbox" id="maseeh" onclick = "clickedDining(this, 'maseeh')">
 				        <span class="checkmark"></span>Maseeh
 				      </label>
-
+ 
 				      <label class="container">
-				        <input type="checkbox" onclick = "clickedDining(this, 'mccormick')">
+				        <input type="checkbox" id="mccormick" onclick = "clickedDining(this, 'mccormick')">
 				        <span class="checkmark"></span>McCormick
 				      </label>
 
 				      <label class="container">
-				        <input type="checkbox" onclick = "clickedDining(this, 'next')">
+				        <input type="checkbox" id="next" onclick = "clickedDining(this, 'next')">
 				        <span class="checkmark"></span>Next
 				        <!-- <div>Next</div> -->
 				      </label>
 
 				      <label class="container">
-				        <input type="checkbox" onclick = "clickedDining(this, 'simmons')">
+				        <input type="checkbox" id="simmons" onclick = "clickedDining(this, 'simmons')">
 				        <span class="checkmark"></span>Simmons
 				      </label>
 
