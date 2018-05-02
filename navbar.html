@@ -3,7 +3,7 @@
 <!-- see how it is implemented in index.html -->
 
 <script src="home.js"></script>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- <nav class="navbar navbar-inverse navbar-fixed-top"> -->
 
 <!-- <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -89,10 +89,16 @@
     <a class="navbar-brand" href="index.html">
             <img id="logo" src="feedr8.png" alt="HTML tutorial" style="top: 5px;width:150px;height:60px;border:0;">
     </a>
-    <a class="navbar-brand search-bar">
+    <!-- <a class="navbar-brand search-bar">
         <form method="post">
             <input type="text" class="textbox search-text" placeholder="Search for Food">
             <input title="Search" value="" class="button">
+        </form>
+    </a> -->
+    <a class="navbar-brand search-bar">
+        <form method="get" id="food-search">
+            <input type="text" class="textbox search-text" id="text-input" placeholder="Search for Food">
+            <button title="Search" class="button"></button>
         </form>
     </a>
      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
