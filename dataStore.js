@@ -47,7 +47,8 @@ brk = "breakfast"; brh = "brunch"; lh = "lunch"; dr = "dinner"; ln = "late night
 mon = "05/02/2018"; tue = "04/24/2018"; wed = "04/25/2018"; tr = "04/26/2018"; fr = "04/27/2018"; sat = "04/28/2018"; sun = "04/29/2018"
 
 
-//Dishes format | dish = {diet:["vegan", "halal"], time:"dinner", date:"date", calories: 500}
+//Dishes dinner mon
+//format | dish = {diet:["vegan", "halal"], time:"dinner", date:"date", calories: 500}
 roastedChicken = {diet: [hal, gnFree], time: dr, date:mon, description: "Herb Roasted Chicken with potatoes and zuccini on the side"}
 vegetableMedley = {diet: [veg, vg, kos, hal, gnFree], time: dr, date:mon, description: "Roasted Vegtable Medley with Rosmary"}
 chickenFingers = {diet: [kos,hal], time: dr, date: mon, description: "Breaded Chicken Fingers"}
@@ -63,6 +64,10 @@ vegetableSoup = {diet: [veg, vg, gnFree], time:dr, date: mon, description: "Warm
 tofuWVeggies = {diet: [veg, vg, gnFree], time: dr, date: mon, description: "Tofu Bowl with quinua base and vegtable salad"}
 chickenCurry = {diet: [gnFree, hal], time: dr, date: mon, description: "Chicken Curry with basmati rice"}
 pineapplePorkCutlet = {diet: [gnFree], time: dr, date: mon, description: "Pinapple Pork Cutlet served with rice"}
+
+
+//Dishes lunch mon
+vegetableStirfry = {diet: [veg], time: lh, date: mon, description: }
 
 
 //Sides 
@@ -87,6 +92,7 @@ simmonsDishes = {"Entrees":{"Breakfast Tofu":tofuBowlBreakfast,"Roasted Chicken"
 const ALLDISHES = {"baker": bakerDishes, "next": nextDishes, "mccormick": mccormickDishes, "simmons":simmonsDishes, "maseeh": maseehDishes}
 const SPECIALS = ["Sushi Night at Baker Dorm", "Soul Food in McCormick", "Pizza Night in Next House", "Vegan Friendly Food in Simmons", "There is Nothing Special in Maseeh"] 
 const favoriteDishes = new favorites();
+var dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"]; // dormList is the list of active dorms on the page
 
 
 
