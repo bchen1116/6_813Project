@@ -113,24 +113,39 @@ window.addEventListener('load', function() {
     submit[1].addEventListener("click", toggleSignInModal);
     window.addEventListener("click", windowOnClick);
 });
-$(document).ready(function() {
-    
-});
+
 var profileDorms = ["specials"];
+var dormCheckbox = {"baker": false, "mccormick": false, "simmons": false, "next": false, "maseeh": false} 
+
+window.addEventListener('load', function() {
+  for (var key in dormCheckbox){
+    if (dormCheckbox[key] == true) {
+        console.log(document.getElementById(key));
+        document.getElementById(key).checked = true;
+    }
+  }
+});
+
 function clickedDining(check, dorm) {
     console.log(check, dorm)
     console.log(check.checked)
-    if (check.checked == false) {                                  // if it isn't checked, remove the dorm
+    if (check.checked == false) {    
+        console.log("false"); 
+        dormCheckbox[dorm] = false;                               // if it isn't checked, remove the dorm
         var index = profileDorms.indexOf(dorm);
         if (index > -1) {                                   
             profileDorms.splice(index, 1);
-            document.getElementById(dorm).checked = false;                          // remove dorm from dormList             // remove it from the document
+                                    // remove dorm from dormList             // remove it from the document
         }
     } else if (check.checked == true) {                            // otherwise if it is checked
+        console.log("true");
+        console.log(dorm);
+        console.log(document.getElementById(dorm).checked);
         var index = profileDorms.indexOf(dorm);
+        dormCheckbox[dorm] = true;
         if (index = -1) {                                       // if the dorm isn't in the dormList, add it                             
             profileDorms.push(dorm); 
-            document.getElementById(dorm).checked = true;
+            
         }
         console.log(event.target);
 
