@@ -417,6 +417,10 @@ body {
     color: var(--side-color);
  }
 
+ .radioLabel {
+    height: 30px !important;
+    margin-top: -23px !important;
+ }
  /* @keyframes moving {
      0% {
         transform: translateX(100px);
@@ -434,5 +438,6 @@ body {
     .mainClass {
         margin-left: 0px;
  } 
-    }
+}
+
 

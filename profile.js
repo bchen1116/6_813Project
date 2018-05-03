@@ -7,7 +7,7 @@ window.addEventListener('load', function() {
     var closeButton = document.querySelectorAll(".close-button");       // x button for both formrequest and signIn/logIn
     var a1 = document.querySelector(".dropdown-item");
     var navigationalItems = document.querySelectorAll(".nav-link");
-    navigationalItems[0].style.color = "#f0eceb"
+    navigationalItems[2].style.color = "#f0eceb"
     var navButton = document.querySelector(".navbar-toggler");
     var dropDown = document.querySelector(".original");
     var signIn = document.querySelector("#signUp");                 // sign up button

@@ -547,7 +547,7 @@ a:hover {
     }
     
     .search-bar {
-        left: 170px;
+        left: 140px;
     }
 
     .navbar-nav {
@@ -626,7 +626,8 @@ a:hover {
     }
 
     #logo {
-        height: 50px;
-        width: 120px;
+        height: 50px !important;
+        width: 120px !important;
+        margin-top: 6px;
     }
 }
