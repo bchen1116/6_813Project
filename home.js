@@ -3,7 +3,7 @@
 
 
 var dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"]; // dormList is the list of active dorms on the page
-var currentDishes = ALLDISHES 
+var currentDishes; 
 var starColor = "#FF9B01";
 var allDorms = {};                                              // allDorms is the dictionary that maps dorm name to Node element of dorm card
 var dieraryRestrictions = []                                    // list of the dietary restirctions that are active on the page
@@ -13,13 +13,14 @@ var globalDate = "05/02/2018"
 
 // given a dictionary make a deep copy of the dictionary 
 // used to create a copy of all of the dishes in our database 
-function copyDishes(mainDict, globalMealTime) { 
+function copyDishes(mainDict, globalMealTime, globalDate) { 
     newDishes = {} 
     for (var dorm in mainDict) {                                            // for each dorm 
         dormDishes = {}
         for (var meal in mainDict[dorm]) {                                  // for each meal type, i.e. Entree, Side, Dessert  
             mealType = {}
-            for (var dish in mainDict[dorm][meal]) {                        // for each dish                  
+            for (var dish in mainDict[dorm][meal]) {                        // for each dish  
+                console.log(mainDict[dorm][meal][dish]["date"],globalDate)                
                 if (mainDict[dorm][meal][dish]["time"] == globalMealTime && mainDict[dorm][meal][dish]["date"] == globalDate) {   // if the meal time is the same 
                     mealType[dish] = mainDict[dorm][meal][dish]             // copy the dish data over, this is the deepest level of the dictionary 
                 }
@@ -87,7 +88,7 @@ function dietaryUpdate(cb, diet) {
 // TODO: This is where I'd assume we'd add the Mealtype, and Date filtering functionality
 function performdietaryFiltering() {
     console.log(globalMealTime)
-    currentDishes = copyDishes(ALLDISHES, globalMealTime)                                   // reset currentDishes to be everything
+    currentDishes = copyDishes(ALLDISHES, globalMealTime, globalDate)       // reset currentDishes to be everything
     // go through our list of foods and remove the ones that do not fit the restriction & remove 
     for (var dorm in currentDishes) {                                       // go through the dorms 
         var dormCurrentDishes = currentDishes[dorm]
@@ -110,10 +111,11 @@ function performdietaryFiltering() {
 var a = document.getElementById('food-search');
 console.log(a);
 a.addEventListener('submit',function(e) {
+    console.log("here")
     e.preventDefault();
     var b = document.getElementById('text-input').value;
     console.log(b);
-    currentDishes = copyDishes(ALLDISHES, globalMealTime) ;
+    currentDishes = copyDishes(ALLDISHES, globalMealTime, globalDate) ;
     // go through our list of foods and remove the ones that do not fit the restriction & remove 
     for (var dorm in currentDishes) {                                       // go through the dorms 
         var dormCurrentDishes = currentDishes[dorm]
@@ -267,6 +269,7 @@ function sortDorms(dorms) {
 
 $(document).ready(function() { 
     // called when the document is ready 
+    currentDishes = copyDishes(ALLDISHES, globalMealTime, globalDate)
     dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"];         //recall the dormList to initiate allDorms
     for (var i = 0; i < dormList.length; i++) {
         allDorms[dormList[i]] = document.getElementById(dormList[i]);
