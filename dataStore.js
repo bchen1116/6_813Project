@@ -131,6 +131,7 @@ herbFries = {diet: [gnFree, vg, veg], time: lh, date: sat, description: "French 
 truffleFries = {diet: [hal, gnFree, vg, veg], time: dr, date: tue, description: "French fries with truffle butter"}
 truffleFries = {diet: [hal, gnFree, vg, veg], time: lh, date: mon, description: "French fries with truffle butter"}
 taterTots = {diet: [hal, gnFree, vg, kos, hal, veg], time: dr, date: tue, description: "Crispy tater tots with salt"}
+taterTots = {diet: [hal, gnFree, vg, kos, hal, veg], time: dr, date: tr, description: "Crispy tater tots with salt"}
 cheesyTaterTots = {diet: [gnFree], time: dr, date: wed, description: "Crispy tater tots with melted cheddar and spring onions"}
 cheesyTaterTots = {diet: [gnFree], time: dr, date: fr, description: "Crispy tater tots with melted cheddar and spring onions"}
 chipsAndHummus = {diet: [hal, vg, kos, veg], time: dr, date: tue, description: "3 types of corn chips with different types of hummus choices"}
@@ -160,7 +161,7 @@ pigsInABlanket = {diet: [], time: lh, date: fr, description: "Mini bratwurst sau
 meatloversChili = {diet: [], time: lh, date: sun, description: "Chili with a hearty portion of beef mince"}
 meatloversChili = {diet: [], time: lh, date: sat, description: "Chili with a hearty portion of beef mince"}
 meatloversChili = {diet: [], time: dr, date: mon, description: "Chili with a hearty portion of beef mince"}
-meatloversChili = {diet: [], time: lh, date: th, description: "Chili with a hearty portion of beef mince"}
+meatloversChili = {diet: [], time: lh, date: tr, description: "Chili with a hearty portion of beef mince"}
 meatloversChili = {diet: [], time: lh, date: fr, description: "Chili with a hearty portion of beef mince"}
 
 
@@ -196,11 +197,12 @@ eggsBenedict = {diet: [hal], time: brh, date: sat, description: "Poached eggs, b
 
 
 // Dorm dishes format | DormDishes = {entree: {diet:["vegan", "halal"], time:"dinner", date:"date", calories: 500}}
-bakerDishes = {"Entrees": {"Breakfast Tofu":tofuBowlBreakfast,"Roasted Chicken": roastedChicken, "Vegetable Medley":vegetableMedley, "Chicken Fingers":chickenFingers, "Chicken Curry": chickenCurry, "Jerked Tofu With Veggies": tofuWVeggies, "Pineapple Pork Cutlet": pineapplePorkCutlet}, "Sides": {"Chicken Curry":chickenCurry, "Pineapple Pork Cutlet": pineapplePorkCutlet}}
-maseehDishes = {"Entrees":{"Breakfast Tofu":tofuBowlBreakfast,"Shrimp Bowl": shrimpBowl, "Chicken Bowl":chickenBowl, "Shrimp Bowl":shrimpBowl, "Chicken Soup": chickenSoup, "Vegetable Soup": vegetableSoup, "Chicken Curry":chickenCurry, "Pineapple Pork Cutlet": pineapplePorkCutlet}}
-nextDishes = {"Entrees":{"Breakfast Tofu":tofuBowlBreakfast,"Tofu Bowl": tofuBowl, "Steamed Mussels": steamedMussels, "Grilled Pork Over Basmati Rice": grilledPorkOverRice, "Chicken Curry": chickenCurry, "Jerked Tofu With Veggies": tofuWVeggies, "Pineapple Pork Cutlet": pineapplePorkCutlet}}
-mccormickDishes = {"Entrees":{"Breakfast Tofu":tofuBowlBreakfast,"Roasted Chicken": roastedChicken, "Vegetable Medley":vegetableMedley, "Chicken Fingers":chickenFingers, "Vegetable Soup": vegetableSoup, "Chicken Curry":chickenCurry, "Pineapple Pork Cutlet": pineapplePorkCutlet}}
-simmonsDishes = {"Entrees":{"Breakfast Tofu":tofuBowlBreakfast,"Roasted Chicken": roastedChicken, "Vegetable Medley":vegetableMedley, "Chicken Fingers":chickenFingers, "Vegetable Soup": vegetableSoup, "Chicken Curry":chickenCurry, "Pineapple Pork Cutlet": pineapplePorkCutlet}}
+bakerDishes = {"Entrees": {"Pepperoni Pizza":pepperioniPizza, "Hawaiian Pizza":hawaiianPizza, "Eggs Benedict": eggsBenedict, "Breakfast Tofu":tofuBowlBreakfast,"Roasted Chicken": roastedChicken, "Vegetable Medley":vegetableMedley, "Chicken Fingers":chickenFingers, "Chicken Curry": chickenCurry, "Jerked Tofu With Veggies": tofuWVeggies, "Pineapple Pork Cutlet": pineapplePorkCutlet}, "Sides": {"Chicken Curry":chickenCurry, "Pineapple Pork Cutlet": pineapplePorkCutlet, "Herb Fries":herbFries, "Cheesy Tater Tots":cheesyTaterTots, "Asian Noodle Salad": asianNoodleSalad, "Banana Smoothie":bananaSmoothie, "Collard Greens":collardGreens}}
+maseehDishes = {"Entrees":{"Pepperoni Pizza":pepperioniPizza, "Hawaiian Pizza":hawaiianPizza,"Breakfast Tofu":tofuBowlBreakfast,"Shrimp Bowl": shrimpBowl, "Chicken Bowl":chickenBowl, "Shrimp Bowl":shrimpBowl, "Chicken Soup": chickenSoup, "Vegetable Soup": vegetableSoup, "Chicken Curry":chickenCurry, "Pineapple Pork Cutlet": pineapplePorkCutlet}, "Sides": {"Truffle Fries":truffleFries, "Chips and Hummus":chipsAndHummus, "Tater Tots":taterTots, "Pineapple Smoothie": pineappleSmoothie, "Bratwurst Corndog":bratwurstCorndog, "Meat Lover's Chili":meatloversChili}}
+nextDishes = {"Entrees":{"Pepperoni Pizza":pepperioniPizza, "Eggs Benedict": eggsBenedict, "Breakfast Tofu":tofuBowlBreakfast,"Tofu Bowl": tofuBowl, "Steamed Mussels": steamedMussels, "Grilled Pork Over Basmati Rice": grilledPorkOverRice, "Chicken Curry": chickenCurry, "Jerked Tofu With Veggies": tofuWVeggies, "Pineapple Pork Cutlet": pineapplePorkCutlet}, "Sides": {"Chicken Curry":chickenCurry,
+				"Truffle Fries":truffleFries, "Tater Tots":taterTots, "Chips and Hummus":chipsAndHummus, "Pineapple Smoothie": pineappleSmoothie, "Bratwurst Corndog":bratwurstCorndog}}
+mccormickDishes = {"Entrees":{"Breakfast Tofu":tofuBowlBreakfast,"Roasted Chicken": roastedChicken, "Vegetable Medley":vegetableMedley, "Chicken Fingers":chickenFingers, "Vegetable Soup": vegetableSoup, "Chicken Curry":chickenCurry, "Pineapple Pork Cutlet": pineapplePorkCutlet}, "Sides": {"Pineapple Pork Cutlet": pineapplePorkCutlet,"Cheesy Tater Tots":cheesyTaterTots, "Waffle Fries":waffleFries, "Asian Noodle Salad":asianNoodleSalad, "Banana Smoothie":bananaSmoothie, "Collard Greens":collardGreens, "Pigs in a Blanket":pigsInABlanket, "Meat Lover's Chili":meatloversChili}}
+simmonsDishes = {"Entrees":{"Pepperoni Pizza":pepperioniPizza, "Hawaiian Pizza":hawaiianPizza,"Breakfast Tofu":tofuBowlBreakfast,"Roasted Chicken": roastedChicken, "Vegetable Medley":vegetableMedley, "Chicken Fingers":chickenFingers, "Vegetable Soup": vegetableSoup, "Chicken Curry":chickenCurry, "Pineapple Pork Cutlet": pineapplePorkCutlet}, "Sides": {"Herb Fries": herbFries, "Truffle Fries": truffleFries, "Chips and Hummus":chipsAndHummus, "Asian Noodle Salad": asianNoodleSalad, "Pineapple Smoothie": pineappleSmoothie, "Pigs in a Blanket":pigsInABlanket}}
 
 // global variables!!   
 const ALLDISHES = {"baker": bakerDishes, "next": nextDishes, "mccormick": mccormickDishes, "simmons":simmonsDishes, "maseeh": maseehDishes}

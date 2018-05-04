@@ -1,7 +1,5 @@
 // JS code for home page. Handles the clicking responses on the home page
 
-
-
 var dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"]; // dormList is the list of active dorms on the page
 var currentDishes = ALLDISHES 
 var starColor = "#FF9B01";
@@ -279,7 +277,7 @@ $(document).ready(function() {
         var dishesForDorm = currentDishes[dormName]["Entrees"]
 
         // for each of the dishes that are being served for that dorm 
-        for (var j=0; j<Object.keys(dishesForDorm).length; j++) {
+        for (var j=0; j<Math.min(Object.keys(dishesForDorm).length, 6); j++) {
             var dishName = Object.keys(dishesForDorm)[j]
             var dish = Util.create("p", {"class":"card-title", "id": dishName})
 
