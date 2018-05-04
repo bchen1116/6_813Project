@@ -409,3 +409,8 @@ input {
 input[type='submit'] {
   cursor: pointer;
 }
+
+
+.card-body {
+  background-color: #f6f3f3;
+}

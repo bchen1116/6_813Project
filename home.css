@@ -390,7 +390,7 @@ body {
 
 .food-restriction {
     display: inline;
-    float: right;   
+    /* float: right;    */
 }
 
 .food-description { 

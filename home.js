@@ -1,7 +1,5 @@
 // JS code for home page. Handles the clicking responses on the home page
 
-
-
 var dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"]; // dormList is the list of active dorms on the page
 var currentDishes; 
 var starColor = "#FF9B01";
@@ -20,7 +18,7 @@ function copyDishes(mainDict, globalMealTime, globalDate) {
         for (var meal in mainDict[dorm]) {                                  // for each meal type, i.e. Entree, Side, Dessert  
             mealType = {}
             for (var dish in mainDict[dorm][meal]) {                        // for each dish  
-                console.log(mainDict[dorm][meal][dish]["date"],globalDate)                
+                //console.log(mainDict[dorm][meal][dish]["date"],globalDate)                
                 if (mainDict[dorm][meal][dish]["time"] == globalMealTime && mainDict[dorm][meal][dish]["date"] == globalDate) {   // if the meal time is the same 
                     mealType[dish] = mainDict[dorm][meal][dish]             // copy the dish data over, this is the deepest level of the dictionary 
                 }
@@ -87,7 +85,7 @@ function dietaryUpdate(cb, diet) {
 // filter out the dishes that are available based on the dietary restictions
 // TODO: This is where I'd assume we'd add the Mealtype, and Date filtering functionality
 function performdietaryFiltering() {
-    console.log(globalMealTime)
+    //console.log(globalMealTime)
     currentDishes = copyDishes(ALLDISHES, globalMealTime, globalDate)       // reset currentDishes to be everything
     // go through our list of foods and remove the ones that do not fit the restriction & remove 
     for (var dorm in currentDishes) {                                       // go through the dorms 
@@ -114,7 +112,7 @@ a.addEventListener('submit',function(e) {
     console.log("here")
     e.preventDefault();
     var b = document.getElementById('text-input').value;
-    console.log(b);
+    //console.log(b);
     currentDishes = copyDishes(ALLDISHES, globalMealTime, globalDate) ;
     // go through our list of foods and remove the ones that do not fit the restriction & remove 
     for (var dorm in currentDishes) {                                       // go through the dorms 
@@ -131,7 +129,7 @@ a.addEventListener('submit',function(e) {
     }
 
     // update the cards to reflect this change
-    console.log(currentDishes);
+    //console.log(currentDishes);
     updateDishesForDorms(currentDishes)
     
 });
@@ -282,7 +280,7 @@ $(document).ready(function() {
         var dishesForDorm = currentDishes[dormName]["Entrees"]
 
         // for each of the dishes that are being served for that dorm 
-        for (var j=0; j<Object.keys(dishesForDorm).length; j++) {
+        for (var j=0; j<Math.min(Object.keys(dishesForDorm).length, 6); j++) {
             var dishName = Object.keys(dishesForDorm)[j]
             var dish = Util.create("p", {"class":"card-title", "id": dishName})
 
@@ -477,8 +475,8 @@ window.addEventListener('load', function() {
                 window.location.replace("/profile.html");
             }
         } else if (event.target === navButton) {
-            console.log("triggered")
-            console.log(dropDown.style.display)
+            //console.log("triggered")
+            //console.log(dropDown.style.display)
             if (dropDown.style.display == 'none' || dropDown.style.display == "") {
                 console.log("in none")
                 dropDown.style.display = 'block';
