@@ -60,11 +60,15 @@ function mealTimeUpdate(cb, mealTime){
     // we can assume that tgus us called we are changing the display to be of that meal type
     globalMealTime = mealTime
     performdietaryFiltering() // filter out the dishes based on what we want
+    timeUpdate(mealTime)
 }
 
-function mealDateUpdate(cb, mealDate) {
-    globalDate = mealDate
-    performdietaryFiltering()
+// called when radiobutton on date is clicked. 
+// mealDate is the MM/DD/YYYY, while day is the written day
+function mealDateUpdate(cb, mealDate, day) {
+    globalDate = mealDate;
+    performdietaryFiltering();
+    dayUpdate(day);
 }
 // called when the checkbox on dietary restrictions is clicked/unclicked
 // used to trigger filtering of dishes based on the restrictions 
@@ -80,6 +84,17 @@ function dietaryUpdate(cb, diet) {
     performdietaryFiltering()                                       // filter the dorms 
 }
 
+// updates the day display on the home page
+function dayUpdate(day) {
+    var dateDisplay = document.querySelector('.dateDisplay');
+    dateDisplay.innerHTML = day;
+}
+
+// updates the time display on the home page
+function timeUpdate(meal) {
+    var dateDisplay = document.querySelector('.mealDisplay');
+    dateDisplay.innerHTML = meal;
+}
 
 // filter out the dishes that are available based on the dietary restictions
 // TODO: This is where I'd assume we'd add the Mealtype, and Date filtering functionality
