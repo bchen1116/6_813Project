@@ -1,5 +1,5 @@
 // JS code for home page. Handles the clicking responses on the home page
-
+var dorms = ["baker", "mccormick", "simmons", "next", "maseeh"]
 var dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"]; // dormList is the list of active dorms on the page
 var currentDishes; 
 var starColor = "#FF9B01";
@@ -7,7 +7,6 @@ var allDorms = {};                                              // allDorms is t
 var dieraryRestrictions = []                                    // list of the dietary restirctions that are active on the page
 var globalMealTime = "dinner"
 var globalDate = "05/02/2018"
-
 
 // given a dictionary make a deep copy of the dictionary 
 // used to create a copy of all of the dishes in our database 
@@ -281,6 +280,26 @@ function sortDorms(dorms) {
 }
 
 $(document).ready(function() { 
+    if (sessionStorage.dormCheckboxStorage == null) {
+    } else {
+        var dormCheckboxStore= JSON.parse(sessionStorage.dormCheckboxStorage);
+        console.log("dormCHECKBOXXXARINO", dormCheckbox)
+        var checks = {};
+    
+        for (var i = 0, emp; i < dormCheckbox.length; i++) {
+            console.log("making dict", dormCheckbox[i])
+            emp = dormCheckbox[i];
+            checks[dormCheckbox[i]] = emp;
+        }
+        for (var key in Object.keys(dormCheckbox)){
+            console.log("hellosers but not in", key, dormCheckbox[dorms[key]]);
+            if (dormCheckbox[dorms[key]]) {
+                console.log("hellosers", dorms[key]);
+                document.querySelector("#"+dorms[key]).checked = true;
+            }
+        }
+    }
+
     // called when the document is ready 
     currentDishes = copyDishes(ALLDISHES, globalMealTime, globalDate)
     dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"];         //recall the dormList to initiate allDorms
