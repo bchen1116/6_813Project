@@ -369,7 +369,7 @@ simmonsDishes = {"Entrees":{"Pepperoni Pizza":pepperioniPizzaTue, "Hawaiian Pizz
 const ALLDISHES = {"baker": bakerDishes, "next": nextDishes, "mccormick": mccormickDishes, "simmons":simmonsDishes, "maseeh": maseehDishes}
 const SPECIALS = ["Sushi Night at Baker Dorm", "Soul Food in McCormick", "Pizza Night in Next House", "Vegan Friendly Food in Simmons", "There is Nothing Special in Maseeh"] 
 const favoriteDishes = new favorites();
-var dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"]; // dormList is the list of active dorms on the page
+var dormList = ["specials", "baker", "maseeh", "mccormick", "next", "simmons"]; // dormList is the list of active dorms on the page
 var dormCheckbox = {"baker": false, "mccormick": false, "simmons": false, "next": false, "maseeh": false} 
 
 

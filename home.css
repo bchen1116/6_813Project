@@ -241,6 +241,10 @@ input[type='checkbox']:checked:after {
     border-top-right-radius: 5px;
 }
 
+#special-header {
+    background-color: var(--accent-color);
+}
+
 
 .card-body {
     background-color: #f6f3f3;
@@ -260,10 +264,6 @@ input[type='checkbox']:checked:after {
     z-index: 1;
     font-size: 16px;
     margin: 5px;
-}
-
-.card-header:nth-child(5) {
-    background-color: black;
 }
 
 .card-title:hover {

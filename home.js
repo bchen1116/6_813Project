@@ -1,6 +1,6 @@
 // JS code for home page. Handles the clicking responses on the home page
 
-var dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"]; // dormList is the list of active dorms on the page
+var dormList = ["specials", "baker", "maseeh", "mccormick", "next", "simmons"]; // dormList is the list of active dorms on the page
 var currentDishes; 
 var starColor = "#FF9B01";
 var allDorms = {};                                              // allDorms is the dictionary that maps dorm name to Node element of dorm card
@@ -45,6 +45,10 @@ function onCheckClicked(cb, dorm) {
         if (index = -1) {                                       // if the dorm isn't in the dormList, add it                             
             dormList.push(dorm);
             var newDorms = sortDorms(dormList);                 // sort the dorms in order again
+            if (newDorms.indexOf("specials") > -1) {
+                newDorms.splice(newDorms.indexOf("specials"), 1);
+                newDorms.unshift("specials");
+            }
             while (main.firstChild) {                           // clear out the current dorms from the main
                 main.removeChild(main.firstChild);
             }
@@ -152,7 +156,7 @@ a.addEventListener('submit',function(e) {
 // repopulates the dishes that are in the dorm based on the current dishes 
 // updates the dishes presented on the cards  
 function updateDishesForDorms(currentDishes) { 
-    dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"];         //recall the dormList to initiate allDorms
+    dormList = ["specials", "baker", "maseeh", "mccormick", "next", "simmons"];         //recall the dormList to initiate allDorms
     for (var i = 0; i < dormList.length; i++) {                                         // for each dorm 
         allDorms[dormList[i]] = document.getElementById(dormList[i]);                   // populate the card that is attached to the dorm 
     }
@@ -249,6 +253,7 @@ function updateMenu() {
 
 // updates the card layout on rows or columns
 function updateCardLayout() {
+    console.log(dormList.length);
     if (dormList.length == 4) {                                                             // layout for 4 dorms
         document.documentElement.style.setProperty("--cols", ""+2);
         document.documentElement.style.setProperty("--rows", ""+2);
@@ -283,7 +288,7 @@ function sortDorms(dorms) {
 $(document).ready(function() { 
     // called when the document is ready 
     currentDishes = copyDishes(ALLDISHES, globalMealTime, globalDate)
-    dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"];         //recall the dormList to initiate allDorms
+    dormList = ["specials", "baker", "maseeh", "mccormick", "next", "simmons"];         //recall the dormList to initiate allDorms
     for (var i = 0; i < dormList.length; i++) {
         allDorms[dormList[i]] = document.getElementById(dormList[i]);
     }
