@@ -93,7 +93,7 @@ const ALLDISHES = {"baker": bakerDishes, "next": nextDishes, "mccormick": mccorm
 const SPECIALS = ["Sushi Night at Baker Dorm", "Soul Food in McCormick", "Pizza Night in Next House", "Vegan Friendly Food in Simmons", "There is Nothing Special in Maseeh"] 
 const favoriteDishes = new favorites();
 var dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"]; // dormList is the list of active dorms on the page
-
+var dormCheckbox = {"baker": false, "mccormick": false, "simmons": false, "next": false, "maseeh": false} 
 
 
 
