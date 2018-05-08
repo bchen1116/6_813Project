@@ -60,7 +60,6 @@
     height: 50px;
 }
 
-
 /* cb class controls the clicking region of checkbox */
 /*.cb{
     position: relative;
@@ -133,7 +132,7 @@ input[type='checkbox']:checked:after {
 [type='radio']{
     position: relative;
     margin:0;
-      background-color: #283018 !important;
+    background-color: #283018 !important;
     color: #283018 !important;
     color: #283018;
 }
@@ -206,13 +205,23 @@ input[type='checkbox']:checked:after {
 
 /* main refers to the main portion of the screen where menus will be */
 .mainClass {
-    top: 75px;
+    top: 10px;
     position: relative;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
-    margin-left: 260px;
-    background-color: var(--back-color);
+    margin-left: 10px;
+    background-color: transparent;
+}
+
+.bigMainClass {
+    top: 85px;
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    margin-left: 250px;
+    background-color: transparent;
 }
 
 /* card refers to the individual cells for menus on main page */
@@ -240,6 +249,10 @@ input[type='checkbox']:checked:after {
     background-color:  var(--card-color);
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+}
+
+#special-header {
+    background-color: var(--accent-color);
 }
 
 
@@ -320,7 +333,47 @@ input[type='checkbox']:checked:after {
     border: 3px solid transparent;
 }
 
+.timeAndDate {
+    display: flex;
+    direction: row;
+    width: 80vw;
+    background-color: transparent !important;
+    color: #6e7376;
+    border: none;
+    font-size: 23px;
+    margin-left: 100px;
+    color: #333333;
+    padding-top: 20px;
+    padding-bottom: 0px;
+    letter-spacing: 2px;
+ }
 
+.timeAndDate:hover {
+    cursor: default;
+}
+
+.dateDisplay {
+    width: auto;
+    padding-right: 8px;
+    text-align: right;
+    padding-left: 10px;
+    /*text-shadow:
+        -0.5px -0.5px 0 #333333,
+        0.5px -0.5px 0 #333333,
+        -0.5px 0.5px 0 #333333,
+        0.5px 0.5px 0 #333333;*/
+}
+
+.mealDisplay {
+    width: 200px;
+    text-align: left;
+    /*padding-left: 10px;*/
+    /*text-shadow:
+        -0.5px -0.5px 0 #000,
+        0.5px -0.5px 0 #000,
+        -0.5px 0.5px 0 #000,
+        0.5px 0.5px 0 #000;*/
+}
 /* modal is the menu that pops up when user clicks on card */
 .modal {
     display: none; /* Hidden by default */
@@ -430,7 +483,7 @@ body {
      }
  }
 */
- @media (max-width: 930px) {
+/* @media (max-width: 930px) {
     .list-group.panel {
         height: 110vh;
         margin-left: -100px;
@@ -438,6 +491,6 @@ body {
     .mainClass {
         margin-left: 0px;
  } 
-}
+}*/
 
 

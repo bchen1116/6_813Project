@@ -1,3 +1,4 @@
+dorms = ["baker", "mccormick", "simmons", "next", "maseeh"]
 //navbar code for food selection form pop-up
 window.addEventListener('load', function() {
     var modal = document.querySelectorAll(".form-request");   // contains [formRequest, signIn/LogIn] modals 
@@ -20,7 +21,6 @@ window.addEventListener('load', function() {
     var logHead = document.querySelector("#logText");
     var signHead = document.querySelector("#signText");
 
-    console.log(trigger2);
     function toggleModal() {
         modal[0].classList.toggle("show-modal");
         modal[1].classList.remove("show-modal")
@@ -43,7 +43,6 @@ window.addEventListener('load', function() {
     }
 
     function switchSignLogModal(bool) {
-        console.log("im triggered")
         // if bool == true, is on log in, else on sign-up
         if (modal[1].classList.contains("show-modal")) {
             setColors(bool);
@@ -86,7 +85,6 @@ window.addEventListener('load', function() {
                 window.location.replace("/profile.html");
             }
         } else if (event.target === navButton) {
-            console.log(dropDown.style.display)
             if (dropDown.style.display == 'none' || dropDown.style.display == "") {
                 dropDown.style.display = 'block';
             } else {
@@ -115,46 +113,87 @@ window.addEventListener('load', function() {
 });
 
 var profileDorms = ["specials"];
-var dormCheckbox = {"baker": false, "mccormick": false, "simmons": false, "next": false, "maseeh": false} 
+if (sessionStorage.dormCheckboxStorage == null) {
+    console.log("noperino")
+    var dormCheckboxStore = {"baker": false, "mccormick": false, "simmons": false, "next": false, "maseeh": false};
+    sessionStorage.setItem("dormCheckboxStorage", JSON.stringify(dormCheckboxStore));
+} else {
+    console.log("hello it's not made")
+    var dormCheckboxStore= JSON.parse(sessionStorage.dormCheckboxStorage);
+    // console.log(dormCheckboxNew)
+}
 
 window.addEventListener('load', function() {
-  for (var key in dormCheckbox){
-    if (dormCheckbox[key] == true) {
-        console.log(document.getElementById(key));
-        document.getElementById(key).checked = true;
+    // console.log(dormCheckbox)
+    // console.log("why");
+    // console.log(dormCheckbox)
+    var dormCheckbox = JSON.parse(sessionStorage.getItem('dormCheckboxStorage'));
+    console.log("dormCHECKBOXXXARINO", dormCheckbox)
+    var checks = {};
+
+    for (var i = 0, emp; i < dormCheckbox.length; i++) {
+        console.log("making dict", dormCheckbox[i])
+        emp = dormCheckbox[i];
+        checks[dormCheckbox[i]] = emp;
     }
-  }
+    for (var key in Object.keys(dormCheckbox)){
+        console.log("hellosers but not in", key, dormCheckbox[dorms[key]]);
+        if (dormCheckbox[dorms[key]]) {
+            console.log("hellosers", dorms[key]);
+            document.querySelector("#"+dorms[key]).checked = true;
+        }
+    }
 });
 
 function clickedDining(check, dorm) {
-    console.log(check, dorm)
-    console.log(check.checked)
+    // console.log(check, dorm)
+    // console.log(check.checked)
+    // console.log(dormCheckbox, "help")
     if (check.checked == false) {    
         console.log("false"); 
-        dormCheckbox[dorm] = false;                               // if it isn't checked, remove the dorm
-        var index = profileDorms.indexOf(dorm);
-        if (index > -1) {                                   
-            profileDorms.splice(index, 1);
+        dormCheckboxStore[dorm] = false;                     
+        sessionStorage.dormCheckboxStorage = JSON.stringify(dormCheckboxStore);
+        // if it isn't checked, remove the dorm
+        // sessionStorage.setItem("dormCheckboxStorage", JSON.stringify(dormCheckboxStore));
+        // var index = profileDorms.indexOf(dorm);
+        // sessionStorage.dormCheckboxStorage = dormCheckboxStore;
+        // if (index > -1) {                                   
+            // profileDorms.splice(index, 1);
                                     // remove dorm from dormList             // remove it from the document
-        }
+        // }
+        // console.log(dormCheckbox, "helpone")
     } else if (check.checked == true) {                            // otherwise if it is checked
         console.log("true");
-        console.log(dorm);
-        console.log(document.getElementById(dorm).checked);
-        var index = profileDorms.indexOf(dorm);
-        dormCheckbox[dorm] = true;
+        // console.log(dorm);
+        // console.log(document.getElementById(dorm).checked);
+        // var index = profileDorms.indexOf(dorm);
+        dormCheckboxStore[dorm] = true;
+        // console.log(dormCheckboxStore, "initial", index)
+        // sessionStorage.setItem("dormCheckboxStorage", JSON.stringify(dormCheckboxStore));
+        // dormCheckbox[dorm] = true;
+        console.log("verify", dormCheckboxStore)
+        // console.log("before", sessionStorage.dormCheckboxStorage)
+        // delete sessionStorage.name;
+        sessionStorage.dormCheckboxStorage = JSON.stringify(dormCheckboxStore);
+        // console.log("after", JSON.parse(sessionStorage.getItem("dormCheckboxStorage")))
+        // console.log("Does this work tho", JSON.parse(JSON.stringify(sessionStorage.dormCheckboxStorage)));
+
         if (index = -1) {                                       // if the dorm isn't in the dormList, add it                             
             profileDorms.push(dorm); 
             
         }
-        console.log(event.target);
-
-
+        // var dormCheckbox = JSON.parse(JSON.stringify(sessionStorage.dormCheckboxStorage));
+        // console.log(dormCheckbox)
+        // console.log(dormCheckbox, "helptwo")
+        // console.log(event.target);
     }
+
     if (profileDorms != ["specials"]) {
         dormList = profileDorms;
     }
+    
     console.log(profileDorms);
+
 }
 
 // function profileChecks() { 
