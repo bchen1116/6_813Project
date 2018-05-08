@@ -304,9 +304,12 @@ fruitsMon = {diet: [vg, veg, hal, kos], time: brk, date:mon, description: "Large
 
 // MONDAY LUNCH - ENTREES 
 vegetableStirfryMon = {diet: [veg], time: lh, date: mon, description: "stir fried veggies in a light brown sauce" }
+falafelWrapMon = {diet: [veg, gnFree, hal], time: lh, date: mon, description: "Falafel and vegetables served in a pita wrap" }
+beedStewMon = {diet: [], time: lh, date: mon, description: "Beef and potatoes in a warm broth"}
 
 // MONDAY LUNCH - SIDES
 truffleFriesMon = {diet: [hal, gnFree, vg, veg], time: lh, date: mon, description: "French fries with truffle butter"}
+brusselSproutsMon = {diet: [hal, gnFree, vg, veg], time: lh, date: mon, description: "Roasted brussel sprouts with red wine vinagrette"}
 
 
 // MONDAY DINNER - ENTREES 
