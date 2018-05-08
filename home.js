@@ -1,11 +1,6 @@
 // JS code for home page. Handles the clicking responses on the home page
-<<<<<<< HEAD
 var dorms = ["baker", "mccormick", "simmons", "next", "maseeh"]
-var dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"]; // dormList is the list of active dorms on the page
-=======
-
-var dormList = ["specials", "baker", "maseeh", "mccormick", "next", "simmons"]; // dormList is the list of active dorms on the page
->>>>>>> 4e0f11d7fb545e34c1a50a3ddfb4ea8d20d36376
+var dormList = ["baker", "maseeh", "mccormick", "next", "simmons","specials"]; // dormList is the list of active dorms on the page
 var currentDishes; 
 var starColor = "#FF9B01";
 var allDorms = {};                                              // allDorms is the dictionary that maps dorm name to Node element of dorm card
@@ -57,6 +52,7 @@ function onCheckClicked(cb, dorm) {
                 main.removeChild(main.firstChild);
             }
             for (var j = 0; j < newDorms.length; j++) {         // add the dorms in sorted order back to main
+                console.log(allDorms[newDorms[j]])
                 main.appendChild(allDorms[newDorms[j]]);
             }
         }
@@ -160,11 +156,10 @@ a.addEventListener('submit',function(e) {
 // repopulates the dishes that are in the dorm based on the current dishes 
 // updates the dishes presented on the cards  
 function updateDishesForDorms(currentDishes) { 
-    dormList = ["specials", "baker", "maseeh", "mccormick", "next", "simmons"];         //recall the dormList to initiate allDorms
+    dormList = ["baker", "maseeh", "mccormick", "next", "simmons","specials"];         //recall the dormList to initiate allDorms
     for (var i = 0; i < dormList.length; i++) {                                         // for each dorm 
         allDorms[dormList[i]] = document.getElementById(dormList[i]);                   // populate the card that is attached to the dorm 
     }
-
     //for each of the dorms, go through and populate their menu according to the data we have on file
     for (var i=0; i<dormList.length-1; i++) {
         var dormName = dormList[i]
@@ -257,7 +252,6 @@ function updateMenu() {
 
 // updates the card layout on rows or columns
 function updateCardLayout() {
-    console.log(dormList.length);
     if (dormList.length == 4) {                                                             // layout for 4 dorms
         document.documentElement.style.setProperty("--cols", ""+2);
         document.documentElement.style.setProperty("--rows", ""+2);
@@ -293,18 +287,13 @@ $(document).ready(function() {
     if (sessionStorage.dormCheckboxStorage == null) {
     } else {
         var dormCheckboxStore= JSON.parse(sessionStorage.dormCheckboxStorage);
-        console.log("dormCHECKBOXXXARINO", dormCheckbox)
         var checks = {};
-    
         for (var i = 0, emp; i < dormCheckbox.length; i++) {
-            console.log("making dict", dormCheckbox[i])
             emp = dormCheckbox[i];
             checks[dormCheckbox[i]] = emp;
         }
         for (var key in Object.keys(dormCheckbox)){
-            console.log("hellosers but not in", key, dormCheckbox[dorms[key]]);
             if (dormCheckbox[dorms[key]]) {
-                console.log("hellosers", dorms[key]);
                 document.querySelector("#"+dorms[key]).checked = true;
             }
         }
@@ -312,7 +301,8 @@ $(document).ready(function() {
 
     // called when the document is ready 
     currentDishes = copyDishes(ALLDISHES, globalMealTime, globalDate)
-    dormList = ["specials", "baker", "maseeh", "mccormick", "next", "simmons"];         //recall the dormList to initiate allDorms
+    dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"];         //recall the dormList to initiate allDorms
+    // console.log(ALLDISHES)
     for (var i = 0; i < dormList.length; i++) {
         allDorms[dormList[i]] = document.getElementById(dormList[i]);
     }
@@ -320,8 +310,10 @@ $(document).ready(function() {
     //for each of the dorms, go through and populate their menu according to the data we have on file
     for (var i=0; i<dormList.length-1; i++) {
         var dormName = dormList[i]
+        console.log(dormName)
         var menu = document.getElementById(dormName +"Menu") 
         var dishesForDorm = currentDishes[dormName]["Entrees"]
+        console.log(dishesForDorm);
 
         // for each of the dishes that are being served for that dorm 
         for (var j=0; j<Math.min(Object.keys(dishesForDorm).length, 6); j++) {

@@ -59,6 +59,7 @@ fruitParfaitMon = {diet: [veg, hal, kos], time: brk, date: mon, description: "Fr
 
 // MONDAY LUNCH - ENTREES 
 vegetableStirfryMon = {diet: [veg], time: lh, date: mon, description: "stir fried veggies in a light brown sauce" }
+chickenParm = {diet: [], time: lh, date: mon, description: "breaded chicken with mozarella cheese and marinara sauce" }
 
 // MONDAY LUNCH - SIDES
 truffleFriesMon = {diet: [hal, gnFree, vg, veg], time: lh, date: mon, description: "French fries with truffle butter"}
@@ -95,6 +96,7 @@ chickenAndWafflesTue = {diet: [kos], time: brk, date: tue, description: "Crispy 
 blueberryPancakeTue = {diet: [vg, veg, hal, kos], time: brk, date: tue, description: "Fresh bluberries on regular pancakes"}
 
 // TUESDAY LUNCH 
+chickenParm = {diet: [], time: lh, date: tue, description: "breaded chicken with mozarella cheese and marinara sauce" }
 
 // TUESDAY LUNCH - SIDES
 pigsInABlanketTue = {diet: [], time: lh, date: tue, description: "Mini bratwurst sausages in the center of a fluffy wrap"}
@@ -348,7 +350,7 @@ bakerDishes = {"Entrees": {"Pepperoni Pizza":pepperioniPizzaMon, "Roasted Chicke
 						  "Chicken Curry":chickenCurryTr, "Pineapple Pork Cutlet": pineapplePorkCutletTr, "Cheesy Tater Tots":cheesyTaterTotsFr, "Asian Noodle Salad": asianNoodleSaladTr, "Banana Smoothie":bananaSmoothieSat, "Collard Greens":collardGreensFr}}
 
 maseehDishes = {"Entrees":{"Pepperioni Pizza":pepperioniPizzaMon, "Vegetable Soup":vegetableSoupMon, "Chicken Soup":chickenSoupMon, "Jerked Chicken":jerkedChickenMon, "Chicken Fingers":chickenFingersMon,
-						   "Vegetable Stir Fry":vegetableStirfryMon,
+						   "Vegetable Stir Fry":vegetableStirfryMon, "Chicken Parmesan": chickenParm,
 						   "Fish Taco":fishTacoMon, "Eggs Benedict":eggsBenedictMon,
 						   "Pepperoni Pizza":pepperioniPizzaTue, "Hawaiian Pizza":hawaiianPizzaTr,
 							"Scrambled Tofu":tofuBowlBreakfastMon,"Shrimp Bowl": shrimpBowlMon, "Chicken Bowl":chickenBowlTue, "Shrimp Bowl":shrimpBowlTr, "Chicken Soup": chickenSoupFr, "Vegetable Soup": vegetableSoupMon, "Chicken Curry":chickenCurryWed, "Pineapple Pork Cutlet": pineapplePorkCutletSat}, 
@@ -369,7 +371,7 @@ simmonsDishes = {"Entrees":{"Pepperoni Pizza":pepperioniPizzaTue, "Hawaiian Pizz
 const ALLDISHES = {"baker": bakerDishes, "next": nextDishes, "mccormick": mccormickDishes, "simmons":simmonsDishes, "maseeh": maseehDishes}
 const SPECIALS = ["Sushi Night at Baker Dorm", "Soul Food in McCormick", "Pizza Night in Next House", "Vegan Friendly Food in Simmons", "There is Nothing Special in Maseeh"] 
 const favoriteDishes = new favorites();
-var dormList = ["specials", "baker", "maseeh", "mccormick", "next", "simmons"]; // dormList is the list of active dorms on the page
+var dormList = ["baker", "maseeh", "mccormick", "next", "simmons","specials"]; // dormList is the list of active dorms on the page
 var dormCheckbox = {"baker": false, "mccormick": false, "simmons": false, "next": false, "maseeh": false} 
 
 

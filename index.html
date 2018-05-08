@@ -1,5 +1,5 @@
 <html>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
     crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -98,10 +98,12 @@
     <!-- MAIN BODY -->
     <!-- unsure if i can create this in javascript since there's so many nested layers -->
 
-    <div class="mainClass" id="mainClass">
-        <div class="timeDateDisplay">
-            <div class="card-header timeAndDate"><div class="dateDisplay">Friday</div><div class="mealDisplay">Dinner</div></div>
+<div class="bigMainClass">
+        <div class="timeDateDisplay" id="timedate">
+            <div class="card-header timeAndDate">Viewing:<div class="dateDisplay">Friday</div><div class="mealDisplay">Dinner</div></div>
         </div>
+
+     <div class="mainClass" id="mainClass">
         <div class="specials-card text-white bg-info mb-3" id="specials">
 
             <!-- This is what would show when one hovers over a menu item  -->
@@ -159,6 +161,7 @@
         </div>
         
     </div>
+</div>
 
     <!-- modal is the menu (empty rn) that pops up -->
     <div id="myModal" class="modal">
