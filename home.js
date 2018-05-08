@@ -299,6 +299,23 @@ $(document).ready(function() {
         }
     }
 
+    // if (sessionStorage.dormCheckboxStorage != null) {
+    // // } else {
+    //     var dormCheckboxStore= JSON.parse(sessionStorage.dormCheckboxStorage);
+    //     console.log(dormCheckboxStore)
+    //     for (var key in dormCheckboxStore){
+    //         console.log(key)
+    //         if (dormCheckboxStore[key]) {
+    //             document.querySelector("#"+key).checked = true;
+    //         } else {
+    //             console.log(document.querySelectorAll(".list-group-item"))
+    //             console.log(document.querySelector("#"+key).checked)
+    //             document.querySelector("#"+String(key)+"Check").checked = false;
+    //         }
+    //     }
+    // }
+
+
     // called when the document is ready 
     currentDishes = copyDishes(ALLDISHES, globalMealTime, globalDate)
     dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"];         //recall the dormList to initiate allDorms
@@ -486,6 +503,14 @@ function loadModal(e) {
     }
 }
 
+function notSideBarClick(inputClass) {
+    classLists = ["rad", "list-group", "panel", "strong", "list-group-submenu", "list-group-item", "cb", "collapse"]
+    if (classLists.indexOf(inputClass) == -1) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 //navbar code for food selection form pop-up
 window.addEventListener('load', function() {
@@ -498,12 +523,15 @@ window.addEventListener('load', function() {
     navigationalItems[0].style.color = "#f0eceb"
     var navButton = document.querySelector(".navbar-toggler");
     var dropDown = document.querySelector(".original");
+    var icons = document.querySelector("#iconTabs");
+    var wrapper = document.querySelector(".wrapper");
 
     function toggleModal() {
         modal.classList.toggle("show-modal");
     }
 
     function windowOnClick(event) {
+        console.log(notSideBarClick(event.target.classList[0]))
         if (event.target === modal) {
             toggleModal();
         } else if (event.target === a1) {
@@ -514,12 +542,18 @@ window.addEventListener('load', function() {
             //console.log("triggered")
             //console.log(dropDown.style.display)
             if (dropDown.style.display == 'none' || dropDown.style.display == "") {
-                console.log("in none")
                 dropDown.style.display = 'block';
             } else {
                 dropDown.style.display = 'none';
-                console.log("set to none")
             }
+        } else if (event.target.id == "icons" || event.target.id =="iconTabs") {
+            icons.style.display = "none";
+            wrapper.style.marginLeft = "0px";
+            wrapper.style.zIndex = "2";
+        } else if (window.innerWidth < 930 && notSideBarClick(event.target.classList[0])) {
+            icons.style.display = "block";
+            wrapper.style.marginLeft = "-200px";
+            wrapper.style.zIndex = "initial";
         }
     }
 
