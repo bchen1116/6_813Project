@@ -1,6 +1,61 @@
 var starColor = "#FF9B01";
+favDishes = JSON.parse(sessionStorage.getItem('favoriteDishes'));
 
 
+
+
+// uodating the color on a star
+function updateStarOnClick(e) { 
+    try {
+        var currentStar = e.target.firstChild
+        var currentStarClass  = e.target.firstChild.getAttribute("class")
+        if (currentStarClass == "fa fa-star-o") {
+            currentStar.classList = "fa fa-star"
+            currentStar.style.color = starColor
+        } else { 
+            currentStar.classList = "fa fa-star-o"
+            currentStar.style.color = "black"
+        }
+    }   
+    catch (E) {
+        if (e.target.getAttribute("class") == "fa fa-star-o") {
+            e.target.setAttribute("class", "fa fa-star");
+            e.target.style.color = starColor;
+        } else {
+            e.target.setAttribute("class", "fa fa-star-o");
+            e.target.style.color = "black";
+        }
+    }
+}
+
+//when the document is ready
+Util.events(document, {
+    "DOMContentLoaded": function() {
+        for (var dishType in favDishes.dishTypes) {
+
+            var element = document.getElementById(dishType)
+            for (var dishName in favDishes.favorites(dishType)){
+                console.log(dishName)
+                var dish = Util.create("p", {"class":"card-title", "id": dishName+"FavPage"})
+
+                // make it so that you can click anywhere on the dish to add/remove from favorites
+                dish.addEventListener('click', function (evt) {
+                    var foodName = evt.target.closest("p.card-title").id 
+                    updateStarOnClick(evt)
+                    updateFavorites("Entrees", foodName)
+                    updateMenu()
+                })
+
+                var fav = Util.create("span", {"class":"fa fa-star", "id": "star" + dishName})
+                var text = document.createTextNode(" "+dishName)
+                
+                dish.appendChild(fav)
+                dish.appendChild(text)
+                element.appendChild(dish)
+            }
+        }
+    }
+})
 //navbar code for food selection form pop-up
 window.addEventListener('load', function() {
     var modal = document.querySelectorAll(".form-request");   // contains [formRequest, signIn/LogIn] modals 
@@ -10,7 +65,7 @@ window.addEventListener('load', function() {
     var closeButton = document.querySelectorAll(".close-button");       // x button for both formrequest and signIn/logIn
     var a1 = document.querySelector(".dropdown-item");                  // for dropdown items 
     var navigationalItems = document.querySelectorAll(".nav-link");         // for coloring the homepage
-    navigationalItems[1].style.color = "#f0eceb"                            
+    navigationalItems[1].style.color = "#f0eceb"   
     var navButton = document.querySelector(".navbar-toggler");              // button for navbar when screen is smaller
     var dropDown = document.querySelector(".original");             
     var signIn = document.querySelector("#signUp");                 // sign up button
@@ -134,58 +189,3 @@ window.addEventListener('load', function() {
     submit[1].addEventListener("click", submitModal);
     window.addEventListener("click", windowOnClick);
 });
-
-
-// uodating the color on a star
-function updateStarOnClick(e) { 
-    try {
-        var currentStar = e.target.firstChild
-        var currentStarClass  = e.target.firstChild.getAttribute("class")
-        if (currentStarClass == "fa fa-star-o") {
-            currentStar.classList = "fa fa-star"
-            currentStar.style.color = starColor
-        } else { 
-            currentStar.classList = "fa fa-star-o"
-            currentStar.style.color = "black"
-        }
-    }   
-    catch (E) {
-        if (e.target.getAttribute("class") == "fa fa-star-o") {
-            e.target.setAttribute("class", "fa fa-star");
-            e.target.style.color = starColor;
-        } else {
-            e.target.setAttribute("class", "fa fa-star-o");
-            e.target.style.color = "black";
-        }
-    }
-}
-
-//when the document is ready
-Util.events(document, {
-    "DOMContentLoaded": function() {
-        for (var dishType in favoriteDishes.dishTypes) {
-
-            var element = document.getElementById(dishType)
-            for (var dishName in favoriteDishes.favorites(dishType)){
-                console.log(dishName)
-                var dish = Util.create("p", {"class":"card-title", "id": dishName+"FavPage"})
-
-                // make it so that you can click anywhere on the dish to add/remove from favorites
-                dish.addEventListener('click', function (evt) {
-                    var foodName = evt.target.closest("p.card-title").id 
-                    updateStarOnClick(evt)
-                    updateFavorites("Entrees", foodName)
-                    updateMenu()
-                })
-
-                var fav = Util.create("span", {"class":"fa fa-star", "id": "star" + dishName})
-                var text = document.createTextNode(" "+dishName)
-                
-                dish.appendChild(fav)
-                dish.appendChild(text)
-                element.appendChild(dish)
-            }
-        }
-    }
-})
-    

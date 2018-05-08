@@ -227,6 +227,7 @@ function updateFavorites(dishtype, dish) {
     } else {                                                             // if the dish is not in favorites then add it 
         favoriteDishes.addDish(dishtype,dish)
     }
+    sessionStorage.setItem("favoriteDishes", JSON.stringify(favoriteDishes));
 }
 
 // after a dish has been added to favorites 
@@ -284,17 +285,18 @@ function sortDorms(dorms) {
 }
 
 $(document).ready(function() { 
-    if (sessionStorage.dormCheckboxStorage == null) {
-    } else {
+    if (sessionStorage.dormCheckboxStorage != null) {
+    // } else {
         var dormCheckboxStore= JSON.parse(sessionStorage.dormCheckboxStorage);
-        var checks = {};
-        for (var i = 0, emp; i < dormCheckbox.length; i++) {
-            emp = dormCheckbox[i];
-            checks[dormCheckbox[i]] = emp;
-        }
-        for (var key in Object.keys(dormCheckbox)){
-            if (dormCheckbox[dorms[key]]) {
-                document.querySelector("#"+dorms[key]).checked = true;
+        console.log(dormCheckboxStore)
+        for (var key in dormCheckboxStore){
+            console.log(key)
+            if (dormCheckboxStore[key]) {
+                document.querySelector("#"+key).checked = true;
+            } else {
+                console.log(document.querySelectorAll(".list-group-item"))
+                console.log(document.querySelector("#"+key).checked)
+                document.querySelector("#"+String(key)+"Check").checked = false;
             }
         }
     }
