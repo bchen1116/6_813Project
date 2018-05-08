@@ -3,7 +3,11 @@
 /* helpers/align.css */
 .navHolder {
   position: absolute;
-  margin-top: -20px;
+  margin-top: 0px;
+}
+
+.search-bar{
+  display: none;
 }
 
 .align {
@@ -220,7 +224,7 @@
 
 .profile-grid {
   position: relative;
-  margin-top: 20px;
+  top: 40px;
   display: flex;
   height: 230px;
   flex-flow: row wrap;

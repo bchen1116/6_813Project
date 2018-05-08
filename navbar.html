@@ -36,9 +36,9 @@
                     <div class="card-body">
                         <div class =  "form-body">
                             <label for="name">Kerberos:     </label>
-                            <input class = "formInput" type="text" id="request_kerberos" >
-                            <label for="name">MIT ID number:     </label>
-                            <input class = "formInput" type="text" id="request_ID" >
+                            <input class = "formInput" type="text" id="request_kerberos" value="kerberos">
+                            <label for="name">MIT ID Number:     </label>
+                            <input class = "formInput" type="text" id="request_ID" value="123456789">
                             <label for="name">Dorm:     </label>
                             <select class = "formInput" id="request_dorm">
                                 <option value="" disabled="disabled" selected="selected">Please select a dorm for pick-up</option>
@@ -58,9 +58,11 @@
                                 <option value="2">Veggie Stir-fry</option>
                             </select>
                             <label for="name">Date:</label>
-                            <input class = "formInput" id="request_date" type="date">
+                            <input class = "formInput" id="request_date" type="date" value="2018-05-09">
                             <label for="name">Time:</label>
-                            <input class = "formInput" id="request_time" type="time">
+                            <input class = "formInput" id="request_time" type="time" value="12:00">
+                            <label for="name">Special Notes:     </label>
+                            <input class = "formInput" type="text" id="request_kerberos" >
                         </div>
                         <button class="submit-form">Submit</button>
                     </div>
@@ -82,7 +84,7 @@
    
 </nav>
 
-<div class="form-request"">
+<div class="form-request">
     <div class="form-open signed">
         <span class="close-button signClose">&times;</span>
         <div class="card-header special-form signUpHeader">

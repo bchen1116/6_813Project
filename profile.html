@@ -16,9 +16,9 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
     crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="profile.js"></script>
 <script src="dataStore.js"></script>
-  
+  <script src="profile.js"></script>
+
       <link rel="stylesheet" href="profile.css">
       <link href="navbar.css" rel="stylesheet" type="text/css">
 
@@ -100,28 +100,28 @@
 				</div>
 				<div class = "info">
 					<label class="container">
-				        <input type="checkbox" id="baker" onclick = "clickedDining(this, 'baker')" >
+				        <input type="checkbox" id="baker" onclick = "clickedDining(this, 'baker')" checked >
 				        <span class="checkmark"></span>Baker
 				      </label>
 
 				      <label class="container">
-				        <input type="checkbox" id="maseeh" onclick = "clickedDining(this, 'maseeh')">
+				        <input type="checkbox" id="maseeh" onclick="clickedDining(this, 'maseeh')" checked>
 				        <span class="checkmark"></span>Maseeh
 				      </label>
  
 				      <label class="container">
-				        <input type="checkbox" id="mccormick" onclick = "clickedDining(this, 'mccormick')">
+				        <input type="checkbox" id="mccormick" onclick = "clickedDining(this, 'mccormick')" checked>
 				        <span class="checkmark"></span>McCormick
 				      </label>
 
 				      <label class="container">
-				        <input type="checkbox" id="next" onclick = "clickedDining(this, 'next')">
+				        <input type="checkbox" id="next" onclick = "clickedDining(this, 'next')" checked>
 				        <span class="checkmark"></span>Next
 				        <!-- <div>Next</div> -->
 				      </label>
 
 				      <label class="container">
-				        <input type="checkbox" id="simmons" onclick = "clickedDining(this, 'simmons')">
+				        <input type="checkbox" id="simmons" onclick = "clickedDining(this, 'simmons')" checked>
 				        <span class="checkmark"></span>Simmons
 				      </label>
 
@@ -197,7 +197,7 @@
 				<div class = "info">
 					<div class = "food-grid">
 						<div>
-							Sick Food Order, Baker 8pm
+							Sick Food Order, May 10, 8pm Baker
 						</div>
 						<div>
 							<!-- <button class = "order-button"> Cancel </button> -->
@@ -239,7 +239,7 @@
 				                        <label for="name">Date:</label>
 				                        <input class = "formInput" id="date" type="date">
 				                        <label for="name">Time:</label>
-				                        <input class = "formInput" id="time" type="time">
+				                        <input class = "formInput" id="time" type="time" value="00:00">
 				                </div>
 				                    <button class="submit-form">Submit</button>
 

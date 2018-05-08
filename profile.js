@@ -1,3 +1,4 @@
+dorms = ["baker", "mccormick", "simmons", "next", "maseeh"]
 //navbar code for food selection form pop-up
 window.addEventListener('load', function() {
     var modal = document.querySelectorAll(".form-request");   // contains [formRequest, signIn/LogIn] modals 
@@ -20,7 +21,7 @@ window.addEventListener('load', function() {
     var logHead = document.querySelector("#logText");
     var signHead = document.querySelector("#signText");
 
-    console.log(trigger2);
+    console.log(trigger)
     function toggleModal() {
         modal[0].classList.toggle("show-modal");
         modal[1].classList.remove("show-modal")
@@ -43,7 +44,6 @@ window.addEventListener('load', function() {
     }
 
     function switchSignLogModal(bool) {
-        console.log("im triggered")
         // if bool == true, is on log in, else on sign-up
         if (modal[1].classList.contains("show-modal")) {
             setColors(bool);
@@ -86,7 +86,6 @@ window.addEventListener('load', function() {
                 window.location.replace("/profile.html");
             }
         } else if (event.target === navButton) {
-            console.log(dropDown.style.display)
             if (dropDown.style.display == 'none' || dropDown.style.display == "") {
                 dropDown.style.display = 'block';
             } else {
@@ -114,47 +113,45 @@ window.addEventListener('load', function() {
     window.addEventListener("click", windowOnClick);
 });
 
-var profileDorms = ["specials"];
-var dormCheckbox = {"baker": false, "mccormick": false, "simmons": false, "next": false, "maseeh": false} 
+// var profileDorms = ["specials"];
+if (sessionStorage.dormCheckboxStorage == null) {
+    var dormCheckboxStore = {"baker": true, "mccormick": true, "simmons": true, "next": true, "maseeh": true};
+    sessionStorage.setItem("dormCheckboxStorage", JSON.stringify(dormCheckboxStore));
+} else {
+    var dormCheckboxStore= JSON.parse(sessionStorage.dormCheckboxStorage);
+}
 
 window.addEventListener('load', function() {
-  for (var key in dormCheckbox){
-    if (dormCheckbox[key] == true) {
-        console.log(document.getElementById(key));
-        document.getElementById(key).checked = true;
+    var dormCheckbox = JSON.parse(sessionStorage.getItem('dormCheckboxStorage'));
+    var checks = {};
+
+    for (var i = 0, emp; i < dormCheckbox.length; i++) {
+        emp = dormCheckbox[i];
+        checks[dormCheckbox[i]] = emp;
     }
-  }
+    for (var key in Object.keys(dormCheckbox)){
+        if (dormCheckbox[dorms[key]]) {
+            document.querySelector("#"+dorms[key]).checked = true;
+        } else {
+            document.querySelector("#"+dorms[key]).checked = false;
+        }
+    }
 });
 
 function clickedDining(check, dorm) {
-    console.log(check, dorm)
-    console.log(check.checked)
-    if (check.checked == false) {    
-        console.log("false"); 
-        dormCheckbox[dorm] = false;                               // if it isn't checked, remove the dorm
-        var index = profileDorms.indexOf(dorm);
-        if (index > -1) {                                   
-            profileDorms.splice(index, 1);
-                                    // remove dorm from dormList             // remove it from the document
-        }
+    if (check.checked == false) {     
+        dormCheckboxStore[dorm] = false;                     
+        sessionStorage.dormCheckboxStorage = JSON.stringify(dormCheckboxStore);
     } else if (check.checked == true) {                            // otherwise if it is checked
-        console.log("true");
-        console.log(dorm);
-        console.log(document.getElementById(dorm).checked);
-        var index = profileDorms.indexOf(dorm);
-        dormCheckbox[dorm] = true;
+        dormCheckboxStore[dorm] = true;
+        sessionStorage.dormCheckboxStorage = JSON.stringify(dormCheckboxStore);
         if (index = -1) {                                       // if the dorm isn't in the dormList, add it                             
             profileDorms.push(dorm); 
-            
         }
-        console.log(event.target);
-
-
     }
     if (profileDorms != ["specials"]) {
         dormList = profileDorms;
     }
-    console.log(profileDorms);
 }
 
 // function profileChecks() { 

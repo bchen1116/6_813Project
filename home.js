@@ -1,13 +1,12 @@
 // JS code for home page. Handles the clicking responses on the home page
-
-var dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"]; // dormList is the list of active dorms on the page
+var dorms = ["baker", "mccormick", "simmons", "next", "maseeh"]
+var dormList = ["baker", "maseeh", "mccormick", "next", "simmons","specials"]; // dormList is the list of active dorms on the page
 var currentDishes; 
 var starColor = "#FF9B01";
 var allDorms = {};                                              // allDorms is the dictionary that maps dorm name to Node element of dorm card
 var dieraryRestrictions = []                                    // list of the dietary restirctions that are active on the page
 var globalMealTime = "dinner"
 var globalDate = "05/02/2018"
-
 
 // given a dictionary make a deep copy of the dictionary 
 // used to create a copy of all of the dishes in our database 
@@ -45,10 +44,15 @@ function onCheckClicked(cb, dorm) {
         if (index = -1) {                                       // if the dorm isn't in the dormList, add it                             
             dormList.push(dorm);
             var newDorms = sortDorms(dormList);                 // sort the dorms in order again
+            if (newDorms.indexOf("specials") > -1) {
+                newDorms.splice(newDorms.indexOf("specials"), 1);
+                newDorms.unshift("specials");
+            }
             while (main.firstChild) {                           // clear out the current dorms from the main
                 main.removeChild(main.firstChild);
             }
             for (var j = 0; j < newDorms.length; j++) {         // add the dorms in sorted order back to main
+                console.log(allDorms[newDorms[j]])
                 main.appendChild(allDorms[newDorms[j]]);
             }
         }
@@ -61,11 +65,15 @@ function mealTimeUpdate(cb, mealTime){
     // we can assume that tgus us called we are changing the display to be of that meal type
     globalMealTime = mealTime
     performdietaryFiltering() // filter out the dishes based on what we want
+    timeUpdate(mealTime)
 }
 
-function mealDateUpdate(cb, mealDate) {
-    globalDate = mealDate
-    performdietaryFiltering()
+// called when radiobutton on date is clicked. 
+// mealDate is the MM/DD/YYYY, while day is the written day
+function mealDateUpdate(cb, mealDate, day) {
+    globalDate = mealDate;
+    performdietaryFiltering();
+    dayUpdate(day);
 }
 // called when the checkbox on dietary restrictions is clicked/unclicked
 // used to trigger filtering of dishes based on the restrictions 
@@ -81,6 +89,17 @@ function dietaryUpdate(cb, diet) {
     performdietaryFiltering()                                       // filter the dorms 
 }
 
+// updates the day display on the home page
+function dayUpdate(day) {
+    var dateDisplay = document.querySelector('.dateDisplay');
+    dateDisplay.innerHTML = day;
+}
+
+// updates the time display on the home page
+function timeUpdate(meal) {
+    var dateDisplay = document.querySelector('.mealDisplay');
+    dateDisplay.innerHTML = meal;
+}
 
 // filter out the dishes that are available based on the dietary restictions
 // TODO: This is where I'd assume we'd add the Mealtype, and Date filtering functionality
@@ -137,11 +156,10 @@ a.addEventListener('submit',function(e) {
 // repopulates the dishes that are in the dorm based on the current dishes 
 // updates the dishes presented on the cards  
 function updateDishesForDorms(currentDishes) { 
-    dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"];         //recall the dormList to initiate allDorms
+    dormList = ["baker", "maseeh", "mccormick", "next", "simmons","specials"];         //recall the dormList to initiate allDorms
     for (var i = 0; i < dormList.length; i++) {                                         // for each dorm 
         allDorms[dormList[i]] = document.getElementById(dormList[i]);                   // populate the card that is attached to the dorm 
     }
-
     //for each of the dorms, go through and populate their menu according to the data we have on file
     for (var i=0; i<dormList.length-1; i++) {
         var dormName = dormList[i]
@@ -209,6 +227,7 @@ function updateFavorites(dishtype, dish) {
     } else {                                                             // if the dish is not in favorites then add it 
         favoriteDishes.addDish(dishtype,dish)
     }
+    sessionStorage.setItem("favoriteDishes", JSON.stringify(favoriteDishes));
 }
 
 // after a dish has been added to favorites 
@@ -266,9 +285,26 @@ function sortDorms(dorms) {
 }
 
 $(document).ready(function() { 
+    if (sessionStorage.dormCheckboxStorage != null) {
+    // } else {
+        var dormCheckboxStore= JSON.parse(sessionStorage.dormCheckboxStorage);
+        console.log(dormCheckboxStore)
+        for (var key in dormCheckboxStore){
+            console.log(key)
+            if (dormCheckboxStore[key]) {
+                document.querySelector("#"+key).checked = true;
+            } else {
+                console.log(document.querySelectorAll(".list-group-item"))
+                console.log(document.querySelector("#"+key).checked)
+                document.querySelector("#"+String(key)+"Check").checked = false;
+            }
+        }
+    }
+
     // called when the document is ready 
     currentDishes = copyDishes(ALLDISHES, globalMealTime, globalDate)
     dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"];         //recall the dormList to initiate allDorms
+    // console.log(ALLDISHES)
     for (var i = 0; i < dormList.length; i++) {
         allDorms[dormList[i]] = document.getElementById(dormList[i]);
     }
@@ -276,8 +312,10 @@ $(document).ready(function() {
     //for each of the dorms, go through and populate their menu according to the data we have on file
     for (var i=0; i<dormList.length-1; i++) {
         var dormName = dormList[i]
+        // console.log(dormName)
         var menu = document.getElementById(dormName +"Menu") 
         var dishesForDorm = currentDishes[dormName]["Entrees"]
+        // console.log(dishesForDorm);
 
         // for each of the dishes that are being served for that dorm 
         for (var j=0; j<Math.min(Object.keys(dishesForDorm).length, 6); j++) {
