@@ -133,6 +133,15 @@ a1:hover {
     border-radius: 5px;
     border: 1px solid #33333328;
 }
+
+#request_food {
+    outline: none;
+}
+
+#request_dorm {
+    outline: none;
+}
+
 .close-button {
     float: right;
     width: 1.5rem;
