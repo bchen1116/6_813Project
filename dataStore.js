@@ -4,7 +4,7 @@
 class favorites { 
 	//creates a new instance of favorites 
 	constructor() {
-		this.dishes = {"Entrees": [], "Sides":[], "Vegetables":[], "Dessert":[]}
+		this.dishes = {"Entrees": [], "Sides":[], "Vegetables":[]}
 	}
 
 	// add dish to favorites
