@@ -1,6 +1,6 @@
 // JS code for home page. Handles the clicking responses on the home page
 var dorms = ["baker", "mccormick", "simmons", "next", "maseeh"]
-var dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"]; // dormList is the list of active dorms on the page
+var dormList = ["baker", "maseeh", "mccormick", "next", "simmons","specials"]; // dormList is the list of active dorms on the page
 var currentDishes; 
 var starColor = "#FF9B01";
 var allDorms = {};                                              // allDorms is the dictionary that maps dorm name to Node element of dorm card
@@ -52,6 +52,7 @@ function onCheckClicked(cb, dorm) {
                 main.removeChild(main.firstChild);
             }
             for (var j = 0; j < newDorms.length; j++) {         // add the dorms in sorted order back to main
+                console.log(allDorms[newDorms[j]])
                 main.appendChild(allDorms[newDorms[j]]);
             }
         }
@@ -123,16 +124,13 @@ function performdietaryFiltering() {
     updateDishesForDorms(currentDishes)                                     // update the cards to reflect this change
 }
 
-
-
 // repopulates the dishes that are in the dorm based on the current dishes 
 // updates the dishes presented on the cards  
 function updateDishesForDorms(currentDishes) { 
-    dormList = ["specials", "baker", "maseeh", "mccormick", "next", "simmons"];         //recall the dormList to initiate allDorms
+    dormList = ["baker", "maseeh", "mccormick", "next", "simmons","specials"];         //recall the dormList to initiate allDorms
     for (var i = 0; i < dormList.length; i++) {                                         // for each dorm 
         allDorms[dormList[i]] = document.getElementById(dormList[i]);                   // populate the card that is attached to the dorm 
     }
-
     //for each of the dorms, go through and populate their menu according to the data we have on file
     for (var i=0; i<dormList.length-1; i++) {
         var dormName = dormList[i]
@@ -154,7 +152,7 @@ function updateDishesForDorms(currentDishes) {
                 updateStarOnClick(evt)
                 updateFavorites("Entrees",foodName)
                 updateMenu()
-            });
+            })
 
             var fav = Util.create("span", {"class":"fa fa-star-o", "id": "star" + dormName + "," + dishName})
             var text = document.createTextNode(" "+Object.keys(dishesForDorm)[j])
@@ -225,7 +223,6 @@ function updateMenu() {
 
 // updates the card layout on rows or columns
 function updateCardLayout() {
-    console.log(dormList.length);
     if (dormList.length == 4) {                                                             // layout for 4 dorms
         document.documentElement.style.setProperty("--cols", ""+2);
         document.documentElement.style.setProperty("--rows", ""+2);
@@ -258,58 +255,25 @@ function sortDorms(dorms) {
 }
 
 $(document).ready(function() { 
-    //search
-    var a = document.getElementById('food-search');
-    console.log(a);
-    a.addEventListener('submit',function(e) {
-        console.log("here")
-        e.preventDefault();
-        var b = document.getElementById('text-input').value;
-        //console.log(b);
-        currentDishes = copyDishes(ALLDISHES, globalMealTime, globalDate) ;
-        // go through our list of foods and remove the ones that do not fit the restriction & remove 
-        for (var dorm in currentDishes) {                                       // go through the dorms 
-            var dormCurrentDishes = currentDishes[dorm]
-            for (var meal in currentDishes[dorm]) {                             // go through all of the meals 
-                var currentMealDishes = currentDishes[dorm][meal]
-                for (var dishName in currentMealDishes) {                       // go through the dishes for that meal 
-                    var dish = currentMealDishes[dishName]
-                    if (! dish["description"].toUpperCase().includes(b.toUpperCase())) {  // if the food does not satify the restriction 
-                        delete currentDishes[dorm][meal][dishName]          // remove it from the currentDishes
-                    }
-                }
-            }  
+    if (sessionStorage.dormCheckboxStorage == null) {
+    } else {
+        var dormCheckboxStore= JSON.parse(sessionStorage.dormCheckboxStorage);
+        var checks = {};
+        for (var i = 0, emp; i < dormCheckbox.length; i++) {
+            emp = dormCheckbox[i];
+            checks[dormCheckbox[i]] = emp;
         }
-
-        // update the cards to reflect this change
-        //console.log(currentDishes);
-        updateDishesForDorms(currentDishes)
-        
-    });
-    // if (sessionStorage.dormCheckboxStorage == null) {
-    // } else {
-    //     var dormCheckboxStore= JSON.parse(sessionStorage.dormCheckboxStorage);
-    //     console.log("dormCHECKBOXXXARINO in home", dormCheckbox)
-    //     var checks = {};
-    
-    //     for (var i = 0, emp; i < dormCheckbox.length; i++) {
-    //         console.log("making dict in home", dormCheckbox[i])
-    //         emp = dormCheckbox[i];
-    //         checks[dormCheckbox[i]] = emp;
-    //     }
-        
-    //     for (var key in Object.keys(dormCheckbox)){
-    //         console.log("hellosers but not in", key, dormCheckbox[dorms[key]]);
-    //         if (dormCheckbox[dorms[key]]) {
-    //             console.log("hellosers", dorms[key]);
-    //             document.querySelector("#"+dorms[key]).checked = true;
-    //         }
-    //     }
-    // }
+        for (var key in Object.keys(dormCheckbox)){
+            if (dormCheckbox[dorms[key]]) {
+                document.querySelector("#"+dorms[key]).checked = true;
+            }
+        }
+    }
 
     // called when the document is ready 
     currentDishes = copyDishes(ALLDISHES, globalMealTime, globalDate)
-    dormList = ["specials", "baker", "maseeh", "mccormick", "next", "simmons"];         //recall the dormList to initiate allDorms
+    dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"];         //recall the dormList to initiate allDorms
+    // console.log(ALLDISHES)
     for (var i = 0; i < dormList.length; i++) {
         allDorms[dormList[i]] = document.getElementById(dormList[i]);
     }
@@ -317,8 +281,10 @@ $(document).ready(function() {
     //for each of the dorms, go through and populate their menu according to the data we have on file
     for (var i=0; i<dormList.length-1; i++) {
         var dormName = dormList[i]
+        // console.log(dormName)
         var menu = document.getElementById(dormName +"Menu") 
         var dishesForDorm = currentDishes[dormName]["Entrees"]
+        // console.log(dishesForDorm);
 
         // for each of the dishes that are being served for that dorm 
         for (var j=0; j<Math.min(Object.keys(dishesForDorm).length, 6); j++) {
@@ -330,7 +296,7 @@ $(document).ready(function() {
                 updateStarOnClick(evt)
                 updateFavorites("Entrees", foodName)
                 updateMenu()
-            });
+            })
 
             var fav = Util.create("span", {"class":"fa fa-star-o", "id": "star" + dormName + "," + dishName})
             var text = document.createTextNode(" "+Object.keys(dishesForDorm)[j])
@@ -391,7 +357,7 @@ $(document).ready(function() {
             modal.style.display = "none";
         }
     }
-});
+})
 
 
 
@@ -532,4 +498,33 @@ window.addEventListener('load', function() {
     closeButton.addEventListener("click", toggleModal);
     submit.addEventListener("click", toggleModal);
     window.addEventListener("click", windowOnClick);
+
+    //search
+    var a = document.getElementById('food-search');
+    console.log(a);
+    a.addEventListener('submit',function(e) {
+        console.log("here")
+        e.preventDefault();
+        var b = document.getElementById('text-input').value;
+        //console.log(b);
+        currentDishes = copyDishes(ALLDISHES, globalMealTime, globalDate) ;
+        // go through our list of foods and remove the ones that do not fit the restriction & remove 
+        for (var dorm in currentDishes) {                                       // go through the dorms 
+            var dormCurrentDishes = currentDishes[dorm]
+            for (var meal in currentDishes[dorm]) {                             // go through all of the meals 
+                var currentMealDishes = currentDishes[dorm][meal]
+                for (var dishName in currentMealDishes) {                       // go through the dishes for that meal 
+                    var dish = currentMealDishes[dishName]
+                    if (! dish["description"].toUpperCase().includes(b.toUpperCase())) {  // if the food does not satify the restriction 
+                        delete currentDishes[dorm][meal][dishName]          // remove it from the currentDishes
+                    }
+                }
+            }  
+        }
+
+        // update the cards to reflect this change
+        //console.log(currentDishes);
+        updateDishesForDorms(currentDishes)
+        
+    });
 });
