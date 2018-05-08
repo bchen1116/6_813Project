@@ -12,6 +12,21 @@
     background-color: var(--back-color);
 }
 
+.wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.6s ease;
+    -moz-transition: all 0.6s ease;
+    -o-transition: all 0.6s ease;
+    transition: all 0.6s ease;
+}
+
+#iconTabs {
+    display: none;
+}
+/* .wrapper.toggled {
+    padding-left: 200px;
+} */
+
 /* list-groups refer to the sidebar */
 .list-group.panel {
     overflow: auto;
@@ -33,6 +48,7 @@
 .list-group-item {
     background-color:  var(--side-color);
     position: relative;
+    padding-left: 30px;
     top: 65px;
     color: white;
     font-size:12px;
@@ -58,6 +74,7 @@
     font-weight: bold;
     font-size: 16px;
     height: 50px;
+    padding-left: 0px;
 }
 
 /* cb class controls the clicking region of checkbox */
@@ -336,12 +353,12 @@ input[type='checkbox']:checked:after {
 .timeAndDate {
     display: flex;
     direction: row;
-    width: 80vw;
+    width: auto;
     background-color: transparent !important;
     color: #6e7376;
     border: none;
     font-size: 23px;
-    margin-left: 100px;
+    margin-left: 120px;
     color: #333333;
     padding-top: 20px;
     padding-bottom: 0px;
@@ -483,14 +500,26 @@ body {
      }
  }
 */
-/* @media (max-width: 930px) {
-    .list-group.panel {
-        height: 110vh;
-        margin-left: -100px;
+@media (max-width: 930px) {
+    
+    .wrapper {
+        margin-left: -200px;
     }
-    .mainClass {
-        margin-left: 0px;
- } 
-}*/
+    .bigMainClass {
+        margin-left: 250px;
+    }
+
+    #iconTabs {
+        display: block;
+    }
+
+    .list-group-item {
+        text-align: right;
+        justify-content: right;
+        height: 60px;
+        vertical-align: middle;
+    }
+    
+}
 
 

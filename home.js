@@ -506,6 +506,7 @@ window.addEventListener('load', function() {
     }
 
     function windowOnClick(event) {
+        console.log(event.target)
         if (event.target === modal) {
             toggleModal();
         } else if (event.target === a1) {
