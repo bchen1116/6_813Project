@@ -4,7 +4,7 @@
 class favorites { 
 	//creates a new instance of favorites 
 	constructor() {
-		this.dishes = {"Entrees": [], "Sides":[], "Vegetables":[], "Dessert":[]}
+		this.dishes = {"Entrees": [], "Sides":[], "Vegetables":[]}
 	}
 
 	// add dish to favorites
@@ -339,7 +339,7 @@ const SPECIALS = ["Sushi Night at Baker Dorm", "Soul Food in McCormick", "Pizza 
 const favoriteDishes = new favorites();
 var dormList = ["baker", "maseeh", "mccormick", "next", "simmons","specials"]; // dormList is the list of active dorms on the page
 var dormCheckbox = {"baker": false, "mccormick": false, "simmons": false, "next": false, "maseeh": false} 
-
+// sessionStorage.setItem("profileDormStorage", JSON.stringify(["specials"]));
 
 
 
