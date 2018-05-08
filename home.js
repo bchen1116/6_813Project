@@ -310,10 +310,10 @@ $(document).ready(function() {
     //for each of the dorms, go through and populate their menu according to the data we have on file
     for (var i=0; i<dormList.length-1; i++) {
         var dormName = dormList[i]
-        console.log(dormName)
+        // console.log(dormName)
         var menu = document.getElementById(dormName +"Menu") 
         var dishesForDorm = currentDishes[dormName]["Entrees"]
-        console.log(dishesForDorm);
+        // console.log(dishesForDorm);
 
         // for each of the dishes that are being served for that dorm 
         for (var j=0; j<Math.min(Object.keys(dishesForDorm).length, 6); j++) {
