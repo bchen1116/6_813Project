@@ -40,6 +40,7 @@
     color: var(--back-color);
 }
 
+
 .list-group-submenu {
     background-color: var(--side-color);
     width: 100%;
@@ -491,15 +492,6 @@ body {
     height: 30px !important;
     margin-top: -23px !important;
  }
- /* @keyframes moving {
-     0% {
-        transform: translateX(100px);
-     }
-     100% {
-         transform: translateX(0);
-     }
- }
-*/
 @media (max-width: 930px) {
     
     .wrapper {
@@ -507,17 +499,17 @@ body {
     }
     .bigMainClass {
         margin-left: 250px;
+        z-index: -1;
     }
 
     #iconTabs {
         display: block;
     }
 
-    .list-group-item {
-        text-align: right;
-        justify-content: right;
+    .stronger {
         height: 60px;
         vertical-align: middle;
+        background-color: transparent;
     }
     
 }
