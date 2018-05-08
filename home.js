@@ -285,21 +285,21 @@ function sortDorms(dorms) {
 }
 
 $(document).ready(function() { 
-    if (sessionStorage.dormCheckboxStorage != null) {
-    // } else {
-        var dormCheckboxStore= JSON.parse(sessionStorage.dormCheckboxStorage);
-        console.log(dormCheckboxStore)
-        for (var key in dormCheckboxStore){
-            console.log(key)
-            if (dormCheckboxStore[key]) {
-                document.querySelector("#"+key).checked = true;
-            } else {
-                console.log(document.querySelectorAll(".list-group-item"))
-                console.log(document.querySelector("#"+key).checked)
-                document.querySelector("#"+String(key)+"Check").checked = false;
-            }
-        }
-    }
+    // if (sessionStorage.dormCheckboxStorage != null) {
+    // // } else {
+    //     var dormCheckboxStore= JSON.parse(sessionStorage.dormCheckboxStorage);
+    //     console.log(dormCheckboxStore)
+    //     for (var key in dormCheckboxStore){
+    //         console.log(key)
+    //         if (dormCheckboxStore[key]) {
+    //             document.querySelector("#"+key).checked = true;
+    //         } else {
+    //             console.log(document.querySelectorAll(".list-group-item"))
+    //             console.log(document.querySelector("#"+key).checked)
+    //             document.querySelector("#"+String(key)+"Check").checked = false;
+    //         }
+    //     }
+    // }
 
     // called when the document is ready 
     currentDishes = copyDishes(ALLDISHES, globalMealTime, globalDate)
