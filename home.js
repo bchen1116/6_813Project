@@ -1,11 +1,6 @@
 // JS code for home page. Handles the clicking responses on the home page
-<<<<<<< HEAD
 var dorms = ["baker", "mccormick", "simmons", "next", "maseeh"]
 var dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"]; // dormList is the list of active dorms on the page
-=======
-
-var dormList = ["specials", "baker", "maseeh", "mccormick", "next", "simmons"]; // dormList is the list of active dorms on the page
->>>>>>> 4e0f11d7fb545e34c1a50a3ddfb4ea8d20d36376
 var currentDishes; 
 var starColor = "#FF9B01";
 var allDorms = {};                                              // allDorms is the dictionary that maps dorm name to Node element of dorm card
@@ -128,34 +123,7 @@ function performdietaryFiltering() {
     updateDishesForDorms(currentDishes)                                     // update the cards to reflect this change
 }
 
-//search
-var a = document.getElementById('food-search');
-console.log(a);
-a.addEventListener('submit',function(e) {
-    console.log("here")
-    e.preventDefault();
-    var b = document.getElementById('text-input').value;
-    //console.log(b);
-    currentDishes = copyDishes(ALLDISHES, globalMealTime, globalDate) ;
-    // go through our list of foods and remove the ones that do not fit the restriction & remove 
-    for (var dorm in currentDishes) {                                       // go through the dorms 
-        var dormCurrentDishes = currentDishes[dorm]
-        for (var meal in currentDishes[dorm]) {                             // go through all of the meals 
-            var currentMealDishes = currentDishes[dorm][meal]
-            for (var dishName in currentMealDishes) {                       // go through the dishes for that meal 
-                var dish = currentMealDishes[dishName]
-                if (! dish["description"].toUpperCase().includes(b.toUpperCase())) {  // if the food does not satify the restriction 
-                    delete currentDishes[dorm][meal][dishName]          // remove it from the currentDishes
-                }
-            }
-        }  
-    }
 
-    // update the cards to reflect this change
-    //console.log(currentDishes);
-    updateDishesForDorms(currentDishes)
-    
-});
 
 // repopulates the dishes that are in the dorm based on the current dishes 
 // updates the dishes presented on the cards  
@@ -186,7 +154,7 @@ function updateDishesForDorms(currentDishes) {
                 updateStarOnClick(evt)
                 updateFavorites("Entrees",foodName)
                 updateMenu()
-            })
+            });
 
             var fav = Util.create("span", {"class":"fa fa-star-o", "id": "star" + dormName + "," + dishName})
             var text = document.createTextNode(" "+Object.keys(dishesForDorm)[j])
@@ -290,25 +258,54 @@ function sortDorms(dorms) {
 }
 
 $(document).ready(function() { 
-    if (sessionStorage.dormCheckboxStorage == null) {
-    } else {
-        var dormCheckboxStore= JSON.parse(sessionStorage.dormCheckboxStorage);
-        console.log("dormCHECKBOXXXARINO", dormCheckbox)
-        var checks = {};
+    //search
+    var a = document.getElementById('food-search');
+    console.log(a);
+    a.addEventListener('submit',function(e) {
+        console.log("here")
+        e.preventDefault();
+        var b = document.getElementById('text-input').value;
+        //console.log(b);
+        currentDishes = copyDishes(ALLDISHES, globalMealTime, globalDate) ;
+        // go through our list of foods and remove the ones that do not fit the restriction & remove 
+        for (var dorm in currentDishes) {                                       // go through the dorms 
+            var dormCurrentDishes = currentDishes[dorm]
+            for (var meal in currentDishes[dorm]) {                             // go through all of the meals 
+                var currentMealDishes = currentDishes[dorm][meal]
+                for (var dishName in currentMealDishes) {                       // go through the dishes for that meal 
+                    var dish = currentMealDishes[dishName]
+                    if (! dish["description"].toUpperCase().includes(b.toUpperCase())) {  // if the food does not satify the restriction 
+                        delete currentDishes[dorm][meal][dishName]          // remove it from the currentDishes
+                    }
+                }
+            }  
+        }
+
+        // update the cards to reflect this change
+        //console.log(currentDishes);
+        updateDishesForDorms(currentDishes)
+        
+    });
+    // if (sessionStorage.dormCheckboxStorage == null) {
+    // } else {
+    //     var dormCheckboxStore= JSON.parse(sessionStorage.dormCheckboxStorage);
+    //     console.log("dormCHECKBOXXXARINO in home", dormCheckbox)
+    //     var checks = {};
     
-        for (var i = 0, emp; i < dormCheckbox.length; i++) {
-            console.log("making dict", dormCheckbox[i])
-            emp = dormCheckbox[i];
-            checks[dormCheckbox[i]] = emp;
-        }
-        for (var key in Object.keys(dormCheckbox)){
-            console.log("hellosers but not in", key, dormCheckbox[dorms[key]]);
-            if (dormCheckbox[dorms[key]]) {
-                console.log("hellosers", dorms[key]);
-                document.querySelector("#"+dorms[key]).checked = true;
-            }
-        }
-    }
+    //     for (var i = 0, emp; i < dormCheckbox.length; i++) {
+    //         console.log("making dict in home", dormCheckbox[i])
+    //         emp = dormCheckbox[i];
+    //         checks[dormCheckbox[i]] = emp;
+    //     }
+        
+    //     for (var key in Object.keys(dormCheckbox)){
+    //         console.log("hellosers but not in", key, dormCheckbox[dorms[key]]);
+    //         if (dormCheckbox[dorms[key]]) {
+    //             console.log("hellosers", dorms[key]);
+    //             document.querySelector("#"+dorms[key]).checked = true;
+    //         }
+    //     }
+    // }
 
     // called when the document is ready 
     currentDishes = copyDishes(ALLDISHES, globalMealTime, globalDate)
@@ -333,7 +330,7 @@ $(document).ready(function() {
                 updateStarOnClick(evt)
                 updateFavorites("Entrees", foodName)
                 updateMenu()
-            })
+            });
 
             var fav = Util.create("span", {"class":"fa fa-star-o", "id": "star" + dormName + "," + dishName})
             var text = document.createTextNode(" "+Object.keys(dishesForDorm)[j])
@@ -394,7 +391,7 @@ $(document).ready(function() {
             modal.style.display = "none";
         }
     }
-})
+});
 
 
 

@@ -21,6 +21,7 @@ window.addEventListener('load', function() {
     var logHead = document.querySelector("#logText");
     var signHead = document.querySelector("#signText");
 
+    console.log(trigger)
     function toggleModal() {
         modal[0].classList.toggle("show-modal");
         modal[1].classList.remove("show-modal")
@@ -115,7 +116,7 @@ window.addEventListener('load', function() {
 var profileDorms = ["specials"];
 if (sessionStorage.dormCheckboxStorage == null) {
     console.log("noperino")
-    var dormCheckboxStore = {"baker": false, "mccormick": false, "simmons": false, "next": false, "maseeh": false};
+    var dormCheckboxStore = {"baker": true, "mccormick": true, "simmons": true, "next": true, "maseeh": true};
     sessionStorage.setItem("dormCheckboxStorage", JSON.stringify(dormCheckboxStore));
 } else {
     console.log("hello it's not made")
@@ -141,6 +142,8 @@ window.addEventListener('load', function() {
         if (dormCheckbox[dorms[key]]) {
             console.log("hellosers", dorms[key]);
             document.querySelector("#"+dorms[key]).checked = true;
+        } else {
+            document.querySelector("#"+dorms[key]).checked = false;
         }
     }
 });
