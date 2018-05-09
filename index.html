@@ -40,30 +40,30 @@
                 <a href="#dorm" class="list-group-item list-group-item strong" data-toggle= "collapse" data-parent="#MainMenu"><img src="images/home.svg" id="home-icon">Dormitory</a>
                 <div class="list-group-submenu panel show" id="dorm">
                     <a href="#" class="list-group-item">
-                        <input type="checkbox" class="cb" name="dormcb" onclick="onCheckClicked(this, 'baker')" checked>&nbsp; Baker</a>
+                        <input type="checkbox" class="cb" id="bakerCheck" name="dormcb" onclick="onCheckClicked(this, 'baker')" checked>&nbsp; Baker</a>
                     <a href="#" class="list-group-item">
-                        <input type="checkbox" class="cb" name="dormcb" onclick="onCheckClicked(this, 'maseeh')" checked>&nbsp; Maseeh</a>
+                        <input type="checkbox" class="cb" id="maseehCheck" name="dormcb" onclick="onCheckClicked(this, 'maseeh')" checked>&nbsp; Maseeh</a>
                     <a href="#" class="list-group-item">
-                        <input type="checkbox" class="cb" name="dormcb" onclick="onCheckClicked(this, 'mccormick')" checked>&nbsp; McCormick</a>
+                        <input type="checkbox" class="cb" id="mccormickCheck" name="dormcb" onclick="onCheckClicked(this, 'mccormick')" checked>&nbsp; McCormick</a>
                     <a href="#" class="list-group-item">
-                        <input type="checkbox" class="cb" name="dormcb" onclick="onCheckClicked(this, 'next')" checked>&nbsp; Next</a>
+                        <input type="checkbox" class="cb" id="nextCheck" name="dormcb" onclick="onCheckClicked(this, 'next')" checked>&nbsp; Next</a>
                     <a href="#" class="list-group-item">
-                        <input type="checkbox" class="cb" name="dormcb" onclick="onCheckClicked(this, 'simmons')" checked>&nbsp; Simmons</a>
+                        <input type="checkbox" class="cb" id="simmonsCheck" name="dormcb" onclick="onCheckClicked(this, 'simmons')" checked>&nbsp; Simmons</a>
                     <a href="#" class="list-group-item">
                         <input type="checkbox" class="cb" name="dormcb" onclick="onCheckClicked(this, 'specials')" checked>&nbsp; Special Events</a>
                 </div>
                 <a href="#diet" class="list-group-item list-group-item strong" data-toggle="collapse" data-parent="#MainMenu"><img src="images/restrictions.svg" id="restrictions-icon"> Dietary Restrictions </a>
                 <div class="collapse list-group-submenu panel" id="diet">
                     <a href="#" class="list-group-item">
-                        <input type="checkbox" class="cb" onclick="dietaryUpdate(this, 'gluten free')">&nbsp; Gluten Free</a>
+                        <input type="checkbox" class="cb" id="gluten" onclick="dietaryUpdate(this, 'gluten')">&nbsp; Gluten Free</a>
                     <a href="#" class="list-group-item">
-                        <input type="checkbox" class="cb" onclick="dietaryUpdate(this, 'halal')">&nbsp; Halal</a>
+                        <input type="checkbox" class="cb" id="halal" onclick="dietaryUpdate(this, 'halal')">&nbsp; Halal</a>
                     <a href="#" class="list-group-item">
-                        <input type="checkbox" class="cb" onclick="dietaryUpdate(this, 'kosher')">&nbsp; Kosher</a>
+                        <input type="checkbox" class="cb" id="kosher" onclick="dietaryUpdate(this, 'kosher')">&nbsp; Kosher</a>
                     <a href="#" class="list-group-item">
-                        <input type="checkbox" class="cb" onclick="dietaryUpdate(this, 'vegan')">&nbsp; Vegan</a>
+                        <input type="checkbox" class="cb" id="vegan" onclick="dietaryUpdate(this, 'vegan')">&nbsp; Vegan</a>
                     <a href="#" class="list-group-item">
-                        <input type="checkbox" class="cb" onclick="dietaryUpdate(this, 'vegetarian')">&nbsp; Vegetarian</a>
+                        <input type="checkbox" class="cb" id="vegetarian" onclick="dietaryUpdate(this, 'vegeterian')">&nbsp; Vegetarian</a>
                 </div>
                 <a href="#meal" class="list-group-item list-group-item strong" data-toggle="collapse" data-parent="#MainMenu"><img src="images/mealIcon.svg" id="meal-icon"> Meal Type </a>
                 <div class="collapse list-group-submenu panel" id="meal">
@@ -94,11 +94,12 @@
             </div>
         </div>
         <div class="list-group panel" id="iconTabs">
-            <a href="#dorm" class="list-group-item list-group-item stronger" id="icons"><img id="icons" src="images/home.png" style="zIndex: -1;height: 30px; width: 30px; margin-left: 180; margin-top:5px;"></img></a>
-            <a href="#dorm" class="list-group-item list-group-item stronger" id="icons"><img id="icons" src="images/restrictions.png" style="height: 30px; width: 30px;margin-left:180px; margin-top:5px;"></img></a>
-            <a href="#dorm" class="list-group-item list-group-item stronger" id="icons"><img id="icons" src="images/mealIcon.png" style="height: 30px; width: 30px; margin-left: 180px; margin-top:5px;"></img></a>
-            <a href="#dorm" class="list-group-item list-group-item stronger" id="icons"><img id="icons" src="images/time.png" style="height: 30px; width: 30px; margin-left: 180px; margin-top:5px;"></img></a>
+            <a href="#dorm" class="list-group-item list-group-item stronger" id="icons"><img id="icons" src="images/home.svg" style="zIndex: -1;height: 30px; width: 30px; margin-left: 180; margin-top:5px;"></img></a>
+            <a href="#dorm" class="list-group-item list-group-item stronger" id="icons"><img id="icons" src="images/restrictions.svg" style="height: 30px; width: 30px;margin-left:180px; margin-top:5px;"></img></a>
+            <a href="#dorm" class="list-group-item list-group-item stronger" id="icons"><img id="icons" src="images/mealIcon.svg" style="height: 30px; width: 30px; margin-left: 180px; margin-top:5px;"></img></a>
+            <a href="#dorm" class="list-group-item list-group-item stronger" id="icons"><img id="icons" src="images/time.svg" style="height: 30px; width: 30px; margin-left: 180px; margin-top:5px;"></img></a>
         </div>
+    </div>
     <!-- MAIN BODY -->
     <!-- unsure if i can create this in javascript since there's so many nested layers -->
 <div class="bigMainClass">
@@ -164,17 +165,17 @@
         </div>
         
     </div>
-</div>
+
 
     <!-- modal is the menu (empty rn) that pops up -->
     <div id="myModal" class="modal">
-            <!-- Modal content -->
-            <div class="modal-content">
-                <!-- POTENTIAL MODAL ANIMATIONS: https://codepen.io/designcouch/pen/obvKxm -->
-                <span class="close">&times;</span>
-                <div class="modal-body" id="modal-body"></div>
-            </div>
-          </div>
+        <!-- Modal content -->
+        <div class="modal-content">
+            <!-- POTENTIAL MODAL ANIMATIONS: https://codepen.io/designcouch/pen/obvKxm -->
+            <span class="close">&times;</span>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
 
 </body>
 

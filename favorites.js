@@ -79,6 +79,7 @@ $( window ).on( "load", function() {
     })
 
 function toggleFavorites() {
+    console.log(favDishes)
     for (var index in Object.keys(favDishes.dishes)) {
         var dishType =  Object.keys(favDishes.dishes)[index]
         var element = document.getElementById(dishType+"FavPage")
@@ -92,12 +93,7 @@ function toggleFavorites() {
             dish.addEventListener('click', function (evt) {
                 var foodName = evt.target.closest("p.card-title").id 
                 updateStarOnClick(evt)
-                //console.log("before",favDishes, foodName)
-                updateFavorites("Entrees", foodName)
-                //console.log("after",favDishes)
-                sessionStorage.setItem("favoriteDishes", JSON.stringify(favDishes));
-                //updateMenu()
-                //location.reload()
+                updateFavoritos("Entrees", foodName)
             })
 
             var fav = Util.create("span", {"class":"fa fa-star", "id": "star" + dishName})
@@ -111,6 +107,15 @@ function toggleFavorites() {
     }
 }
 
+function updateFavoritos(dishtype, dish) {
+    console.log(dishtype, dish)
+    if (favDishes['dishes'][dishtype].indexOf(dish) != -1) {                            // if the dish is already in favorites then we want to remove it 
+        favDishes['dishes'][dishtype].splice(favDishes['dishes'][dishtype].indexOf(dish))
+    } else {                                                             // if the dish is not in favorites then add it 
+        favDishes['dishes'][dishtype].push(dish)
+    }
+    sessionStorage.setItem("favoriteDishes", JSON.stringify(favDishes))
+}
 
 //navbar code for food selection form pop-up
 window.addEventListener('load', function() {
@@ -132,6 +137,7 @@ window.addEventListener('load', function() {
     var logHead = document.querySelector("#logText");
     var signHead = document.querySelector("#signText");
     var currentModal = 0;                                           // currentModal is 0 for formRequest, 1 for log in, 2 for sign up
+    var rSubmit = document.getElementById("request-submit");
 
     console.log(submit);
     function toggleModal() {
@@ -232,13 +238,32 @@ window.addEventListener('load', function() {
             switchSignLogModal(true)
         }
         console.log(event.target);
-
-
     }
 
+    function validateForm() {
+
+        var rKerberos=document.getElementById("request_kerberos").value;
+        var rId=document.getElementById("request_ID").value;
+        var rDorm=document.getElementById("request_dorm").value;
+        var rFood=document.getElementById("request_food").value;
+        var rDate=document.getElementById("request_date").value;
+        var rTime=document.getElementById("request_time").value;
+
+        if ((rId==null || rId=="") || (rKerberos==null || rKerberos=="") || 
+            (rDorm==null || rDorm=="") || (rFood==null || rFood=="") || 
+            (rDate==null || rDate=="") || (rTime==null || rTime=="")) {
+            alert("Please Fill All Required Fields");
+            return false;
+        }
+        else {
+            toggleModal();
+        }
+    }
+
+    rSubmit.addEventListener("click", validateForm);
     trigger.addEventListener("click", toggleModal);
     closeButton[0].addEventListener("click", toggleModal);
-    submit[0].addEventListener("click", toggleModal);
+    // submit[0].addEventListener("click", toggleModal);
     trigger2[0].addEventListener("click", toggleLogInModal);
     trigger2[1].addEventListener("click", toggleSignInModal);
     closeButton[1].addEventListener("click", closeModal);

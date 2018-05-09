@@ -135,35 +135,35 @@
 		</div>
 
 		<div class = "info-column">
-			<div class = "info-section">
+			<div class = "info-section" id="lowerHalf">
 				<!-- <div class = "default-grid"> -->
 				<div class = "info-title">
 					Dietary Filters
 				</div>
-				<div class = "info">
+				<div class = "info" id="dietInfo">
 					<label class="container">
-				        <input type="checkbox">
+				        <input type="checkbox" id="gluten" onclick="clickedDiet(this, 'gluten')">
 				        <span class="checkmark"></span>Gluten-Free
 				      </label>
 
 				      <label class="container">
-				        <input type="checkbox">
+				        <input type="checkbox" id="halal" onclick="clickedDiet(this, 'halal')">
 				        <span class="checkmark"></span>Halal
 				      </label>
 
 				      <label class="container">
-				        <input type="checkbox">
+				        <input type="checkbox" id="kosher" onclick="clickedDiet(this, 'kosher')">
 				        <span class="checkmark"></span>Kosher
 				      </label>
 
 				      <label class="container">
-				        <input type="checkbox">
+				        <input type="checkbox" id="vegan" onclick="clickedDiet(this, 'vegan')">
 				        <span class="checkmark"></span>Vegan
 				        <!-- <div>Next</div> -->
 				      </label>
 
 				      <label class="container">
-				        <input type="checkbox">
+				        <input type="checkbox" id="vegetarian" onclick="clickedDiet(this, 'vegetarian')">
 				        <span class="checkmark"></span>Vegetarian
 				      </label>
 
@@ -190,15 +190,17 @@
 				</div>
 			</div> -->
 
-			<div class = "info-section">
+			<div class = "info-section" id="lowerHalf">
 				<div class = "info-title">
 					Your Food Requests
 				</div>
 				<div class = "info">
 					<div class = "food-grid">
 						<div>
-							Sick Food Order, May 10, 8pm Baker
+						<div>
+							Sick Food Order</div><div>May 10, 8pm Baker
 						</div>
+					</div>
 						<div>
 							<!-- <button class = "order-button"> Cancel </button> -->
 							<button id = "trash"><img class="icon-trash" src="images/trash.svg"></button>

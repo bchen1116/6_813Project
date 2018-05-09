@@ -10,9 +10,11 @@
 .whole-background{
     /*background-color: #f0eceb;*/
     background-color: var(--back-color);
+    /* min-width: 500px; */
 }
 
 .wrapper {
+    width: auto;
     padding-left: 0;
     -webkit-transition: all 0.6s ease;
     -moz-transition: all 0.6s ease;
@@ -385,7 +387,7 @@ input[type='checkbox']:checked:after {
     color: #6e7376;
     border: none;
     font-size: 23px;
-    margin-left: 120px;
+    /* margin-left: 120px; */
     color: #333333;
     padding-top: 20px;
     padding-bottom: 0px;
@@ -409,7 +411,7 @@ input[type='checkbox']:checked:after {
 }
 
 .mealDisplay {
-    width: 200px;
+    width: auto;
     text-align: left;
     /*padding-left: 10px;*/
     /*text-shadow:
@@ -519,14 +521,14 @@ body {
     height: 30px !important;
     margin-top: -23px !important;
  }
-@media (max-width: 930px) {
+@media (max-width: 930px) and (min-width: 501px) {
     
     .wrapper {
         margin-left: -200px;
     }
     .bigMainClass {
-        margin-left: 250px;
-        z-index: -1;
+        margin-left: 80px;
+        width: auto;
     }
 
     #iconTabs {
@@ -538,7 +540,45 @@ body {
         vertical-align: middle;
         background-color: transparent;
     }
+   
+}
+@media (max-width: 500px) {
+    
+    .wrapper {
+        margin-left: -200px;
+    }
+    .bigMainClass {
+        margin-left: 40px;
+        width: auto;
+    }
+
+    #iconTabs {
+        display: block;
+    }
+
+    .stronger {
+        height: 60px;
+        vertical-align: middle;
+        background-color: transparent;
+    }
+    .specials-card {
+        max-width: 270px;
+    }
+
+    .card-body {
+        width: 263px;
+    }
+    .card-header {
+        width: 263px;
+    }
+    .card {
+        max-width: 270px !important;
+        min-width: 270px;
+    }
+
+    .timeDateDisplay {
+        margin-left: -50px;
+    }
     
 }
-
 

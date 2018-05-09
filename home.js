@@ -1,13 +1,30 @@
 // JS code for home page. Handles the clicking responses on the home page
 var dorms = ["baker", "mccormick", "simmons", "next", "maseeh"]
-var dormList = ["baker", "maseeh", "mccormick", "next", "simmons","specials"]; // dormList is the list of active dorms on the page
+// var dormList = ["baker", "maseeh", "mccormick", "next", "simmons","specials"]; // dormList is the list of active dorms on the page
 var currentDishes; 
 var starColor = "#FF9B01";
 var allDorms = {};                                              // allDorms is the dictionary that maps dorm name to Node element of dorm card
 var dieraryRestrictions = []                                    // list of the dietary restirctions that are active on the page
 var globalMealTime = "dinner"
 var globalDate = "05/02/2018"
-
+if (sessionStorage.favoriteDishes != null) {
+    var favDishes = JSON.parse(sessionStorage.getItem("favoriteDishes"))
+    for (var d = 0; d < favDishes['dishes']['Entrees'].length; d++){
+        if (!favoriteDishes.isIn('Entrees', favDishes['dishes']['Entrees'][d])) {
+            favoriteDishes.addDish('Entrees', favDishes['dishes']['Entrees'][d])
+        }
+    }
+} else {
+    var favDishes = {"dishes":{"Entrees":[], "Sides":[]}}
+}
+if (sessionStorage.dietStorage != null) {
+    var dietStore = JSON.parse(sessionStorage.dietStorage);
+        for (var key in dietStore) {
+            if (dietStore[key]) {
+                dieraryRestrictions.push(key)
+            }
+        }
+}
 // given a dictionary make a deep copy of the dictionary 
 // used to create a copy of all of the dishes in our database 
 function copyDishes(mainDict, globalMealTime, globalDate) { 
@@ -43,7 +60,7 @@ function onCheckClicked(cb, dorm) {
     } else if (cb.checked == true) {                            // otherwise if it is checked
         var main = document.getElementById("mainClass");
         var index = dormList.indexOf(dorm);
-        if (index = -1) {                                       // if the dorm isn't in the dormList, add it                             
+        if (index == -1) {                                       // if the dorm isn't in the dormList, add it                             
             dormList.push(dorm);
             var newDorms = sortDorms(dormList);                 // sort the dorms in order again
             if (newDorms.indexOf("specials") > -1) {
@@ -54,7 +71,6 @@ function onCheckClicked(cb, dorm) {
                 main.removeChild(main.firstChild);
             }
             for (var j = 0; j < newDorms.length; j++) {         // add the dorms in sorted order back to main
-                console.log(allDorms[newDorms[j]])
                 main.appendChild(allDorms[newDorms[j]]);
             }
         }
@@ -65,11 +81,12 @@ function onCheckClicked(cb, dorm) {
 // updates dorm card display based on whether there are available meals
 function dormHasMeals(dishes){
     for (var dorm in dorms){
+        try {
         if (Object.keys(dishes[dorms[dorm]]["Entrees"]).length == 0  && Object.keys(dishes[dorms[dorm]]["Sides"]).length == 0 ){
             var index = dormList.indexOf(dorm);  
-            console.log(document.getElementById(dorms[dorm]+"Menu"))                     // remove dorm from dormList
             document.getElementById(dorms[dorm]+"Menu").innerHTML = "No Food Available.";           // remove it from the document
-        }         
+        }    
+    } catch (E) {}     
     }
     updateCardLayout();   
  
@@ -81,7 +98,6 @@ function restoreCards(){
         var index = dormList.indexOf(dorm);    
         if (index = -1) {                             // if the dorm isn't in the dormList, add it                             
             dormList.push(dorms[dorm]);
-            console.log(dorms[dorm]);
             var newDorms = sortDorms(dormList);                 // sort the dorms in order again
             if (newDorms.indexOf("specials") > -1) {
                 newDorms.splice(newDorms.indexOf("specials"), 1);
@@ -92,7 +108,6 @@ function restoreCards(){
             }
             for (var j = 0; j < newDorms.length; j++) {         // add the dorms in sorted order back to main
                 main.appendChild(allDorms[newDorms[j]]);
-                console.log(allDorms[newDorms[j]]);
             }
         }
     }
@@ -102,10 +117,7 @@ function restoreCards(){
 //called when the radio button to specify which meal type is to be displayed 
 function mealTimeUpdate(cb, mealTime){
     // we can assume that tgus us called we are changing the display to be of that meal type
-    console.log("restoration");
-    console.log("playdumbuttt")
     restoreCards();
-    console.log("ghjgjh")
     globalMealTime = mealTime;
     performdietaryFiltering(); // filter out the dishes based on what we want
     timeUpdate(mealTime);
@@ -124,7 +136,7 @@ function mealDateUpdate(cb, mealDate, day) {
 function dietaryUpdate(cb, diet) { 
     restoreCards();
     if (cb.checked == false) {                                      // if the checkbox is not checked 
-        if (dieraryRestrictions.includes(diet)) {                   // if it is already in the list of restrictions
+        while (dieraryRestrictions.includes(diet)) {                   // if it is already in the list of restrictions
             var indexOfRemove = dieraryRestrictions.indexOf(diet);  // remove it from the list of our dietary restrictions
             dieraryRestrictions.splice(indexOfRemove, 1);
         }
@@ -168,19 +180,15 @@ function performdietaryFiltering() {
     }
     updateDishesForDorms(currentDishes);  
     dormHasMeals(currentDishes);
-    console.log("cureent dishes" + currentDishes)
                                        // update the cards to reflect this change
 }
 
 //search
 var a = document.getElementById('food-search');
-console.log(a);
 a.addEventListener('submit',function(e) {
     restoreCards();
-    console.log("here")
     e.preventDefault();
     var b = document.getElementById('text-input').value;
-    //console.log(b);
     currentDishes = copyDishes(ALLDISHES, globalMealTime, globalDate) ;
     // go through our list of foods and remove the ones that do not fit the restriction & remove 
     for (var dorm in currentDishes) {                                       // go through the dorms 
@@ -209,13 +217,17 @@ a.addEventListener('submit',function(e) {
 // repopulates the dishes that are in the dorm based on the current dishes 
 // updates the dishes presented on the cards  
 function updateDishesForDorms(currentDishes) { 
-    dormList = ["baker", "maseeh", "mccormick", "next", "simmons","specials"];         //recall the dormList to initiate allDorms
+    // dormList = ["specials"]
+    // dormList = ["baker", "maseeh", "mccormick", "next", "simmons","specials"];         //recall the dormList to initiate allDorms
     for (var i = 0; i < dormList.length; i++) {                                         // for each dorm 
         allDorms[dormList[i]] = document.getElementById(dormList[i]);                   // populate the card that is attached to the dorm 
     }
     //for each of the dorms, go through and populate their menu according to the data we have on file
     for (var i=0; i<dormList.length-1; i++) {
+        // console.log("currentdish", currentDishes)
+        if (dormList[i] != "specials"){
         var dormName = dormList[i]
+        // console.log(dormName, currentDishes[dormName])
         var menu = document.getElementById(dormName +"Menu") 
         var dishesForDorm = currentDishes[dormName]["Entrees"]
 
@@ -235,14 +247,21 @@ function updateDishesForDorms(currentDishes) {
                 updateFavorites("Entrees",foodName)
                 updateMenu()
             })
-
-            var fav = Util.create("span", {"class":"fa fa-star-o", "id": "star" + dormName + "," + dishName})
+            // if (favDishes['dishes']['Entrees'].indexOf(dishName) == -1) {
+                // console.log(favDishes, dishName, "in top")
+                var fav = Util.create("span", {"class":"fa fa-star-o", "id": "star" + dormName + "," + dishName})
+            // } else {
+            //     console.log(favDishes, dishName, "in bottom")
+            //     var fav = Util.create("span", {"class":"fa fa-star", "id": "star" + dormName + "," + dishName})
+            //     fav.style.color = starColor;
+            // }
             var text = document.createTextNode(" "+Object.keys(dishesForDorm)[j])
             
             dish.appendChild(fav)
             dish.appendChild(text)
             menu.appendChild(dish)
         }
+    }
     }
     updateMenu() // add back the favorites if there were any 
 }
@@ -272,25 +291,39 @@ function updateStarOnClick(e) {
     }
 }
 
+function updateStar(target) {
+    var currentStar = target.firstChild                                   // find the star that we want to address 
+        var currentStarClass  = target.firstChild.getAttribute("class")       
+        if (currentStarClass == "fa fa-star-o") {                            
+            currentStar.classList = "fa fa-star"
+            currentStar.style.color = starColor
+        } else { 
+            currentStar.classList = "fa fa-star-o"
+            currentStar.style.color = "black"
+        }
+}
 
 // update the list of favorite food items
 function updateFavorites(dishtype, dish) { 
     //console.log ("Iwascalled")
     //console.log(favoriteDishes.favorites(dishtype))
     //console.log(favoriteDishes.isIn(dishtype, dish))
+    // console.log(fav)
     if (favoriteDishes.isIn(dishtype, dish)) {                            // if the dish is already in favorites then we want to remove it 
-        //console.log("ishouldbeworkingbutsuprise")
+
         favoriteDishes.removeDish(dishtype,dish)
     } else {                                                             // if the dish is not in favorites then add it 
-        //console.log("inhere")
+
         favoriteDishes.addDish(dishtype,dish)
     }
+    sessionStorage.setItem("favoriteDishes", JSON.stringify(favoriteDishes))
 }
 
 // after a dish has been added to favorites 
 // go through the other menus and add that dish to their favorites too 
 function updateMenu() { 
     for (var i = 0; i < dormList.length-1; i++) {
+        if (dormList[i] != 'specials') {
         var dormName = dormList[i]
         var dishesForDorm = currentDishes[dormName]["Entrees"]
         for (var j =0; j < Object.keys(dishesForDorm).length; j++) {
@@ -304,6 +337,7 @@ function updateMenu() {
                 relevantStar.style.color = "black"
             }
         }
+    }
     }
 }
 
@@ -342,42 +376,37 @@ function sortDorms(dorms) {
 }
 
 $(document).ready(function() { 
-    if (sessionStorage.dormCheckboxStorage == null) {
-    } else {
+    dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"]; 
+    // console.log("dorm",document.getElementById("request_dorm").value,
+    //     "time",document.getElementById("request_time").value,
+    //     "date",document.getElementById("request_date").value,
+    //     "food",document.getElementById("request_food").value)
+    if (sessionStorage.dormCheckboxStorage != null) {
         var dormCheckboxStore= JSON.parse(sessionStorage.dormCheckboxStorage);
-        var checks = {};
-        for (var i = 0, emp; i < dormCheckbox.length; i++) {
-            emp = dormCheckbox[i];
-            checks[dormCheckbox[i]] = emp;
-        }
-        for (var key in Object.keys(dormCheckbox)){
-            if (dormCheckbox[dorms[key]]) {
-                document.querySelector("#"+dorms[key]).checked = true;
+        for (var key in dormCheckbox){
+            if (!dormCheckboxStore[key]) {
+                document.querySelector("#"+key+"Check").checked = false;
+                dormList.splice(dormList.indexOf(key),1)
+                allDorms[key] = document.getElementById(key)
+                document.getElementById(key).remove();             // remove it from the document
+            } else {
+                document.querySelector("#"+key+"Check").checked = true;
             }
         }
+        updateCardLayout();
+    } 
+    if (sessionStorage.dietStorage != null) {
+        var dietStore = JSON.parse(sessionStorage.dietStorage);
+        for (var key in dietStore) {
+            if (dietStore[key]) {
+                document.querySelector("#"+key).checked = true;
+                dieraryRestrictions.push(key)
+            }
+        }
+        performdietaryFiltering();
     }
-
-    // if (sessionStorage.dormCheckboxStorage != null) {
-    // // } else {
-    //     var dormCheckboxStore= JSON.parse(sessionStorage.dormCheckboxStorage);
-    //     console.log(dormCheckboxStore)
-    //     for (var key in dormCheckboxStore){
-    //         console.log(key)
-    //         if (dormCheckboxStore[key]) {
-    //             document.querySelector("#"+key).checked = true;
-    //         } else {
-    //             console.log(document.querySelectorAll(".list-group-item"))
-    //             console.log(document.querySelector("#"+key).checked)
-    //             document.querySelector("#"+String(key)+"Check").checked = false;
-    //         }
-    //     }
-    // }
-
-
     // called when the document is ready 
     currentDishes = copyDishes(ALLDISHES, globalMealTime, globalDate)
-    dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"];         //recall the dormList to initiate allDorms
-    // console.log(ALLDISHES)
     for (var i = 0; i < dormList.length; i++) {
         allDorms[dormList[i]] = document.getElementById(dormList[i]);
     }
@@ -385,23 +414,18 @@ $(document).ready(function() {
     //for each of the dorms, go through and populate their menu according to the data we have on file
     for (var i=0; i<dormList.length-1; i++) {
         var dormName = dormList[i]
-        // console.log(dormName)
         var menu = document.getElementById(dormName +"Menu") 
         var dishesForDorm = currentDishes[dormName]["Entrees"]
-        // console.log(dishesForDorm);
-
         // for each of the dishes that are being served for that dorm 
         for (var j=0; j<Math.min(Object.keys(dishesForDorm).length, 6); j++) {
             var dishName = Object.keys(dishesForDorm)[j]
             var dish = Util.create("p", {"class":"card-title", "id": dishName})
-
             dish.addEventListener('click', function (evt) {
                 var foodName = evt.target.closest("p.card-title").id 
                 updateStarOnClick(evt)
                 updateFavorites("Entrees", foodName)
                 updateMenu()
             })
-
             var fav = Util.create("span", {"class":"fa fa-star-o", "id": "star" + dormName + "," + dishName})
             var text = document.createTextNode(" "+Object.keys(dishesForDorm)[j])
             
@@ -454,7 +478,6 @@ $(document).ready(function() {
 
     // When the user clicks the close button
     modalClose.onclick = function() {
-        //console.log("Im here")
         modal.style.display = "none";
     }
 
@@ -496,8 +519,8 @@ function loadModal(e) {
             for (var dish in dishes) {
                 //var food = Util.create("div", {"class": "food-item", "id":dish})
                 var foodItem = Util.create("p", {"class": "food-item", "id": dish})
-                var foodDescription = Util.create("div", {"class": "food-description"})
-                var foodRestrictions = Util.create("p", {"class": "food-restriction"})
+                var foodDescription = Util.create("div", {"class": "food-description", "id": dish})
+                var foodRestrictions = Util.create("p", {"class": "food-restriction", "id": dish})
                 var fav = Util.create("span", {"class":"fa fa-star-o", "id": dish})
 
                 foodItem.appendChild(fav)
@@ -543,10 +566,8 @@ function loadModal(e) {
                 // This is what happens when we click on a star
                 foodItem.addEventListener('click', function(evt) {
                     var foodName = evt.path[0].id
-                    var foodType = evt.target.closest("h4.modal-food-type").id
-                    //console.log("food",evt.path[0], foodName)
-                    updateStarOnClick(evt)
-                    updateFavorites(foodType, foodName)
+                    updateStar(evt.target.closest("p.food-item"))
+                    updateFavorites('Entrees', foodName)
                     updateMenu()
                 })
 
@@ -586,13 +607,14 @@ window.addEventListener('load', function() {
     var dropDown = document.querySelector(".original");
     var icons = document.querySelector("#iconTabs");
     var wrapper = document.querySelector(".wrapper");
+    var mainClassCards = document.querySelector(".bigMainClass");
+    var rSubmit = document.getElementById("request-submit");
 
     function toggleModal() {
         modal.classList.toggle("show-modal");
     }
 
     function windowOnClick(event) {
-        console.log(notSideBarClick(event.target.classList[0]))
         if (event.target === modal) {
             toggleModal();
         } else if (event.target === a1) {
@@ -600,8 +622,6 @@ window.addEventListener('load', function() {
                 window.location.replace("/profile.html");
             }
         } else if (event.target === navButton) {
-            //console.log("triggered")
-            //console.log(dropDown.style.display)
             if (dropDown.style.display == 'none' || dropDown.style.display == "") {
                 dropDown.style.display = 'block';
             } else {
@@ -610,16 +630,40 @@ window.addEventListener('load', function() {
         } else if (event.target.id == "icons" || event.target.id =="iconTabs") {
             icons.style.display = "none";
             wrapper.style.marginLeft = "0px";
-            wrapper.style.zIndex = "2";
+            wrapper.style.zIndex = "1";
+            mainClassCards.style.zIndex = "-1"
+
         } else if (window.innerWidth < 930 && notSideBarClick(event.target.classList[0])) {
             icons.style.display = "block";
             wrapper.style.marginLeft = "-200px";
-            wrapper.style.zIndex = "initial";
+            wrapper.style.zIndex = "0";
+            mainClassCards.style.zIndex = "0"
+
         }
     }
 
+    function validateForm() {
+
+        var rKerberos=document.getElementById("request_kerberos").value;
+        var rId=document.getElementById("request_ID").value;
+        var rDorm=document.getElementById("request_dorm").value;
+        var rFood=document.getElementById("request_food").value;
+        var rDate=document.getElementById("request_date").value;
+        var rTime=document.getElementById("request_time").value;
+
+        if ((rId==null || rId=="") || (rKerberos==null || rKerberos=="") || 
+            (rDorm==null || rDorm=="") || (rFood==null || rFood=="") || 
+            (rDate==null || rDate=="") || (rTime==null || rTime=="")) {
+            alert("Please Fill All Required Fields");
+            return false;
+        }
+        else {
+            toggleModal();
+        }
+    }
+
+    rSubmit.addEventListener("click", validateForm);
     trigger.addEventListener("click", toggleModal);
     closeButton.addEventListener("click", toggleModal);
-    submit.addEventListener("click", toggleModal);
     window.addEventListener("click", windowOnClick);
 });
