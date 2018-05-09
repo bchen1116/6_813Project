@@ -1,5 +1,7 @@
 // JS code for home page. Handles the clicking responses on the home page
 var dorms = ["baker", "mccormick", "simmons", "next", "maseeh"]
+// dictionary to translate dietary tags into words
+var dietDict = {"halal": "halal", "gluten free" : "gluten", "gluten-free" : "gluten", "vegan" : "vegan" , "kosher": "kosher" , "vegetarian": "vegeterian"}
 // var dormList = ["baker", "maseeh", "mccormick", "next", "simmons","specials"]; // dormList is the list of active dorms on the page
 var currentDishes; 
 var starColor = "#FF9B01";
@@ -198,7 +200,8 @@ a.addEventListener('submit',function(e) {
             var currentMealDishes = currentDishes[dorm][meal]
             for (var dishName in currentMealDishes) {                       // go through the dishes for that meal 
                 var dish = currentMealDishes[dishName]
-                if (! dish["description"].toUpperCase().includes(b.toUpperCase())) {  // if the food does not satify the restriction 
+                console.log(b)
+                if ((! dish["description"].toUpperCase().includes(b.toUpperCase()))&&(!dish["diet"].includes(dietDict[b])) ) {  // if the food does not satify the restriction 
                     delete currentDishes[dorm][meal][dishName]          // remove it from the currentDishes
                 }
             }
