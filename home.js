@@ -50,6 +50,7 @@ function copyDishes(mainDict, globalMealTime, globalDate) {
 // called when the checkbox on dorms are clicked/unclicked
 // used for filtering the dorms, in order to change what cards appear on the page 
 function onCheckClicked(cb, dorm) {
+    console.log("dormList", dormList)
     currentDishes = copyDishes(ALLDISHES, globalMealTime, globalDate)
     if (cb.checked == false) {                                  // if it isn't checked, remove the dorm
         var index = dormList.indexOf(dorm);
@@ -381,20 +382,7 @@ $(document).ready(function() {
     //     "time",document.getElementById("request_time").value,
     //     "date",document.getElementById("request_date").value,
     //     "food",document.getElementById("request_food").value)
-    if (sessionStorage.dormCheckboxStorage != null) {
-        var dormCheckboxStore= JSON.parse(sessionStorage.dormCheckboxStorage);
-        for (var key in dormCheckbox){
-            if (!dormCheckboxStore[key]) {
-                document.querySelector("#"+key+"Check").checked = false;
-                dormList.splice(dormList.indexOf(key),1)
-                allDorms[key] = document.getElementById(key)
-                document.getElementById(key).remove();             // remove it from the document
-            } else {
-                document.querySelector("#"+key+"Check").checked = true;
-            }
-        }
-        updateCardLayout();
-    } 
+   
     if (sessionStorage.dietStorage != null) {
         var dietStore = JSON.parse(sessionStorage.dietStorage);
         for (var key in dietStore) {
@@ -473,6 +461,7 @@ $(document).ready(function() {
                 modal.style.display = "block"
             }
         });
+        
     }
 
 
@@ -487,6 +476,20 @@ $(document).ready(function() {
             modal.style.display = "none";
         }
     }
+    if (sessionStorage.dormCheckboxStorage != null) {
+        var dormCheckboxStore= JSON.parse(sessionStorage.dormCheckboxStorage);
+        for (var key in dormCheckbox){
+            if (!dormCheckboxStore[key]) {
+                document.querySelector("#"+key+"Check").checked = false;
+                dormList.splice(dormList.indexOf(key),1)
+                allDorms[key] = document.getElementById(key)
+                document.getElementById(key).remove();             // remove it from the document
+            } else {
+                document.querySelector("#"+key+"Check").checked = true;
+            }
+        }
+        updateCardLayout();
+    } 
 })
 
 
