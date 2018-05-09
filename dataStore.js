@@ -4,7 +4,7 @@
 class favorites { 
 	//creates a new instance of favorites 
 	constructor() {
-		this.dishes = {"Entrees": [], "Sides":[], "Vegetables":[]}
+		this.dishes = {"Entrees": [], "Sides":[]}
 	}
 
 	// add dish to favorites
@@ -22,6 +22,7 @@ class favorites {
 
 	// checkes if dishName is in Favorites for dishType 
 	isIn(dishType, dishName) { 
+		//console.log(this.dishes[dishType])
 		return this.dishes[dishType].includes(dishName)
 	}
 
@@ -76,7 +77,7 @@ jerkedChickenMon ={diet: [hal, gnFree], time:dr, date: mon, description: "Oven B
 chickenSoupMon = {diet: [gnFree], time:dr, date: mon, description: "Warm Hearty Chichen Soup with an assortment of vegetables"}
 vegetableSoupMon = {diet: [veg, vg, gnFree], time:dr, date: mon, description: "Warm Soup with an assortment of vegetables"}
 chickenCurryMon = {diet: [gnFree, hal], time: dr, date: mon, description: "Chicken Curry with basmati rice"}
-pepperioniPizzaMon = {diet: [], time: dr, date: mon, description: "Pepperoni pizza with homemade tomato sauce"}
+pepperoniPizzaMon = {diet: [], time: dr, date: mon, description: "Pepperoni pizza with homemade tomato sauce"}
 
 // MONDAY DINNER - SIDES 
 mashedPotatoesMon = {diet: [veg, kos, hal], time: dr, date: mon, description: "Warm and freshly made mashed potatoes"}
@@ -109,7 +110,7 @@ steamedMusselsTue = {diet: [], time: dr, date: tue, description: "Steamed Mussel
 grilledPorkOverRiceTue = {diet: [], time: dr, date: tue, description: "Grilled Pork served over Basmati Rice"}
 vegetableSoupTue = {diet: [veg, vg, gnFree], time:dr, date: tue, description: "Warm Soup with an assortment of vegetables"}
 pineapplePorkCutletTue = {diet: [gnFree], time: dr, date: tue, description: "Pinapple Pork Cutlet served with rice"}
-pepperioniPizzaTue = {diet: [], time: dr, date: tue, description: "Pepperoni pizza with homemade tomato sauce"}
+pepperoniPizzaTue = {diet: [], time: dr, date: tue, description: "Pepperoni pizza with homemade tomato sauce"}
 hawaiianPizzaTue = {diet: [], time: dr, date: tue, description: "Ham and pineapple pizza with homemade tomato sauce"}
 
 
@@ -150,7 +151,7 @@ chickenSoupWed = {diet: [gnFree], time:dr, date: wed, description: "Warm Hearty 
 tofuWVeggiesWed = {diet: [veg, vg, gnFree], time: dr, date: wed, description: "Tofu Bowl with quinoa base and vegtable salad"}
 chickenCurryWed = {diet: [gnFree, hal], time: dr, date: wed, description: "Chicken Curry with basmati rice"}
 pineapplePorkCutletWed = {diet: [gnFree], time: dr, date: wed, description: "Pinapple Pork Cutlet served with rice"}
-pepperioniPizzaWed = {diet: [], time: dr, date: wed, description: "Pepperoni pizza with homemade tomato sauce"}
+pepperoniPizzaWed = {diet: [], time: dr, date: wed, description: "Pepperoni pizza with homemade tomato sauce"}
 
 
 // WEDNESDAY DINNER - SIDES
@@ -220,7 +221,7 @@ grilledPorkOverRiceFr = {diet: [], time: dr, date: fr, description: "Grilled Por
 chickenSoupFr = {diet: [gnFree], time:dr, date: fr, description: "Warm Hearty Chichen Soup with an assortment of vegetables"}
 vegetableSoupFr = {diet: [veg, vg, gnFree], time:dr, date: fr, description: "Warm Soup with an assortment of vegetables"}
 chickenCurryFr = {diet: [gnFree, hal], time: dr, date: fr, description: "Chicken Curry with basmati rice"}
-pepperioniPizzaFr = {diet: [], time: dr, date: fr, description: "Pepperoni pizza with homemade tomato sauce"}
+pepperoniPizzaFr = {diet: [], time: dr, date: fr, description: "Pepperoni pizza with homemade tomato sauce"}
 
 
 // FRIDAY DINNER - SIDES
@@ -252,7 +253,7 @@ jerkedChickenSat ={diet: [hal, gnFree], time:dr, date: sat, description: "Oven B
 tofuWVeggiesSat = {diet: [veg, vg, gnFree], time: dr, date: sat, description: "Tofu Bowl with quinoa base and vegtable salad"}
 chickenBowlSat = {diet: [kos, hal], time: dr, date: sat, description: "Warm Hearty Chichen Noodle Bowl with an assortment of vegetables"}
 pineapplePorkCutletSat = {diet: [gnFree], time: dr, date: sat, description: "Pinapple Pork Cutlet served with rice"}
-pepperioniPizzaSat = {diet: [], time: dr, date: sat, description: "Pepperoni pizza with homemade tomato sauce"}
+pepperoniPizzaSat = {diet: [], time: dr, date: sat, description: "Pepperoni pizza with homemade tomato sauce"}
 hawaiianPizzaSat = {diet: [], time: dr, date: sat, description: "Ham and pineapple pizza with homemade tomato sauce"}
 
 
@@ -296,7 +297,7 @@ roastedveggiesSun = {diet: [hal, gnFree, vg, kos, hal, veg], time: dr, date: sun
 /////// DONT WORRY ABOUT THIS PART
 
 // Dorm dishes format | DormDishes = {entree: {diet:["vegan", "halal"], time:"dinner", date:"date", calories: 500}}
-bakerDishes = {"Entrees": {"Pepperoni Pizza":pepperioniPizzaMon, "Roasted Chicken": roastedChickenMon, "Vegetable Medley":vegetableMedleyMon, "Chicken Fingers":chickenFingersMon, "Chicken Curry": chickenCurryMon, "Shrimp Bowl":shrimpBowlMon,
+bakerDishes = {"Entrees": {"Pepperoni Pizza":pepperoniPizzaMon, "Roasted Chicken": roastedChickenMon, "Vegetable Medley":vegetableMedleyMon, "Chicken Fingers":chickenFingersMon, "Chicken Curry": chickenCurryMon, "Shrimp Bowl":shrimpBowlMon,
 						   "Vegetable Stir Fry":vegetableStirfryMon,
 						   "Eggs Benedict": eggsBenedictMon, "Scrambled Tofu":tofuBowlBreakfastMon, "Fruit Parfait":fruitParfaitMon, "Fresh Fruits": fruitsWed,  
 						   "Jerked Tofu With Veggies": tofuWVeggiesSat, "Pineapple Pork Cutlet": pineapplePorkCutletTue,	"Hawaiian Pizza":hawaiianPizzaTue, 
@@ -308,11 +309,11 @@ bakerDishes = {"Entrees": {"Pepperoni Pizza":pepperioniPizzaMon, "Roasted Chicke
 
 						  "Chicken Curry":chickenCurryTr, "Pineapple Pork Cutlet": pineapplePorkCutletTr, "Cheesy Tater Tots":cheesyTaterTotsFr, "Asian Noodle Salad": asianNoodleSaladTr, "Banana Smoothie":bananaSmoothieSat, "Collard Greens":collardGreensFr}}
 
-maseehDishes = {"Entrees":{"Pepperioni Pizza":pepperioniPizzaMon, "Vegetable Soup":vegetableSoupMon, "Chicken Soup":chickenSoupMon, "Jerked Chicken":jerkedChickenMon, "Chicken Fingers":chickenFingersMon,
+maseehDishes = {"Entrees":{"Pepperoni Pizza":pepperoniPizzaMon, "Vegetable Soup":vegetableSoupMon, "Chicken Soup":chickenSoupMon, "Jerked Chicken":jerkedChickenMon, "Chicken Fingers":chickenFingersMon,
 						   "Vegetable Stir Fry":vegetableStirfryMon,
 						   "Fish Taco":fishTacoMon, "Eggs Benedict":eggsBenedictMon, "Fruit Parfait":fruitParfaitMon,
 
-						   "Pepperoni Pizza":pepperioniPizzaTue, "Hawaiian Pizza":hawaiianPizzaTr,
+						   "Pepperoni Pizza":pepperoniPizzaTue, "Hawaiian Pizza":hawaiianPizzaTr,
 						   "Scrambled Tofu":tofuBowlBreakfastMon,"Shrimp Bowl": shrimpBowlMon, "Chicken Bowl":chickenBowlTue, "Shrimp Bowl":shrimpBowlTr, "Chicken Soup": chickenSoupFr, "Vegetable Soup": vegetableSoupMon, "Chicken Curry":chickenCurryWed, "Pineapple Pork Cutlet": pineapplePorkCutletSat}, 
 				
 				"Sides": {"Truffle Fries":truffleFriesMon, "Chips and Hummus":chipsAndHummusTue, "Tater Tots":taterTotsTr, "Pineapple Smoothie": pineappleSmoothieFr, "Bratwurst Corndog":bratwurstCorndogTr, "Meat Lover's Chili":meatloversChiliMon}}
@@ -321,7 +322,7 @@ nextDishes = {"Entrees":{"Chicken Fingers":chickenFingersMon, "Grilled Pork Over
 						 "Vegetable Stir Fry":vegetableStirfryMon, 
 						 "Fruit Parfait":fruitParfaitMon, "Fish Taco":fishTacoMon,  
 						 "Eggs Benedict":eggsBenedictMon, "Fruit Parfait":fruitParfaitMon, "Scrambled Tofu":tofuBowlBreakfastMon, 
-						 "Pepperoni Pizza":pepperioniPizzaFr, "Eggs Benedict": eggsBenedictTr, "Breakfast Tofu":tofuBowlBreakfastSat,"Tofu Bowl": tofuBowlTue, "Steamed Mussels": steamedMusselsTr, "Grilled Pork Over Basmati Rice": grilledPorkOverRiceMon, "Chicken Curry": chickenCurryMon, "Jerked Tofu With Veggies": tofuWVeggiesSat, "Pineapple Pork Cutlet": pineapplePorkCutletTr}, 
+						 "Pepperoni Pizza":pepperoniPizzaFr, "Eggs Benedict": eggsBenedictTr, "Breakfast Tofu":tofuBowlBreakfastSat,"Tofu Bowl": tofuBowlTue, "Steamed Mussels": steamedMusselsTr, "Grilled Pork Over Basmati Rice": grilledPorkOverRiceMon, "Chicken Curry": chickenCurryMon, "Jerked Tofu With Veggies": tofuWVeggiesSat, "Pineapple Pork Cutlet": pineapplePorkCutletTr}, 
 				"Sides": {"Chicken Curry":chickenCurryFr,
 				"Truffle Fries":truffleFriesTue, "Tater Tots":taterTotsTue, "Chips and Hummus":chipsAndHummusTue, "Pineapple Smoothie": pineappleSmoothieFr, "Bratwurst Corndog":bratwurstCorndogTr}}
 
@@ -330,7 +331,7 @@ mccormickDishes = {"Entrees":{"Chicken Bowl":chickenBowlMon, "Jerked Chicken":je
 							  "Breakfast Tofu":tofuBowlBreakfastSat,"Roasted Chicken": roastedChickenTr, "Vegetable Medley":vegetableMedleyTue, "Chicken Fingers":chickenFingersSat, "Vegetable Soup": vegetableSoupTr, "Chicken Curry":chickenCurryTr, "Pineapple Pork Cutlet": pineapplePorkCutletSat},
 				"Sides": {"Pineapple Pork Cutlet": pineapplePorkCutletSat,"Cheesy Tater Tots":cheesyTaterTotsFr, "Waffle Fries":waffleFriesTr, "Asian Noodle Salad":asianNoodleSaladTr, "Banana Smoothie":bananaSmoothieSat, "Collard Greens":collardGreensFr, "Pigs in a Blanket":pigsInABlanketTue, "Meat Lover's Chili":meatloversChiliTr}}
 
-simmonsDishes = {"Entrees":{"Pepperoni Pizza":pepperioniPizzaTue, "Hawaiian Pizza":hawaiianPizzaTue,"Breakfast Tofu":tofuBowlBreakfastSat,"Roasted Chicken": roastedChickenTr, "Vegetable Medley":vegetableMedleyTue, "Chicken Fingers":chickenFingersSat, "Vegetable Soup": vegetableSoupTr, "Chicken Curry":chickenCurryTr, "Pineapple Pork Cutlet": pineapplePorkCutletSat}, 
+simmonsDishes = {"Entrees":{"Pepperoni Pizza":pepperoniPizzaTue, "Hawaiian Pizza":hawaiianPizzaTue,"Breakfast Tofu":tofuBowlBreakfastSat,"Roasted Chicken": roastedChickenTr, "Vegetable Medley":vegetableMedleyTue, "Chicken Fingers":chickenFingersSat, "Vegetable Soup": vegetableSoupTr, "Chicken Curry":chickenCurryTr, "Pineapple Pork Cutlet": pineapplePorkCutletSat}, 
 				"Sides": {"Herb Fries": herbFriesSat, "Truffle Fries": truffleFriesTue, "Chips and Hummus":chipsAndHummusTue, "Asian Noodle Salad": asianNoodleSaladTr, "Pineapple Smoothie": pineappleSmoothieFr, "Pigs in a Blanket":pigsInABlanketTue}}
 
 // global variables used throughout the code    
