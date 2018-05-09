@@ -489,7 +489,7 @@ function loadModal(e) {
 }
 
 function notSideBarClick(inputClass) {
-    classLists = ["rad", "list-group", "panel", "strong", "list-group-submenu", "list-group-item", "cb", "collapse"]
+    classLists = ["rad", "list-group", "panel", "strong", "list-group-submenu", "list-group-item", "cb", "collapse", "radioLabel"]
     if (classLists.indexOf(inputClass) == -1) {
         return true;
     } else {
