@@ -37,7 +37,7 @@
     <div class="wrapper">
         <div id="MainMenu">
             <div class="list-group panel">
-                <a href="#dorm" class="list-group-item list-group-item strong" data-toggle= "collapse" data-parent="#MainMenu"><img src="images/home.png" style="height: 30px; width: 30px; color: white;">Dormitory</a>
+                <a href="#dorm" class="list-group-item list-group-item strong" data-toggle= "collapse" data-parent="#MainMenu"><img src="images/home.svg" id="home-icon">Dormitory</a>
                 <div class="list-group-submenu panel show" id="dorm">
                     <a href="#" class="list-group-item">
                         <input type="checkbox" class="cb" id="bakerCheck" name="dormcb" onclick="onCheckClicked(this, 'baker')" checked>&nbsp; Baker</a>
@@ -52,7 +52,7 @@
                     <a href="#" class="list-group-item">
                         <input type="checkbox" class="cb" name="dormcb" onclick="onCheckClicked(this, 'specials')" checked>&nbsp; Special Events</a>
                 </div>
-                <a href="#diet" class="list-group-item list-group-item strong" data-toggle="collapse" data-parent="#MainMenu"><img src="images/restrictions.png" style="height: 30px; width: 30px; color: white;"> Dietary Restrictions </a>
+                <a href="#diet" class="list-group-item list-group-item strong" data-toggle="collapse" data-parent="#MainMenu"><img src="images/restrictions.svg" id="restrictions-icon"> Dietary Restrictions </a>
                 <div class="collapse list-group-submenu panel" id="diet">
                     <a href="#" class="list-group-item">
                         <input type="checkbox" class="cb" onclick="dietaryUpdate(this, 'gluten free')">&nbsp; Gluten Free</a>
@@ -65,7 +65,7 @@
                     <a href="#" class="list-group-item">
                         <input type="checkbox" class="cb" onclick="dietaryUpdate(this, 'vegetarian')">&nbsp; Vegetarian</a>
                 </div>
-                <a href="#meal" class="list-group-item list-group-item strong" data-toggle="collapse" data-parent="#MainMenu"><img src="images/mealIcon.png" style="height: 30px; width: 30px; color: white;"> Meal Type </a>
+                <a href="#meal" class="list-group-item list-group-item strong" data-toggle="collapse" data-parent="#MainMenu"><img src="images/mealIcon.svg" id="meal-icon"> Meal Type </a>
                 <div class="collapse list-group-submenu panel" id="meal">
                     <a href="#" class="list-group-item">
                         <input type="radio" name="radio-group" id="c1" class="rad" onclick="mealTimeUpdate(this, 'Breakfast/Brunch')">&nbsp; <label class = "radioLabel" for="c1"><span></span>Breakfast/Brunch</label></a>
@@ -74,7 +74,7 @@
                     <a href="#" class="list-group-item">
                         <input type="radio" name="radio-group" id="c3" class="rad" checked onclick="mealTimeUpdate(this, 'Dinner')">&nbsp; <label class = "radioLabel" for="c3"><span></span>Dinner</label></a>
                 </div>
-                <a href="#date" class="list-group-item list-group-item strong" data-toggle="collapse" data-parent="#MainMenu"><img src="images/time.png" style="height: 30px; width: 30px; color: white;"></img> Date </a>
+                <a href="#date" class="list-group-item list-group-item strong" data-toggle="collapse" data-parent="#MainMenu"><img src="images/time.svg" id="time-icon"></img> Date </a>
                 <div class="collapse list-group-submenu panel" id="date">
                     <a href="#" class="list-group-item">
                         <input type="radio" name="radio-group2" id="c5" class="rad" onclick="mealDateUpdate(this, '05/02/2018', 'Wednesday')">&nbsp; <label class = "radioLabel" for="c5"><span></span>Wednesday, May 2</label></a>

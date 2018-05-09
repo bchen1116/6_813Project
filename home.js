@@ -437,7 +437,7 @@ function loadModal(e) {
                 for (var rest=0; rest< Object.keys(dishes[dish]["diet"]).length-1; rest ++) {
                     //restriction += "--" +dishes[dish]["diet"][rest] + ", "
                     restriction = dishes[dish]["diet"][rest]
-                    var img = Util.create("img", {"class":"image icon-diet", "src":"images/"+restriction+".png"});
+                    var img = Util.create("img", {"class":"image icon-diet", "src":"images/"+restriction+".svg"});
                     foodRestrictions.appendChild(img)
                 }
                 foodItem.appendChild(foodRestrictions)
