@@ -1,4 +1,5 @@
 dorms = ["baker", "mccormick", "simmons", "next", "maseeh"]
+
 //navbar code for food selection form pop-up
 window.addEventListener('load', function() {
     var modal = document.querySelectorAll(".form-request");   // contains [formRequest, signIn/LogIn] modals 

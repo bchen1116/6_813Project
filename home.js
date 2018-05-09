@@ -222,9 +222,14 @@ function updateStarOnClick(e) {
 
 // update the list of favorite food items
 function updateFavorites(dishtype, dish) { 
-    if (favoriteDishes.isIn(dishtype,dish)) {                            // if the dish is already in favorites then we want to remove it 
+    //console.log ("Iwascalled")
+    //console.log(favoriteDishes.favorites(dishtype))
+    //console.log(favoriteDishes.isIn(dishtype, dish))
+    if (favoriteDishes.isIn(dishtype, dish)) {                            // if the dish is already in favorites then we want to remove it 
+        //console.log("ishouldbeworkingbutsuprise")
         favoriteDishes.removeDish(dishtype,dish)
     } else {                                                             // if the dish is not in favorites then add it 
+        //console.log("inhere")
         favoriteDishes.addDish(dishtype,dish)
     }
 }
@@ -504,7 +509,7 @@ function loadModal(e) {
 }
 
 function notSideBarClick(inputClass) {
-    classLists = ["rad", "list-group", "panel", "strong", "list-group-submenu", "list-group-item", "cb", "collapse"]
+    classLists = ["rad", "list-group", "panel", "strong", "list-group-submenu", "list-group-item", "cb", "collapse", "radioLabel"]
     if (classLists.indexOf(inputClass) == -1) {
         return true;
     } else {
