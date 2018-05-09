@@ -78,6 +78,8 @@ function onCheckClicked(cb, dorm) {
             }
         }
     }
+    performdietaryFiltering();
+    updateDishesForDorms(currentDishes)
     updateCardLayout();   
 }
 
@@ -98,7 +100,7 @@ function dormHasMeals(dishes){
 function restoreCards(){
     for (var dorm in dorms){    
         var main = document.getElementById("mainClass");
-        var index = dormList.indexOf(dorm);    
+        var index = dormList.indexOf(dorms[dorm]);    
         if (index = -1) {                             // if the dorm isn't in the dormList, add it                             
             dormList.push(dorms[dorm]);
             var newDorms = sortDorms(dormList);                 // sort the dorms in order again
@@ -116,11 +118,31 @@ function restoreCards(){
     }
 }              
 
+function storeCards(){
+    // for (var dorm in dorms){    
+        var main = document.getElementById("mainClass");
+    //     var index = dormList.indexOf(dorms[dorm]);    
+    //     if (index = -1) {                             // if the dorm isn't in the dormList, add it                             
+    //         dormList.push(dorms[dorm]);
+            var newDorms = sortDorms(dormList);                 // sort the dorms in order again
+            if (newDorms.indexOf("specials") > -1) {
+                newDorms.splice(newDorms.indexOf("specials"), 1);
+                newDorms.unshift("specials");
+            }
+            while (main.firstChild) {                           // clear out the current dorms from the main
+                main.removeChild(main.firstChild);
+            }
+            for (var j = 0; j < newDorms.length; j++) {         // add the dorms in sorted order back to main
+                main.appendChild(allDorms[newDorms[j]]);
+            }
+        // }
+    // }
+} 
 
 //called when the radio button to specify which meal type is to be displayed 
 function mealTimeUpdate(cb, mealTime){
     // we can assume that tgus us called we are changing the display to be of that meal type
-    restoreCards();
+    storeCards();
     globalMealTime = mealTime;
     performdietaryFiltering(); // filter out the dishes based on what we want
     timeUpdate(mealTime);
@@ -129,7 +151,7 @@ function mealTimeUpdate(cb, mealTime){
 // called when radiobutton on date is clicked. 
 // mealDate is the MM/DD/YYYY, while day is the written day
 function mealDateUpdate(cb, mealDate, day) {
-    restoreCards();
+    storeCards();
     globalDate = mealDate;
     performdietaryFiltering();
     dayUpdate(day);
@@ -137,7 +159,7 @@ function mealDateUpdate(cb, mealDate, day) {
 // called when the checkbox on dietary restrictions is clicked/unclicked
 // used to trigger filtering of dishes based on the restrictions 
 function dietaryUpdate(cb, diet) { 
-    restoreCards();
+    storeCards();
     if (cb.checked == false) {                                      // if the checkbox is not checked 
         while (dieraryRestrictions.includes(diet)) {                   // if it is already in the list of restrictions
             var indexOfRemove = dieraryRestrictions.indexOf(diet);  // remove it from the list of our dietary restrictions
@@ -227,7 +249,7 @@ function updateDishesForDorms(currentDishes) {
         allDorms[dormList[i]] = document.getElementById(dormList[i]);                   // populate the card that is attached to the dorm 
     }
     //for each of the dorms, go through and populate their menu according to the data we have on file
-    for (var i=0; i<dormList.length-1; i++) {
+    for (var i=0; i<dormList.length; i++) {
         // console.log("currentdish", currentDishes)
         if (dormList[i] != "specials"){
         var dormName = dormList[i]
@@ -265,7 +287,7 @@ function updateDishesForDorms(currentDishes) {
             dish.appendChild(text)
             menu.appendChild(dish)
         }
-    }
+        }
     }
     updateMenu() // add back the favorites if there were any 
 }
@@ -326,7 +348,7 @@ function updateFavorites(dishtype, dish) {
 // after a dish has been added to favorites 
 // go through the other menus and add that dish to their favorites too 
 function updateMenu() { 
-    for (var i = 0; i < dormList.length-1; i++) {
+    for (var i = 0; i < dormList.length; i++) {
         if (dormList[i] != 'specials') {
         var dormName = dormList[i]
         var dishesForDorm = currentDishes[dormName]["Entrees"]
@@ -403,7 +425,8 @@ $(document).ready(function() {
     }
 
     //for each of the dorms, go through and populate their menu according to the data we have on file
-    for (var i=0; i<dormList.length-1; i++) {
+    for (var i=0; i<dormList.length; i++) {
+        if (dormList[i] != 'specials'){
         var dormName = dormList[i]
         var menu = document.getElementById(dormName +"Menu") 
         var dishesForDorm = currentDishes[dormName]["Entrees"]
@@ -428,6 +451,7 @@ $(document).ready(function() {
             menu.innerHTML = "No Food Available.";           // remove it from the document
         } 
     }
+    }
 
     var specialMenu = document.getElementById("specialsMenu")
     // populate the specials menu card 
@@ -448,7 +472,8 @@ $(document).ready(function() {
     // Get the button that opens the modal
     // COMMENTED OUT FOR CONVENIENT TESTING
     // TODO: make modal only display when clicking in area that doesn't highlight star!!!
-    for (var i = 0; i < dormList.length-1; i++) {
+    for (var i = 0; i < dormList.length; i++) {
+        if (dormList[i] != 'specials') {
         var modalButton = document.getElementById('menuPopup'+ dormList[i])
 
         // add a listener for each button
@@ -465,6 +490,7 @@ $(document).ready(function() {
             }
         });
         
+    }
     }
 
 
