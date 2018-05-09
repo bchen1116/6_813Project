@@ -142,6 +142,12 @@ if (sessionStorage.dormCheckboxStorage == null) {
 } else {
     var dormCheckboxStore= JSON.parse(sessionStorage.dormCheckboxStorage);
 }
+if (sessionStorage.dietStorage == null) {
+    var dietStore = {"gluten": false, "halal": false, "kosher": false, "vegan": false, "vegetarian": false};
+    sessionStorage.setItem("dietStorage", JSON.stringify(dietStore));
+} else {
+    var dietStore= JSON.parse(sessionStorage.dietStorage);
+}
 
 window.addEventListener('load', function() {
     var dormCheckbox = JSON.parse(sessionStorage.getItem('dormCheckboxStorage'));
@@ -158,6 +164,12 @@ window.addEventListener('load', function() {
             document.querySelector("#"+dorms[key]).checked = false;
         }
     }
+
+    var dietStore = JSON.parse(sessionStorage.getItem('dietStorage'))
+    for (var key in dietStore){
+        console.log(document.querySelector("#"+key), dietStore[key])
+        document.querySelector("#"+key).checked = dietStore[key]
+    }
 });
 
 function clickedDining(check, dorm) {
@@ -173,5 +185,15 @@ function clickedDining(check, dorm) {
     }
     if (profileDorms != ["specials"]) {
         dormList = profileDorms;
+    }
+}
+
+function clickedDiet(check, diet) {
+    if (check.checked == false) {     
+        dietStore[diet] = false;                     
+        sessionStorage.dietStorage = JSON.stringify(dietStore);
+    } else if (check.checked == true) {                            // otherwise if it is checked
+        dietStore[diet] = true;                     
+        sessionStorage.dietStorage = JSON.stringify(dietStore);
     }
 }

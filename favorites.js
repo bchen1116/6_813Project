@@ -93,7 +93,7 @@ function toggleFavorites() {
             dish.addEventListener('click', function (evt) {
                 var foodName = evt.target.closest("p.card-title").id 
                 updateStarOnClick(evt)
-                updateFavoritos(dishType, foodName)
+                updateFavoritos("Entrees", foodName)
             })
 
             var fav = Util.create("span", {"class":"fa fa-star", "id": "star" + dishName})
