@@ -27,11 +27,13 @@ function copyDishes(mainDict, globalMealTime, globalDate) {
         newDishes[dorm] = dormDishes                            
     }
     return newDishes                                                        // return the new dictionary 
-}                      
+}    
+
 
 // called when the checkbox on dorms are clicked/unclicked
 // used for filtering the dorms, in order to change what cards appear on the page 
 function onCheckClicked(cb, dorm) {
+    currentDishes = copyDishes(ALLDISHES, globalMealTime, globalDate)
     if (cb.checked == false) {                                  // if it isn't checked, remove the dorm
         var index = dormList.indexOf(dorm);
         if (index > -1) {                                   
@@ -60,17 +62,59 @@ function onCheckClicked(cb, dorm) {
     updateCardLayout();   
 }
 
+// updates dorm card display based on whether there are available meals
+function dormHasMeals(dishes){
+    for (var dorm in dorms){
+        if (Object.keys(dishes[dorms[dorm]]["Entrees"]).length == 0  && Object.keys(dishes[dorms[dorm]]["Sides"]).length == 0 ){
+            var index = dormList.indexOf(dorm);  
+            console.log(document.getElementById(dorms[dorm]+"Menu"))                     // remove dorm from dormList
+            document.getElementById(dorms[dorm]+"Menu").innerHTML = "No Food Available.";           // remove it from the document
+        }         
+    }
+    updateCardLayout();   
+ 
+}    
+
+function restoreCards(){
+    for (var dorm in dorms){    
+        var main = document.getElementById("mainClass");
+        var index = dormList.indexOf(dorm);    
+        if (index = -1) {                             // if the dorm isn't in the dormList, add it                             
+            dormList.push(dorms[dorm]);
+            console.log(dorms[dorm]);
+            var newDorms = sortDorms(dormList);                 // sort the dorms in order again
+            if (newDorms.indexOf("specials") > -1) {
+                newDorms.splice(newDorms.indexOf("specials"), 1);
+                newDorms.unshift("specials");
+            }
+            while (main.firstChild) {                           // clear out the current dorms from the main
+                main.removeChild(main.firstChild);
+            }
+            for (var j = 0; j < newDorms.length; j++) {         // add the dorms in sorted order back to main
+                main.appendChild(allDorms[newDorms[j]]);
+                console.log(allDorms[newDorms[j]]);
+            }
+        }
+    }
+}              
+
+
 //called when the radio button to specify which meal type is to be displayed 
 function mealTimeUpdate(cb, mealTime){
     // we can assume that tgus us called we are changing the display to be of that meal type
-    globalMealTime = mealTime
-    performdietaryFiltering() // filter out the dishes based on what we want
-    timeUpdate(mealTime)
+    console.log("restoration");
+    console.log("playdumbuttt")
+    restoreCards();
+    console.log("ghjgjh")
+    globalMealTime = mealTime;
+    performdietaryFiltering(); // filter out the dishes based on what we want
+    timeUpdate(mealTime);
 }
 
 // called when radiobutton on date is clicked. 
 // mealDate is the MM/DD/YYYY, while day is the written day
 function mealDateUpdate(cb, mealDate, day) {
+    restoreCards();
     globalDate = mealDate;
     performdietaryFiltering();
     dayUpdate(day);
@@ -78,6 +122,7 @@ function mealDateUpdate(cb, mealDate, day) {
 // called when the checkbox on dietary restrictions is clicked/unclicked
 // used to trigger filtering of dishes based on the restrictions 
 function dietaryUpdate(cb, diet) { 
+    restoreCards();
     if (cb.checked == false) {                                      // if the checkbox is not checked 
         if (dieraryRestrictions.includes(diet)) {                   // if it is already in the list of restrictions
             var indexOfRemove = dieraryRestrictions.indexOf(diet);  // remove it from the list of our dietary restrictions
@@ -121,13 +166,17 @@ function performdietaryFiltering() {
             }
         }  
     }
-    updateDishesForDorms(currentDishes)                                     // update the cards to reflect this change
+    updateDishesForDorms(currentDishes);  
+    dormHasMeals(currentDishes);
+    console.log("cureent dishes" + currentDishes)
+                                       // update the cards to reflect this change
 }
 
 //search
 var a = document.getElementById('food-search');
 console.log(a);
 a.addEventListener('submit',function(e) {
+    restoreCards();
     console.log("here")
     e.preventDefault();
     var b = document.getElementById('text-input').value;
@@ -147,9 +196,13 @@ a.addEventListener('submit',function(e) {
         }  
     }
 
+
     // update the cards to reflect this change
     //console.log(currentDishes);
     updateDishesForDorms(currentDishes)
+    dormHasMeals(currentDishes);
+    // restoreCards();
+
     
 });
 
@@ -289,6 +342,10 @@ function sortDorms(dorms) {
 }
 
 $(document).ready(function() { 
+    console.log("dorm",document.getElementById("request_dorm").value,
+        "time",document.getElementById("request_time").value,
+        "date",document.getElementById("request_date").value,
+        "food",document.getElementById("request_food").value)
     if (sessionStorage.dormCheckboxStorage == null) {
     } else {
         var dormCheckboxStore= JSON.parse(sessionStorage.dormCheckboxStorage);
@@ -356,6 +413,9 @@ $(document).ready(function() {
             dish.appendChild(text)
             menu.appendChild(dish)
         }
+        if (Object.keys(currentDishes[dormName]["Entrees"]).length == 0  && Object.keys(currentDishes[dormName]["Sides"]).length == 0 ){                     // remove dorm from dormList
+            menu.innerHTML = "No Food Available.";           // remove it from the document
+        } 
     }
 
     var specialMenu = document.getElementById("specialsMenu")
@@ -453,7 +513,7 @@ function loadModal(e) {
                 for (var rest=0; rest< Object.keys(dishes[dish]["diet"]).length-1; rest ++) {
                     //restriction += "--" +dishes[dish]["diet"][rest] + ", "
                     restriction = dishes[dish]["diet"][rest]
-                    var img = Util.create("img", {"class":"image icon-diet", "src":"images/"+restriction+".png"});
+                    var img = Util.create("img", {"class":"image icon-diet", "src":"images/"+restriction+".svg"});
                     foodRestrictions.appendChild(img)
                 }
                 foodItem.appendChild(foodRestrictions)
@@ -509,7 +569,7 @@ function loadModal(e) {
 }
 
 function notSideBarClick(inputClass) {
-    classLists = ["rad", "list-group", "panel", "strong", "list-group-submenu", "list-group-item", "cb", "collapse"]
+    classLists = ["rad", "list-group", "panel", "strong", "list-group-submenu", "list-group-item", "cb", "collapse", "radioLabel"]
     if (classLists.indexOf(inputClass) == -1) {
         return true;
     } else {
@@ -530,6 +590,7 @@ window.addEventListener('load', function() {
     var dropDown = document.querySelector(".original");
     var icons = document.querySelector("#iconTabs");
     var wrapper = document.querySelector(".wrapper");
+    var rSubmit = document.getElementById("request-submit");
 
     function toggleModal() {
         modal.classList.toggle("show-modal");
@@ -562,8 +623,28 @@ window.addEventListener('load', function() {
         }
     }
 
+    function validateForm() {
+
+        var rKerberos=document.getElementById("request_kerberos").value;
+        var rId=document.getElementById("request_ID").value;
+        var rDorm=document.getElementById("request_dorm").value;
+        var rFood=document.getElementById("request_food").value;
+        var rDate=document.getElementById("request_date").value;
+        var rTime=document.getElementById("request_time").value;
+
+        if ((rId==null || rId=="") || (rKerberos==null || rKerberos=="") || 
+            (rDorm==null || rDorm=="") || (rFood==null || rFood=="") || 
+            (rDate==null || rDate=="") || (rTime==null || rTime=="")) {
+            alert("Please Fill All Required Fields");
+            return false;
+        }
+        else {
+            toggleModal();
+        }
+    }
+
+    rSubmit.addEventListener("click", validateForm);
     trigger.addEventListener("click", toggleModal);
     closeButton.addEventListener("click", toggleModal);
-    submit.addEventListener("click", toggleModal);
     window.addEventListener("click", windowOnClick);
 });

@@ -22,6 +22,7 @@ window.addEventListener('load', function() {
     var logHead = document.querySelector("#logText");
     var signHead = document.querySelector("#signText");
     var newButton = document.querySelector("#order-button");
+    var rSubmit = document.getElementById("request-submit");
 
     console.log(trigger)
     function toggleModal() {
@@ -102,12 +103,31 @@ window.addEventListener('load', function() {
         }
     }
 
+    function validateForm() {
 
+        var rKerberos=document.getElementById("request_kerberos").value;
+        var rId=document.getElementById("request_ID").value;
+        var rDorm=document.getElementById("request_dorm").value;
+        var rFood=document.getElementById("request_food").value;
+        var rDate=document.getElementById("request_date").value;
+        var rTime=document.getElementById("request_time").value;
 
+        if ((rId==null || rId=="") || (rKerberos==null || rKerberos=="") || 
+            (rDorm==null || rDorm=="") || (rFood==null || rFood=="") || 
+            (rDate==null || rDate=="") || (rTime==null || rTime=="")) {
+            alert("Please Fill All Required Fields");
+            return false;
+        }
+        else {
+            toggleModal();
+        }
+    }
+
+    rSubmit.addEventListener("click", validateForm);
     newButton.addEventListener("click", toggleModal);
     trigger.addEventListener("click", toggleModal);
     closeButton[0].addEventListener("click", toggleModal);
-    submit[0].addEventListener("click", toggleModal);
+    // submit[0].addEventListener("click", toggleModal);
     trigger2[0].addEventListener("click", toggleLogInModal);
     trigger2[1].addEventListener("click", toggleSignInModal);
     closeButton[1].addEventListener("click", closeModal);
