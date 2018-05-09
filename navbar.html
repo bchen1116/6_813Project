@@ -7,7 +7,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-fixed-top">
     <a class="navbar-brand" href="index.html">
-            <img id="logo" src="feedr8.png" alt="HTML tutorial" style="top: 5px;width:150px;height:60px;border:0;">
+            <img id="logo" src="feedr8.png" alt="HTML tutorial" style="top:10px;width:150px;height:50px;border:0;">
     </a>
     <a class="navbar-brand search-bar">
         <form method="get" id="food-search">
@@ -35,11 +35,11 @@
                     </div>
                     <div class="card-body">
                         <div class =  "form-body">
-                            <label for="name">Kerberos:     </label>
+                            <label for="name">*Kerberos:     </label>
                             <input class = "formInput" type="text" id="request_kerberos" value="kerberos">
-                            <label for="name">MIT ID Number:     </label>
+                            <label for="name">*MIT ID Number:    </label>
                             <input class = "formInput" type="text" id="request_ID" value="123456789">
-                            <label for="name">Dorm:     </label>
+                            <label for="name">*Dorm:     </label>
                             <select class = "formInput" id="request_dorm">
                                 <option value="" disabled="disabled" selected="selected">Please select a dorm for pick-up</option>
                                 <option value="1">Baker</option>
@@ -48,7 +48,7 @@
                                 <option value="2">Mccormick</option>
                                 <option value="2">Next</option>
                             </select>
-                            <label for="name">Food Items:     </label>
+                            <label for="name">*Food Items:     </label>
                             <select class = "formInput" id="request_food">
                                 <option value="" disabled="disabled" selected="selected">Please select a food item</option>
                                 <option value="1">Burger</option>
@@ -57,14 +57,14 @@
                                 <option value="2">Spaghetti Bolognese</option>
                                 <option value="2">Veggie Stir-fry</option>
                             </select>
-                            <label for="name">Date:</label>
+                            <label for="name">*Date:</label>
                             <input class = "formInput" id="request_date" type="date" value="2018-05-09">
-                            <label for="name">Time:</label>
+                            <label for="name">*Time:</label>
                             <input class = "formInput" id="request_time" type="time" value="12:00">
                             <label for="name">Special Notes:     </label>
                             <input class = "formInput" type="text" id="request_kerberos" >
                         </div>
-                        <button class="submit-form">Submit</button>
+                        <button class="submit-form" id="request-submit">Submit</button>
                     </div>
                 </div>
             </div>

@@ -45,7 +45,7 @@ class favorites {
 
 // variables 
 hal = "halal"; gnFree = "gluten free"; vg = "vegan"; veg = "vegeterian"; kos = "kosher"
-brk = "breakfast"; brh = "brunch"; lh = "lunch"; dr = "dinner"
+brk = "breakfast/brunch"; brh = "breakfast/brunch"; lh = "lunch"; dr = "dinner"
 mon = "05/07/2018"; tue = "05/08/2018"; wed = "05/09/2018"; tr = "05/10/2018"; fr = "05/11/2018"; sat = "05/12/2018"; sun = "05/13/2018";
 
 
