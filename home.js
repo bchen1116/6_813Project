@@ -289,6 +289,10 @@ function sortDorms(dorms) {
 }
 
 $(document).ready(function() { 
+    console.log("dorm",document.getElementById("request_dorm").value,
+        "time",document.getElementById("request_time").value,
+        "date",document.getElementById("request_date").value,
+        "food",document.getElementById("request_food").value)
     if (sessionStorage.dormCheckboxStorage == null) {
     } else {
         var dormCheckboxStore= JSON.parse(sessionStorage.dormCheckboxStorage);
@@ -530,6 +534,7 @@ window.addEventListener('load', function() {
     var dropDown = document.querySelector(".original");
     var icons = document.querySelector("#iconTabs");
     var wrapper = document.querySelector(".wrapper");
+    var rSubmit = document.getElementById("request-submit");
 
     function toggleModal() {
         modal.classList.toggle("show-modal");
@@ -562,8 +567,28 @@ window.addEventListener('load', function() {
         }
     }
 
+    function validateForm() {
+
+        var rKerberos=document.getElementById("request_kerberos").value;
+        var rId=document.getElementById("request_ID").value;
+        var rDorm=document.getElementById("request_dorm").value;
+        var rFood=document.getElementById("request_food").value;
+        var rDate=document.getElementById("request_date").value;
+        var rTime=document.getElementById("request_time").value;
+
+        if ((rId==null || rId=="") || (rKerberos==null || rKerberos=="") || 
+            (rDorm==null || rDorm=="") || (rFood==null || rFood=="") || 
+            (rDate==null || rDate=="") || (rTime==null || rTime=="")) {
+            alert("Please Fill All Required Fields");
+            return false;
+        }
+        else {
+            toggleModal();
+        }
+    }
+
+    rSubmit.addEventListener("click", validateForm);
     trigger.addEventListener("click", toggleModal);
     closeButton.addEventListener("click", toggleModal);
-    submit.addEventListener("click", toggleModal);
     window.addEventListener("click", windowOnClick);
 });
