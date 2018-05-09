@@ -346,6 +346,3 @@ var dormList = ["baker", "maseeh", "mccormick", "next", "simmons","specials"]; /
 var dormCheckbox = {"baker": false, "mccormick": false, "simmons": false, "next": false, "maseeh": false} 
 // sessionStorage.setItem("profileDormStorage", JSON.stringify(["specials"]));
 
-
-
-

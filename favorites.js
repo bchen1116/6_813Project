@@ -110,7 +110,7 @@ function toggleFavorites() {
 function updateFavoritos(dishtype, dish) {
     console.log(dishtype, dish)
     if (favDishes['dishes'][dishtype].indexOf(dish) != -1) {                            // if the dish is already in favorites then we want to remove it 
-        favDishes['dishes'][dishtype].splice(favDishes['dishes'][dishtype].indexOf(dish))
+        favDishes['dishes'][dishtype].splice(favDishes['dishes'][dishtype].indexOf(dish),1)
     } else {                                                             // if the dish is not in favorites then add it 
         favDishes['dishes'][dishtype].push(dish)
     }
