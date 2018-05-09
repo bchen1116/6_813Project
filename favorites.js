@@ -79,6 +79,7 @@ $( window ).on( "load", function() {
     })
 
 function toggleFavorites() {
+    console.log(favDishes)
     for (var index in Object.keys(favDishes.dishes)) {
         var dishType =  Object.keys(favDishes.dishes)[index]
         var element = document.getElementById(dishType+"FavPage")
@@ -92,12 +93,7 @@ function toggleFavorites() {
             dish.addEventListener('click', function (evt) {
                 var foodName = evt.target.closest("p.card-title").id 
                 updateStarOnClick(evt)
-                //console.log("before",favDishes, foodName)
-                updateFavorites("Entrees", foodName)
-                //console.log("after",favDishes)
-                sessionStorage.setItem("favoriteDishes", JSON.stringify(favDishes));
-                //updateMenu()
-                //location.reload()
+                updateFavoritos(dishType, foodName)
             })
 
             var fav = Util.create("span", {"class":"fa fa-star", "id": "star" + dishName})
@@ -111,6 +107,15 @@ function toggleFavorites() {
     }
 }
 
+function updateFavoritos(dishtype, dish) {
+    console.log(dishtype, dish)
+    if (favDishes['dishes'][dishtype].indexOf(dish) != -1) {                            // if the dish is already in favorites then we want to remove it 
+        favDishes['dishes'][dishtype].splice(favDishes['dishes'][dishtype].indexOf(dish))
+    } else {                                                             // if the dish is not in favorites then add it 
+        favDishes['dishes'][dishtype].push(dish)
+    }
+    sessionStorage.setItem("favoriteDishes", JSON.stringify(favDishes))
+}
 
 //navbar code for food selection form pop-up
 window.addEventListener('load', function() {

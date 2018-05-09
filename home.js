@@ -225,13 +225,15 @@ function updateFavorites(dishtype, dish) {
     //console.log ("Iwascalled")
     //console.log(favoriteDishes.favorites(dishtype))
     //console.log(favoriteDishes.isIn(dishtype, dish))
+    console.log(favoriteDishes)
     if (favoriteDishes.isIn(dishtype, dish)) {                            // if the dish is already in favorites then we want to remove it 
-        //console.log("ishouldbeworkingbutsuprise")
+        console.log("ishouldbeworkingbutsuprise")
         favoriteDishes.removeDish(dishtype,dish)
     } else {                                                             // if the dish is not in favorites then add it 
-        //console.log("inhere")
+        console.log("inhere", dishtype, dish)
         favoriteDishes.addDish(dishtype,dish)
     }
+    sessionStorage.setItem("favoriteDishes", JSON.stringify(favoriteDishes))
 }
 
 // after a dish has been added to favorites 
@@ -289,36 +291,18 @@ function sortDorms(dorms) {
 }
 
 $(document).ready(function() { 
-    if (sessionStorage.dormCheckboxStorage == null) {
-    } else {
+
+    // updates dorm selections 
+    if (sessionStorage.dormCheckboxStorage != null) {
         var dormCheckboxStore= JSON.parse(sessionStorage.dormCheckboxStorage);
-        var checks = {};
-        for (var i = 0, emp; i < dormCheckbox.length; i++) {
-            emp = dormCheckbox[i];
-            checks[dormCheckbox[i]] = emp;
-        }
-        for (var key in Object.keys(dormCheckbox)){
-            if (dormCheckbox[dorms[key]]) {
-                document.querySelector("#"+dorms[key]).checked = true;
+        console.log(dormCheckboxStore)
+        for (var key in dormCheckbox){
+            if (!dormCheckboxStore[key]) {
+                console.log(key)
+                document.querySelector("#"+key+"Check").checked = false;
             }
         }
     }
-
-    // if (sessionStorage.dormCheckboxStorage != null) {
-    // // } else {
-    //     var dormCheckboxStore= JSON.parse(sessionStorage.dormCheckboxStorage);
-    //     console.log(dormCheckboxStore)
-    //     for (var key in dormCheckboxStore){
-    //         console.log(key)
-    //         if (dormCheckboxStore[key]) {
-    //             document.querySelector("#"+key).checked = true;
-    //         } else {
-    //             console.log(document.querySelectorAll(".list-group-item"))
-    //             console.log(document.querySelector("#"+key).checked)
-    //             document.querySelector("#"+String(key)+"Check").checked = false;
-    //         }
-    //     }
-    // }
 
 
     // called when the document is ready 
@@ -530,13 +514,13 @@ window.addEventListener('load', function() {
     var dropDown = document.querySelector(".original");
     var icons = document.querySelector("#iconTabs");
     var wrapper = document.querySelector(".wrapper");
+    var mainClassCards = document.querySelector(".bigMainClass");
 
     function toggleModal() {
         modal.classList.toggle("show-modal");
     }
 
     function windowOnClick(event) {
-        console.log(notSideBarClick(event.target.classList[0]))
         if (event.target === modal) {
             toggleModal();
         } else if (event.target === a1) {
@@ -544,8 +528,6 @@ window.addEventListener('load', function() {
                 window.location.replace("/profile.html");
             }
         } else if (event.target === navButton) {
-            //console.log("triggered")
-            //console.log(dropDown.style.display)
             if (dropDown.style.display == 'none' || dropDown.style.display == "") {
                 dropDown.style.display = 'block';
             } else {
@@ -554,11 +536,15 @@ window.addEventListener('load', function() {
         } else if (event.target.id == "icons" || event.target.id =="iconTabs") {
             icons.style.display = "none";
             wrapper.style.marginLeft = "0px";
-            wrapper.style.zIndex = "2";
+            wrapper.style.zIndex = "1";
+            mainClassCards.style.zIndex = "-1"
+
         } else if (window.innerWidth < 930 && notSideBarClick(event.target.classList[0])) {
             icons.style.display = "block";
             wrapper.style.marginLeft = "-200px";
-            wrapper.style.zIndex = "initial";
+            wrapper.style.zIndex = "0";
+            mainClassCards.style.zIndex = "0"
+
         }
     }
 
