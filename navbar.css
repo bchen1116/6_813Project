@@ -643,4 +643,8 @@ a:hover {
         width: 120px !important;
         margin-top: 6px;
     }
+
+    .form-body {
+        margin-left: -7px;
+    }
 }

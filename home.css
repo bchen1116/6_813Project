@@ -273,7 +273,7 @@ input[type='checkbox']:checked:after {
 /* card refers to the individual cells for menus on main page */
 .card {
     width: calc(calc(1000px - 20px * var(--cols)) / var(--cols));
-    /* min-width: 300px; */
+    min-width: 300px;
     height: calc(calc(625px - 15px * var(--rows)) / var(--rows));
     min-height: 300px;
     margin: 5px;
@@ -540,7 +540,7 @@ body {
         vertical-align: middle;
         background-color: transparent;
     }
-    
+   
 }
 @media (max-width: 500px) {
     
@@ -572,7 +572,8 @@ body {
         width: 263px;
     }
     .card {
-        max-width: 270px;
+        max-width: 270px !important;
+        min-width: 270px;
     }
 
     .timeDateDisplay {

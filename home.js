@@ -1,6 +1,6 @@
 // JS code for home page. Handles the clicking responses on the home page
 var dorms = ["baker", "mccormick", "simmons", "next", "maseeh"]
-var dormList = ["baker", "maseeh", "mccormick", "next", "simmons","specials"]; // dormList is the list of active dorms on the page
+// var dormList = ["baker", "maseeh", "mccormick", "next", "simmons","specials"]; // dormList is the list of active dorms on the page
 var currentDishes; 
 var starColor = "#FF9B01";
 var allDorms = {};                                              // allDorms is the dictionary that maps dorm name to Node element of dorm card
@@ -32,6 +32,7 @@ function copyDishes(mainDict, globalMealTime, globalDate) {
 // called when the checkbox on dorms are clicked/unclicked
 // used for filtering the dorms, in order to change what cards appear on the page 
 function onCheckClicked(cb, dorm) {
+    console.log("heres the dormlist", dormList, cb.checked, dorm)
     if (cb.checked == false) {                                  // if it isn't checked, remove the dorm
         var index = dormList.indexOf(dorm);
         if (index > -1) {                                   
@@ -41,12 +42,14 @@ function onCheckClicked(cb, dorm) {
     } else if (cb.checked == true) {                            // otherwise if it is checked
         var main = document.getElementById("mainClass");
         var index = dormList.indexOf(dorm);
-        if (index = -1) {                                       // if the dorm isn't in the dormList, add it                             
+        if (index == -1) {                                       // if the dorm isn't in the dormList, add it                             
             dormList.push(dorm);
+            console.log("NEW DORMS", dormList)
             var newDorms = sortDorms(dormList);                 // sort the dorms in order again
             if (newDorms.indexOf("specials") > -1) {
                 newDorms.splice(newDorms.indexOf("specials"), 1);
                 newDorms.unshift("specials");
+                console.log("new", newDorms)
             }
             while (main.firstChild) {                           // clear out the current dorms from the main
                 main.removeChild(main.firstChild);
@@ -156,6 +159,7 @@ a.addEventListener('submit',function(e) {
 // repopulates the dishes that are in the dorm based on the current dishes 
 // updates the dishes presented on the cards  
 function updateDishesForDorms(currentDishes) { 
+    // dormList = ["specials"]
     dormList = ["baker", "maseeh", "mccormick", "next", "simmons","specials"];         //recall the dormList to initiate allDorms
     for (var i = 0; i < dormList.length; i++) {                                         // for each dorm 
         allDorms[dormList[i]] = document.getElementById(dormList[i]);                   // populate the card that is attached to the dorm 
@@ -225,7 +229,7 @@ function updateFavorites(dishtype, dish) {
     //console.log ("Iwascalled")
     //console.log(favoriteDishes.favorites(dishtype))
     //console.log(favoriteDishes.isIn(dishtype, dish))
-    console.log(favoriteDishes)
+    // console.log(fav)
     if (favoriteDishes.isIn(dishtype, dish)) {                            // if the dish is already in favorites then we want to remove it 
         console.log("ishouldbeworkingbutsuprise")
         favoriteDishes.removeDish(dishtype,dish)
@@ -291,24 +295,27 @@ function sortDorms(dorms) {
 }
 
 $(document).ready(function() { 
-
+    dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"];         //recall the dormList to initiate allDorms
     // updates dorm selections 
     if (sessionStorage.dormCheckboxStorage != null) {
         var dormCheckboxStore= JSON.parse(sessionStorage.dormCheckboxStorage);
-        console.log(dormCheckboxStore)
         for (var key in dormCheckbox){
             if (!dormCheckboxStore[key]) {
-                console.log(key)
+                console.log(key, dormList, dormList.indexOf(key))
                 document.querySelector("#"+key+"Check").checked = false;
-            }
+                dormList.splice(dormList.indexOf(key),1)
+                allDorms[key] = document.getElementById(key)
+                document.getElementById(key).remove();             // remove it from the document
+                console.log("done with ", key, dormList)
+            } 
         }
-    }
-
-
+        console.log("DORMSS", dormList)
+        updateCardLayout();
+    } 
+    
+    console.log(dormList)
     // called when the document is ready 
     currentDishes = copyDishes(ALLDISHES, globalMealTime, globalDate)
-    dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"];         //recall the dormList to initiate allDorms
-    // console.log(ALLDISHES)
     for (var i = 0; i < dormList.length; i++) {
         allDorms[dormList[i]] = document.getElementById(dormList[i]);
     }
@@ -316,7 +323,6 @@ $(document).ready(function() {
     //for each of the dorms, go through and populate their menu according to the data we have on file
     for (var i=0; i<dormList.length-1; i++) {
         var dormName = dormList[i]
-        // console.log(dormName)
         var menu = document.getElementById(dormName +"Menu") 
         var dishesForDorm = currentDishes[dormName]["Entrees"]
         // console.log(dishesForDorm);
@@ -437,7 +443,7 @@ function loadModal(e) {
                 for (var rest=0; rest< Object.keys(dishes[dish]["diet"]).length-1; rest ++) {
                     //restriction += "--" +dishes[dish]["diet"][rest] + ", "
                     restriction = dishes[dish]["diet"][rest]
-                    var img = Util.create("img", {"class":"image icon-diet", "src":"images/"+restriction+".svg"});
+                    var img = Util.create("img", {"class":"image icon-diet", "src":"images/"+restriction+".png"});
                     foodRestrictions.appendChild(img)
                 }
                 foodItem.appendChild(foodRestrictions)
