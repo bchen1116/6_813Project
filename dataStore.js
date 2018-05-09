@@ -20,7 +20,7 @@ class favorites {
         }
 	}
 
-	// checkes if dishName is in Favorites for dishType 
+	// checks if dishName is in Favorites for dishType 
 	isIn(dishType, dishName) { 
 		//console.log(this.dishes[dishType])
 		return this.dishes[dishType].includes(dishName)
@@ -53,8 +53,8 @@ mon = "05/07/2018"; tue = "05/08/2018"; wed = "05/09/2018"; tr = "05/10/2018"; f
 
 // MONDAY BREAKFAST - ENTREES
 tofuBowlBreakfastMon = {diet: [vg, veg, hal, kos], time: brk, date: mon, description: "Vegan scrambled eggs with tofu base"}
-eggsBenedictMon = {diet: [hal], time: brk, date: mon, description: "Poached eggs, bacon, arugala on toasted english muffin with hollandaise sauce"}
-fishTacoMon = {diet: [hal, kos], time: brk, date: mon, description: "Cajun-style talapia on corn tortilla"}
+eggsBenedictMon = {diet: [hal], time: brk, date: mon, description: "Poached eggs, bacon, arugula on toasted English muffin with hollandaise sauce"}
+fishTacoMon = {diet: [hal, kos], time: brk, date: mon, description: "Cajun-style tilapia on corn tortilla"}
 fruitParfaitMon = {diet: [veg, hal, kos], time: brk, date: mon, description: "Fresh fruit on plain yogurt, topped with crunchy granola"}
 
 
@@ -69,21 +69,21 @@ truffleFriesMon = {diet: [hal, gnFree, vg, veg], time: lh, date: mon, descriptio
 
 
 // MONDAY DINNER - ENTREES 
-roastedChickenMon = {diet: [hal, gnFree], time: dr, date:mon, description: "Herb Roasted Chicken with potatoes and zuccini on the side"}
-vegetableMedleyMon = {diet: [veg, vg, kos, hal, gnFree], time: dr, date:mon, description: "Roasted Vegtable Medley with Rosmary"}
+roastedChickenMon = {diet: [hal, gnFree], time: dr, date:mon, description: "Herb Roasted Chicken with potatoes and zucchini on the side"}
+vegetableMedleyMon = {diet: [veg, vg, kos, hal, gnFree], time: dr, date:mon, description: "Roasted Vegetable Medley with Rosemary"}
 chickenFingersMon = {diet: [kos,hal], time: dr, date: mon, description: "Breaded Chicken Fingers"}
-chickenBowlMon = {diet: [kos, hal], time: dr, date: mon, description: "Warm Hearty Chichen Noodle Bowl with an assortment of vegetables"}
-shrimpBowlMon = {diet: [], time: dr, date: mon, description: "Shrimp Bowl with quinoa base and vegtable salad"}
+chickenBowlMon = {diet: [kos, hal], time: dr, date: mon, description: "Warm Hearty Chicken Noodle Bowl with an assortment of vegetables"}
+shrimpBowlMon = {diet: [], time: dr, date: mon, description: "Shrimp Bowl with quinoa base and vegetable salad"}
 grilledPorkOverRiceMon = {diet: [], time: dr, date: mon, description: "Grilled Pork served over Basmati Rice"}
 jerkedChickenMon ={diet: [hal, gnFree], time:dr, date: mon, description: "Oven Baked Jerk Chicken served over white rice"}
-chickenSoupMon = {diet: [gnFree], time:dr, date: mon, description: "Warm Hearty Chichen Soup with an assortment of vegetables"}
+chickenSoupMon = {diet: [gnFree], time:dr, date: mon, description: "Warm Hearty Chicken Soup with an assortment of vegetables"}
 vegetableSoupMon = {diet: [veg, vg, gnFree], time:dr, date: mon, description: "Warm Soup with an assortment of vegetables"}
 chickenCurryMon = {diet: [gnFree, hal], time: dr, date: mon, description: "Chicken Curry with basmati rice"}
 pepperoniPizzaMon = {diet: [], time: dr, date: mon, description: "Pepperoni pizza with homemade tomato sauce"}
 
 // MONDAY DINNER - SIDES 
 mashedPotatoesMon = {diet: [veg, kos, hal], time: dr, date: mon, description: "Warm and freshly made mashed potatoes"}
-roastedveggiesMon = {diet: [hal, gnFree, vg, kos, hal, veg], time: dr, date: mon, description: "Oven rosted vegetables with rosmary and garlic"}
+roastedveggiesMon = {diet: [hal, gnFree, vg, kos, hal, veg], time: dr, date: mon, description: "Oven roasted vegetables with rosemary and garlic"}
 steamedCornMon = {diet: [hal, gnFree, vg, kos, hal, veg], time: dr, date: mon, description: "Plain steamed corn"}
 herbFriesMon = {diet: [gnFree, vg, veg], time: dr, date: mon, description: "French fries with oregano and thyme"}
 bratwurstCorndogMon = {diet: [], time: dr, date: mon, description: "Bratwurst sausage in the center of a corn dog outside"}
@@ -94,11 +94,14 @@ meatloversChiliMon = {diet: [], time: dr, date: mon, description: "Chili with a 
 // TUESDAY BREAKFAST 
 breakfastSandwichTue = {diet: [hal, kos], time: brk, date: tue, description: "Choice of sausage, egg, and cheese or bacon, egg, and cheese"}
 chickenAndWafflesTue = {diet: [kos], time: brk, date: tue, description: "Crispy fried chicken with buttery waffles"}
-blueberryPancakeTue = {diet: [vg, veg, hal, kos], time: brk, date: tue, description: "Fresh bluberries on regular pancakes"}
+blueberryPancakeTue = {diet: [vg, veg, hal, kos], time: brk, date: tue, description: "Fresh blueberries on regular pancakes"}
+shakshukaTue = {diet: [veg, hal, kos], time: brk, date: tue, description: "Eggs baked in a rich tomato sauce"}
 
 // TUESDAY LUNCH 
 chickenParmTue = {diet: [], time: lh, date: tue, description: "Breaded chicken with mozzarella cheese and marinara sauce" }
 chickenQuesadillaTue = {diet: [], time: lh, date: tue, description: "Flour tortilla with cheese and chicken" }
+BLTTue = {diet: [], time: lh, date: tue, description: "Bacon, lettuce, and tomato sandwich" }
+friedRiceTue = {diet: [veg, hal, kos], time: lh, date: tue, description: "Rice friend with egg and soy sauce, your choice of protein" }
 
 // TUESDAY LUNCH - SIDES
 pigsInABlanketTue = {diet: [], time: lh, date: tue, description: "Mini bratwurst sausages in the center of a fluffy wrap"}
@@ -106,13 +109,13 @@ mozzarellaSticksTue = {diet: [veg, hal, kos], time: lh, date: tue, description: 
 
 
 // TUESDAY DINNER - ENTREES 
-vegetableMedleyTue = {diet: [veg, vg, kos, hal, gnFree], time: dr, date:tue, description: "Roasted Vegtable Medley with Rosmary"}
-chickenBowlTue = {diet: [kos, hal], time: dr, date: tue, description: "Warm Hearty Chichen Noodle Bowl with an assortment of vegetables"}
-tofuBowlTue = {diet: [vg, veg, hal, kos], time: dr, date: tue, description: "Tofu Bowl with quinoa base and vegtable salad"}
+vegetableMedleyTue = {diet: [veg, vg, kos, hal, gnFree], time: dr, date:tue, description: "Roasted Vegetable Medley with Rosemary"}
+chickenBowlTue = {diet: [kos, hal], time: dr, date: tue, description: "Warm Hearty Chicken Noodle Bowl with an assortment of vegetables"}
+tofuBowlTue = {diet: [vg, veg, hal, kos], time: dr, date: tue, description: "Tofu Bowl with quinoa base and vegetable salad"}
 steamedMusselsTue = {diet: [], time: dr, date: tue, description: "Steamed Mussels with Garlic and Parsley"}
 grilledPorkOverRiceTue = {diet: [], time: dr, date: tue, description: "Grilled Pork served over Basmati Rice"}
 vegetableSoupTue = {diet: [veg, vg, gnFree], time:dr, date: tue, description: "Warm Soup with an assortment of vegetables"}
-pineapplePorkCutletTue = {diet: [gnFree], time: dr, date: tue, description: "Pinapple Pork Cutlet served with rice"}
+pineapplePorkCutletTue = {diet: [gnFree], time: dr, date: tue, description: "Pineapple Pork Cutlet served with rice"}
 pepperoniPizzaTue = {diet: [], time: dr, date: tue, description: "Pepperoni pizza with homemade tomato sauce"}
 hawaiianPizzaTue = {diet: [], time: dr, date: tue, description: "Ham and pineapple pizza with homemade tomato sauce"}
 
@@ -126,33 +129,35 @@ asianNoodleSaladTue = {diet: [hal, vg,hal, veg], time: dr, date: tue, descriptio
 //////////////////////////////////////////////////////////// WEDNESDAY DISHES ////////////////////////////////////////////////////////////
 
 // WEDNESDAY BREAKFAST 
-bananaSmoothieWed = {diet: [hal, gnFree, veg, kos, hal], time: brk, date: wed, description: "Bananas, lowfat milk, and vanilla ice cream"}
+bananaSmoothieWed = {diet: [hal, gnFree, veg, kos, hal], time: brk, date: wed, description: "Bananas, low-fat milk, and vanilla ice cream"}
 pineappleSmoothieWed = {diet: [hal, gnFree, veg, kos, hal, vg], time: brk, date: wed, description: "Pineapples, coconut milk, and vegan ice cream"}
 scrambledEggsWed = {diet: [veg, hal, kos], time: brk, date: wed, description: "Eggs made to order with fresh vegetables"}
-oatmealWed = {diet: [veg, hal, kos], time: brk, date:wed, description: "Warm Oatmeal with raisens and sliced almonds. Perfect start to your day"}
+oatmealWed = {diet: [veg, hal, kos], time: brk, date:wed, description: "Warm Oatmeal with raisins and sliced almonds. Perfect start to your day"}
 fruitsWed = {diet: [vg, veg, hal, kos], time: brk, date:wed, description: "Large fruit assortment"}
-eggsBenedictWed = {diet: [hal], time: brk, date: wed, description: "Poached eggs, bacon, arugala on toasted english muffin with hollandaise sauce"}
-blueberryPancakeWed = {diet: [vg, veg, hal, kos], time: brk, date: wed, description: "Fresh bluberries on regular pancakes"}
+eggsBenedictWed = {diet: [hal], time: brk, date: wed, description: "Poached eggs, bacon, arugula on toasted English muffin with hollandaise sauce"}
+blueberryPancakeWed = {diet: [vg, veg, hal, kos], time: brk, date: wed, description: "Fresh blueberries on regular pancakes"}
 fruitParfaitWed = {diet: [veg, hal, kos], time: brk, date: wed, description: "Fresh fruit on plain yogurt, topped with crunchy granola"}
 tofuBowlBreakfastWed = {diet: [vg, veg, hal, kos], time: brk, date: wed, description: "Vegan scrambled eggs with tofu base"}
 
 
 // WEDNESDAY LUNCH - ENTREES
-tofuBowlLunchWed = {diet: [vg, veg, hal, kos], time: lh, date: wed, description: "Tofu Bowl with quinua base and vegtable salad"}
+tofuBowlLunchWed = {diet: [vg, veg, hal, kos], time: lh, date: wed, description: "Tofu Bowl with quinoa base and vegetable salad"}
 grilledCheeseWed = {diet: [veg, hal, kos], time: lh, date: wed, description: "Toasted sandwich with melted cheese" }
 
 // WEDNESDAY LUNCH - SIDES 
-roastedveggiesWed = {diet: [hal, gnFree, vg, kos, hal, veg], time: lh, date: wed, description: "Oven rosted vegetables with rosmary and garlic"}
+roastedveggiesWed = {diet: [hal, gnFree, vg, kos, hal, veg], time: lh, date: wed, description: "Oven roasted vegetables with rosemary and garlic"}
 pigsInABlanketWed = {diet: [], time: lh, date: wed, description: "Mini bratwurst sausages in the center of a fluffy wrap"}
+BLTWed = {diet: [], time: lh, date: wed, description: "Bacon, lettuce, and tomato sandwich" }
+friedRiceWed = {diet: [veg, hal, kos], time: wed, date: tue, description: "Rice friend with egg and soy sauce, your choice of protein" }
 
 // WEDNESDAY DINNER - ENTREES 
 chickenFingersWed = {diet: [kos,hal], time: dr, date: wed, description: "Breaded Chicken Fingers"}
-shrimpBowlWed = {diet: [], time: dr, date: wed, description: "Shrimp Bowl with quinoa base and vegtable salad"}
-tofuBowlWed = {diet: [vg, veg, hal, kos], time: dr, date: wed, description: "Tofu Bowl with quinoa base and vegtable salad"}
-chickenSoupWed = {diet: [gnFree], time:dr, date: wed, description: "Warm Hearty Chichen Soup with an assortment of vegetables"}
-tofuWVeggiesWed = {diet: [veg, vg, gnFree], time: dr, date: wed, description: "Tofu Bowl with quinoa base and vegtable salad"}
+shrimpBowlWed = {diet: [], time: dr, date: wed, description: "Shrimp Bowl with quinoa base and vegetable salad"}
+tofuBowlWed = {diet: [vg, veg, hal, kos], time: dr, date: wed, description: "Tofu Bowl with quinoa base and vegetable salad"}
+chickenSoupWed = {diet: [gnFree], time:dr, date: wed, description: "Warm Hearty Chicken Soup with an assortment of vegetables"}
+tofuWVeggiesWed = {diet: [veg, vg, gnFree], time: dr, date: wed, description: "Tofu Bowl with quinoa base and vegetable salad"}
 chickenCurryWed = {diet: [gnFree, hal], time: dr, date: wed, description: "Chicken Curry with basmati rice"}
-pineapplePorkCutletWed = {diet: [gnFree], time: dr, date: wed, description: "Pinapple Pork Cutlet served with rice"}
+pineapplePorkCutletWed = {diet: [gnFree], time: dr, date: wed, description: "Pineapple Pork Cutlet served with rice"}
 pepperoniPizzaWed = {diet: [], time: dr, date: wed, description: "Pepperoni pizza with homemade tomato sauce"}
 
 
@@ -168,10 +173,13 @@ bratwurstCorndogWed = {diet: [], time: dr, date: wed, description: "Bratwurst sa
 breakfastSandwichTr = {diet: [hal, kos], time: brk, date: tr, description: "Choice of sausage, egg, and cheese or bacon, egg, and cheese"}
 fruitParfaitTr = {diet: [veg, hal, kos], time: brk, date: tr, description: "Fresh fruit on plain yogurt, topped with crunchy granola"}
 chickenAndWafflesTr = {diet: [kos], time: brk, date: tr, description: "Crispy fried chicken with buttery waffles"}
-eggsBenedictTr = {diet: [hal], time: brk, date: tr, description: "Poached eggs, bacon, arugala on toasted english muffin with hollandaise sauce"}
+eggsBenedictTr = {diet: [hal], time: brk, date: tr, description: "Poached eggs, bacon, arugula on toasted english muffin with hollandaise sauce"}
 
 // THURSDAY LUNCH - ENTREES
-salmonBurgerTr = {diet: [], time: lh, date: tr, description: "burger with grilled salmon, tomato, and lettuce"}
+salmonBurgerTr = {diet: [], time: lh, date: tr, description: "Burger with grilled salmon, tomato, and lettuce"}
+avocadoToastTr = {diet: [hal, vg, kos, vef], time: lh, date: tr, description: "Avocado on toast with your choice of toppings"}
+shakeAndBakeTr = {diet: [hal], time: lh, date: tr, description: "Choice of meats and bake options, served with mixed vegetables"}
+friedRiceTr = {diet: [veg, hal, kos], time: lh, date: tr, description: "Rice friend with egg and soy sauce, your choice of protein" }
 
 // THURSDAY LUNCH - SIDES
 meatloversChiliTr = {diet: [], time: lh, date: tr, description: "Chili with a hearty portion of beef mince"}
@@ -180,13 +188,13 @@ taterTotsTr = {diet: [gnFree, vg, veg], time: lh, date: tr, description: "Crispy
 
 
 // THURSDAY DINNER - ENTREES 
-shrimpBowlTr = {diet: [], time: dr, date: tr, description: "Shrimp Bowl with quinoa base and vegtable salad"}
-roastedChickenTr = {diet: [hal, gnFree], time: dr, date:tr, description: "Herb Roasted Chicken with potatoes and zuccini on the side"}
+shrimpBowlTr = {diet: [], time: dr, date: tr, description: "Shrimp Bowl with quinoa base and vegetable salad"}
+roastedChickenTr = {diet: [hal, gnFree], time: dr, date:tr, description: "Herb Roasted Chicken with potatoes and zucchini on the side"}
 steamedMusselsTr = {diet: [], time: dr, date: tr, description: "Steamed Mussels with Garlic and Parsley"}
 grilledPorkOverRiceTr = {diet: [], time: dr, date: tr, description: "Grilled Pork served over Basmati Rice"}
 vegetableSoupTr = {diet: [veg, vg, gnFree], time:dr, date: tr, description: "Warm Soup with an assortment of vegetables"}
 chickenCurryTr = {diet: [gnFree, hal], time: dr, date: tr, description: "Chicken Curry with basmati rice"}
-pineapplePorkCutletTr = {diet: [gnFree], time: dr, date: tr, description: "Pinapple Pork Cutlet served with rice"}
+pineapplePorkCutletTr = {diet: [gnFree], time: dr, date: tr, description: "Pineapple Pork Cutlet served with rice"}
 hawaiianPizzaTr = {diet: [], time: dr, date: tr, description: "Ham and pineapple pizza with homemade tomato sauce"}
 
 // THURSDAY DINNER - SIDES
@@ -200,13 +208,16 @@ truffleFriesTr = {diet: [hal, gnFree, vg, veg], time: dr, date: tr, description:
 
 // FRIDAY BREAKFAST 
 pineappleSmoothieFr = {diet: [hal, gnFree, veg, kos, vg], time: brk, date: fr, description: "Pineapples, coconut milk, and vegan ice cream"}
-fishTacFr = {diet: [hal, kos], time: brk, date: fr, description: "Cajun-style talapia on corn tortilla"}
-blueberryPancakeFr = {diet: [vg, veg, hal, kos], time: brk, date: fr, description: "Fresh bluberries on regular pancakes"}
+fishTacFr = {diet: [hal, kos], time: brk, date: fr, description: "Cajun-style tilapia on corn tortilla"}
+blueberryPancakeFr = {diet: [vg, veg, hal, kos], time: brk, date: fr, description: "Fresh blueberries on regular pancakes"}
 chickenAndWafflesFr = {diet: [kos], time: brk, date: fr, description: "Crispy fried chicken with buttery waffles"}
+avocadoToastFr = {diet: [hal, vg, kos, vef], time: brk, date: fr, description: "Avocado on toast with your choice of toppings"}
 
 // FRIDAY LUNCH - ENTREES 
 pokeBowlFr = {diet: [], time: lh, date: fr, description: "Rice bowl topped with salmon sashimi, cucumber, tomatoes, and creamy avocado sauce"}
-salmonBurgerFr = {diet: [], time: lh, date: fr, description: "burger with grilled salmon, tomato, and lettuce"}
+salmonBurgerFr = {diet: [], time: lh, date: fr, description: "Burger with grilled salmon, tomato, and lettuce"}
+avocadoToastFr = {diet: [hal, vg, kos, vef], time: lh, date: fr, description: "Avocado on toast with your choice of toppings"}
+fishTacFr = {diet: [hal, kos], time: lh, date: fr, description: "Cajun-style tilapia on corn tortilla"}
 
 // FRIDAY LUNCH - SIDES 
 meatloversChiliFr = {diet: [], time: lh, date: fr, description: "Chili with a hearty portion of beef mince"}
@@ -215,11 +226,11 @@ waffleFriesFr = {diet: [hal, vg, kos, veg], time: lh, date: fr, description: "Ha
 steamedCornFr = {diet: [hal, gnFree, vg, kos, hal, veg], time: lh, date: fr, description: "Plain steamed corn"}
 
 // FRIDAY DINNER - ENTREES 
-vegetableMedleyFr = {diet: [veg, vg, kos, hal, gnFree], time: dr, date:fr, description: "Roasted Vegtable Medley with Rosmary"}
-chickenBowlFr = {diet: [kos, hal], time: dr, date: fr, description: "Warm Hearty Chichen Noodle Bowl with an assortment of vegetables"}
-tofuBowlFr = {diet: [vg, veg, hal, kos], time: dr, date: fr, description: "Tofu Bowl with quinoa base and vegtable salad"}
+vegetableMedleyFr = {diet: [veg, vg, kos, hal, gnFree], time: dr, date:fr, description: "Roasted Vegetable Medley with Rosemary"}
+chickenBowlFr = {diet: [kos, hal], time: dr, date: fr, description: "Warm Hearty Chicken Noodle Bowl with an assortment of vegetables"}
+tofuBowlFr = {diet: [vg, veg, hal, kos], time: dr, date: fr, description: "Tofu Bowl with quinoa base and vegetable salad"}
 grilledPorkOverRiceFr = {diet: [], time: dr, date: fr, description: "Grilled Pork served over Basmati Rice"}
-chickenSoupFr = {diet: [gnFree], time:dr, date: fr, description: "Warm Hearty Chichen Soup with an assortment of vegetables"}
+chickenSoupFr = {diet: [gnFree], time:dr, date: fr, description: "Warm Hearty Chicken Soup with an assortment of vegetables"}
 vegetableSoupFr = {diet: [veg, vg, gnFree], time:dr, date: fr, description: "Warm Soup with an assortment of vegetables"}
 chickenCurryFr = {diet: [gnFree, hal], time: dr, date: fr, description: "Chicken Curry with basmati rice"}
 pepperoniPizzaFr = {diet: [], time: dr, date: fr, description: "Pepperoni pizza with homemade tomato sauce"}
@@ -234,12 +245,13 @@ chipsAndHummusFr = {diet: [hal, vg, kos, veg], time: dr, date: fr, description: 
 //////////////////////////////////////////////////////////// SATURDAY DISHES ////////////////////////////////////////////////////////////
 
 // SATURDAY BRUNCH
-bananaSmoothieSat = {diet: [hal, gnFree, veg, kos, hal], time: brh, date: sat, description: "Bananas, lowfat milk, and vanilla ice cream"}
-eggsBenedictSat = {diet: [hal], time: brh, date: sat, description: "Poached eggs, bacon, arugala on toasted english muffin with hollandaise sauce"}
+bananaSmoothieSat = {diet: [hal, gnFree, veg, kos, hal], time: brh, date: sat, description: "Bananas, low-fat milk, and vanilla ice cream"}
+eggsBenedictSat = {diet: [hal], time: brh, date: sat, description: "Poached eggs, bacon, arugula on toasted english muffin with hollandaise sauce"}
 fruitParfaitSat = {diet: [veg, hal, kos], time: brh, date: sat, description: "Fresh fruit on plain yogurt, topped with crunchy granola"}
 tofuBowlBreakfastSat = {diet: [vg, veg, hal, kos], time: brh, date: sat, description: "Vegan scrambled eggs with tofu base"}
 chickenQuesadillaSat = {diet: [], time: brh, date: sat, description: "Flour tortilla with cheese and chicken" }
 pokeBowlSat = {diet: [], time: brh, date: sat, description: "Rice bowl topped with salmon sashimi, cucumber, tomatoes, and creamy avocado sauce"}
+shakshukaSat = {diet: [veg, hal, kos], time: brh, date: sat, description: "Eggs baked in a rich tomato sauce"}
 
 // SATURDAY BRUNCH - SIDES
 pigsInABlanketSat = {diet: [], time: brh, date: sun, description: "Mini bratwurst sausages in the center of a fluffy wrap"}
@@ -251,9 +263,9 @@ taterTotsSat = {diet: [ gnFree, vg, veg], time: brh, date: sat, description: "Cr
 // SATURDAY DINNER - ENTREES 
 chickenFingersSat = {diet: [kos,hal], time: dr, date: sat, description: "Breaded Chicken Fingers"}
 jerkedChickenSat ={diet: [hal, gnFree], time:dr, date: sat, description: "Oven Baked Jerk Chicken served over white rice"}
-tofuWVeggiesSat = {diet: [veg, vg, gnFree], time: dr, date: sat, description: "Tofu Bowl with quinoa base and vegtable salad"}
-chickenBowlSat = {diet: [kos, hal], time: dr, date: sat, description: "Warm Hearty Chichen Noodle Bowl with an assortment of vegetables"}
-pineapplePorkCutletSat = {diet: [gnFree], time: dr, date: sat, description: "Pinapple Pork Cutlet served with rice"}
+tofuWVeggiesSat = {diet: [veg, vg, gnFree], time: dr, date: sat, description: "Tofu Bowl with quinoa base and vegetable salad"}
+chickenBowlSat = {diet: [kos, hal], time: dr, date: sat, description: "Warm Hearty Chicken Noodle Bowl with an assortment of vegetables"}
+pineapplePorkCutletSat = {diet: [gnFree], time: dr, date: sat, description: "Pineapple Pork Cutlet served with rice"}
 pepperoniPizzaSat = {diet: [], time: dr, date: sat, description: "Pepperoni pizza with homemade tomato sauce"}
 hawaiianPizzaSat = {diet: [], time: dr, date: sat, description: "Ham and pineapple pizza with homemade tomato sauce"}
 
@@ -268,10 +280,10 @@ bratwurstCorndogSat = {diet: [], time: dr, date: sat, description: "Bratwurst sa
 // SUNDAY BRUNCH
 pineappleSmoothieSun = {diet: [hal, gnFree, veg, kos, hal, vg], time: brh, date: sun, description: "Pineapples, coconut milk, and vegan ice cream"}
 chickenAndWafflesSun = {diet: [kos], time: brh, date: sun, description: "Crispy fried chicken with buttery waffles"}
-fishTacoSun = {diet: [hal, kos], time: brh, date: sun, description: "Cajun-style talapia on corn tortilla"}
+fishTacoSun = {diet: [hal, kos], time: brh, date: sun, description: "Cajun-style tilapia on corn tortilla"}
 breakfastSandwichSun = {diet: [hal, kos], time: brh, date: sun, description: "Choice of sausage, egg, and cheese or bacon, egg, and cheese"}
-blueberryPancakeSun = {diet: [vg, veg, hal, kos], time: brh, date: sun, description: "Fresh bluberries on regular pancakes"}
-
+blueberryPancakeSun = {diet: [vg, veg, hal, kos], time: brh, date: sun, description: "Fresh blueberries on regular pancakes"}
+shakshukaSun = {diet: [veg, hal, kos], time: brh, date: sun, description: "Eggs baked in a rich tomato sauce"}
 
 // SUNDAY BRUNCH - SIDES
 mashedPotatoesSun = {diet: [veg, kos, hal], time: brh, date: sun, description: "Warm and freshly made mashed potatoes"}
@@ -280,18 +292,18 @@ mozzarellaSticksSun = {diet: [veg, hal, kos], time: brh, date: sun, description:
 
 
 // SUNDAY DINNER - ENTREES 
-roastedChickenSun = {diet: [hal, gnFree], time: dr, date:sun, description: "Herb Roasted Chicken with potatoes and zuccini on the side"}
+roastedChickenSun = {diet: [hal, gnFree], time: dr, date:sun, description: "Herb Roasted Chicken with potatoes and zucchini on the side"}
 chickenFingersSun = {diet: [kos,hal], time: dr, date: sun, description: "Breaded Chicken Fingers"}
-shrimpBowlSun = {diet: [], time: dr, date: sun, description: "Shrimp Bowl with quinoa base and vegtable salad"}
-tofuBowlSun = {diet: [vg, veg, hal, kos], time: dr, date: sun, description: "Tofu Bowl with quinoa base and vegtable salad"}
+shrimpBowlSun = {diet: [], time: dr, date: sun, description: "Shrimp Bowl with quinoa base and vegetable salad"}
+tofuBowlSun = {diet: [vg, veg, hal, kos], time: dr, date: sun, description: "Tofu Bowl with quinoa base and vegetable salad"}
 steamedMusselsSun = {diet: [], time: dr, date: sun, description: "Steamed Mussels with Garlic and Parsley"}
 jerkedChickenSun ={diet: [hal, gnFree], time:dr, date: sun, description: "Oven Baked Jerk Chicken served over white rice"}
-tofuWVeggiesSun = {diet: [veg, vg, gnFree], time: dr, date: sun, description: "Tofu Bowl with quinoa base and vegtable salad"}
+tofuWVeggiesSun = {diet: [veg, vg, gnFree], time: dr, date: sun, description: "Tofu Bowl with quinoa base and vegetable salad"}
 hawaiianPizzaSun = {diet: [], time: dr, date: sun, description: "Ham and pineapple pizza with homemade tomato sauce"}
 
 
 // SUNDAY DINNER - SIDES
-roastedveggiesSun = {diet: [hal, gnFree, vg, kos, hal, veg], time: dr, date: sun, description: "Oven rosted vegetables with rosmary and garlic"}
+roastedveggiesSun = {diet: [hal, gnFree, vg, kos, hal, veg], time: dr, date: sun, description: "Oven roasted vegetables with rosemary and garlic"}
 
 
 
@@ -342,8 +354,6 @@ const favoriteDishes = new favorites();
 var dormList = ["baker", "maseeh", "mccormick", "next", "simmons","specials"]; // dormList is the list of active dorms on the page
 var dormCheckbox = {"baker": false, "mccormick": false, "simmons": false, "next": false, "maseeh": false} 
 // sessionStorage.setItem("profileDormStorage", JSON.stringify(["specials"]));
-
-
 
 
 
