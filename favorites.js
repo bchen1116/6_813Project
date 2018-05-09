@@ -2,60 +2,116 @@ var starColor = "#FF9B01";
 favDishes = JSON.parse(sessionStorage.getItem('favoriteDishes'));
 
 
-
-
 // uodating the color on a star
-function updateStarOnClick(e) { 
-    try {
-        var currentStar = e.target.firstChild
-        var currentStarClass  = e.target.firstChild.getAttribute("class")
-        if (currentStarClass == "fa fa-star-o") {
-            currentStar.classList = "fa fa-star"
-            currentStar.style.color = starColor
-        } else { 
-            currentStar.classList = "fa fa-star-o"
-            currentStar.style.color = "black"
-        }
-    }   
-    catch (E) {
-        if (e.target.getAttribute("class") == "fa fa-star-o") {
-            e.target.setAttribute("class", "fa fa-star");
-            e.target.style.color = starColor;
-        } else {
-            e.target.setAttribute("class", "fa fa-star-o");
-            e.target.style.color = "black";
+// function updateStarOnClick(e) { 
+//     try {
+//         var currentStar = e.target.firstChild                                   // find the star that we want to address 
+//         var currentStarClass  = e.target.firstChild.getAttribute("class")       
+//         if (currentStarClass == "fa fa-star-o") {                            
+//             currentStar.classList = "fa fa-star"
+//             currentStar.style.color = starColor
+//         } else { 
+//             currentStar.classList = "fa fa-star-o"
+//             currentStar.style.color = "black"
+//         }
+//     }   
+//     catch (E) {
+//         if (e.target.getAttribute("class") == "fa fa-star-o") {
+//             e.target.setAttribute("class", "fa fa-star");
+//             e.target.style.color = starColor;
+//         } else {
+//             e.target.setAttribute("class", "fa fa-star-o");
+//             e.target.style.color = "black";
+//         }
+//     }
+//     // try {        
+//     //     for (var index in Object.keys(favDishes.dishes)) {
+//     //         var dishType =  Object.keys(favDishes.dishes)[index]
+//     //         var element = document.getElementById(dishType+"FavPage")
+//     //         //console.log("ELEMENT",dishType, element)
+//     //         for (var dishIndex in favDishes.dishes[dishType]){
+//     //             var dishName = favDishes.dishes[dishType][dishIndex]
+//     //             //console.log(dishIndex, dishName)
+//     //             var dish = Util.create("p", {"class":"card-title", "id": dishName})
+
+//     //             // make it so that you can click anywhere on the dish to add/remove from favorites
+//     //             dish.addEventListener('click', function (evt) {
+//     //                 var foodName = evt.target.closest("p.card-title").id 
+//     //                 updateStarOnClick(evt)
+//     //                 updateFavorites("Entrees", foodName)
+//     //                 updateMenu()
+//     //             })
+
+//     //             var fav = Util.create("span", {"class":"fa fa-star", "id": "star" + dishName})
+//     //             fav.style.color = starColor
+//     //             var text = document.createTextNode(" "+dishName)
+                
+//     //             dish.appendChild(fav)
+//     //             dish.appendChild(text)
+//     //             element.appendChild(dish)
+//     //         }
+//     //     }
+//     //     var currentStar = e.target.firstChild
+//     //     var currentStarClass  = e.target.firstChild.getAttribute("class")
+//     //     if (currentStarClass == "fa fa-star-o") {
+//     //         currentStar.classList = "fa fa-star"
+//     //         currentStar.style.color = starColor
+//     //     } else { 
+//     //         currentStar.classList = "fa fa-star-o"
+//     //         currentStar.style.color = "black"
+//     //     }
+//     // }   
+//     // catch (E) {
+//     //     if (e.target.getAttribute("class") == "fa fa-star-o") {
+//     //         e.target.setAttribute("class", "fa fa-star");
+//     //         e.target.style.color = starColor;
+//     //     } else {
+//     //         e.target.setAttribute("class", "fa fa-star-o");
+//     //         e.target.style.color = "black";
+//     //     }
+//     // }
+// }
+
+//when the document is ready
+$( window ).on( "load", function() {
+        toggleFavorites()
+
+    })
+
+function toggleFavorites() {
+    for (var index in Object.keys(favDishes.dishes)) {
+        var dishType =  Object.keys(favDishes.dishes)[index]
+        var element = document.getElementById(dishType+"FavPage")
+        //console.log("ELEMENT",dishType, element)
+        for (var dishIndex in favDishes.dishes[dishType]){
+            var dishName = favDishes.dishes[dishType][dishIndex]
+            //console.log(dishIndex, dishName)
+            var dish = Util.create("p", {"class":"card-title", "id": dishName})
+
+            // make it so that you can click anywhere on the dish to add/remove from favorites
+            dish.addEventListener('click', function (evt) {
+                var foodName = evt.target.closest("p.card-title").id 
+                updateStarOnClick(evt)
+                //console.log("before",favDishes, foodName)
+                updateFavorites("Entrees", foodName)
+                //console.log("after",favDishes)
+                sessionStorage.setItem("favoriteDishes", JSON.stringify(favDishes));
+                //updateMenu()
+                //location.reload()
+            })
+
+            var fav = Util.create("span", {"class":"fa fa-star", "id": "star" + dishName})
+            fav.style.color = starColor
+            var text = document.createTextNode(" "+dishName)
+            
+            dish.appendChild(fav)
+            dish.appendChild(text)
+            element.appendChild(dish)
         }
     }
 }
 
-//when the document is ready
-Util.events(document, {
-    "DOMContentLoaded": function() {
-        for (var dishType in favDishes.dishTypes) {
 
-            var element = document.getElementById(dishType)
-            for (var dishName in favDishes.favorites(dishType)){
-                console.log(dishName)
-                var dish = Util.create("p", {"class":"card-title", "id": dishName+"FavPage"})
-
-                // make it so that you can click anywhere on the dish to add/remove from favorites
-                dish.addEventListener('click', function (evt) {
-                    var foodName = evt.target.closest("p.card-title").id 
-                    updateStarOnClick(evt)
-                    updateFavorites("Entrees", foodName)
-                    updateMenu()
-                })
-
-                var fav = Util.create("span", {"class":"fa fa-star", "id": "star" + dishName})
-                var text = document.createTextNode(" "+dishName)
-                
-                dish.appendChild(fav)
-                dish.appendChild(text)
-                element.appendChild(dish)
-            }
-        }
-    }
-})
 //navbar code for food selection form pop-up
 window.addEventListener('load', function() {
     var modal = document.querySelectorAll(".form-request");   // contains [formRequest, signIn/LogIn] modals 

@@ -222,12 +222,16 @@ function updateStarOnClick(e) {
 
 // update the list of favorite food items
 function updateFavorites(dishtype, dish) { 
-    if (favoriteDishes.isIn(dishtype,dish)) {                            // if the dish is already in favorites then we want to remove it 
+    //console.log ("Iwascalled")
+    //console.log(favoriteDishes.favorites(dishtype))
+    //console.log(favoriteDishes.isIn(dishtype, dish))
+    if (favoriteDishes.isIn(dishtype, dish)) {                            // if the dish is already in favorites then we want to remove it 
+        //console.log("ishouldbeworkingbutsuprise")
         favoriteDishes.removeDish(dishtype,dish)
     } else {                                                             // if the dish is not in favorites then add it 
+        //console.log("inhere")
         favoriteDishes.addDish(dishtype,dish)
     }
-    sessionStorage.setItem("favoriteDishes", JSON.stringify(favoriteDishes));
 }
 
 // after a dish has been added to favorites 
@@ -285,6 +289,21 @@ function sortDorms(dorms) {
 }
 
 $(document).ready(function() { 
+    if (sessionStorage.dormCheckboxStorage == null) {
+    } else {
+        var dormCheckboxStore= JSON.parse(sessionStorage.dormCheckboxStorage);
+        var checks = {};
+        for (var i = 0, emp; i < dormCheckbox.length; i++) {
+            emp = dormCheckbox[i];
+            checks[dormCheckbox[i]] = emp;
+        }
+        for (var key in Object.keys(dormCheckbox)){
+            if (dormCheckbox[dorms[key]]) {
+                document.querySelector("#"+dorms[key]).checked = true;
+            }
+        }
+    }
+
     // if (sessionStorage.dormCheckboxStorage != null) {
     // // } else {
     //     var dormCheckboxStore= JSON.parse(sessionStorage.dormCheckboxStorage);
@@ -300,6 +319,7 @@ $(document).ready(function() {
     //         }
     //     }
     // }
+
 
     // called when the document is ready 
     currentDishes = copyDishes(ALLDISHES, globalMealTime, globalDate)

@@ -1,4 +1,5 @@
 dorms = ["baker", "mccormick", "simmons", "next", "maseeh"]
+
 //navbar code for food selection form pop-up
 window.addEventListener('load', function() {
     var modal = document.querySelectorAll(".form-request");   // contains [formRequest, signIn/LogIn] modals 
@@ -20,6 +21,7 @@ window.addEventListener('load', function() {
     var header = document.querySelector(".signUpHeader");
     var logHead = document.querySelector("#logText");
     var signHead = document.querySelector("#signText");
+    var newButton = document.querySelector("#order-button");
 
     console.log(trigger)
     function toggleModal() {
@@ -102,7 +104,7 @@ window.addEventListener('load', function() {
 
 
 
-
+    newButton.addEventListener("click", toggleModal);
     trigger.addEventListener("click", toggleModal);
     closeButton[0].addEventListener("click", toggleModal);
     submit[0].addEventListener("click", toggleModal);
@@ -153,19 +155,3 @@ function clickedDining(check, dorm) {
         dormList = profileDorms;
     }
 }
-
-// function profileChecks() { 
-//     console.log(checkedValue, "in");
-//     var inputElements = document.getElementsByClassName('checkmark');
-//     for(var i=0; inputElements[i]; ++i){
-//           if(inputElements[i].checked){
-//                checkedValue.push(inputElements[i].value);
-//           }
-//           else {
-//             if (checkedValue.includes(inputElements[i])) {
-//                 var index = checkedValue.indexOf(inputElements[i]);
-//                 checkedValue.splice(index, 1);
-//             }
-//           }
-//     }
-// }
