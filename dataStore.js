@@ -296,18 +296,25 @@ roastedveggiesSun = {diet: [hal, gnFree, vg, kos, hal, veg], time: dr, date: sun
 
 
 
+
 /////// DONT WORRY ABOUT THIS PART
 
 // Dorm dishes format | DormDishes = {entree: {diet:["vegan", "halal"], time:"dinner", date:"date", calories: 500}}
 bakerDishes = {"Entrees": {"Pepperoni Pizza":pepperoniPizzaMon, "Roasted Chicken": roastedChickenMon, "Vegetable Medley":vegetableMedleyMon, "Chicken Fingers":chickenFingersMon, "Chicken Curry": chickenCurryMon, "Shrimp Bowl":shrimpBowlMon,
-						   "Vegetable Stir Fry":vegetableStirfryMon,
-						   "Eggs Benedict": eggsBenedictMon, "Scrambled Tofu":tofuBowlBreakfastMon, "Fruit Parfait":fruitParfaitMon, "Fresh Fruits": fruitsWed,  
-						   "Jerked Tofu With Veggies": tofuWVeggiesSat, "Pineapple Pork Cutlet": pineapplePorkCutletTue,	"Hawaiian Pizza":hawaiianPizzaTue, 
+						   "Vegetable Stir Fry":vegetableStirfryMon, "Chicken Parm": chickenParmMon, "Grilled Cheese": grilledCheeseMon, "Salmon Burger": salmonBurgerMon,
+						   "Eggs Benedict": eggsBenedictMon, "Scrambled Tofu":tofuBowlBreakfastMon, "Fruit Parfait":fruitParfaitMon, "Fresh Fruits": fruitsWed,
+						   "Vegetable Medley":vegetableMedleyTue, "Chicken Bowl":chickenBowlTue, "Tofu Bowl":tofuBowlTue, "Steamed Mussels":steamedMusselsTue, "Vegetable Soup":vegetableSoupTue,
+						   "Chicken Parm":chickenParmTue, "Chicken Quesadilla":chickenQuesadillaTue,
+						   "Breakfast Sandwich":breakfastSandwichTue, "Chicken And Waffles":chickenAndWafflesTue, "Blueberry Pancake":blueberryPancakeTue,
+
+						   "Jerked Tofu With Veggies": tofuWVeggiesSat, "Pineapple Pork Cutlet": pineapplePorkCutletTue, "Hawaiian Pizza":hawaiianPizzaTue, 
 
 						  }, 
 				
 				"Sides": {"Mashed Potatoes":mashedPotatoesMon, "Roasted Vegetables":roastedveggiesMon, "Steamed Corn":steamedCornMon, "Herb Fries":herbFriesMon, "Meat Lovers Chili":meatloversChiliMon,
 						  "Truffle Fries": truffleFriesMon,
+						  "Truffle Fries":truffleFriesTue, "Tater Tots":taterTotsTue, "Chips And Hummus":chipsAndHummusTue, "Asian Noodle Salad":asianNoodleSaladTue,
+						  "Pigs In A Blanket":pigsInABlanketTue, "Mozzarella Sticks":mozzarellaSticksTue,
 
 						  "Chicken Curry":chickenCurryTr, "Pineapple Pork Cutlet": pineapplePorkCutletTr, "Cheesy Tater Tots":cheesyTaterTotsFr, "Asian Noodle Salad": asianNoodleSaladTr, "Banana Smoothie":bananaSmoothieSat, "Collard Greens":collardGreensFr}}
 
