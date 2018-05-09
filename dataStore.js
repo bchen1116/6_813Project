@@ -295,12 +295,29 @@ hawaiianPizzaSun = {diet: [], time: dr, date: sun, description: "Ham and pineapp
 roastedveggiesSun = {diet: [hal, gnFree, vg, kos, hal, veg], time: dr, date: sun, description: "Oven roasted vegetables with rosemary and garlic"}
 
 
+
+// MONDAY BREAKFAST - ENTREES
+tofuBowlBreakfastMon = {diet: [vg, veg, hal, kos], time: brk, date: mon, description: "Vegan scrambled eggs with tofu base"}
+eggsBenedictMon = {diet: [hal], time: brk, date: mon, description: "Poached eggs, bacon, arugula on toasted English muffin with hollandaise sauce"}
+fishTacoMon = {diet: [hal, kos], time: brk, date: mon, description: "Cajun-style tilapia on corn tortilla"}
+fruitParfaitMon = {diet: [veg, hal, kos], time: brk, date: mon, description: "Fresh fruit on plain yogurt, topped with crunchy granola"}
+scrambledEggsMon = {diet: [veg, hal, kos], time: brk, date: mon, description: "Eggs made to order with fresh vegetables"}
+oatmealMon = {diet: [veg, hal, kos], time: brk, date:mon, description: "Warm Oatmeal with raisins and sliced almonds. Perfect start to your day"}
+fruitsMon = {diet: [vg, veg, hal, kos], time: brk, date:mon, description: "Large fruit assortment"}
+eggsBenedictMon = {diet: [hal], time: brk, date: mon, description: "Poached eggs, bacon, arugula on toasted English muffin with hollandaise sauce"}
+blueberryPancakeMon = {diet: [vg, veg, hal, kos], time: brk, date: mon, description: "Fresh blueberries on regular pancakes"}
+fruitParfaitMon = {diet: [veg, hal, kos], time: brk, date: mon, description: "Fresh fruit on plain yogurt, topped with crunchy granola"}
+tofuBowlBreakfastMon = {diet: [vg, veg, hal, kos], time: brk, date: mon, description: "Vegan scrambled eggs with tofu base"}
+
+
+
 /////// DONT WORRY ABOUT THIS PART
 
 // Dorm dishes format | DormDishes = {entree: {diet:["vegan", "halal"], time:"dinner", date:"date", calories: 500}}
-bakerDishes = {"Entrees": {"Pepperoni Pizza":pepperoniPizzaMon, "Roasted Chicken": roastedChickenMon, "Vegetable Medley":vegetableMedleyMon, "Chicken Fingers":chickenFingersMon, "Chicken Curry": chickenCurryMon, "Shrimp Bowl":shrimpBowlMon,
+bakerDishes = {"Entrees": { "Eggs Benedict": eggsBenedictMon, "Scrambled Tofu":tofuBowlBreakfastMon, "Fruit Parfait":fruitParfaitMon, "Scrambled Eggs":scrambledEggsMon,
+							"Pepperoni Pizza":pepperoniPizzaMon, "Roasted Chicken": roastedChickenMon, "Vegetable Medley":vegetableMedleyMon, "Chicken Fingers":chickenFingersMon, "Chicken Curry": chickenCurryMon, "Shrimp Bowl":shrimpBowlMon,
 						   "Vegetable Stir Fry":vegetableStirfryMon, "Chicken Parm": chickenParmMon, "Grilled Cheese": grilledCheeseMon, "Salmon Burger": salmonBurgerMon,
-						   "Eggs Benedict": eggsBenedictMon, "Scrambled Tofu":tofuBowlBreakfastMon, "Fruit Parfait":fruitParfaitMon, "Fresh Fruits": fruitsWed,
+						    "Fresh Fruits": fruitsWed,
 						   "Vegetable Medley":vegetableMedleyTue, "Chicken Bowl":chickenBowlTue, "Tofu Bowl":tofuBowlTue, "Steamed Mussels":steamedMusselsTue, "Vegetable Soup":vegetableSoupTue,
 						   "Chicken Parm":chickenParmTue, "Chicken Quesadilla":chickenQuesadillaTue,
 						   "Breakfast Sandwich":breakfastSandwichTue, "Chicken And Waffles":chickenAndWafflesTue, "Blueberry Pancake":blueberryPancakeTue,
@@ -309,23 +326,27 @@ bakerDishes = {"Entrees": {"Pepperoni Pizza":pepperoniPizzaMon, "Roasted Chicken
 
 						  }, 
 				
-				"Sides": {"Mashed Potatoes":mashedPotatoesMon, "Roasted Vegetables":roastedveggiesMon, "Steamed Corn":steamedCornMon, "Herb Fries":herbFriesMon, "Meat Lovers Chili":meatloversChiliMon,
+				"Sides": {
+
+					"Mashed Potatoes":mashedPotatoesMon, "Roasted Vegetables":roastedveggiesMon, "Steamed Corn":steamedCornMon, "Herb Fries":herbFriesMon, "Meat Lovers Chili":meatloversChiliMon,
 						  "Truffle Fries": truffleFriesMon,
 						  "Truffle Fries":truffleFriesTue, "Tater Tots":taterTotsTue, "Chips And Hummus":chipsAndHummusTue, "Asian Noodle Salad":asianNoodleSaladTue,
 						  "Pigs In A Blanket":pigsInABlanketTue, "Mozzarella Sticks":mozzarellaSticksTue,
 
 						  "Chicken Curry":chickenCurryTr, "Pineapple Pork Cutlet": pineapplePorkCutletTr, "Cheesy Tater Tots":cheesyTaterTotsFr, "Asian Noodle Salad": asianNoodleSaladTr, "Banana Smoothie":bananaSmoothieSat, "Collard Greens":collardGreensFr}}
 
-maseehDishes = {"Entrees":{"Pepperoni Pizza":pepperoniPizzaMon, "Vegetable Soup":vegetableSoupMon, "Chicken Soup":chickenSoupMon, "Jerked Chicken":jerkedChickenMon, "Chicken Fingers":chickenFingersMon,
+maseehDishes = {"Entrees":{ "Fish Taco":fishTacoMon, "Eggs Benedict":eggsBenedictMon, "Fruit Parfait":fruitParfaitMon,  "Scrambled Eggs":scrambledEggsMon,
+							"Pepperoni Pizza":pepperoniPizzaMon, "Vegetable Soup":vegetableSoupMon, "Chicken Soup":chickenSoupMon, "Jerked Chicken":jerkedChickenMon, "Chicken Fingers":chickenFingersMon,
 						   "Vegetable Stir Fry":vegetableStirfryMon,
-						   "Fish Taco":fishTacoMon, "Eggs Benedict":eggsBenedictMon, "Fruit Parfait":fruitParfaitMon,
+						   
 
 						   "Pepperoni Pizza":pepperoniPizzaTue, "Hawaiian Pizza":hawaiianPizzaTr,
 						   "Scrambled Tofu":tofuBowlBreakfastMon,"Shrimp Bowl": shrimpBowlMon, "Chicken Bowl":chickenBowlTue, "Shrimp Bowl":shrimpBowlTr, "Chicken Soup": chickenSoupFr, "Vegetable Soup": vegetableSoupMon, "Chicken Curry":chickenCurryWed, "Pineapple Pork Cutlet": pineapplePorkCutletSat}, 
 				
 				"Sides": {"Truffle Fries":truffleFriesMon, "Chips and Hummus":chipsAndHummusTue, "Tater Tots":taterTotsTr, "Pineapple Smoothie": pineappleSmoothieFr, "Bratwurst Corndog":bratwurstCorndogTr, "Meat Lover's Chili":meatloversChiliMon}}
 
-nextDishes = {"Entrees":{"Chicken Fingers":chickenFingersMon, "Grilled Pork Over Rice":grilledPorkOverRiceMon, "Vegetable Medley":vegetableMedleyMon, "Shrimp Bowl":shrimpBowlMon, "Roasted Chicken":roastedChickenMon, "Chicken Curry":chickenCurryMon, 
+nextDishes = {"Entrees":{ "Fruit Parfait":fruitParfaitMon, "Fish Taco":fishTacoMon, "Tofu Bowl Breakfast":tofuBowlBreakfastMon, "Eggs Benedict":eggsBenedictMon, 
+						"Chicken Fingers":chickenFingersMon, "Grilled Pork Over Rice":grilledPorkOverRiceMon, "Vegetable Medley":vegetableMedleyMon, "Shrimp Bowl":shrimpBowlMon, "Roasted Chicken":roastedChickenMon, "Chicken Curry":chickenCurryMon, 
 						 "Vegetable Stir Fry":vegetableStirfryMon, 
 						 "Fruit Parfait":fruitParfaitMon, "Fish Taco":fishTacoMon,  
 						 "Eggs Benedict":eggsBenedictMon, "Fruit Parfait":fruitParfaitMon, "Scrambled Tofu":tofuBowlBreakfastMon, 
@@ -333,7 +354,8 @@ nextDishes = {"Entrees":{"Chicken Fingers":chickenFingersMon, "Grilled Pork Over
 				"Sides": {"Chicken Curry":chickenCurryFr,
 				"Truffle Fries":truffleFriesTue, "Tater Tots":taterTotsTue, "Chips and Hummus":chipsAndHummusTue, "Pineapple Smoothie": pineappleSmoothieFr, "Bratwurst Corndog":bratwurstCorndogTr}}
 
-mccormickDishes = {"Entrees":{"Chicken Bowl":chickenBowlMon, "Jerked Chicken":jerkedChickenMon, "Vegetable Stirfry":vegetableStirfryMon, "Chicken Parm":chickenParmMon, "Salmon Burger":salmonBurgerMon, 
+mccormickDishes = {"Entrees":{"Blueberry Pancake":blueberryPancake, 
+							  "Chicken Bowl":chickenBowlMon, "Jerked Chicken":jerkedChickenMon, "Vegetable Stirfry":vegetableStirfryMon, "Chicken Parm":chickenParmMon, "Salmon Burger":salmonBurgerMon, 
 							  
 							  "Breakfast Tofu":tofuBowlBreakfastSat,"Roasted Chicken": roastedChickenTr, "Vegetable Medley":vegetableMedleyTue, "Chicken Fingers":chickenFingersSat, "Vegetable Soup": vegetableSoupTr, "Chicken Curry":chickenCurryTr, "Pineapple Pork Cutlet": pineapplePorkCutletSat},
 				"Sides": {"Pineapple Pork Cutlet": pineapplePorkCutletSat,"Cheesy Tater Tots":cheesyTaterTotsFr, "Waffle Fries":waffleFriesTr, "Asian Noodle Salad":asianNoodleSaladTr, "Banana Smoothie":bananaSmoothieSat, "Collard Greens":collardGreensFr, "Pigs in a Blanket":pigsInABlanketTue, "Meat Lover's Chili":meatloversChiliTr}}
