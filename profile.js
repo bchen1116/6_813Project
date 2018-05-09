@@ -24,10 +24,10 @@ window.addEventListener('load', function() {
     var newButton = document.querySelector("#order-button");
     var rSubmit = document.getElementById("request-submit");
 
-    console.log(trigger)
     function toggleModal() {
         modal[0].classList.toggle("show-modal");
         modal[1].classList.remove("show-modal")
+        modal[0].style.zIndex = "2"
     }
 
     function toggleSignInModal() {
@@ -119,11 +119,55 @@ window.addEventListener('load', function() {
             return false;
         }
         else {
+            var foodGrid = document.getElementById("food-grid2");
+            var allDivMore = document.createElement("div")
+            var allDiv = document.createElement("div")
+            allDiv.classList.add("food-grid")
+            var divText = document.createElement("div")
+            var divTrash = document.createElement("div")
+
+            var divFood = document.createElement("div");
+            var divDate = document.createElement("div");
+            var linebreak = document.createElement("br");
+            var linebreak2 = document.createElement("br");
+
+            var foodReq = document.createTextNode(rFood);
+            divFood.appendChild(foodReq);
+
+            realDate = changeDate(rDate)
+            realTime = changeTime(rTime)
+
+            var dateReq = document.createTextNode(realDate + ", " + realTime + " " + rDorm)
+            divDate.appendChild(dateReq)
+
+            divText.appendChild(foodReq)
+            divText.appendChild(linebreak)
+            divText.appendChild(dateReq)
+            divText.appendChild(linebreak2)
+
+            var trashBtn = document.createElement("BUTTON");
+            trashBtn.classList.add("trash")
+            var trashImg = document.createElement("IMG");
+            trashImg.setAttribute("src", "images/trash.svg");
+            trashImg.classList.add("icon-trash")
+
+            trashBtn.appendChild(trashImg)
+            divTrash.appendChild(trashBtn)
+
+            allDiv.appendChild(divText)
+            allDiv.appendChild(divTrash)
+            allDivMore.appendChild(allDiv)
+            foodGrid.appendChild(allDivMore)
+
             toggleModal();
+            deleteTrash();
         }
     }
 
     rSubmit.addEventListener("click", validateForm);
+    // newButton.addEventListener("click", function() {
+        // console.log("new food request click")
+    // })
     newButton.addEventListener("click", toggleModal);
     trigger.addEventListener("click", toggleModal);
     closeButton[0].addEventListener("click", toggleModal);
@@ -133,7 +177,48 @@ window.addEventListener('load', function() {
     closeButton[1].addEventListener("click", closeModal);
     submit[1].addEventListener("click", toggleSignInModal);
     window.addEventListener("click", windowOnClick);
+
+    deleteTrash();
 });
+
+function deleteTrash() {
+    var classIconTrash = document.querySelectorAll(".trash");
+
+    for (var i = 0; i < classIconTrash.length; i++) {
+        var childTrash = classIconTrash[i]
+        classIconTrash[i].addEventListener('click', function() {
+            // deleteOrder(classIconTrash[i]);
+            childTrash.parentElement.parentElement.style.display = "none";
+        });
+    }
+}
+
+function changeDate(date) {
+    toMonth = {"01":"January","02":"February","03":"March","04":"April","05":"May","06":"June",
+               "07":"July","08":"August","09":"September","10":"October","11":"November","12":"December",}
+    month = toMonth[date.substring(5,7)]
+    space = " " 
+    day = date.substring(8,10)
+    console.log(month.concat(space).concat(day))
+    return month.concat(space).concat(day)
+}
+
+function changeTime(time) {
+    toTime = {"01":"1","02":"2","03":"3","04":"4","05":"5","06":"6",
+               "07":"7","08":"8","09":"9","10":"10","11":"11","12":"12",
+               "13":"1","14":"2","15":"3","16":"4","17":"5","18":"6",
+               "19":"7","20":"8","21":"9","22":"10","23":"11","24":"12"}
+    hour = toTime[time.substring(0,2)]
+    minutes = time.substring(2,5)
+    light = ""
+    if (parseInt(time.substring(0,2)) < 12 || parseInt(time.substring(0,2)) == 24) {
+        light = "am"
+    }
+    else {
+        light = "pm"
+    }
+    return hour.concat(minutes).concat(light)
+}
 
 // var profileDorms = ["specials"];
 if (sessionStorage.dormCheckboxStorage == null) {
