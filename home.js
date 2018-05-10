@@ -6,7 +6,7 @@ var starColor = "#FF9B01";
 var allDorms = {};                                              // allDorms is the dictionary that maps dorm name to Node element of dorm card
 var dieraryRestrictions = []                                    // list of the dietary restirctions that are active on the page
 var globalMealTime = "dinner"
-var globalDate = "05/02/2018"
+var globalDate = "05/07/2018"
 if (sessionStorage.favoriteDishes != null) {
     var favDishes = JSON.parse(sessionStorage.getItem("favoriteDishes"))
     for (var d = 0; d < favDishes['dishes']['Entrees'].length; d++){
@@ -28,13 +28,17 @@ if (sessionStorage.dietStorage != null) {
 // given a dictionary make a deep copy of the dictionary 
 // used to create a copy of all of the dishes in our database 
 function copyDishes(mainDict, globalMealTime, globalDate) { 
+    //console.log(mainDict, globalMealTime, globalDate)
     newDishes = {} 
     for (var dorm in mainDict) {                                            // for each dorm 
         dormDishes = {}
         for (var meal in mainDict[dorm]) {                                  // for each meal type, i.e. Entree, Side, Dessert  
             mealType = {}
-            for (var dish in mainDict[dorm][meal]) {                        // for each dish  
-                //console.log(mainDict[dorm][meal][dish]["date"],globalDate)                
+            for (var dish in mainDict[dorm][meal]) { 
+                if (dorm == "baker" && meal == "Entrees" && dish == "Eggs Benedict") {
+                    console.log(dorm, dish, globalDate, mainDict[dorm][meal][dish]["date"],  mainDict[dorm][meal][dish]["date"]==globalDate, mainDict[dorm][meal][dish]["time"] == globalMealTime)
+                }                       // for each dish  
+                                
                 if (mainDict[dorm][meal][dish]["time"] == globalMealTime && mainDict[dorm][meal][dish]["date"] == globalDate) {   // if the meal time is the same 
                     mealType[dish] = mainDict[dorm][meal][dish]             // copy the dish data over, this is the deepest level of the dictionary 
                 }
@@ -43,6 +47,7 @@ function copyDishes(mainDict, globalMealTime, globalDate) {
         }
         newDishes[dorm] = dormDishes                            
     }
+    console.log(newDishes)
     return newDishes                                                        // return the new dictionary 
 }    
 
@@ -238,7 +243,7 @@ function updateDishesForDorms(currentDishes) {
 
         // for each of the dishes that are being served for that dorm 
         for (var j=0; j<Object.keys(dishesForDorm).length; j++) {
-            var dishName = Object.keys(dishesForDorm)[j]
+            var dishName = Object.keys(dishesForDorm)[j].slice(0,-3)
             var dish = Util.create("p", {"class":"card-title", "id": dishName})
 
             dish.addEventListener('click', function (evt) {
@@ -255,7 +260,7 @@ function updateDishesForDorms(currentDishes) {
             //     var fav = Util.create("span", {"class":"fa fa-star", "id": "star" + dormName + "," + dishName})
             //     fav.style.color = starColor;
             // }
-            var text = document.createTextNode(" "+Object.keys(dishesForDorm)[j])
+            var text = document.createTextNode(" "+dishName)
             
             dish.appendChild(fav)
             dish.appendChild(text)
@@ -327,7 +332,7 @@ function updateMenu() {
         var dormName = dormList[i]
         var dishesForDorm = currentDishes[dormName]["Entrees"]
         for (var j =0; j < Object.keys(dishesForDorm).length; j++) {
-            var dishName = Object.keys(dishesForDorm)[j]
+            var dishName = Object.keys(dishesForDorm)[j].slice(0,-3)
             var relevantStar = document.getElementById("star" + dormName + "," + dishName)
             if (favoriteDishes.isIn("Entrees",dishName)) { 
                 relevantStar.setAttribute("class", "fa fa-star")
@@ -394,6 +399,7 @@ $(document).ready(function() {
     }
     // called when the document is ready 
     currentDishes = copyDishes(ALLDISHES, globalMealTime, globalDate)
+    //console.log(currentDishes)
     for (var i = 0; i < dormList.length; i++) {
         allDorms[dormList[i]] = document.getElementById(dormList[i]);
     }
@@ -405,7 +411,7 @@ $(document).ready(function() {
         var dishesForDorm = currentDishes[dormName]["Entrees"]
         // for each of the dishes that are being served for that dorm 
         for (var j=0; j<Math.min(Object.keys(dishesForDorm).length, 6); j++) {
-            var dishName = Object.keys(dishesForDorm)[j]
+            var dishName = Object.keys(dishesForDorm)[j].slice(0,-3)
             var dish = Util.create("p", {"class":"card-title", "id": dishName})
             dish.addEventListener('click', function (evt) {
                 var foodName = evt.target.closest("p.card-title").id 
@@ -414,7 +420,7 @@ $(document).ready(function() {
                 updateMenu()
             })
             var fav = Util.create("span", {"class":"fa fa-star-o", "id": "star" + dormName + "," + dishName})
-            var text = document.createTextNode(" "+Object.keys(dishesForDorm)[j])
+            var text = document.createTextNode(" " + dishName)
             
             dish.appendChild(fav)
             dish.appendChild(text)
@@ -423,6 +429,17 @@ $(document).ready(function() {
         if (Object.keys(currentDishes[dormName]["Entrees"]).length == 0  && Object.keys(currentDishes[dormName]["Sides"]).length == 0 ){                     // remove dorm from dormList
             menu.innerHTML = "No Food Available.";           // remove it from the document
         } 
+    }
+
+    // if there is favorites: update the menu to reflect that 
+    if (sessionStorage.favoriteDishes != null) {
+        var favDishes = JSON.parse(sessionStorage.getItem("favoriteDishes"))
+        for (var d = 0; d < favDishes['dishes']['Entrees'].length; d++){
+            if (!favoriteDishes.isIn('Entrees', favDishes['dishes']['Entrees'][d])) {
+                favoriteDishes.addDish('Entrees', favDishes['dishes']['Entrees'][d])
+            }
+        }
+        updateMenu()
     }
 
     var specialMenu = document.getElementById("specialsMenu")
@@ -518,15 +535,16 @@ function loadModal(e) {
 
             var dishes = currentDishes[dormName][meal]
             for (var dish in dishes) {
+                var dishName = dish.slice(0,-3)
                 //var food = Util.create("div", {"class": "food-item", "id":dish})
-                var foodItem = Util.create("p", {"class": "food-item", "id": dish})
-                var foodDescription = Util.create("div", {"class": "food-description", "id": dish})
-                var foodRestrictions = Util.create("p", {"class": "food-restriction", "id": dish})
-                var fav = Util.create("span", {"class":"fa fa-star-o", "id": dish})
+                var foodItem = Util.create("p", {"class": "food-item", "id": dishName})
+                var foodDescription = Util.create("div", {"class": "food-description", "id": dishName})
+                var foodRestrictions = Util.create("p", {"class": "food-restriction", "id": dishName})
+                var fav = Util.create("span", {"class":"fa fa-star-o", "id": dishName})
 
                 foodItem.appendChild(fav)
                 var foodTitle = Util.create("h6", {"class":"modal-food-name"})
-                foodTitle.appendChild(document.createTextNode(" " + dish + "         "))
+                foodTitle.appendChild(document.createTextNode(" " + dishName))
 
                 foodItem.appendChild(foodTitle)
                 //restriction = "    ("
@@ -538,31 +556,14 @@ function loadModal(e) {
                 }
                 foodItem.appendChild(foodRestrictions)
                 foodItem.appendChild(Util.create("br"))
-                //restriction += "--" + dishes[dish]["diet"][rest] + ")"
-                description = document.createTextNode(dishes[dish]["description"])
-                //diet = document.createTextNode(restriction)
 
-                
-                //foodItem.appendChild(foodRestrictions)
-                //foodItem.appendChild(document.createElement("br"));
+                description = document.createTextNode(dishes[dish]["description"])
+
                 foodDescription.appendChild(description)
                 foodItem.appendChild(foodDescription)
-                //foodItem.appendChild(document.createElement("br"));
-                
-
-
-                 
-                // foodRestrictions.appendChild(diet)
-                // food.appendChild(foodItem)
-                // food.appendChild(foodDescription)
-                // food.appendChild(foodRestrictions)
-                // modalBody.appendChild(food)
 
 
                 modalBody.appendChild(foodItem)
-                // modalBody.appendChild(foodDescription)
-                // modalBody.appendChild(foodRestrictions)
-
 
                 // This is what happens when we click on a star
                 foodItem.addEventListener('click', function(evt) {
@@ -574,7 +575,7 @@ function loadModal(e) {
 
 
                 //make sure that the favorites are updated
-                if (favoriteDishes.isIn("Entrees",dish)) { 
+                if (favoriteDishes.isIn("Entrees",dishName)) { 
                     fav.setAttribute("class", "fa fa-star")
                     fav.style.color = starColor
                 } else { 
