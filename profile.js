@@ -1,4 +1,4 @@
-dorms = ["baker", "mccormick", "simmons", "next", "maseeh"]
+dorms = ["baker", "mccormick", "simmons", "next", "maseeh"];
 
 //navbar code for food selection form pop-up
 window.addEventListener('load', function() {
@@ -23,7 +23,9 @@ window.addEventListener('load', function() {
     var signHead = document.querySelector("#signText");
     var newButton = document.querySelector("#order-button");
     var rSubmit = document.getElementById("request-submit");
+    var trashButton = document.querySelectorAll(".trash");
 
+    deleteTrash(trashButton)
     function toggleModal() {
         modal[0].classList.toggle("show-modal");
         modal[1].classList.remove("show-modal")
@@ -159,8 +161,9 @@ window.addEventListener('load', function() {
             allDivMore.appendChild(allDiv)
             foodGrid.appendChild(allDivMore)
 
+            trashButton = document.querySelectorAll(".trash");
             toggleModal();
-            deleteTrash();
+            deleteTrash(trashButton);
         }
     }
 
@@ -177,22 +180,17 @@ window.addEventListener('load', function() {
     closeButton[1].addEventListener("click", closeModal);
     submit[1].addEventListener("click", toggleSignInModal);
     window.addEventListener("click", windowOnClick);
-
-    deleteTrash();
 });
 
-function deleteTrash() {
-    var classIconTrash = document.querySelectorAll(".trash");
-
-    for (var i = 0; i < classIconTrash.length; i++) {
-        var childTrash = classIconTrash[i]
-        classIconTrash[i].addEventListener('click', function() {
-            // deleteOrder(classIconTrash[i]);
-            childTrash.parentElement.parentElement.style.display = "none";
-        });
-    }
+function deleteTrash(trashClass) {
+    trashClass[trashClass.length-1].addEventListener('click', function() {
+        remove(trashClass[trashClass.length-1])
+    });
 }
 
+function remove(elem){
+    elem.parentElement.parentElement.style.display = "none"
+}
 function changeDate(date) {
     toMonth = {"01":"January","02":"February","03":"March","04":"April","05":"May","06":"June",
                "07":"July","08":"August","09":"September","10":"October","11":"November","12":"December",}
