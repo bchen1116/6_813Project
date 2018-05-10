@@ -1,5 +1,7 @@
 // JS code for home page. Handles the clicking responses on the home page
 var dorms = ["baker", "mccormick", "simmons", "next", "maseeh"]
+// dictionary to translate dietary tags into words
+var dietDict = {"halal": "halal", "gluten free" : "gluten", "gluten-free" : "gluten", "vegan" : "vegan" , "kosher": "kosher" , "vegetarian": "vegeterian"}
 // var dormList = ["baker", "maseeh", "mccormick", "next", "simmons","specials"]; // dormList is the list of active dorms on the page
 var currentDishes; 
 var starColor = "#FF9B01";
@@ -50,6 +52,7 @@ function copyDishes(mainDict, globalMealTime, globalDate) {
 // called when the checkbox on dorms are clicked/unclicked
 // used for filtering the dorms, in order to change what cards appear on the page 
 function onCheckClicked(cb, dorm) {
+    console.log("dormList", dormList)
     currentDishes = copyDishes(ALLDISHES, globalMealTime, globalDate)
     if (cb.checked == false) {                                  // if it isn't checked, remove the dorm
         var index = dormList.indexOf(dorm);
@@ -197,7 +200,8 @@ a.addEventListener('submit',function(e) {
             var currentMealDishes = currentDishes[dorm][meal]
             for (var dishName in currentMealDishes) {                       // go through the dishes for that meal 
                 var dish = currentMealDishes[dishName]
-                if (! dish["description"].toUpperCase().includes(b.toUpperCase())) {  // if the food does not satify the restriction 
+                console.log(b)
+                if ((! dish["description"].toUpperCase().includes(b.toUpperCase()))&&(!dish["diet"].includes(dietDict[b]))) {  // if the food does not satify the restriction 
                     delete currentDishes[dorm][meal][dishName]          // remove it from the currentDishes
                 }
             }
@@ -381,7 +385,7 @@ $(document).ready(function() {
     //     "time",document.getElementById("request_time").value,
     //     "date",document.getElementById("request_date").value,
     //     "food",document.getElementById("request_food").value)
-    
+   
     if (sessionStorage.dietStorage != null) {
         var dietStore = JSON.parse(sessionStorage.dietStorage);
         for (var key in dietStore) {
@@ -460,6 +464,7 @@ $(document).ready(function() {
                 modal.style.display = "block"
             }
         });
+        
     }
 
 
