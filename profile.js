@@ -113,6 +113,7 @@ window.addEventListener('load', function() {
         var rFood=document.getElementById("request_food").value;
         var rDate=document.getElementById("request_date").value;
         var rTime=document.getElementById("request_time").value;
+        var rSpecial=document.getElementById("request_special").value;
 
         if ((rId==null || rId=="") || (rKerberos==null || rKerberos=="") || 
             (rDorm==null || rDorm=="") || (rFood==null || rFood=="") || 
@@ -141,11 +142,22 @@ window.addEventListener('load', function() {
 
             var dateReq = document.createTextNode(realDate + ", " + realTime + " " + rDorm)
             divDate.appendChild(dateReq)
-
+            if (rSpecial.length > 0) {
+                var specReq = document.createTextNode(rSpecial.substring(0,Math.min(rSpecial.length, 15)))
+                console.log(rSpecial.substring(Math.min(rSpecial.length, 15)), rSpecial)
+            } else {
+                var specReq = document.createTextNode("")
+            }
+            var span = document.createElement('span');
+            span.style.fontSize = "12px";
+            span.style.color = "grey"
+            span.appendChild(specReq);
             divText.appendChild(foodReq)
             divText.appendChild(linebreak)
             divText.appendChild(dateReq)
             divText.appendChild(linebreak2)
+            divText.appendChild(span)
+            divText.style.borderTop = "1px solid black";
 
             var trashBtn = document.createElement("BUTTON");
             trashBtn.classList.add("trash")
