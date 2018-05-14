@@ -385,6 +385,7 @@ function sortDorms(dorms) {
 }
 
 $(document).ready(function() { 
+
     dormList = ["baker", "maseeh", "mccormick", "next", "simmons", "specials"]; 
     // console.log("dorm",document.getElementById("request_dorm").value,
     //     "time",document.getElementById("request_time").value,
@@ -401,6 +402,7 @@ $(document).ready(function() {
         }
         performdietaryFiltering();
     }
+
     // called when the document is ready 
     currentDishes = copyDishes(ALLDISHES, globalMealTime, globalDate)
     //console.log(currentDishes)
@@ -408,11 +410,19 @@ $(document).ready(function() {
         allDorms[dormList[i]] = document.getElementById(dormList[i]);
     }
 
+
     //for each of the dorms, go through and populate their menu according to the data we have on file
     for (var i=0; i<dormList.length-1; i++) {
         var dormName = dormList[i]
         var menu = document.getElementById(dormName +"Menu") 
         var dishesForDorm = currentDishes[dormName]["Entrees"]
+
+
+        // clear out all of the dishes that are attached to that menu, before you add them again.
+        while (menu.firstChild) {    
+            menu.removeChild(menu.firstChild);
+        }
+
         // for each of the dishes that are being served for that dorm 
         for (var j=0; j<Math.min(Object.keys(dishesForDorm).length, 6); j++) {
             var dishName = Object.keys(dishesForDorm)[j].slice(0,-3)
@@ -435,6 +445,7 @@ $(document).ready(function() {
         } 
     }
 
+
     // if there is favorites: update the menu to reflect that 
     if (sessionStorage.favoriteDishes != null) {
         var favDishes = JSON.parse(sessionStorage.getItem("favoriteDishes"))
@@ -446,6 +457,7 @@ $(document).ready(function() {
         updateMenu()
     }
 
+
     var specialMenu = document.getElementById("specialsMenu")
     // populate the specials menu card 
     for (var i=0; i < SPECIALS.length; i++) { 
@@ -456,11 +468,13 @@ $(document).ready(function() {
         specialMenu.appendChild(special)
     }
 
+
     // calls the menu card pop-up
     var modal = document.getElementById('myModal');
     var modalClose = document.getElementsByClassName("close")[0]
     var modalBody = document.getElementById("modal-body")
     
+
 
     // Get the button that opens the modal
     // COMMENTED OUT FOR CONVENIENT TESTING
@@ -480,9 +494,10 @@ $(document).ready(function() {
                 loadModal(e)
                 modal.style.display = "block"
             }
-        });
-        
+        })  
     }
+
+
 
 
     // When the user clicks the close button
@@ -509,7 +524,7 @@ $(document).ready(function() {
             }
         }
         updateCardLayout();
-    } 
+    }
 })
 
 
